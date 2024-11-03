@@ -316,6 +316,7 @@ MonoBehaviour:
   speed: 10
   sprintMult: 2
   jumpMax: 2
+  jumpCount: 0
   jumpSpeed: 10
   gravity: 9
 --- !u!4 &377383577 stripped

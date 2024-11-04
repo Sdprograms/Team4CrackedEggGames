@@ -11,17 +11,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mMenuActive;
     [SerializeField] GameObject mMenuPause;
     [SerializeField] GameObject mMenuSettings;
+    [SerializeField] GameObject mMenuLose;
 
     public GameObject mPlayer;
 
-    private bool mPaused;
+    public bool mPaused;
+
+
     private float mTimeScaleOrig;
 
 
     public GameObject GetActiveMenu() {  return mMenuActive; }
     public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
-    public bool GetPausedState() { return mPaused; }
-    public void SetPausedState(bool state) { state = mPaused; }
+    //these getters and setters do not update the checkbox in unity
+    //public bool GetPausedState() { return mPaused; }
+    //public void SetPausedState(bool state) { state = mPaused; }
     // Start is called before the first frame update
 
     void Awake()
@@ -49,27 +53,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    public void StatePaused()
+    public void FreezeGame()
     {
-        //inverses pause state
-        SetPausedState(!mPaused);
-        //sets the active menu to pause
-        SetActiveMenu(mMenuPause);
-        //makes it visible
-        mMenuActive.SetActive(true);
         //halts activity, and allows for caged mouse cursor
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
-
-    public void StateUnpaused()
+    public void UnfreezeGame()
     {
-        SetPausedState(!mPaused);
         Time.timeScale = mTimeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void StatePaused()
+    {
+        //inverses pause state
+        //SetPausedState(true);
+        mPaused = !mPaused;
+        //sets the active menu to pause
+        SetActiveMenu(mMenuPause);
+        //makes it visible
+        mMenuActive.SetActive(true);
+        FreezeGame();
+    }
+
+    public void StateUnpaused()
+    {
+        //SetPausedState(false);
+        mPaused = !mPaused;
+        UnfreezeGame();
         mMenuActive.SetActive(false);
         SetActiveMenu(null);
     }
@@ -91,5 +105,12 @@ public class GameManager : MonoBehaviour
         //turns off the settings window
         mMenuActive.SetActive(false);
         StatePaused();
+    }
+
+    public void GameOver()
+    {
+        FreezeGame();
+        SetActiveMenu(mMenuLose);
+        mMenuActive.SetActive(true);
     }
 }

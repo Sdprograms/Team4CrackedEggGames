@@ -22,4 +22,20 @@ public class ButtonManager : MonoBehaviour
         GameManager.mInstance.StateSettingsOff();
     }
 
+    public void Reset()
+    {
+        //resets the game to the current scene(level) at its default and unpauses the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.mInstance.StateUnpaused();
+    }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+           //only works in a build
+            Application.Quit();
+#endif
+    }
 }

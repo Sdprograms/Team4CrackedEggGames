@@ -110,6 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613a6e557c222e144989d4f35e8686b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
-  HP: 0
+  HP: 1
   MaxHP: 3

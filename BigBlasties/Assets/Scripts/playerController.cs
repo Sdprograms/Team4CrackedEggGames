@@ -97,7 +97,7 @@ public class playerController : MonoBehaviour, damageInterface
         isShooting = true;
 
         //BULLET
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Instantiate(bullet, shootPos.position, Camera.main.transform.rotation);
 
         /*RaycastHit whatsHit; //RAY CAST
 

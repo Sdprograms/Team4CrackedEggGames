@@ -11,4 +11,15 @@ public class ButtonManager : MonoBehaviour
         GameManager.mInstance.StateUnpaused();
     }
 
+    public void ToSettings()
+    {
+        GameManager.mInstance.StateSettingsOn();
+    }
+
+    public void ReturnToPause()
+    {
+        //turns off the settings menu and on the pause menu
+        GameManager.mInstance.StateSettingsOff();
+    }
+
 }

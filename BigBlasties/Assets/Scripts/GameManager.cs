@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject mMenuActive;
     [SerializeField] GameObject mMenuPause;
-
+    [SerializeField] GameObject mMenuSettings;
 
     public GameObject mPlayer;
 
     private bool mPaused;
     private float mTimeScaleOrig;
 
+
+    public GameObject GetActiveMenu() {  return mMenuActive; }
+    public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
     public bool GetPausedState() { return mPaused; }
     public void SetPausedState(bool state) { state = mPaused; }
     // Start is called before the first frame update
@@ -38,10 +41,8 @@ public class GameManager : MonoBehaviour
             if (mMenuActive == null)
             {
                 StatePaused();
-                mMenuActive = mMenuPause;
-                mMenuActive.SetActive(true);
             }
-            else if (mMenuActive = mMenuPause)
+            else if (mMenuActive == mMenuPause || mMenuActive == mMenuSettings)
             {
                 StateUnpaused();
             }
@@ -49,16 +50,15 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void Paused()
-    {
-
-    }
-
     public void StatePaused()
     {
-        //pauses the game by setting the menu active to pause
+        //inverses pause state
         SetPausedState(!mPaused);
-        mMenuActive = mMenuPause;
+        //sets the active menu to pause
+        SetActiveMenu(mMenuPause);
+        //makes it visible
+        mMenuActive.SetActive(true);
+        //halts activity, and allows for caged mouse cursor
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
@@ -71,6 +71,25 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         mMenuActive.SetActive(false);
-        mMenuActive = null;
+        SetActiveMenu(null);
+    }
+
+    public void StateSettingsOn()
+    {
+        //brings up the settings menu by turning off the pause menu, shifting active menu to settings, and setting that to active
+        mMenuActive.SetActive(false);
+        SetActiveMenu(mMenuSettings);
+        mMenuActive.SetActive(true);
+        if (Input.GetButtonDown("Cancel"))
+        {
+            StateSettingsOff();
+            StateUnpaused();
+        }
+    }
+    public void StateSettingsOff()
+    {
+        //turns off the settings window
+        mMenuActive.SetActive(false);
+        StatePaused();
     }
 }

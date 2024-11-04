@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour, CanDamage
+public class EnemyAI : MonoBehaviour, damageInterface
 {
     [SerializeField] Renderer model;
 

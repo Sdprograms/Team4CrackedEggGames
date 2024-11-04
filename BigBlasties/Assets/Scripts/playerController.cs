@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, damageInterface
 {
+    [SerializeField] LayerMask maskToIgnore;
     [SerializeField] CharacterController characterController;
 
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
+    [SerializeField] int shootDamage;
+    [SerializeField] float shootRate;
+    [SerializeField] float shootDistance;
 
     [SerializeField] int speed;
     [SerializeField] int sprintMult;
@@ -20,6 +24,7 @@ public class playerController : MonoBehaviour
     Vector3 playerVel;
 
     bool isSprinting;
+    bool isShooting;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +41,7 @@ public class playerController : MonoBehaviour
 
     void movement()
     {
-        if ((characterController.isGrounded))
+        if ((characterController.isGrounded)) //If character is on ground
         {
             jumpCount = 0;
             playerVel = Vector3.zero;
@@ -52,6 +57,11 @@ public class playerController : MonoBehaviour
         characterController.Move(playerVel * Time.deltaTime);
 
         playerVel.y -= gravity * Time.deltaTime;
+
+        if(Input.GetButton("Fire1") && !isShooting) //if leftclick
+        {
+            StartCoroutine(shoot()); //shoot
+        }
 
     }
 
@@ -75,6 +85,36 @@ public class playerController : MonoBehaviour
         {
             speed /= sprintMult;
             isSprinting = false;
+        }
+    }
+
+    IEnumerator shoot()
+    {
+        isShooting = true;
+
+        RaycastHit whatsHit;
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out whatsHit, shootDistance, ~maskToIgnore)) //
+        {
+            damageInterface dmg = whatsHit.collider.GetComponent<damageInterface>();
+            Debug.Log(whatsHit.collider.name);
+            if(dmg != null)
+            {
+                dmg.takeDamage(shootDamage);
+            }
+        }
+;
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        if (HP <= 0) //Lose condition
+        {
+            
         }
     }
 }

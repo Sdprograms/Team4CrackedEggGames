@@ -193,9 +193,9 @@ GameObject:
   - component: {fileID: 44037411}
   - component: {fileID: 44037410}
   - component: {fileID: 44037414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,9 +310,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765556c9714a48d4387abb94a30fd7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maskToIgnore:
+    serializedVersion: 2
+    m_Bits: 8
   characterController: {fileID: 44037414}
   HP: 100
   MaxHP: 100
+  shootDamage: 2
+  shootRate: 0.1
+  shootDistance: 1500
   speed: 10
   sprintMult: 2
   jumpMax: 2
@@ -527,7 +533,7 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

@@ -194,6 +194,8 @@ MonoBehaviour:
   shootRate: 0.1
   shootDistance: 1500
   speed: 10
+  dodgeSpeed: 10
+  dodgeTime: 0.05
   sprintMult: 2
   jumpMax: 2
   jumpCount: 0

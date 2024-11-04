@@ -18,6 +18,8 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] float shootDistance;
 
     [SerializeField] int speed;
+    [SerializeField] int dodgeSpeed;
+    [SerializeField] float dodgeTime;
     [SerializeField] int sprintMult;
     [SerializeField] int jumpMax;
     [SerializeField] int jumpCount;
@@ -30,9 +32,12 @@ public class playerController : MonoBehaviour, damageInterface
     bool isSprinting;
     bool isShooting;
 
+    int speedOriginal;
+
     // Start is called before the first frame update
     void Start()
     {
+        speedOriginal = speed;
         HP = MaxHP;
     }
 
@@ -71,7 +76,11 @@ public class playerController : MonoBehaviour, damageInterface
 
     void jump()
     {
-        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        if (Input.GetButton("Jump") && Input.GetButton("Horizontal"))
+        { //Dodge / Boost function.
+            StartCoroutine(dodge());
+        }
+        else if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
@@ -91,6 +100,7 @@ public class playerController : MonoBehaviour, damageInterface
             isSprinting = false;
         }
     }
+
 
     IEnumerator shoot()
     {
@@ -120,7 +130,16 @@ public class playerController : MonoBehaviour, damageInterface
 
         if (HP <= 0) //Lose condition
         {
-            
+
         }
+    }
+
+    IEnumerator dodge()
+    {
+        speed += dodgeSpeed;
+
+        yield return new WaitForSeconds(dodgeTime);
+
+        speed = speedOriginal;
     }
 }

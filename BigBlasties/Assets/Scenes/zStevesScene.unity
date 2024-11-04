@@ -662,6 +662,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2792627607600609619, guid: 6cd3b15111ee2b842bcfd656bbb3cd43, type: 3}
+      propertyPath: HP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792627607600609619, guid: 6cd3b15111ee2b842bcfd656bbb3cd43, type: 3}
+      propertyPath: MaxHP
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2792627607600609620, guid: 6cd3b15111ee2b842bcfd656bbb3cd43, type: 3}
       propertyPath: m_Name
       value: EnemyPlaceholder

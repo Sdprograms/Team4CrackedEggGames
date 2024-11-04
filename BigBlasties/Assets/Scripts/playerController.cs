@@ -9,6 +9,10 @@ public class playerController : MonoBehaviour, damageInterface
 
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
+
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shootPos;
+
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] float shootDistance;
@@ -92,7 +96,10 @@ public class playerController : MonoBehaviour, damageInterface
     {
         isShooting = true;
 
-        RaycastHit whatsHit;
+        //BULLET
+        Instantiate(bullet, shootPos.position, transform.rotation);
+
+        /*RaycastHit whatsHit; //RAY CAST
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out whatsHit, shootDistance, ~maskToIgnore)) //
         {
@@ -102,8 +109,7 @@ public class playerController : MonoBehaviour, damageInterface
             {
                 dmg.takeDamage(shootDamage);
             }
-        }
-;
+        }*/
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }

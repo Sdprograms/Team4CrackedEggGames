@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour, damageInterface
 {
     [SerializeField] float HP;
     [SerializeField] float MaxHP;
+    [SerializeField] int aggroRange;
 
     [SerializeField] Transform sightPos;
     [SerializeField] Transform attackPos;
@@ -19,6 +20,9 @@ public class EnemyAI : MonoBehaviour, damageInterface
     bool isAttacking;
     bool playerInRange;
     bool isFleeing;
+    bool isHealing;
+
+    float distance;
 
     Vector3 playerPos;
 
@@ -35,6 +39,7 @@ public class EnemyAI : MonoBehaviour, damageInterface
     {
         if (playerInRange)
         {
+
             //adding fleeing functionality to enemies when on low hp.
             if (HP <= MaxHP / 4)
             {
@@ -45,6 +50,11 @@ public class EnemyAI : MonoBehaviour, damageInterface
                 if (isFleeing)
                 {
                     StopCoroutine(attack());
+                }
+                distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
+                if (distance >= aggroRange)
+                {
+                    playerInRange = false;
                 }
             }
             else
@@ -62,6 +72,11 @@ public class EnemyAI : MonoBehaviour, damageInterface
                     StartCoroutine(attack());
                 }
             }
+        }
+        else if (isFleeing  && !playerInRange && !isHealing)
+        {
+            StartCoroutine(heal());
+            isHealing = true;
         }
         
     }
@@ -114,5 +129,14 @@ public class EnemyAI : MonoBehaviour, damageInterface
         Quaternion rot = Quaternion.LookRotation(-playerPos);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
         isFleeing = true;
+    }
+
+    IEnumerator heal()
+    {
+        while (HP < 10)
+        {
+            HP += 1;
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

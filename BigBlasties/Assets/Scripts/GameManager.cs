@@ -2,10 +2,13 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //
     public static GameManager mInstance;
 
     [SerializeField] GameObject mMenuActive;
@@ -14,16 +17,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mMenuSettings;
     [SerializeField] GameObject mMenuLose;
 
+    public Text sensitivityText;
+
     public GameObject mPlayer;
 
     public bool mPaused;
 
-
+    private int mLookSensDisplay;
     private float mTimeScaleOrig;
 
 
     public GameObject GetActiveMenu() {  return mMenuActive; }
     public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
+
+    public GameObject GetMenuPause() 
+    {
+        mMenuActive.SetActive(false);
+        mMenuActive = mMenuPause;
+        mMenuActive.SetActive(true);
+        return mMenuPause; 
+
+    }
     //these getters and setters do not update the checkbox in unity
     //public bool GetPausedState() { return mPaused; }
     //public void SetPausedState(bool state) { state = mPaused; }
@@ -31,13 +45,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+  
+
         //grants a single instance to the game object
         mInstance = this;
         //tracks the player
         mPlayer = GameObject.FindWithTag("Player");
         // Update is called once per frame
         mTimeScaleOrig = Time.timeScale;
-        mMenuActive = mMenuPlay;
+        SetActiveMenu(mMenuPlay);
         mMenuActive.SetActive(true);
     }
 
@@ -52,9 +68,9 @@ public class GameManager : MonoBehaviour
             }
             else if (mMenuActive == mMenuPause || mMenuActive == mMenuSettings)
             {
+              
                 StateUnpaused();
-                mMenuActive = mMenuPlay;
-                mMenuActive.SetActive(true);
+               
             }
         }
     }
@@ -76,7 +92,6 @@ public class GameManager : MonoBehaviour
     public void StatePaused()
     {
         //inverses pause state
-        //SetPausedState(true);
         mPaused = !mPaused;
         //sets the active menu to pause
         SetActiveMenu(mMenuPause);
@@ -87,11 +102,12 @@ public class GameManager : MonoBehaviour
 
     public void StateUnpaused()
     {
-        //SetPausedState(false);
         mPaused = !mPaused;
         mMenuActive.SetActive(false);
         SetActiveMenu(null);
         UnfreezeGame();
+        mMenuActive = mMenuPlay;
+        mMenuActive.SetActive(true);
     }
 
     public void StateSettingsOn()

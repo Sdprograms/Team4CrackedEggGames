@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
+    public static cameraController camInstance; //-XB
 
     [SerializeField] int lookSensitivity;
     [SerializeField] int lockVerticalmin, lockVerticalmax;
@@ -11,9 +12,14 @@ public class cameraController : MonoBehaviour
 
     float rotX;
 
+    //simple getters/setters -XB
+    public int GetSensitivity() { return lookSensitivity; }
+    public void SetSensitivity(int newSens) { lookSensitivity = newSens; }
+
     // Start is called before the first frame update
     void Start()
     {
+        camInstance = this; //-XB
         Cursor.visible = false; //Cursor settings on start
         Cursor.lockState = CursorLockMode.Locked;
     }

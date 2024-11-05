@@ -104,7 +104,7 @@ public class playerController : MonoBehaviour, damageInterface
 
     IEnumerator shoot()
     {
-        //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions. 
+        //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions -XB
         if (GameManager.mInstance.mPaused == false)
         {
             isShooting = true;

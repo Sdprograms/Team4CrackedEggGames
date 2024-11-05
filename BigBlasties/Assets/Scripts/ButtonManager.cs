@@ -16,10 +16,15 @@ public class ButtonManager : MonoBehaviour
         GameManager.mInstance.StateSettingsOn();
     }
 
+    public void NewLookSensitivity(int newSens)
+    {
+       // cameraController.camInstance.SetSensitivity(newSens);
+    }
+
     public void ReturnToPause()
     {
         //turns off the settings menu and on the pause menu
-        GameManager.mInstance.StateSettingsOff();
+        GameManager.mInstance.SetActiveMenu(GameManager.mInstance.GetMenuPause());
     }
 
     public void Reset()

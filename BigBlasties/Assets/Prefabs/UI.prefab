@@ -93,6 +93,7 @@ MonoBehaviour:
   mMenuPause: {fileID: 0}
   mMenuSettings: {fileID: 0}
   mMenuLose: {fileID: 0}
+  sensitivityText: {fileID: 0}
   mPlayer: {fileID: 0}
   mPaused: 0
 --- !u!1 &3828362561497695353

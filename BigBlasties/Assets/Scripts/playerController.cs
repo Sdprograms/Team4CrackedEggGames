@@ -10,7 +10,11 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
 
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject ammoTypeLaser;
+    [SerializeField] float laserShootRate;
+    [SerializeField] GameObject ammoTypeExplosive;
+    [SerializeField] float explosiveShootRate;
+
     [SerializeField] Transform shootPos;
 
     [SerializeField] int shootDamage;
@@ -34,9 +38,12 @@ public class playerController : MonoBehaviour, damageInterface
 
     int speedOriginal;
 
+    [SerializeField] string weaponType;
+
     // Start is called before the first frame update
     void Start()
     {
+        weaponType = "Laser";
         speedOriginal = speed;
         HP = MaxHP;
     }
@@ -46,6 +53,7 @@ public class playerController : MonoBehaviour, damageInterface
     {
         movement();
         sprint();
+        weaponSwap();
     }
 
     void movement()
@@ -104,13 +112,11 @@ public class playerController : MonoBehaviour, damageInterface
 
     IEnumerator shoot()
     {
+
         //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions -XB
         if (GameManager.mInstance.mPaused == false)
         {
             isShooting = true;
-
-            //BULLET
-            Instantiate(bullet, shootPos.position, Camera.main.transform.rotation);
 
             /*RaycastHit whatsHit; //RAY CAST
 
@@ -123,11 +129,43 @@ public class playerController : MonoBehaviour, damageInterface
                     dmg.takeDamage(shootDamage);
                 }
             }*/
+
+            if (weaponType == "Laser")
+            {
+                //Laser
+
+                Instantiate(ammoTypeLaser, shootPos.position, Camera.main.transform.rotation);
+                shootRate = laserShootRate;
+            }
+            else if (weaponType == "Explosive")
+            {
+                //Explosive
+
+                Instantiate(ammoTypeExplosive, shootPos.position, Camera.main.transform.rotation);
+                shootRate = explosiveShootRate;
+            }
+
+
             yield return new WaitForSeconds(shootRate);
+            
             isShooting = false;
         }
     }
 
+    public void weaponSwap()
+    {
+        if (Input.GetButtonDown("Weapon Switch"))
+        {
+            if (weaponType == "Laser")
+            {
+                weaponType = "Explosive";
+            }
+            else if (weaponType == "Explosive")
+            {
+                weaponType = "Laser";
+            }
+        }
+    }
     public void takeDamage(int amount)
     {
         HP -= amount;

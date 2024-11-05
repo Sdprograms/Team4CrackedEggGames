@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMenuActive: {fileID: 0}
+  mMenuPlay: {fileID: 0}
   mMenuPause: {fileID: 0}
   mMenuSettings: {fileID: 0}
   mMenuLose: {fileID: 0}

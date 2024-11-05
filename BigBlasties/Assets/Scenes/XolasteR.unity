@@ -1710,6 +1710,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 716443761121059280, guid: d741e0842979e67459a888b76dd16dff, type: 3}
   m_PrefabInstance: {fileID: 294175476}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &946511389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6744986313959475778, guid: 3fb59ee072e45dd4d82e117256af3a38, type: 3}
+  m_PrefabInstance: {fileID: 2281529727301190221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &955418728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 716443761121059280, guid: d741e0842979e67459a888b76dd16dff, type: 3}
@@ -3235,6 +3240,10 @@ PrefabInstance:
       propertyPath: mMenuLose
       value: 
       objectReference: {fileID: 939652474}
+    - target: {fileID: 1032518540198028993, guid: e08d15352a652b3458c5b960827b798c, type: 3}
+      propertyPath: mMenuPlay
+      value: 
+      objectReference: {fileID: 946511389}
     - target: {fileID: 1032518540198028993, guid: e08d15352a652b3458c5b960827b798c, type: 3}
       propertyPath: mMenuPause
       value: 

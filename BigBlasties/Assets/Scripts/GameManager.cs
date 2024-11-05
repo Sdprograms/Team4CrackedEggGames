@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager mInstance;
 
     [SerializeField] GameObject mMenuActive;
+    [SerializeField] GameObject mMenuPlay;
     [SerializeField] GameObject mMenuPause;
     [SerializeField] GameObject mMenuSettings;
     [SerializeField] GameObject mMenuLose;
@@ -36,19 +37,24 @@ public class GameManager : MonoBehaviour
         mPlayer = GameObject.FindWithTag("Player");
         // Update is called once per frame
         mTimeScaleOrig = Time.timeScale;
+        mMenuActive = mMenuPlay;
+        mMenuActive.SetActive(true);
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Cancel")) 
         {
-            if (mMenuActive == null)
+            if (mMenuActive == mMenuPlay)
             {
+                mMenuActive.SetActive(false);
                 StatePaused();
             }
             else if (mMenuActive == mMenuPause || mMenuActive == mMenuSettings)
             {
                 StateUnpaused();
+                mMenuActive = mMenuPlay;
+                mMenuActive.SetActive(true);
             }
         }
     }
@@ -83,9 +89,9 @@ public class GameManager : MonoBehaviour
     {
         //SetPausedState(false);
         mPaused = !mPaused;
-        UnfreezeGame();
         mMenuActive.SetActive(false);
         SetActiveMenu(null);
+        UnfreezeGame();
     }
 
     public void StateSettingsOn()
@@ -107,8 +113,10 @@ public class GameManager : MonoBehaviour
         StatePaused();
     }
 
+    //turns off the play hud, stops play and open the lose menu upon death
     public void GameOver()
     {
+        mMenuActive.SetActive(false);
         FreezeGame();
         SetActiveMenu(mMenuLose);
         mMenuActive.SetActive(true);

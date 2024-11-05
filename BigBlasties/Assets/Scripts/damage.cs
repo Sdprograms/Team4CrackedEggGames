@@ -5,9 +5,10 @@ using UnityEngine;
 public class damage : MonoBehaviour
 {
 
-    enum damageType { bullet, stationary, explosive};
+    enum damageType { bullet, stationary, grenade, explosive};
     [SerializeField] damageType dmgType;
     [SerializeField] Rigidbody rbody;
+    [SerializeField] GameObject explosion;
 
     [SerializeField] int damageAmount;
     [SerializeField] int speed;
@@ -25,12 +26,16 @@ public class damage : MonoBehaviour
         {
             //In case we think of anything for stationary.
         }
-        else if(dmgType == damageType.explosive) //if explosive
+        else if (dmgType == damageType.grenade) //if explosive
         {
             rbody.velocity = transform.forward * speed;
-            //instantiate explosion
             Destroy(gameObject, destroyTime);
         }
+        else if (dmgType == damageType.explosive)
+        {
+            Destroy(gameObject, destroyTime);
+        }
+            
     }
 
     // Update is called once per frame
@@ -54,6 +59,13 @@ public class damage : MonoBehaviour
         }
         if (dmgType == damageType.bullet)
         {
+            Destroy(gameObject);
+        }
+        else if (dmgType == damageType.grenade)
+        {
+            //spawn explosion.
+            Instantiate(explosion, transform.position, transform.rotation);
+            //destroy object.
             Destroy(gameObject);
         }
     }

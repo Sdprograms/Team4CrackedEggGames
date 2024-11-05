@@ -137,7 +137,7 @@ public class playerController : MonoBehaviour, damageInterface
                 Instantiate(ammoTypeLaser, shootPos.position, Camera.main.transform.rotation);
                 shootRate = laserShootRate;
             }
-            else if (weaponType == "Explosive")
+            else if (weaponType == "Grenade")
             {
                 //Explosive
 
@@ -158,9 +158,9 @@ public class playerController : MonoBehaviour, damageInterface
         {
             if (weaponType == "Laser")
             {
-                weaponType = "Explosive";
+                weaponType = "Grenade";
             }
-            else if (weaponType == "Explosive")
+            else if (weaponType == "Grenade")
             {
                 weaponType = "Laser";
             }

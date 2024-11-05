@@ -1,11 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, damageInterface
 {
-    [SerializeField] int HP;
-    [SerializeField] int MaxHP;
+    [SerializeField] float HP;
+    [SerializeField] float MaxHP;
+
+    [SerializeField] Transform sightPos;
+    [SerializeField] Transform attackPos;
+
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] GameObject bullet;
+    [SerializeField] float attackRate;
+    [SerializeField] int turnSpeed;
+
+    bool isAttacking;
+    bool playerInRange;
+    bool isFleeing;
+
+    Vector3 playerPos;
 
     Color orginalColor;
    
@@ -18,7 +33,45 @@ public class EnemyAI : MonoBehaviour, damageInterface
 
     void Update()
     {
+        if (playerInRange)
+        {
+            //adding fleeing functionality to enemies when on low hp.
+            if (HP <= MaxHP / 4)
+            {
+                playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+                agent.SetDestination(-GameManager.mInstance.mPlayer.transform.position);
+                fleetarget();
+
+                if (isFleeing)
+                {
+                    StopCoroutine(attack());
+                }
+            }
+            else
+            {
+                isFleeing = false;
+                playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+                agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    facetarget();
+                }
+                if (!isAttacking)
+                {
+                    StartCoroutine(attack());
+                }
+            }
+        }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
     }
 
     //enemy take damage function
@@ -39,5 +92,27 @@ public class EnemyAI : MonoBehaviour, damageInterface
         yield return new WaitForSeconds(0.1f);
         //Gamemanager.instance.playerhitmarker.SetActive(false);
         
+    }
+
+    IEnumerator attack()
+    {
+        isAttacking = true;
+        Instantiate(bullet, attackPos.position, transform.rotation);
+
+        yield return new WaitForSeconds(attackRate);
+        isAttacking=false;
+    }
+
+    void facetarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerPos);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+    }
+
+    void fleetarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(-playerPos);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+        isFleeing = true;
     }
 }

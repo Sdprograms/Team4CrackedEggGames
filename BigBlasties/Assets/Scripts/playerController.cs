@@ -104,24 +104,28 @@ public class playerController : MonoBehaviour, damageInterface
 
     IEnumerator shoot()
     {
-        isShooting = true;
-
-        //BULLET
-        Instantiate(bullet, shootPos.position, Camera.main.transform.rotation);
-
-        /*RaycastHit whatsHit; //RAY CAST
-
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out whatsHit, shootDistance, ~maskToIgnore)) //
+        //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions. 
+        if (GameManager.mInstance.mPaused == false)
         {
-            damageInterface dmg = whatsHit.collider.GetComponent<damageInterface>();
-            Debug.Log(whatsHit.collider.name);
-            if(dmg != null)
+            isShooting = true;
+
+            //BULLET
+            Instantiate(bullet, shootPos.position, Camera.main.transform.rotation);
+
+            /*RaycastHit whatsHit; //RAY CAST
+
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out whatsHit, shootDistance, ~maskToIgnore)) //
             {
-                dmg.takeDamage(shootDamage);
-            }
-        }*/
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
+                damageInterface dmg = whatsHit.collider.GetComponent<damageInterface>();
+                Debug.Log(whatsHit.collider.name);
+                if(dmg != null)
+                {
+                    dmg.takeDamage(shootDamage);
+                }
+            }*/
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+        }
     }
 
     public void takeDamage(int amount)

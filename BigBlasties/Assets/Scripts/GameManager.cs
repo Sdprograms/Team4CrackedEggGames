@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mMenuPause;
     [SerializeField] GameObject mMenuSettings;
     [SerializeField] GameObject mMenuLose;
+    [SerializeField] GameObject mMenuWin;
 
     public Text sensitivityText;
 
@@ -135,6 +136,14 @@ public class GameManager : MonoBehaviour
         mMenuActive.SetActive(false);
         FreezeGame();
         SetActiveMenu(mMenuLose);
+        mMenuActive.SetActive(true);
+    }
+
+    public void Win()
+    {
+        mMenuActive.SetActive(false);
+        FreezeGame();
+        SetActiveMenu(mMenuWin);
         mMenuActive.SetActive(true);
     }
 }

@@ -26,12 +26,12 @@ public class damage : MonoBehaviour
         {
             //In case we think of anything for stationary.
         }
-        else if (dmgType == damageType.grenade) //if explosive
+        else if (dmgType == damageType.grenade) //if grenade
         {
             rbody.velocity = transform.forward * speed;
             Destroy(gameObject, destroyTime);
         }
-        else if (dmgType == damageType.explosive)
+        else if (dmgType == damageType.explosive) // if explosion
         {
             Destroy(gameObject, destroyTime);
         }

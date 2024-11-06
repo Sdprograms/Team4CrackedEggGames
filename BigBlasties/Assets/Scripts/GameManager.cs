@@ -68,10 +68,8 @@ public class GameManager : MonoBehaviour
                 StatePaused();
             }
             else if (mMenuActive == mMenuPause || mMenuActive == mMenuSettings)
-            {
-              
+            {              
                 StateUnpaused();
-               
             }
         }
     }

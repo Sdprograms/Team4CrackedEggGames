@@ -172,7 +172,7 @@ public class playerController : MonoBehaviour, damageInterface
 
         if (HP <= 0) //Lose condition
         {
-
+            GameManager.mInstance.GameOver();
         }
     }
 

@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 30
-  aggroRange: 0
+  aggroRange: 15
   sightPos: {fileID: 4359755681729331951}
   attackPos: {fileID: 4359755681729331951}
   agent: {fileID: 4359755681600358529}

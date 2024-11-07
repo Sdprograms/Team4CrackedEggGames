@@ -53,6 +53,7 @@ public class RobotAI : MonoBehaviour, damageInterface
 
     void Update()
     {
+        //Debug.DrawRay(sightPos.position, playerPos);
         //changed agent.speed to velocity, because speed is a serialized int. 
         if (agent.velocity.magnitude > 0.1f) 
         {

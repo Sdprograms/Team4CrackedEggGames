@@ -133,7 +133,7 @@ public class EnemyAI : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
-        aggroRange = 100;
+        aggroRange = 1000;
         playerInRange = true;
         animator.SetBool("IsAlarmedAnim", true);
         animator.SetBool("IsHealAnim", false);
@@ -164,12 +164,13 @@ public class EnemyAI : MonoBehaviour, damageInterface
         //enemy stops to shoot, plays shooting animation
         agent.speed = 0;
         animator.SetBool("IsShootAnim", true);
+        animator.Play("Shoot_SingleShot_AR");
 
         //pausing for the attackTime
         StartCoroutine(facetargetTimed(attackTime));
         yield return new WaitForSeconds(attackTime);
 
-        if (agent.remainingDistance > 20)
+        if (agent.remainingDistance > 30)
         {
             Instantiate(longbullet, attackPos.position, transform.rotation);
             animator.SetBool("IsShootAnim", false);

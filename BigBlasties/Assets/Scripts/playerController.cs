@@ -169,6 +169,8 @@ public class playerController : MonoBehaviour, damageInterface
     public void takeDamage(int amount)
     {
         HP -= amount;
+        StartCoroutine(FlashDamage()); // -XB
+        UpdateUI(); // -XB
 
         if (HP <= 0) //Lose condition
         {
@@ -183,5 +185,17 @@ public class playerController : MonoBehaviour, damageInterface
         yield return new WaitForSeconds(dodgeTime);
 
         speed = speedOriginal;
+    }
+
+    public void UpdateUI() // -XB
+    {
+        GameManager.mInstance.mPlayerHealth.fillAmount = (float)HP / MaxHP;
+    }
+
+    IEnumerator FlashDamage() // -XB
+    {
+        GameManager.mInstance.mPlayerDamageTaken.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        GameManager.mInstance.mPlayerDamageTaken.SetActive(false);
     }
 }

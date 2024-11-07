@@ -20,9 +20,13 @@ public class GameManager : MonoBehaviour
 
     public Text sensitivityText;
 
+    public Image mPlayerHealth;
+
     public GameObject mPlayer;
 
     public bool mPaused;
+
+    public GameObject mPlayerDamageTaken;
 
     private int mLookSensDisplay;
     private float mTimeScaleOrig;

@@ -68,14 +68,22 @@ public class EnemyAI : MonoBehaviour, damageInterface
             if (HP <= MaxHP / 4)
             {
                 playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
-                agent.SetDestination(-GameManager.mInstance.mPlayer.transform.position);
+
+                Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
+                Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * aggroRange; // Move away by aggroRange distance
+
+                agent.SetDestination(fleeTarget);  // Set the agent's destination away from the player
+
                 fleetarget();
+
+                aggroRange = 30;
 
                 if (isFleeing)
                 {
                     StopCoroutine(attack());
                 }
                 distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
+                aggroRange = 30;
                 if (distance >= aggroRange)
                 {
                     playerInRange = false;
@@ -83,6 +91,8 @@ public class EnemyAI : MonoBehaviour, damageInterface
             }
             else
             {
+                isHealing = false;
+                animator.SetBool("IsHealAnim", false);
                 isFleeing = false;
                 playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
                 agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
@@ -99,6 +109,9 @@ public class EnemyAI : MonoBehaviour, damageInterface
         }
         else if (isFleeing  && !playerInRange && !isHealing)
         {
+            animator.SetBool("IsAlarmedAnim", false);
+            animator.SetBool("IsRunAnim", false);
+            animator.SetBool("IsHealAnim", true);
             StartCoroutine(heal());
             isHealing = true;
         }
@@ -119,6 +132,10 @@ public class EnemyAI : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
+        aggroRange = 100;
+        playerInRange = true;
+        animator.SetBool("IsAlarmedAnim", true);
+        animator.SetBool("IsHealAnim", false);
         if (HP <= 0)
         {
             animator.Play("Die");
@@ -194,10 +211,15 @@ public class EnemyAI : MonoBehaviour, damageInterface
 
     IEnumerator heal()
     {
-        while (HP < 10)
+        while (HP < MaxHP)
         {
+            if (animator.GetBool("IsAlarmedAnim")) 
+            {
+                break; 
+            }         
             HP += 1;
             yield return new WaitForSeconds(2f);
         }
+        animator.SetBool("IsHealAnim", false);
     }
 }

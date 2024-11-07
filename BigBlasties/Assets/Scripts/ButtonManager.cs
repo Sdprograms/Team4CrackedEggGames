@@ -30,8 +30,10 @@ public class ButtonManager : MonoBehaviour
     public void Reset()
     {
         //resets the game to the current scene(level) at its default and unpauses the game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+      //  GameManager.mInstance.UnfreezeGame();
+      
         GameManager.mInstance.StateUnpaused();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()

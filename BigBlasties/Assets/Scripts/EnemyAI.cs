@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour, damageInterface
 
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject longbullet;
     [SerializeField] float attackRate;
 
     //the time the enemy will stand still while attacking.
@@ -168,9 +169,19 @@ public class EnemyAI : MonoBehaviour, damageInterface
         StartCoroutine(facetargetTimed(attackTime));
         yield return new WaitForSeconds(attackTime);
 
-        Instantiate(bullet, attackPos.position, transform.rotation);
-        animator.SetBool("IsShootAnim", false);
-        animator.SetBool("IsLoadedAnim", false);
+        if (agent.remainingDistance > 20)
+        {
+            Instantiate(longbullet, attackPos.position, transform.rotation);
+            animator.SetBool("IsShootAnim", false);
+            animator.SetBool("IsLoadedAnim", false);
+        }
+        else
+        {
+            Instantiate(bullet, attackPos.position, transform.rotation);
+            animator.SetBool("IsShootAnim", false);
+            animator.SetBool("IsLoadedAnim", false);
+        }
+        
 
         //after pausing for the reload time, the enemy moves again
         yield return new WaitForSeconds(ReloadTime);

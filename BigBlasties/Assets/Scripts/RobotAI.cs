@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, damageInterface
+public class RobotAI : MonoBehaviour, damageInterface
 {
     [SerializeField] float HP;
     [SerializeField] float MaxHP;
@@ -151,7 +151,6 @@ public class EnemyAI : MonoBehaviour, damageInterface
         GameManager.mInstance.mEnemyDamageHitmarker.SetActive(true);
         yield return new WaitForSeconds(0.05f);
         GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
-
     }
 
     IEnumerator attack()

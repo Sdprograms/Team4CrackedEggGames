@@ -1221,9 +1221,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
-  m_Direction: 1
+  m_Direction: 2
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!135 &4359755681600358540
 SphereCollider:
@@ -1279,7 +1279,9 @@ MonoBehaviour:
   attackPos: {fileID: 4359755681729331951}
   agent: {fileID: 4359755681600358529}
   bullet: {fileID: 9204756768406838597, guid: c318cba222762504a983b027b44be453, type: 3}
-  attackRate: 1
+  attackRate: 3
+  attackTime: 1
+  ReloadTime: 1.5
   turnSpeed: 5
 --- !u!1 &6268242458106207291
 GameObject:

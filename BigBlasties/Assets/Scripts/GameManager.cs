@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject mPlayerDamageTaken;
 
+    public GameObject mEnemyDamageHitmarker;
+
     private int mLookSensDisplay;
     private float mTimeScaleOrig;
 

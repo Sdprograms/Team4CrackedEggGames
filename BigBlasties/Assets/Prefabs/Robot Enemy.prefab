@@ -1273,12 +1273,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 10
+  MaxHP: 30
   aggroRange: 0
   sightPos: {fileID: 4359755681729331951}
   attackPos: {fileID: 4359755681729331951}
   agent: {fileID: 4359755681600358529}
-  bullet: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
+  bullet: {fileID: 9204756768406838597, guid: c318cba222762504a983b027b44be453, type: 3}
   attackRate: 1
   turnSpeed: 5
 --- !u!1 &6268242458106207291

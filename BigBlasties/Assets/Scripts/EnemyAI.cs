@@ -52,8 +52,8 @@ public class EnemyAI : MonoBehaviour, damageInterface
 
     void Update()
     {
-        //if the agent is moving, run anim is true
-        if (agent.speed > 0)
+        //changed agent.speed to velocity, because speed is a serialized int. 
+        if (agent.velocity.magnitude > 0.1f) 
         {
             animator.SetBool("IsRunAnim", true);
         }
@@ -107,13 +107,13 @@ public class EnemyAI : MonoBehaviour, damageInterface
                 }
             }
         }
-        else if (isFleeing  && !playerInRange && !isHealing)
+        else if (isFleeing  && !playerInRange && !isHealing && !animator.GetBool("IsRunAnim"))
         {
             animator.SetBool("IsAlarmedAnim", false);
-            animator.SetBool("IsRunAnim", false);
             animator.SetBool("IsHealAnim", true);
             StartCoroutine(heal());
             isHealing = true;
+            isFleeing = false;
         }
         
     }

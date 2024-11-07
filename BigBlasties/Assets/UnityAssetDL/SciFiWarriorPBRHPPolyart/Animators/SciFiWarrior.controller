@@ -356,6 +356,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsAlarmedAnim
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsHealAnim
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102949299928912516}
   m_Solo: 0
@@ -437,8 +440,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsAlarmedAnim
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IsHealAnim
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsRunAnim
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102942199553133880}
@@ -549,6 +552,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsAlarmedAnim
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsRunAnim
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7681347794215766751}

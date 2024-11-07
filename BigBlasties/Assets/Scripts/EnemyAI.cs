@@ -148,7 +148,9 @@ public class EnemyAI : MonoBehaviour, damageInterface
         animator.SetBool("IsShootAnim", true);
 
         //pausing for the attackTime
+        StartCoroutine(facetargetTimed(attackTime));
         yield return new WaitForSeconds(attackTime);
+
         Instantiate(bullet, attackPos.position, transform.rotation);
         animator.SetBool("IsShootAnim", false);
         animator.SetBool("IsLoadedAnim", false);
@@ -167,6 +169,20 @@ public class EnemyAI : MonoBehaviour, damageInterface
     {
         Quaternion rot = Quaternion.LookRotation(playerPos);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+    }
+
+    IEnumerator facetargetTimed(float duration)
+    {
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            Quaternion rot = Quaternion.LookRotation(playerPos);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
     }
 
     void fleetarget()

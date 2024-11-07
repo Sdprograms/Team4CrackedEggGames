@@ -1282,7 +1282,7 @@ MonoBehaviour:
   attackRate: 3
   attackTime: 1
   ReloadTime: 1.5
-  turnSpeed: 5
+  turnSpeed: 10
 --- !u!1 &6268242458106207291
 GameObject:
   m_ObjectHideFlags: 0

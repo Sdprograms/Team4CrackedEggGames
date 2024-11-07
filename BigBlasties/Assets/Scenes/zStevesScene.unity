@@ -14977,7 +14977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376252303983936, guid: 8e35ec7e332c3d243ac23e3686bafe01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.81
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 4376252303983936, guid: 8e35ec7e332c3d243ac23e3686bafe01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15009,6 +15009,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376252303983936, guid: 8e35ec7e332c3d243ac23e3686bafe01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64954973120253374, guid: 8e35ec7e332c3d243ac23e3686bafe01, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64954973120253374, guid: 8e35ec7e332c3d243ac23e3686bafe01, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -43167,34 +43175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 9204756768406838597, guid: c318cba222762504a983b027b44be453, type: 3}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: ammoType
-      value: 
-      objectReference: {fileID: 9204756768406838597, guid: c318cba222762504a983b027b44be453, type: 3}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: weaponType
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: ammoTypeLaser
-      value: 
-      objectReference: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: laserShootRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: ammoTypeExplosive
-      value: 
-      objectReference: {fileID: 9204756768406838597, guid: c318cba222762504a983b027b44be453, type: 3}
-    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
-      propertyPath: explosiveShootRate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8585038807787264936, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -43282,7 +43262,7 @@ MonoBehaviour:
   attackPos: {fileID: 4528282903964999338}
   agent: {fileID: 4528282903825536196}
   bullet: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
-  attackRate: 1
+  attackRate: 0.1
   turnSpeed: 5
 --- !u!136 &4528282903825536200
 CapsuleCollider:
@@ -43294,8 +43274,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 9.47
+  m_Height: 2.64
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!135 &4528282903825536201
@@ -43306,7 +43286,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100691603264372860}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 15
@@ -43370,7 +43350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100691603264372860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.45722, y: 0, z: 203.23}
+  m_LocalPosition: {x: -10.45722, y: 3.6, z: 203.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

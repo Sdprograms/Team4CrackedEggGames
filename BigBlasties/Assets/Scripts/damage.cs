@@ -34,6 +34,7 @@ public class damage : MonoBehaviour
         else if (dmgType == damageType.explosive) // if explosion
         {
             Destroy(gameObject, destroyTime);
+            SoundEffects.noiseMaker.ExplosionSound();// -XB
         }
             
     }

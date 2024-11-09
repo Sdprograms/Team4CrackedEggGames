@@ -5,8 +5,8 @@ using UnityEngine;
 public class SoundEffects : MonoBehaviour
 {
     public static SoundEffects noiseMaker;
-    public AudioSource weaponSource, stepSource;
-    public AudioClip laser, explosion, footsteps;
+    public AudioSource weaponSource, stepSource, swapWeaponSouce;
+    public AudioClip laser, grenadeShot, explosion, footsteps, laserSwap, grenadeLauncherSwap;
 
     private void Awake()
     {
@@ -19,6 +19,12 @@ public class SoundEffects : MonoBehaviour
         weaponSource.Play();
     }
 
+    public void GrenadeShotSound()
+    {
+        weaponSource.clip = grenadeShot;
+        weaponSource.Play();
+    }
+
     public void ExplosionSound()
     {
         weaponSource.clip = explosion;
@@ -26,22 +32,38 @@ public class SoundEffects : MonoBehaviour
     }
     public void FootstepSound()
     {
+        if (Input.GetButton("Fire1") && playerController.mPlayerInstance.isShooting == false) //if leftclick
+        {
+            StartCoroutine(playerController.mPlayerInstance.shoot());
+            //StartCoroutine(shoot()); //shoot
+        }
         //allows footsteps to play while a weapon is in use
         stepSource.clip = footsteps;
         if (!stepSource.isPlaying)
         {
             stepSource.Play();
         }
+    }
 
-        //should go into player controller to detect walking and make sound
-        //if (moveDirection != Vector3.zero && jumpCount == 0) // -XB
-        //{
-        //    GameManager.mInstance.mWalkingSound.SetActive(true);
-        //}
-        //else
-        //{
-        //    GameManager.mInstance.mWalkingSound.SetActive(false);
-        //}
+    public void FootStepSilence()
+    {
+        if (Input.GetButton("Fire1") && playerController.mPlayerInstance.isShooting == false) //if leftclick
+        {
+            StartCoroutine(playerController.mPlayerInstance.shoot());
+            //StartCoroutine(shoot()); //shoot
+        }
+        stepSource.Stop();
+    }
 
+    public void LaserSwap()
+    {
+        swapWeaponSouce.clip = laserSwap;
+        swapWeaponSouce.Play();
+    }
+
+    public void GrenadeLaunceherSwap()
+    {
+        swapWeaponSouce.clip = grenadeLauncherSwap;
+        swapWeaponSouce.Play();
     }
 }

@@ -26,15 +26,18 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] float dodgeTime;
     [SerializeField] int sprintMult;
     [SerializeField] int jumpMax;
-    [SerializeField] int jumpCount;
+    [SerializeField] public int jumpCount; // public by XB
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravity;
 
-    Vector3 moveDirection;
+    public static playerController mPlayerInstance; // -XB
+
+    public Vector3 moveDirection; // public by XB
     Vector3 playerVel;
 
+    //public bool isMoving; // -XB
     bool isSprinting;
-    bool isShooting;
+    public bool isShooting; //public by -XB
 
     int speedOriginal;
 
@@ -46,6 +49,8 @@ public class playerController : MonoBehaviour, damageInterface
         weaponType = "Laser";
         speedOriginal = speed;
         HP = MaxHP;
+
+        mPlayerInstance = this; // -XB
     }
 
     // Update is called once per frame
@@ -54,6 +59,17 @@ public class playerController : MonoBehaviour, damageInterface
         movement();
         sprint();
         weaponSwap();
+
+        if (moveDirection != Vector3.zero && jumpCount == 0) // -XB
+        {
+            //isMoving = true;
+            SoundEffects.noiseMaker.FootstepSound();
+        }
+        else
+        {
+            //isMoving = false;
+            SoundEffects.noiseMaker.FootStepSilence();
+        }
     }
 
     void movement()
@@ -110,7 +126,7 @@ public class playerController : MonoBehaviour, damageInterface
     }
 
 
-    IEnumerator shoot()
+    public IEnumerator shoot() // public by -XB
     {
 
         //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions -XB
@@ -144,7 +160,7 @@ public class playerController : MonoBehaviour, damageInterface
 
                 Instantiate(ammoTypeExplosive, shootPos.position, Camera.main.transform.rotation);
                 shootRate = explosiveShootRate;
-                SoundEffects.noiseMaker.ExplosionSound(); // -XB
+                SoundEffects.noiseMaker.GrenadeShotSound(); // -XB
             }
 
 
@@ -161,10 +177,12 @@ public class playerController : MonoBehaviour, damageInterface
             if (weaponType == "Laser")
             {
                 weaponType = "Grenade";
+                SoundEffects.noiseMaker.GrenadeLaunceherSwap(); // -XB
             }
             else if (weaponType == "Grenade")
             {
                 weaponType = "Laser";
+                SoundEffects.noiseMaker.LaserSwap(); // -XB
             }
         }
     }

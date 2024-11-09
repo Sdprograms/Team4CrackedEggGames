@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //
     public static GameManager mInstance;
 
     [SerializeField] GameObject mMenuActive;

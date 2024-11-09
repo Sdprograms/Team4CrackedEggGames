@@ -136,6 +136,7 @@ public class playerController : MonoBehaviour, damageInterface
 
                 Instantiate(ammoTypeLaser, shootPos.position, Camera.main.transform.rotation);
                 shootRate = laserShootRate;
+                SoundEffects.noiseMaker.LaserSound(); // -XB
             }
             else if (weaponType == "Grenade")
             {
@@ -143,6 +144,7 @@ public class playerController : MonoBehaviour, damageInterface
 
                 Instantiate(ammoTypeExplosive, shootPos.position, Camera.main.transform.rotation);
                 shootRate = explosiveShootRate;
+                SoundEffects.noiseMaker.ExplosionSound(); // -XB
             }
 
 

@@ -22,12 +22,11 @@ public class GameManager : MonoBehaviour
 
     public Image mPlayerHealth;
 
-    public GameObject mPlayer;
-
     public bool mPaused;
 
+    public GameObject mPlayer;
     public GameObject mPlayerDamageTaken;
-
+    public GameObject mWalkingSound;
     public GameObject mEnemyDamageHitmarker;
 
     private int mLookSensDisplay;

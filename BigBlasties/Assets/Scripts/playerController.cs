@@ -33,9 +33,8 @@ public class playerController : MonoBehaviour, damageInterface
     public static playerController mPlayerInstance; // -XB
 
     public Vector3 moveDirection; // public by XB
-    Vector3 playerVel;
+    public Vector3 playerVel; // public by XB
 
-    //public bool isMoving; // -XB
     bool isSprinting;
     public bool isShooting; //public by -XB
 
@@ -59,17 +58,6 @@ public class playerController : MonoBehaviour, damageInterface
         movement();
         sprint();
         weaponSwap();
-
-        if (moveDirection != Vector3.zero && jumpCount == 0) // -XB
-        {
-            //isMoving = true;
-            SoundEffects.noiseMaker.FootstepSound();
-        }
-        else
-        {
-            //isMoving = false;
-            SoundEffects.noiseMaker.FootStepSilence();
-        }
     }
 
     void movement()

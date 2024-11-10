@@ -12,6 +12,19 @@ public class SoundEffects : MonoBehaviour
     {
         noiseMaker = this;
     }
+    private void Update()
+    {
+        if (playerController.mPlayerInstance.moveDirection != Vector3.zero && playerController.mPlayerInstance.jumpCount == 0) // -XB
+        {
+            //isMoving = true;
+            FootstepSound();
+        }
+        else
+        {
+            //isMoving = false;
+            FootStepSilence();
+        }
+    }
     public void LaserSound()
     {
         //sets the clip of source to the laser and plays the sound effect

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2862442595466793071}
   - component: {fileID: 2862442595466793068}
   - component: {fileID: 2862442595466793069}
-  - component: {fileID: 2862442595466793104}
+  - component: {fileID: 2862442594484738580}
   m_Layer: 0
   m_Name: SniperEnemy
   m_TagString: Untagged
@@ -59,7 +59,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2862442595417559059}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -25.500002, y: 0, z: 27}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -81,7 +81,7 @@ Animator:
   m_GameObject: {fileID: 2862442595417559059}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6c33e1d6632025468fb37a04e312606, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dffbd9326394a8d47a87a1e2aec70a59, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -103,7 +103,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 50
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &2862442595466793068
 CapsuleCollider:
@@ -129,7 +129,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -141,7 +141,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2862442595466793104
+--- !u!114 &2862442594484738580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2862442595417559059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256eee5cd5cd27e4baf4f66595bff7d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 28b5b4269ae6ced4d956ac9f88c8c08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
@@ -160,8 +160,17 @@ MonoBehaviour:
   attackPos: {fileID: 2862442595176439660}
   agent: {fileID: 2862442595466793069}
   bullet: {fileID: 1847776829834559009, guid: 7aaa849ef519edc4f89b7424313128e4, type: 3}
-  attackRate: 5
-  turnSpeed: 25
+  attackRate: 1
+  turnSpeed: 15
+  attackTime: 1
+  ReloadTime: 1
+  rightGunBone: {fileID: 2862442595417066881}
+  leftGunBone: {fileID: 2862442595417066913}
+  arsenal:
+  - name: SniperEquip
+    rightGun: {fileID: 4265800308884265759, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
+    leftGun: {fileID: 0}
+    controller: {fileID: 9100000, guid: dffbd9326394a8d47a87a1e2aec70a59, type: 2}
 --- !u!1 &2862442595417559457
 GameObject:
   m_ObjectHideFlags: 0

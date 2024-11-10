@@ -1051,99 +1051,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SniperEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2862442595466793104, guid: 2908f84df6e81f9459dba865d215a551, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 2908f84df6e81f9459dba865d215a551, type: 3}
---- !u!1 &2862442594484738579 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2862442595417559059, guid: 2908f84df6e81f9459dba865d215a551, type: 3}
-  m_PrefabInstance: {fileID: 2862442594484738578}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2862442594484738580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2862442594484738579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b5b4269ae6ced4d956ac9f88c8c08a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  MaxHP: 5
-  aggroRange: 50
-  sightPos: {fileID: 0}
-  attackPos: {fileID: 0}
-  agent: {fileID: 0}
-  bullet: {fileID: 0}
-  attackRate: 0
-  turnSpeed: 0
-  rightGunBone: {fileID: 0}
-  leftGunBone: {fileID: 0}
-  arsenal:
-  - name: 
-    rightGun: {fileID: 8795777801543595848}
-    leftGun: {fileID: 0}
-    controller: {fileID: 0}
---- !u!1001 &4693819027624684631
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 26.899868
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884227903, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265800308884265759, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-      propertyPath: m_Name
-      value: SciFiRifle
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 2908f84df6e81f9459dba865d215a551, type: 3}
 --- !u!1001 &6133795583501539428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1217,8 +1126,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d741e0842979e67459a888b76dd16dff, type: 3}
---- !u!1 &8795777801543595848 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4265800308884265759, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
-  m_PrefabInstance: {fileID: 4693819027624684631}
-  m_PrefabAsset: {fileID: 0}

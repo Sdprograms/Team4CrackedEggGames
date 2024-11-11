@@ -53,7 +53,7 @@ MonoBehaviour:
   rbody: {fileID: 2704195516838584731}
   explosion: {fileID: 6324742498929419067, guid: 46ec70493e78e434fa681989b6da8749, type: 3}
   damageAmount: 10
-  speed: 0
+  speed: 10
   destroyTime: 10
 --- !u!33 &5907119560350668860
 MeshFilter:

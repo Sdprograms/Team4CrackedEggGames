@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5d36fd3e0ae7145aa90a909f43a510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 1
+  spawnDelay: 3
   projectile: {fileID: 5907119560350668849, guid: 5abaa121090b2fc4ea247a036d47bdda, type: 3}

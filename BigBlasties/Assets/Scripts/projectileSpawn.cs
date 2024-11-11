@@ -5,30 +5,31 @@ using UnityEngine;
 public class projectileSpawn : MonoBehaviour
 {
 
-    [SerializeField] float spawnTime;
+    float spawnTimer;
+    [SerializeField] float spawnDelay;
     [SerializeField] GameObject projectile;
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnTime += Time.deltaTime;
+        spawnTimer += Time.deltaTime;
 
-        if (spawnTime >= 1)
+        if (spawnTimer >= spawnDelay)
         {
             Instantiate(projectile, transform.position, transform.rotation);
-            spawnTime = 0;
+            spawnTimer = 0;
         }
         //StartCoroutine(spawnProjectile());
     }
 
-    IEnumerator spawnProjectile()
+   /* IEnumerator spawnProjectile()
     {
         Instantiate(projectile, transform.position, transform.rotation);
         yield return new WaitForSeconds(spawnTime);
-    }
+    }*/
 }

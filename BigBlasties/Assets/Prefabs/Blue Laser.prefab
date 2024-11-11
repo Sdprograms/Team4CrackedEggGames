@@ -51,9 +51,9 @@ MonoBehaviour:
   dmgType: 0
   rbody: {fileID: 7915614776134518667}
   explosion: {fileID: 0}
-  damageAmount: 1
+  damageAmount: 10
   speed: 50
-  destroyTime: 1
+  destroyTime: 5
 --- !u!33 &1847776829834559020
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.05
+  m_Time: 0.25
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05

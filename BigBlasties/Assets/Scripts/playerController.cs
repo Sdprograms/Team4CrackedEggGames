@@ -138,7 +138,7 @@ public class playerController : MonoBehaviour, damageInterface
             {
                 //Laser
 
-                Instantiate(ammoTypeLaser, shootPos.position, Camera.main.transform.rotation);
+                Instantiate(ammoTypeLaser, shootPos.position, shootPos.transform.rotation);
                 shootRate = laserShootRate;
                 SoundEffects.noiseMaker.LaserSound(); // -XB
             }
@@ -146,7 +146,7 @@ public class playerController : MonoBehaviour, damageInterface
             {
                 //Explosive
 
-                Instantiate(ammoTypeExplosive, shootPos.position, Camera.main.transform.rotation);
+                Instantiate(ammoTypeExplosive, shootPos.position, shootPos.transform.rotation);
                 shootRate = explosiveShootRate;
                 SoundEffects.noiseMaker.GrenadeShotSound(); // -XB
             }

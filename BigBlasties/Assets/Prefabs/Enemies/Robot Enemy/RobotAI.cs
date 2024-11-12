@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -31,7 +32,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     private Animator animator;
 
     bool isAttacking;
-    bool playerInRange;
+    //bool playerInRange;
     bool isFleeing;
     bool isHealing;
 
@@ -41,7 +42,7 @@ public class RobotAI : MonoBehaviour, damageInterface
 
     float originalSpeed;
 
-   
+    public float mVelocity;
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
@@ -63,8 +64,10 @@ public class RobotAI : MonoBehaviour, damageInterface
         {
             animator.SetBool("IsRunAnim", false);
         }
+       
+        mVelocity = agent.velocity.magnitude;
 
-        if (playerInRange)
+        if (EnemyDetection.mEnemyDetInst.playerInRange)
         {
             //adding fleeing functionality to enemies when on low hp.
             if (HP <= MaxHP / 4)
@@ -88,7 +91,7 @@ public class RobotAI : MonoBehaviour, damageInterface
                 aggroRange = 30;
                 if (distance >= aggroRange)
                 {
-                    playerInRange = false;
+                    EnemyDetection.mEnemyDetInst.playerInRange = false;
                 }
             }
             else
@@ -109,7 +112,7 @@ public class RobotAI : MonoBehaviour, damageInterface
                 }
             }
         }
-        else if (isFleeing  && !playerInRange && !isHealing && !animator.GetBool("IsRunAnim"))
+        else if (isFleeing  && !EnemyDetection.mEnemyDetInst.playerInRange && !isHealing && !animator.GetBool("IsRunAnim"))
         {
             animator.SetBool("IsAlarmedAnim", false);
             animator.SetBool("IsHealAnim", true);
@@ -117,17 +120,29 @@ public class RobotAI : MonoBehaviour, damageInterface
             isHealing = true;
             isFleeing = false;
         }
-        
+
+        Entered(EnemyDetection.mEnemyDetInst.mOther);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Entered(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             animator.SetBool("IsAlarmedAnim", true);
-            playerInRange = true;
+            //EnemyDetection.mEnemyDetInst.playerInRange = true;// this line is unnecessary as the EnemyDetection class handles that bool
         }
     }
+
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    other = EnemyDetection.mEnemyDetInst.mOther;
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        animator.SetBool("IsAlarmedAnim", true);
+    //        //EnemyDetection.mEnemyDetInst.playerInRange = true;
+    //    }
+    //}
 
     //enemy take damage function
     public void takeDamage(int amount)
@@ -135,7 +150,7 @@ public class RobotAI : MonoBehaviour, damageInterface
         HP -= amount;
         StartCoroutine(hitmarker());
         aggroRange = 1000;
-        playerInRange = true;
+         EnemyDetection.mEnemyDetInst.playerInRange = true;
         animator.SetBool("IsAlarmedAnim", true);
         animator.SetBool("IsHealAnim", false);
         if (HP <= 0)

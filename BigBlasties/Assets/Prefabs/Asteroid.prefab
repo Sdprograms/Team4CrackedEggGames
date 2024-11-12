@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5907119560350668849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: 37.54, z: 282.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.435403, y: 3.435403, z: 3.435403}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,8 +53,8 @@ MonoBehaviour:
   rbody: {fileID: 2704195516838584731}
   explosion: {fileID: 6324742498929419067, guid: 46ec70493e78e434fa681989b6da8749, type: 3}
   damageAmount: 10
-  speed: 3
-  destroyTime: 3
+  speed: 10
+  destroyTime: 10
 --- !u!33 &5907119560350668860
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5907119560350668849}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -186,7 +186,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

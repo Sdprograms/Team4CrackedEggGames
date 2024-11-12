@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1889756934621285001}
   - component: {fileID: 8089714065957421597}
   - component: {fileID: 8089714065957421596}
+  - component: {fileID: -5018810491474364119}
   - component: {fileID: 8089714065957421585}
   - component: {fileID: 1036556857}
   m_Layer: 0
@@ -64,6 +65,27 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 50
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5018810491474364119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889756934620927657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76979cebec2c0394986bc00cecf0b671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSource: {fileID: 0}
+  stepSource: {fileID: 0}
+  swapWeaponSouce: {fileID: 0}
+  laser: {fileID: 0}
+  grenadeShot: {fileID: 0}
+  explosion: {fileID: 0}
+  footsteps: {fileID: 0}
+  laserSwap: {fileID: 0}
+  grenadeLauncherSwap: {fileID: 0}
 --- !u!195 &8089714065957421585
 NavMeshAgent:
   m_ObjectHideFlags: 0

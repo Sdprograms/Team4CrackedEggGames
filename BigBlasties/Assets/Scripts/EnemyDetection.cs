@@ -6,7 +6,7 @@ public class EnemyDetection : MonoBehaviour
 {
     //this is all thats needed for the sphere collider
     public static EnemyDetection mEnemyDetInst;
-    [SerializeField] public Collider mOther;
+
 
     public bool playerInRange;
 

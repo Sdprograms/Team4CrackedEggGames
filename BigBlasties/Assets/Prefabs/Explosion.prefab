@@ -51,6 +51,7 @@ MonoBehaviour:
   dmgType: 3
   rbody: {fileID: 1883963996534215670}
   explosion: {fileID: 0}
+  impactParticle: {fileID: 3958902633591904931, guid: 552ea7dcf7ea4ba48a75413b9fdea52a, type: 3}
   damageAmount: 5
   speed: 0
   destroyTime: 0.1

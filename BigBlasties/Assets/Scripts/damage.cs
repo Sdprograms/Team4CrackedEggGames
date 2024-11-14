@@ -9,6 +9,7 @@ public class damage : MonoBehaviour
     [SerializeField] damageType dmgType;
     [SerializeField] Rigidbody rbody;
     [SerializeField] GameObject explosion;
+    [SerializeField] ParticleSystem impactParticle;
 
     [SerializeField] int damageAmount;
     [SerializeField] int speed;
@@ -34,6 +35,10 @@ public class damage : MonoBehaviour
         else if (dmgType == damageType.explosive) // if explosion
         {
             Destroy(gameObject, destroyTime);
+            if (impactParticle != null)
+            {
+                Instantiate(impactParticle, transform.position, transform.rotation);
+            }
             SoundEffects.noiseMaker.ExplosionSound();// -XB
         }
             
@@ -60,6 +65,11 @@ public class damage : MonoBehaviour
         }
         if (dmgType == damageType.bullet)
         {
+            if (impactParticle != null)
+            {
+                Instantiate(impactParticle, transform.position, transform.rotation);
+            }
+            
             Destroy(gameObject);
         }
         else if (dmgType == damageType.grenade)

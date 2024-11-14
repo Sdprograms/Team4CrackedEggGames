@@ -44,12 +44,18 @@ public class RobotAI : MonoBehaviour, damageInterface
 
     public float mVelocity;
 
+    private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
+                                     // otherwise without this all enemies will respond to one enemy bubble and not their own
+
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
     {
         HP = MaxHP;
         animator = GetComponent<Animator>();
         animator.SetBool("IsLoadedAnim", true);
+
+        detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
+                                                             // its data into the enemy individuality -XB
     }
 
     void Update()
@@ -67,7 +73,7 @@ public class RobotAI : MonoBehaviour, damageInterface
        
         mVelocity = agent.velocity.magnitude;
 
-        if (EnemyDetection.mEnemyDetInst.playerInRange)
+        if (detector.playerInRange)// the proper way to access the enemies range
         {
             //adding fleeing functionality to enemies when on low hp.
             if (HP <= MaxHP / 4)
@@ -75,9 +81,9 @@ public class RobotAI : MonoBehaviour, damageInterface
                 playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
 
                 Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
-                Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * aggroRange; // Move away by aggroRange distance
+                Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * aggroRange; // Move away by aggroRange distance -XB
 
-                agent.SetDestination(fleeTarget);  // Set the agent's destination away from the player
+                agent.SetDestination(fleeTarget);  // Set the agent's destination away from the player -XB
 
                 fleetarget();
 
@@ -91,7 +97,7 @@ public class RobotAI : MonoBehaviour, damageInterface
                 aggroRange = 30;
                 if (distance >= aggroRange)
                 {
-                    EnemyDetection.mEnemyDetInst.playerInRange = false;
+                    detector.playerInRange = false;
                 }
             }
             else
@@ -112,7 +118,7 @@ public class RobotAI : MonoBehaviour, damageInterface
                 }
             }
         }
-        else if (isFleeing  && !EnemyDetection.mEnemyDetInst.playerInRange && !isHealing && !animator.GetBool("IsRunAnim"))
+        else if (isFleeing  && !detector.playerInRange && !isHealing && !animator.GetBool("IsRunAnim"))// and example to reference the false version of the bool -XB
         {
             animator.SetBool("IsAlarmedAnim", false);
             animator.SetBool("IsHealAnim", true);
@@ -121,18 +127,25 @@ public class RobotAI : MonoBehaviour, damageInterface
             isFleeing = false;
         }
 
-        Entered(EnemyDetection.mEnemyDetInst.mOther);
+        Entered(detector.playerInRange);
     }
 
-    private void Entered(Collider other)
+    //private void Entered(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        animator.SetBool("IsAlarmedAnim", true);
+    //        //EnemyDetection.mEnemyDetInst.playerInRange = true;// this line is unnecessary as the EnemyDetection class handles that bool
+    //    }
+    //}
+
+    private void Entered(bool isPlayerInRange) // this replaces the functionality of the method commented out above -XB
     {
-        if (other.CompareTag("Player"))
+        if (detector.playerInRange == true)
         {
             animator.SetBool("IsAlarmedAnim", true);
-            //EnemyDetection.mEnemyDetInst.playerInRange = true;// this line is unnecessary as the EnemyDetection class handles that bool
         }
     }
-
 
     //private void OnTriggerEnter(Collider other)
     //{
@@ -150,7 +163,7 @@ public class RobotAI : MonoBehaviour, damageInterface
         HP -= amount;
         StartCoroutine(hitmarker());
         aggroRange = 1000;
-         EnemyDetection.mEnemyDetInst.playerInRange = true;
+         detector.playerInRange = true;
         animator.SetBool("IsAlarmedAnim", true);
         animator.SetBool("IsHealAnim", false);
         if (HP <= 0)

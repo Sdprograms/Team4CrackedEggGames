@@ -52,8 +52,8 @@ public class cameraController : MonoBehaviour
         transform.parent.Rotate(Vector3.up * mouseX); //Rotate on Y-axis
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * mShootDistance, Color.green);
-        Debug.DrawRay(gun.transform.position, gun.transform.forward * mShootDistance, Color.red);
-
+        //Debug.DrawRay(gun.transform.position, gun.transform.forward * mShootDistance, Color.red);
+        //^ was causing an error with gun pickup.
         FireOnCursor();
     }
  

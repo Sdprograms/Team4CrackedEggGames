@@ -10,17 +10,26 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
 
-    [SerializeField] GameObject ammoTypeLaser;
-    [SerializeField] float laserShootRate;
-    [SerializeField] GameObject ammoTypeExplosive;
-    [SerializeField] float explosiveShootRate;
+    //[SerializeField] GameObject ammoTypeLaser;
+    //[SerializeField] float laserShootRate;
+    //[SerializeField] GameObject ammoTypeExplosive;
+    //[SerializeField] float explosiveShootRate;
 
     [SerializeField] Transform shootPos;
 
+    //GUNS 
+    [SerializeField] List<gunStats> gunInventory = new List<gunStats>();
+    [SerializeField] GameObject gunModel;
+    [SerializeField] GameObject projectile;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] float shootDistance;
+    [SerializeField] int ammoCurrent;
+    [SerializeField] int ammoMax;
+    [SerializeField] int ammoReserve;
+    int selectedGun;
 
+    //OTHER STATS
     [SerializeField] int speed;
     [SerializeField] int dodgeSpeed;
     [SerializeField] float dodgeTime;
@@ -79,7 +88,9 @@ public class playerController : MonoBehaviour, damageInterface
 
         playerVel.y -= gravity * Time.deltaTime;
 
-        if(Input.GetButton("Fire1") && !isShooting) //if leftclick
+        if(Input.GetButton("Fire1") && gunInventory.Count > 0 && 
+                        gunInventory[selectedGun].ammoCurrent > 0 && 
+                            !isShooting) //if leftclick
         {
             StartCoroutine(shoot()); //shoot
         }
@@ -122,6 +133,9 @@ public class playerController : MonoBehaviour, damageInterface
         {
             isShooting = true;
 
+            gunInventory[selectedGun].ammoCurrent--;
+
+            Instantiate(projectile, shootPos.position, shootPos.transform.rotation);
             /*RaycastHit whatsHit; //RAY CAST
 
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out whatsHit, shootDistance, ~maskToIgnore)) //
@@ -134,7 +148,7 @@ public class playerController : MonoBehaviour, damageInterface
                 }
             }*/
 
-            if (weaponType == "Laser")
+            /*if (weaponType == "Laser")
             {
                 //Laser
 
@@ -149,8 +163,7 @@ public class playerController : MonoBehaviour, damageInterface
                 Instantiate(ammoTypeExplosive, shootPos.position, shootPos.transform.rotation);
                 shootRate = explosiveShootRate;
                 SoundEffects.noiseMaker.GrenadeShotSound(); // -XB
-            }
-
+            }*/
 
             yield return new WaitForSeconds(shootRate);
             
@@ -205,5 +218,44 @@ public class playerController : MonoBehaviour, damageInterface
         GameManager.mInstance.mPlayerDamageTaken.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         GameManager.mInstance.mPlayerDamageTaken.SetActive(false);
+    }
+
+    public void getGunStats(gunStats gun)
+    {
+        gunInventory.Add(gun);
+        selectedGun = gunInventory.Count - 1;
+        projectile = gunInventory[selectedGun].projectile;
+        shootRate = gunInventory[selectedGun].shootRate;
+        ammoCurrent = gunInventory[selectedGun].ammoCurrent;
+        ammoMax = gunInventory[selectedGun].ammoMax;
+        ammoReserve = gunInventory[selectedGun].ammoReserve;
+
+        //this gun model is getting the gun model from 'gun'
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        //same thing but for material.
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    void changeGun()
+    {   
+        shootRate = gunInventory[selectedGun].shootRate;
+        projectile = gunInventory[selectedGun].projectile;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader
+    }
+
+    void selectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunInventory.Count - 1)
+        {
+            selectedGun++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        {
+            selectedGun--;
+            changeGun();
+        }
     }
 }

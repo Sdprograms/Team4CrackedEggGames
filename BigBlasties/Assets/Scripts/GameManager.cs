@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool mPaused;
 
     public GameObject mPlayer;
+    public playerController mPlayerController;
     public GameObject mPlayerDamageTaken;
     public GameObject mWalkingSound;
     public GameObject mEnemyDamageHitmarker;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         mInstance = this;
         //tracks the player
         mPlayer = GameObject.FindWithTag("Player");
+        mPlayerController = mPlayer.GetComponent<playerController>();
         // Update is called once per frame
         mTimeScaleOrig = Time.timeScale;
         SetActiveMenu(mMenuPlay);

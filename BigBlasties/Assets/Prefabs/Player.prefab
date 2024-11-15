@@ -507,6 +507,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8585038807787264936}
     m_Modifications:
+    - target: {fileID: 7350298170323611506, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7350298170965833517, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -554,6 +558,18 @@ PrefabInstance:
     - target: {fileID: 7350298170965833518, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
       propertyPath: m_Name
       value: BodyLedgeTriggers
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350298170965833518, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350298171149877924, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350298172140294616, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}

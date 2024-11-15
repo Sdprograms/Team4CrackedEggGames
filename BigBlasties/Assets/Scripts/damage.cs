@@ -39,7 +39,7 @@ public class damage : MonoBehaviour
             {
                 Instantiate(impactParticle, transform.position, transform.rotation);
             }
-            SoundEffects.noiseMaker.ExplosionSound();// -XB
+            //SoundEffects.noiseMaker.ExplosionSound();// -XB  -SD commented out
         }
             
     }

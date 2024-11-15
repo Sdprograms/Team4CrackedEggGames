@@ -10,7 +10,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
 
-    //[SerializeField] GameObject ammoTypeLaser;
+    //[SerializeField] GameObject ammoTypeLaser; --SD commented out for new weapon system
     //[SerializeField] float laserShootRate;
     //[SerializeField] GameObject ammoTypeExplosive;
     //[SerializeField] float explosiveShootRate;
@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] List<gunStats> gunInventory = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject projectile;
+    [SerializeField] AudioClip projectileAudio;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] float shootDistance;
@@ -41,6 +42,8 @@ public class playerController : MonoBehaviour, damageInterface
 
     public static playerController mPlayerInstance; // -XB
 
+    public AudioSource weaponAudioSource;
+
     public Vector3 moveDirection; // public by XB
     public Vector3 playerVel; // public by XB
 
@@ -58,6 +61,8 @@ public class playerController : MonoBehaviour, damageInterface
         speedOriginal = speed;
         HP = MaxHP;
 
+        weaponAudioSource = GetComponent<AudioSource>();
+
         mPlayerInstance = this; // -XB
     }
 
@@ -66,7 +71,7 @@ public class playerController : MonoBehaviour, damageInterface
     {
         movement();
         sprint();
-        weaponSwap();
+        //weaponSwap();
     }
 
     void movement()
@@ -135,7 +140,12 @@ public class playerController : MonoBehaviour, damageInterface
 
             gunInventory[selectedGun].ammoCurrent--;
 
-            Instantiate(projectile, shootPos.position, shootPos.transform.rotation);
+            Instantiate(projectile, shootPos.position, shootPos.transform.rotation);//projectile
+
+            weaponAudioSource.clip = projectileAudio;
+            weaponAudioSource.Play(); //sound
+
+
             /*RaycastHit whatsHit; //RAY CAST
 
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out whatsHit, shootDistance, ~maskToIgnore)) //
@@ -171,7 +181,7 @@ public class playerController : MonoBehaviour, damageInterface
         }
     }
 
-    public void weaponSwap()
+    /*public void weaponSwap() 
     {
         if (Input.GetButtonDown("Weapon Switch"))
         {
@@ -186,7 +196,7 @@ public class playerController : MonoBehaviour, damageInterface
                 SoundEffects.noiseMaker.LaserSwap(); // -XB
             }
         }
-    }
+    }*/
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -225,6 +235,7 @@ public class playerController : MonoBehaviour, damageInterface
         gunInventory.Add(gun);
         selectedGun = gunInventory.Count - 1;
         projectile = gunInventory[selectedGun].projectile;
+        projectileAudio = gunInventory[selectedGun].gunSound;
         shootRate = gunInventory[selectedGun].shootRate;
         ammoCurrent = gunInventory[selectedGun].ammoCurrent;
         ammoMax = gunInventory[selectedGun].ammoMax;

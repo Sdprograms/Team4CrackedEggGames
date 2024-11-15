@@ -316,7 +316,7 @@ MonoBehaviour:
   MaxHP: 100
   shootPos: {fileID: 3157949365729828066}
   gunInventory: []
-  gunModel: {fileID: 0}
+  gunModel: {fileID: 2947558220965665391}
   projectile: {fileID: 0}
   shootDamage: 2
   shootRate: 0.1
@@ -427,7 +427,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 230983902633922322, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
       propertyPath: m_Name
-      value: Accatran_MG_Variant_Heavy_Laspistol_Black
+      value: GunPos
       objectReference: {fileID: 0}
     - target: {fileID: 612293896984352168, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
       propertyPath: m_RootOrder
@@ -475,7 +475,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1744127612197514951, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 6
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744127612197514951, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1744127612197514951, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -493,11 +497,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: cafa0f5b5c240b14aab6112a0d24a68c, type: 2}
+    - target: {fileID: 4598339714207668749, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
 --- !u!4 &2570434131552927957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 612293896984352168, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
+  m_PrefabInstance: {fileID: 3157949365715522941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2947558220965665391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 230983902633922322, guid: a86f411d3882b394396f36ee02eae6f7, type: 3}
   m_PrefabInstance: {fileID: 3157949365715522941}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3886040717551250191

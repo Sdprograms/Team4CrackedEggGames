@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b163ee381e51c46bd585068dce1a9f, type: 3}
   m_Name: AutoLaserPistol
   m_EditorClassIdentifier: 
-  gunModel: {fileID: 0}
-  projectile: {fileID: 0}
-  shootRate: 0
-  ammoCurrent: 0
-  ammoMax: 0
-  ammoReserve: 0
+  gunModel: {fileID: 919132149155446097, guid: df57f12e11cb94746ba4ffee53aa4da6, type: 3}
+  projectile: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
+  shootRate: 1
+  ammoCurrent: 95
+  ammoMax: 100
+  ammoReserve: 100

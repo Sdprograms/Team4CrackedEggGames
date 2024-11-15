@@ -25,7 +25,7 @@ public class SoundEffects : MonoBehaviour
             FootStepSilence();
         }
     }
-    public void LaserSound()
+    /*public void LaserSound() --SD new system for projectile sounds.
     {
         //sets the clip of source to the laser and plays the sound effect
         weaponSource.clip = laser;
@@ -42,7 +42,7 @@ public class SoundEffects : MonoBehaviour
     {
         weaponSource.clip = explosion;
         weaponSource.Play();
-    }
+    }*/ 
     public void FootstepSound()
     {
         if (Input.GetButton("Fire1") && playerController.mPlayerInstance.isShooting == false) //if leftclick

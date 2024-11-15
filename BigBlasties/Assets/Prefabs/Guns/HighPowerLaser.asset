@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49b163ee381e51c46bd585068dce1a9f, type: 3}
-  m_Name: RocketLauncher
+  m_Name: HighPowerLaser
   m_EditorClassIdentifier: 
-  gunModel: {fileID: 100000, guid: a97da33f506743140bba5d7a279179ed, type: 3}
-  projectile: {fileID: 961781822884801384, guid: d333ab4e58330c24ca7b2c1eae6eaa30, type: 3}
-  gunSound: {fileID: 8300000, guid: 9f45e6a5f5cd816458d7c9359c903f4b, type: 3}
+  gunModel: {fileID: 100000, guid: 808d8bedf2d978e47a4a056a0c33f3d9, type: 3}
+  projectile: {fileID: 1847776829834559009, guid: 7aaa849ef519edc4f89b7424313128e4, type: 3}
+  gunSound: {fileID: 8300000, guid: e70eb034c8ae4fe42b00d809716998e4, type: 3}
   shootRate: 0.1
   ammoCurrent: 69
   ammoMax: 100

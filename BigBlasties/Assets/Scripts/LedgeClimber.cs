@@ -7,53 +7,53 @@ public class LedgeClimber : MonoBehaviour
 {
     public static LedgeClimber mClimbInst;
 
-    [SerializeField] GameObject mAboveHead;
-    [SerializeField] GameObject mWaist;
-    [SerializeField] GameObject mFeet;
-
     public bool mClimbed;
     public bool mReached;
 
-    [SerializeField] int mAbovHeadJumpHeight;
-    [SerializeField] int mWaistJumpHeight;
-    [SerializeField] int mFeetBoostLength;
+    [SerializeField] float mAbovHeadJumpHeight;
+    [SerializeField] float mWaistJumpHeight;
+    [SerializeField] float mFeetBoostLength;
 
     private void Start()
     {
         mClimbInst = this;
     }
-
-    //public void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Ledge"))
-    //    {
-    //        playerController.mPlayerInstance.playerVel.y = mAbovHeadJumpHeight;
-    //        yield return new WaitForSeconds(0.5f);
-
-    //    }
-    //}
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
+        float originalHeadJump = mAbovHeadJumpHeight;
+        float originalWaistJump = mWaistJumpHeight;
+
+        if (playerController.mPlayerInstance.playerVel.y <= 0)
         {
-            if (mAboveHead.CompareTag("AboveHead"))
+            //if you arent jumping, then the values are increased as normally it accounts for your jump velocity as well
+            mAbovHeadJumpHeight *= 2.5f;
+            mWaistJumpHeight *= 2.5f;
+        }
+        
+            if (other.CompareTag("AboveHead"))
             {
-                //playerController.mPlayerInstance.playerVel.y = mAbovHeadJumpHeight;
+            //when the head detector encounters a ledge, it will raise the player, almost like jumping.
+                playerController.mPlayerInstance.playerVel.y += Mathf.Lerp(0, mAbovHeadJumpHeight, 0.5f);
                 mClimbed = true;
                 mReached = true;
             }
-            else if (mWaist.CompareTag("Waist") && mReached == false)
+            else if (other.CompareTag("Waist") && mReached == false)
             {
-                playerController.mPlayerInstance.playerVel.y = mWaistJumpHeight;
+            //and if the waist is triggered before the above head trigger, then it will do a similar action
+                playerController.mPlayerInstance.playerVel.y += Mathf.Lerp(0, mWaistJumpHeight, 0.5f);
                 mClimbed = true;
             }
 
-            if (mFeet.CompareTag("Feet") && mClimbed == true)
+            if (other.CompareTag("Feet") && mClimbed == true)
             {
-                playerController.mPlayerInstance.playerVel.z = mFeetBoostLength;
+            //once the feet touch the ledge, then the player will move forward without input from the player(you)
+            playerController.mPlayerInstance.playerVel = Camera.main.transform.position * Mathf.Lerp(0, mFeetBoostLength, 0.5f) * Time.deltaTime;
                 mClimbed = false;
                 mReached = false;
             }
 
-        }
+        mAbovHeadJumpHeight = originalHeadJump;
+        mWaistJumpHeight = originalWaistJump;
     }
 }

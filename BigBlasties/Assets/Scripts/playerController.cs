@@ -71,7 +71,7 @@ public class playerController : MonoBehaviour, damageInterface
     {
         movement();
         sprint();
-        //weaponSwap();
+        selectGun();
     }
 
     void movement()

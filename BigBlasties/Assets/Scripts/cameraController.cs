@@ -14,7 +14,7 @@ public class cameraController : MonoBehaviour
 
     [SerializeField] public int lookSensitivity;
     [SerializeField] int lockVerticalmin, lockVerticalmax;
-    [SerializeField] bool invertY = false;
+    [SerializeField] public bool invertY = false;
 
     float rotX;
 

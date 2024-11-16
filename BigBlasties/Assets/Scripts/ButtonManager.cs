@@ -10,6 +10,7 @@ public class ButtonManager : MonoBehaviour
     ButtonManager buttonManager;
     [SerializeField] Slider mSensitivitySlide;
     [SerializeField] TMP_Text mSensText;
+    [SerializeField] Toggle mInvertY;
 
     private void Start()
     {
@@ -34,6 +35,11 @@ public class ButtonManager : MonoBehaviour
         mSensText.text = newVal; // sets the value of the text
 
         cameraController.camInstance.lookSensitivity = sensVal;
+    }
+
+    public void InvertLook()
+    {
+        cameraController.camInstance.invertY = mInvertY.isOn;
     }
 
     public void ReturnToPause()

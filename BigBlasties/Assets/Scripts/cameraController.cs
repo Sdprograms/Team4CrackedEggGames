@@ -12,7 +12,7 @@ public class cameraController : MonoBehaviour
                                          //Provides a max range for the raycast to target to, after aiming past this distance,
                                          //all shots will be a little to the right, as tracking will be null
 
-    [SerializeField] int lookSensitivity;
+    [SerializeField] public int lookSensitivity;
     [SerializeField] int lockVerticalmin, lockVerticalmax;
     [SerializeField] bool invertY = false;
 

@@ -18,7 +18,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     [SerializeField] int turnSpeed;
 
     bool isAttacking;
-    bool playerInRange;
+    //bool playerInRange;
 
     //below are for fleeing and healing
     bool isFleeing;
@@ -28,17 +28,21 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
 
     Vector3 playerPos;
 
-
+    private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
+                                     // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
     {
         HP = MaxHP;
+
+        detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
+                                                             // its data into the enemy individuality -XB
     }
 
     void Update()
     {
-        if (playerInRange)
+        if (detector.playerInRange)
         {
             //add if fleeing is implemented, and if healing is implemented
             //isFleeing = false;
@@ -93,13 +97,13 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        detector.playerInRange = true;
+    //    }
+    //}
 
     //enemy take damage function
     public void takeDamage(int amount)
@@ -107,7 +111,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
         HP -= amount;
         StartCoroutine(hitmarker());
         aggroRange = 1000;
-        playerInRange = true;
+        detector.playerInRange = true;
         if (HP <= 0)
         {
             Destroy(gameObject);

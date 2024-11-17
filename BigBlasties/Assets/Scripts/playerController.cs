@@ -93,9 +93,7 @@ public class playerController : MonoBehaviour, damageInterface
 
         playerVel.y -= gravity * Time.deltaTime;
 
-        if(Input.GetButton("Fire1") && gunInventory.Count > 0 && 
-                        gunInventory[selectedGun].ammoCurrent > 0 && 
-                            !isShooting) //if leftclick
+        if(Input.GetButton("Fire1") && !isShooting) //if leftclick
         {
             StartCoroutine(shoot()); //shoot
         }
@@ -134,7 +132,7 @@ public class playerController : MonoBehaviour, damageInterface
     {
 
         //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions -XB
-        if (GameManager.mInstance.mPaused == false)
+        if (GameManager.mInstance.mPaused == false && gunInventory.Count > 0 && gunInventory[selectedGun].ammoCurrent > 0)
         {
             isShooting = true;
 
@@ -176,8 +174,9 @@ public class playerController : MonoBehaviour, damageInterface
             }*/
 
             yield return new WaitForSeconds(shootRate);
-            
+            Debug.Log("Waited to fire");
             isShooting = false;
+            Debug.Log("IsShooting is false");
         }
     }
 

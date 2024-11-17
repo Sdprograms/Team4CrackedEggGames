@@ -26,11 +26,11 @@ public class SniperAI : MonoBehaviour, damageInterface
     [SerializeField] float ReloadTime;
 
     bool isAttacking;
-    bool playerInRange;
+    //bool playerInRange;
 
     
     bool isFleeing;
-    float distance;
+    public float distance;
 
     Vector3 playerPos;
 
@@ -43,7 +43,8 @@ public class SniperAI : MonoBehaviour, damageInterface
 
     private Animator animator;
 
-
+    private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
+                                     // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
 
     void Start()
     {
@@ -53,11 +54,14 @@ public class SniperAI : MonoBehaviour, damageInterface
         {
             SetArsenal(arsenal[0].name);
         }
+
+        detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
+                                                             // its data into the enemy individuality -XB
     }
 
     void Update()
     {
-        if (playerInRange)
+        if (detector.playerInRange)
         {
             distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
             playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
@@ -75,30 +79,30 @@ public class SniperAI : MonoBehaviour, damageInterface
             //TO RETREAT IF PLAYER TOO CLOSE
             if (distance < 30)
             {
-                
-                 Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
-                 Vector3 fleePosition = sightPos.position + fleeDirection.normalized * 30;
-                 agent.SetDestination(fleePosition);
-                 fleetarget();
-                
+
+                Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
+                Vector3 fleePosition = sightPos.position + fleeDirection.normalized * 30;
+                agent.SetDestination(fleePosition);
+                fleetarget();
+
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        detector.playerInRange = true;
+    //    }
+    //}
 
     public void takeDamage(int amount)
     {
         HP -= amount;
         StartCoroutine(hitmarker());
         aggroRange = 1000;
-        playerInRange = true;
+        detector.playerInRange = true;
         if (HP <= 0)
         {
             Destroy(gameObject);

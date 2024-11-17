@@ -45,7 +45,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     public float mVelocity;
 
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
-                                     // otherwise without this all enemies will respond to one enemy bubble and not their own
+                                     // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
@@ -73,7 +73,7 @@ public class RobotAI : MonoBehaviour, damageInterface
        
         mVelocity = agent.velocity.magnitude;
 
-        if (detector.playerInRange)// the proper way to access the enemies range
+        if (detector.playerInRange)// the proper way to access the enemies range -XB
         {
             //adding fleeing functionality to enemies when on low hp.
             if (HP <= MaxHP / 4)
@@ -81,9 +81,9 @@ public class RobotAI : MonoBehaviour, damageInterface
                 playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
 
                 Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
-                Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * aggroRange; // Move away by aggroRange distance -XB
+                Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * aggroRange; // Move away by aggroRange distance
 
-                agent.SetDestination(fleeTarget);  // Set the agent's destination away from the player -XB
+                agent.SetDestination(fleeTarget);  // Set the agent's destination away from the player
 
                 fleetarget();
 
@@ -127,19 +127,10 @@ public class RobotAI : MonoBehaviour, damageInterface
             isFleeing = false;
         }
 
-        Entered(detector.playerInRange);
+        Entered(detector.playerInRange); // updates the range and thus alarm animation -XB
     }
 
-    //private void Entered(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        animator.SetBool("IsAlarmedAnim", true);
-    //        //EnemyDetection.mEnemyDetInst.playerInRange = true;// this line is unnecessary as the EnemyDetection class handles that bool
-    //    }
-    //}
-
-    private void Entered(bool isPlayerInRange) // this replaces the functionality of the method commented out above -XB
+    private void Entered(bool isPlayerInRange) // this replaces the functionality of the method commented out below -XB
     {
         if (detector.playerInRange == true)
         {

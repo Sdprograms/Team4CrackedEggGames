@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BouncePad : MonoBehaviour
 {
+    BouncePad mBounceInst;
     [SerializeField] int boostVelocity;
     public bool isEntered;
 
@@ -12,7 +13,8 @@ public class BouncePad : MonoBehaviour
 
     private void Awake()
     {
-        jumpCountPostBoost = playerController.mPlayerInstance.jumpCount + 1;
+        mBounceInst = this;
+        jumpCountPostBoost = 1;
     }
 
     private void OnTriggerEnter(Collider other)

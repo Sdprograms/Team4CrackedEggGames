@@ -318,6 +318,7 @@ MonoBehaviour:
   gunInventory: []
   gunModel: {fileID: 2947558220965665391}
   projectile: {fileID: 0}
+  projectileAudio: {fileID: 0}
   shootDamage: 2
   shootRate: 0.1
   shootDistance: 1500
@@ -332,6 +333,7 @@ MonoBehaviour:
   jumpCount: 0
   jumpSpeed: 10
   gravity: 20
+  weaponAudioSource: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   playerVel: {x: 0, y: 0, z: 0}
   isShooting: 0
@@ -522,7 +524,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7350298170323611506, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350298170965833517, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
       propertyPath: m_RootOrder
@@ -578,11 +580,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7350298171149877924, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350298171149877926, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1357621
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350298171149877926, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 7350298172140294616, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7350298172140294618, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}

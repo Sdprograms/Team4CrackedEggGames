@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         buttonManager = this;
+        Instantiate(mInvertY);
+        mInvertY.enabled = true;
+        //mInvertY = GetComponent<UnityEngine.UI.Toggle>();
     }
 
     public void Resume()
@@ -51,8 +55,6 @@ public class ButtonManager : MonoBehaviour
     public void Reset()
     {
         //resets the game to the current scene(level) at its default and unpauses the game
-      //  GameManager.mInstance.UnfreezeGame();
-      
         GameManager.mInstance.StateUnpaused();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

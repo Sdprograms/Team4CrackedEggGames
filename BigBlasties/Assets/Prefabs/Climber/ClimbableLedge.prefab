@@ -49,10 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mClimbed: 0
-  mReached: 0
-  mAbovHeadJumpHeight: 20
-  mWaistJumpHeight: 15
-  mFeetBoostLength: 30
+  mClimbJumpHeight: 22
+  mFeetBoostLength: 15
 --- !u!33 &423332157954903387
 MeshFilter:
   m_ObjectHideFlags: 0

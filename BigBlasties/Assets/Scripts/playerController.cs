@@ -250,6 +250,7 @@ public class playerController : MonoBehaviour, damageInterface
     {   
         shootRate = gunInventory[selectedGun].shootRate;
         projectile = gunInventory[selectedGun].projectile;
+        projectileAudio = gunInventory[selectedGun].gunSound;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader

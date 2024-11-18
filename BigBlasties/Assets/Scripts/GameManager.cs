@@ -26,8 +26,9 @@ public class GameManager : MonoBehaviour
 
     public bool mPaused;
 
-    public GameObject mPlayer;
     public playerController mPlayerController;
+    public GameObject mPlayer;
+    public GameObject mPlayerSpawnPos;
     public GameObject mPlayerDamageTaken;
     public GameObject mWalkingSound;
     public GameObject mEnemyDamageHitmarker;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         mTimeScaleOrig = Time.timeScale;
         SetActiveMenu(mMenuPlay);
         mMenuActive.SetActive(true);
+        mPlayerSpawnPos = GameObject.FindWithTag("PlayerSpawnPos");//finds the players spawn
     }
 
     void Update()

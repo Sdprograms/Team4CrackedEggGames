@@ -42,10 +42,11 @@ GameObject:
   - component: {fileID: 5510941243081189359}
   - component: {fileID: 2740290991605297019}
   - component: {fileID: 2740290991605297015}
-  - component: {fileID: 616947527}
+  - component: {fileID: -5645831786628825702}
+  - component: {fileID: -1208452194795778288}
   m_Layer: 0
   m_Name: SmallAlienEnemy (1)
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +105,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &616947527
+--- !u!114 &-5645831786628825702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,18 +114,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 5510941243080768463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256eee5cd5cd27e4baf4f66595bff7d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 30711066d5989064ba6dff556521a34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 10
-  aggroRange: 10
   sightPos: {fileID: 2740290991446959385}
   attackPos: {fileID: 2740290991446959385}
   agent: {fileID: 2740290991605297015}
   bullet: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
-  attackRate: 1
-  turnSpeed: 5
+  attackRate: 2
+  turnSpeed: 8
+--- !u!114 &-1208452194795778288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510941243080768463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35f79b578ef6f14ca20652b511f6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpaceBetween: 3
 --- !u!1001 &5083399870635033425
 PrefabInstance:
   m_ObjectHideFlags: 0

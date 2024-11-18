@@ -112,7 +112,7 @@ public class RobotAI : MonoBehaviour, damageInterface
                 {
                     facetarget();
                 }
-                if (!isAttacking)
+                if (!isAttacking && canSeePlayer())
                 {
                     StartCoroutine(attack());
                 }
@@ -128,6 +128,23 @@ public class RobotAI : MonoBehaviour, damageInterface
         }
 
         Entered(detector.playerInRange); // updates the range and thus alarm animation -XB
+    }
+
+    bool canSeePlayer()
+    {
+        playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+        float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
+        //Debug.DrawRay(sightPos.position, playerPos);
+
+        RaycastHit hit;
+        if (Physics.Raycast(sightPos.position, playerPos, out hit))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void Entered(bool isPlayerInRange) // this replaces the functionality of the method commented out below -XB

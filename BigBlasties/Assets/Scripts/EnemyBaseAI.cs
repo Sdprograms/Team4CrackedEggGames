@@ -16,6 +16,8 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     [SerializeField] GameObject bullet;
     [SerializeField] float attackRate;
     [SerializeField] int turnSpeed;
+    [SerializeField] int viewAngle;
+
 
     bool isAttacking;
     //bool playerInRange;
@@ -54,7 +56,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
             {
                 facetarget();
             }
-            if (!isAttacking)
+            if (!isAttacking && canSeePlayer())
             {
                 StartCoroutine(attack());
             }
@@ -96,6 +98,23 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
             }*/
         }
     }
+
+    bool canSeePlayer()
+    {
+        playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+        float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
+        //Debug.DrawRay(sightPos.position, playerPos);
+
+        RaycastHit hit;
+        if (Physics.Raycast(sightPos.position, playerPos, out hit))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    } 
 
     //private void OnTriggerEnter(Collider other)
     //{

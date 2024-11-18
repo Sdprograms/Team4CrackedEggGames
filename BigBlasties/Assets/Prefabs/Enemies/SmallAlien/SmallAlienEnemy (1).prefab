@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2740290991605297019}
   - component: {fileID: 2740290991605297015}
   - component: {fileID: -5645831786628825702}
-  - component: {fileID: -1208452194795778288}
+  - component: {fileID: -5358903029576077007}
   m_Layer: 0
   m_Name: SmallAlienEnemy (1)
   m_TagString: AI
@@ -125,7 +125,7 @@ MonoBehaviour:
   bullet: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
   attackRate: 2
   turnSpeed: 8
---- !u!114 &-1208452194795778288
+--- !u!114 &-5358903029576077007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

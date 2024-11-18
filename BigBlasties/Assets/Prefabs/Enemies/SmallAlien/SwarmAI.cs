@@ -44,7 +44,6 @@ public class SwarmAI : MonoBehaviour, damageInterface
     bool canSeePlayer()
     {
         playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
-        float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
         //Debug.DrawRay(sightPos.position, playerPos);
 
         RaycastHit hit;

@@ -170,8 +170,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
-        aggroRange = 1000;
-         detector.playerInRange = true;
+        detector.playerInRange = true;
         animator.SetBool("IsAlarmedAnim", true);
         animator.SetBool("IsHealAnim", false);
         if (HP <= 0)

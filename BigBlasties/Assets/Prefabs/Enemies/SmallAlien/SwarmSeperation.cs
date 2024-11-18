@@ -17,6 +17,7 @@ public class SwarmSeperation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AI = GameObject.FindGameObjectsWithTag("AI");
         SeparateAI();
     }
 

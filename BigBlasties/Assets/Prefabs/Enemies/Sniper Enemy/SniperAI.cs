@@ -83,7 +83,6 @@ public class SniperAI : MonoBehaviour, damageInterface
                 Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
                 Vector3 fleePosition = sightPos.position + fleeDirection.normalized * 30;
                 agent.SetDestination(fleePosition);
-                fleetarget();
 
             }
         }

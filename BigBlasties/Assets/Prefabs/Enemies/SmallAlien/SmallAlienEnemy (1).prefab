@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 10
+  MaxHP: 4
   sightPos: {fileID: 2740290991446959385}
   attackPos: {fileID: 2740290991446959385}
   agent: {fileID: 2740290991605297015}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SwarmAI : MonoBehaviour
+public class SwarmAI : MonoBehaviour, damageInterface
 {
     [SerializeField] float HP;
     [SerializeField] float MaxHP;

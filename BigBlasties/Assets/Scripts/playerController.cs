@@ -299,10 +299,13 @@ public class playerController : MonoBehaviour, damageInterface
                 gunInventory[selectedGun].ammoReserve = 0;
             }
         }
-
-        ammoCurrent = gunInventory[selectedGun].ammoCurrent;
-        ammoReserve = gunInventory[selectedGun].ammoReserve;
-        ammoMax = gunInventory[selectedGun ].ammoMax;
+        if (gunInventory.Count != 0) // Checks if the gun inventory has something in it before assigning values, otherwise theyll be out of range -XB
+        {
+            ammoCurrent = gunInventory[selectedGun].ammoCurrent;
+            ammoReserve = gunInventory[selectedGun].ammoReserve;
+            ammoMax = gunInventory[selectedGun].ammoMax;
+        }
+        
         UpdateUI();
     }
 

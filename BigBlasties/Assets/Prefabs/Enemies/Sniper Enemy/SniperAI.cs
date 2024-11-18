@@ -71,7 +71,7 @@ public class SniperAI : MonoBehaviour, damageInterface
                 facetarget();
             }
 
-            if (!isAttacking)
+            if (!isAttacking && canSeePlayer())
             {
                 StartCoroutine(attack());
             }
@@ -83,10 +83,26 @@ public class SniperAI : MonoBehaviour, damageInterface
                 Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
                 Vector3 fleePosition = sightPos.position + fleeDirection.normalized * 30;
                 agent.SetDestination(fleePosition);
-                fleetarget();
 
             }
         }
+    }
+
+    bool canSeePlayer()
+    {
+        playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+        float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
+        //Debug.DrawRay(sightPos.position, playerPos);
+
+        RaycastHit hit;
+        if (Physics.Raycast(sightPos.position, playerPos, out hit))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -120,13 +136,16 @@ public class SniperAI : MonoBehaviour, damageInterface
     IEnumerator attack()
     {
         isAttacking = true;
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        
+     
         originalSpeed = agent.speed;
         agent.speed = 0;
 
         StartCoroutine(facetargetTimed(attackTime));
         yield return new WaitForSeconds(attackTime);
 
-        Instantiate(bullet, attackPos.position, transform.rotation);
+        Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
         yield return new WaitForSeconds(ReloadTime);
 
         agent.speed = originalSpeed;

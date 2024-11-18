@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Text sensitivityText;
 
     public Image mPlayerHealth;
+    public TMP_Text mAmmoCurrent;
+    public TMP_Text mAmmoReserve;
 
     public bool mPaused;
 

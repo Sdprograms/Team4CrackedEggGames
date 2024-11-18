@@ -17,7 +17,6 @@ public class ButtonManager : MonoBehaviour
     {
         buttonManager = this;
         Instantiate(mInvertY);
-        mInvertY.enabled = true;
         //mInvertY = GetComponent<UnityEngine.UI.Toggle>();
     }
 

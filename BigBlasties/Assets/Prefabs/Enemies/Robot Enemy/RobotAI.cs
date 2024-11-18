@@ -112,7 +112,7 @@ public class RobotAI : MonoBehaviour, damageInterface
                 {
                     facetarget();
                 }
-                if (!isAttacking)
+                if (!isAttacking && canSeePlayer())
                 {
                     StartCoroutine(attack());
                 }
@@ -128,6 +128,23 @@ public class RobotAI : MonoBehaviour, damageInterface
         }
 
         Entered(detector.playerInRange); // updates the range and thus alarm animation -XB
+    }
+
+    bool canSeePlayer()
+    {
+        playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+        float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
+        //Debug.DrawRay(sightPos.position, playerPos);
+
+        RaycastHit hit;
+        if (Physics.Raycast(sightPos.position, playerPos, out hit))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void Entered(bool isPlayerInRange) // this replaces the functionality of the method commented out below -XB
@@ -153,8 +170,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
-        aggroRange = 1000;
-         detector.playerInRange = true;
+        detector.playerInRange = true;
         animator.SetBool("IsAlarmedAnim", true);
         animator.SetBool("IsHealAnim", false);
         if (HP <= 0)
@@ -176,7 +192,9 @@ public class RobotAI : MonoBehaviour, damageInterface
     IEnumerator attack()
     {
         isAttacking = true;
-
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+       
+        
         //to save the enemys move speed
         originalSpeed = agent.speed;
 
@@ -191,13 +209,13 @@ public class RobotAI : MonoBehaviour, damageInterface
 
         if (agent.remainingDistance > 30)
         {
-            Instantiate(longbullet, attackPos.position, transform.rotation);
+            Instantiate(longbullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             animator.SetBool("IsShootAnim", false);
             animator.SetBool("IsLoadedAnim", false);
         }
         else
         {
-            Instantiate(bullet, attackPos.position, transform.rotation);
+            Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             animator.SetBool("IsShootAnim", false);
             animator.SetBool("IsLoadedAnim", false);
         }

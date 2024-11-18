@@ -72,6 +72,7 @@ public class playerController : MonoBehaviour, damageInterface
         movement();
         sprint();
         selectGun();
+        reload();
     }
 
     void movement()
@@ -220,6 +221,12 @@ public class playerController : MonoBehaviour, damageInterface
     public void UpdateUI() // -XB
     {
         GameManager.mInstance.mPlayerHealth.fillAmount = (float)HP / MaxHP;
+        if(gunInventory.Count > 0)
+        {
+            GameManager.mInstance.mAmmoCurrent.text = ammoCurrent.ToString();
+            GameManager.mInstance.mAmmoReserve.text = ammoReserve.ToString();
+        }
+
     }
 
     IEnumerator FlashDamage() // -XB
@@ -247,14 +254,18 @@ public class playerController : MonoBehaviour, damageInterface
     }
 
     void changeGun()
-    {   
+    {
         shootRate = gunInventory[selectedGun].shootRate;
         projectile = gunInventory[selectedGun].projectile;
         projectileAudio = gunInventory[selectedGun].gunSound;
+        ammoCurrent = gunInventory[(selectedGun)].ammoCurrent;
+        ammoReserve = gunInventory[selectedGun].ammoReserve;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader
+         UpdateUI();
     }
+
 
     void selectGun()
     {
@@ -269,4 +280,44 @@ public class playerController : MonoBehaviour, damageInterface
             changeGun();
         }
     }
+
+    void reload()
+    {
+        int ammoDifference;
+        if (Input.GetButtonDown("Reload") && gunInventory.Count > 0)
+        {
+            if (ammoReserve >= ammoMax)
+            {
+                ammoDifference = ammoMax - ammoCurrent;
+                gunInventory[selectedGun].ammoCurrent = ammoMax;
+                gunInventory[selectedGun].ammoReserve -= ammoDifference;
+
+            }
+            else if (ammoReserve <= ammoMax)
+            {
+                gunInventory[selectedGun].ammoCurrent += ammoReserve;
+                gunInventory[selectedGun].ammoReserve = 0;
+            }
+        }
+        if (gunInventory.Count != 0) // Checks if the gun inventory has something in it before assigning values, otherwise theyll be out of range -XB
+        {
+            ammoCurrent = gunInventory[selectedGun].ammoCurrent;
+            ammoReserve = gunInventory[selectedGun].ammoReserve;
+            ammoMax = gunInventory[selectedGun].ammoMax;
+        }
+        
+        UpdateUI();
+    }
+
+    public void ammoPickup()
+    {
+        if(gunInventory.Count > 0)
+        {
+            for (int i = 0; i < gunInventory.Count; i++)
+            {
+                gunInventory[i].ammoReserve += ammoMax;
+            }
+        }
+    }
 }
+

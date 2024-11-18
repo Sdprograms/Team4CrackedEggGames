@@ -9,6 +9,7 @@ TagManager:
   - AboveHead
   - Waist
   - Feet
+  - AI
   layers:
   - Default
   - TransparentFX

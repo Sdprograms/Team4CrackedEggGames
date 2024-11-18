@@ -77,8 +77,8 @@ public class SwarmAI : MonoBehaviour, damageInterface
     IEnumerator attack()
     {
         isAttacking = true;
-        Instantiate(bullet, attackPos.position, transform.rotation);
-
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
         yield return new WaitForSeconds(attackRate);
         isAttacking = false;
     }

@@ -136,13 +136,16 @@ public class SniperAI : MonoBehaviour, damageInterface
     IEnumerator attack()
     {
         isAttacking = true;
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        
+     
         originalSpeed = agent.speed;
         agent.speed = 0;
 
         StartCoroutine(facetargetTimed(attackTime));
         yield return new WaitForSeconds(attackTime);
 
-        Instantiate(bullet, attackPos.position, transform.rotation);
+        Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
         yield return new WaitForSeconds(ReloadTime);
 
         agent.speed = originalSpeed;

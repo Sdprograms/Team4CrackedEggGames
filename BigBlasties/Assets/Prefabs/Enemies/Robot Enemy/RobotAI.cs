@@ -192,7 +192,9 @@ public class RobotAI : MonoBehaviour, damageInterface
     IEnumerator attack()
     {
         isAttacking = true;
-
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+       
+        
         //to save the enemys move speed
         originalSpeed = agent.speed;
 
@@ -207,13 +209,13 @@ public class RobotAI : MonoBehaviour, damageInterface
 
         if (agent.remainingDistance > 30)
         {
-            Instantiate(longbullet, attackPos.position, transform.rotation);
+            Instantiate(longbullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             animator.SetBool("IsShootAnim", false);
             animator.SetBool("IsLoadedAnim", false);
         }
         else
         {
-            Instantiate(bullet, attackPos.position, transform.rotation);
+            Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             animator.SetBool("IsShootAnim", false);
             animator.SetBool("IsLoadedAnim", false);
         }

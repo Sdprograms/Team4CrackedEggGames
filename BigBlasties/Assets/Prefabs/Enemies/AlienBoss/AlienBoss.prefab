@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1036556857}
   m_Layer: 0
   m_Name: AlienBoss
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   bullet: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
   attackRate: 0.1
   turnSpeed: 5
+  viewAngle: 0
 --- !u!1 &8089714066067523696
 GameObject:
   m_ObjectHideFlags: 0

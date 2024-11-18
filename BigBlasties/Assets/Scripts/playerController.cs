@@ -221,6 +221,12 @@ public class playerController : MonoBehaviour, damageInterface
     public void UpdateUI() // -XB
     {
         GameManager.mInstance.mPlayerHealth.fillAmount = (float)HP / MaxHP;
+        if(gunInventory.Count > 0)
+        {
+            GameManager.mInstance.mAmmoCurrent.text = ammoCurrent.ToString();
+            GameManager.mInstance.mAmmoReserve.text = ammoReserve.ToString();
+        }
+
     }
 
     IEnumerator FlashDamage() // -XB
@@ -248,14 +254,18 @@ public class playerController : MonoBehaviour, damageInterface
     }
 
     void changeGun()
-    {   
+    {
         shootRate = gunInventory[selectedGun].shootRate;
         projectile = gunInventory[selectedGun].projectile;
         projectileAudio = gunInventory[selectedGun].gunSound;
+        ammoCurrent = gunInventory[(selectedGun)].ammoCurrent;
+        ammoReserve = gunInventory[selectedGun].ammoReserve;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader
+         UpdateUI();
     }
+
 
     void selectGun()
     {
@@ -293,6 +303,7 @@ public class playerController : MonoBehaviour, damageInterface
         ammoCurrent = gunInventory[selectedGun].ammoCurrent;
         ammoReserve = gunInventory[selectedGun].ammoReserve;
         ammoMax = gunInventory[selectedGun ].ammoMax;
+        UpdateUI();
     }
 
     public void ammoPickup()

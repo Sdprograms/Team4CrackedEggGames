@@ -294,5 +294,16 @@ public class playerController : MonoBehaviour, damageInterface
         ammoReserve = gunInventory[selectedGun].ammoReserve;
         ammoMax = gunInventory[selectedGun ].ammoMax;
     }
+
+    public void ammoPickup()
+    {
+        if(gunInventory.Count > 0)
+        {
+            for (int i = 0; i < gunInventory.Count; i++)
+            {
+                gunInventory[i].ammoReserve += ammoMax;
+            }
+        }
+    }
 }
 

@@ -16,7 +16,7 @@ public class pickUp : MonoBehaviour
         }
         else if (type == pickupType.Ammo) //if gun
         {
-            gun.ammoReserve += gun.ammoMax;
+            
         }
     }
 
@@ -24,8 +24,17 @@ public class pickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.mInstance.mPlayerController.getGunStats(gun);
-            Destroy(gameObject);
+            if (type == pickupType.gun)
+            {
+                GameManager.mInstance.mPlayerController.getGunStats(gun);
+                Destroy(gameObject);
+            }
+            else if (type == pickupType.Ammo)
+            {
+
+                GameManager.mInstance.mPlayerController.ammoPickup();
+                Destroy(gameObject);
+            }
         }
     }
 }

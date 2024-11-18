@@ -72,6 +72,7 @@ public class playerController : MonoBehaviour, damageInterface
         movement();
         sprint();
         selectGun();
+        reload();
     }
 
     void movement()
@@ -269,4 +270,29 @@ public class playerController : MonoBehaviour, damageInterface
             changeGun();
         }
     }
+
+    void reload()
+    {
+        int ammoDifference;
+        if (Input.GetButtonDown("Reload") && gunInventory.Count > 0)
+        {
+            if (ammoReserve >= ammoMax)
+            {
+                ammoDifference = ammoMax - ammoCurrent;
+                gunInventory[selectedGun].ammoCurrent = ammoMax;
+                gunInventory[selectedGun].ammoReserve -= ammoDifference;
+
+            }
+            else if (ammoReserve <= ammoMax)
+            {
+                gunInventory[selectedGun].ammoCurrent += ammoReserve;
+                gunInventory[selectedGun].ammoReserve = 0;
+            }
+        }
+
+        ammoCurrent = gunInventory[selectedGun].ammoCurrent;
+        ammoReserve = gunInventory[selectedGun].ammoReserve;
+        ammoMax = gunInventory[selectedGun ].ammoMax;
+    }
 }
+

@@ -64,6 +64,7 @@ public class playerController : MonoBehaviour, damageInterface
         weaponAudioSource = GetComponent<AudioSource>();
 
         mPlayerInstance = this; // -XB
+        Respawn();
     }
 
     // Update is called once per frame
@@ -318,6 +319,18 @@ public class playerController : MonoBehaviour, damageInterface
                 gunInventory[i].ammoReserve += ammoMax;
             }
         }
+    }
+
+    public void Respawn()
+    {
+        characterController.enabled = false;//disables input from the player
+
+        transform.position = GameManager.mInstance.mPlayerSpawnPos.transform.position;//sets the player to the spawn positions location,
+                                                                                      //this could also be used to move between levels with tweaks and a different spawner per level
+        characterController.enabled = true;
+
+        HP = MaxHP;
+        UpdateUI();
     }
 }
 

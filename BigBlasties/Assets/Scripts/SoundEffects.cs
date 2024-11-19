@@ -65,7 +65,10 @@ public class SoundEffects : MonoBehaviour
             StartCoroutine(playerController.mPlayerInstance.shoot());
             //StartCoroutine(shoot()); //shoot
         }
-        stepSource.Stop();
+        if (stepSource.isPlaying)
+        {
+            stepSource.Stop();
+        }
     }
 
     public void LaserSwap()

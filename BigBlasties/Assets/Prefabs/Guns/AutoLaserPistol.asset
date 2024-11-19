@@ -16,6 +16,6 @@ MonoBehaviour:
   projectile: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
   gunSound: {fileID: 8300000, guid: 5ff5bd936a30a904da907f35c8dd382e, type: 3}
   shootRate: 0.1
-  ammoCurrent: 93
+  ammoCurrent: 77
   ammoMax: 100
-  ammoReserve: 100
+  ammoReserve: 750

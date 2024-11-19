@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour, damageInterface
 {
     [SerializeField] LayerMask maskToIgnore;
-    [SerializeField] CharacterController characterController;
+    [SerializeField] public CharacterController characterController;
 
     [SerializeField] int HP;
     [SerializeField] int MaxHP;

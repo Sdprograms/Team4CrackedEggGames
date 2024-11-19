@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mClimbed: 0
+  mAboveHead: {fileID: 0}
   mClimbJumpHeight: 22
   mFeetBoostLength: 15
 --- !u!33 &423332157954903387

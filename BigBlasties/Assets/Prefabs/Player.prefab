@@ -56,8 +56,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -711,7 +711,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.75
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7350298171149877922, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e0bdaa1e6a558a24da3df4452fe1dc25, type: 3}
 --- !u!4 &6047345081512860706 stripped
 Transform:

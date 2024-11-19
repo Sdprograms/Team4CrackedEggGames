@@ -11,6 +11,8 @@ public class SoundEffects : MonoBehaviour
     private void Awake()
     {
         noiseMaker = this;
+        stepSource = GetComponentInChildren<AudioSource>(stepSource);
+        stepSource.clip = footsteps;
     }
     private void Update()
     {
@@ -51,7 +53,6 @@ public class SoundEffects : MonoBehaviour
             //StartCoroutine(shoot()); //shoot
         }
         //allows footsteps to play while a weapon is in use
-        stepSource.clip = footsteps;
         if (!stepSource.isPlaying)
         {
             stepSource.Play();

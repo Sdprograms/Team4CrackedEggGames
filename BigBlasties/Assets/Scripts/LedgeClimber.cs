@@ -9,6 +9,7 @@ public class LedgeClimber : MonoBehaviour
 
     public bool mClimbed;
 
+    [SerializeField] GameObject mAboveHead;
     [SerializeField] float mClimbJumpHeight;
     [SerializeField] float mFeetBoostLength;
 
@@ -16,16 +17,17 @@ public class LedgeClimber : MonoBehaviour
     {
         mClimbInst = this;
     }
+    private void Update()
+    {
+        if (playerController.mPlayerInstance.jumpCount == 0 || playerController.mPlayerInstance.characterController.isGrounded)
+        {
+            mClimbed = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
         float originalHeadJump = mClimbJumpHeight;
-
-        if (playerController.mPlayerInstance.playerVel.y <= 0)
-        {
-            //if you arent jumping, then the values are increased as normally it accounts for your jump velocity as well
-            //mClimbJumpHeight *= 2.5f;
-        }
 
         if (other.CompareTag("AboveHead") && mClimbed == false)
         {
@@ -34,17 +36,14 @@ public class LedgeClimber : MonoBehaviour
             playerController.mPlayerInstance.playerVel.y += Mathf.Lerp(0, mClimbJumpHeight, 0.5f);
             mClimbed = true;
 
+            mAboveHead = other.gameObject;
+
         }
 
         if (other.CompareTag("Feet") && mClimbed == true)
         {
             //once the feet touch the ledge, then the player will move forward without input from the player(you)
-            playerController.mPlayerInstance.playerVel = Camera.main.transform.position * mFeetBoostLength * Time.deltaTime;
-            mClimbed = false;
-        }
-
-        if (playerController.mPlayerInstance.jumpCount == 0)
-        {
+            playerController.mPlayerInstance.playerVel = transform.forward * mFeetBoostLength * Time.deltaTime;
             mClimbed = false;
         }
 

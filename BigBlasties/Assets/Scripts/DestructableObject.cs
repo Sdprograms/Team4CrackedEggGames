@@ -6,6 +6,7 @@ public class DestructableObject : MonoBehaviour, damageInterface
 {
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
+    [SerializeField] ParticleSystem deathEffect;
  
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class DestructableObject : MonoBehaviour, damageInterface
         if (HP <= 0 )
         {
             //Instantiate death effect.
+            Instantiate(deathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

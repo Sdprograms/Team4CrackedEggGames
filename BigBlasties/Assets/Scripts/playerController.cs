@@ -332,5 +332,20 @@ public class playerController : MonoBehaviour, damageInterface
         HP = MaxHP;
         UpdateUI();
     }
+
+    public void restoreHealth(int healthRestored)
+    {
+        if (HP < MaxHP)
+        {
+            HP += healthRestored;
+
+            if (HP > MaxHP)
+            {
+                HP = MaxHP;
+            }
+
+            UpdateUI();
+        }
+    }
 }
 

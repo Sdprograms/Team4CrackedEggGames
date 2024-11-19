@@ -7,6 +7,7 @@ public class pickUp : MonoBehaviour
    enum pickupType {gun, HP, Ammo };
     [SerializeField] pickupType type;
     [SerializeField] gunStats gun;//guns
+    [SerializeField] int healthRestored;
 
     private void Start()
     {
@@ -33,6 +34,11 @@ public class pickUp : MonoBehaviour
             {
 
                 GameManager.mInstance.mPlayerController.ammoPickup();
+                Destroy(gameObject);
+            }
+            else if (type == pickupType.HP)
+            {
+                GameManager.mInstance.mPlayerController.restoreHealth(healthRestored);
                 Destroy(gameObject);
             }
         }

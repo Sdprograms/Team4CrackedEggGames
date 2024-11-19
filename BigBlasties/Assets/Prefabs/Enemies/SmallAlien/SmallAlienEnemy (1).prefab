@@ -125,6 +125,7 @@ MonoBehaviour:
   bullet: {fileID: 964857367902417845, guid: 4232508beb9755041992cc392d92b4dc, type: 3}
   attackRate: 2
   turnSpeed: 8
+  deathEffect: {fileID: 3958902633591904931, guid: 552ea7dcf7ea4ba48a75413b9fdea52a, type: 3}
 --- !u!114 &-5358903029576077007
 MonoBehaviour:
   m_ObjectHideFlags: 0

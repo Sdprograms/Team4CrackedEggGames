@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8413637858024367621}
   - component: {fileID: 2870070869880650733}
   - component: {fileID: 1925510231228392966}
+  - component: {fileID: 4832187020043469476}
   m_Layer: 0
   m_Name: WallSciFiDoor (3)
   m_TagString: Untagged
@@ -168,6 +169,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4832187020043469476
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949098265286408167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7026993160043399560, guid: 9a216b509ac7cae43aec779d6529956d, type: 3}
 --- !u!1 &2465102303366196691
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +194,7 @@ GameObject:
   - component: {fileID: 1304370744500025701}
   - component: {fileID: 938914906019777383}
   - component: {fileID: 2705240148638608016}
+  - component: {fileID: 4356978260379254336}
   m_Layer: 0
   m_Name: PillarBrick (6)
   m_TagString: Untagged
@@ -251,6 +267,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4356978260379254336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465102303366196691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6282138, y: 5.2000003, z: 0.32804167}
+  m_Center: {x: -0.00000016391279, y: 2.5879552, z: 0.062399518}
 --- !u!1 &2762152007034052158
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +374,7 @@ GameObject:
   - component: {fileID: 2950645040457846179}
   - component: {fileID: 2970778579334775836}
   - component: {fileID: 8771527860657786780}
+  - component: {fileID: 1074275533370927129}
   m_Layer: 0
   m_Name: PillarBrick (7)
   m_TagString: Untagged
@@ -417,6 +447,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1074275533370927129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4259428317889202315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62821376, y: 5.2000003, z: 0.32804167}
+  m_Center: {x: 0.00000016391276, y: 2.5879552, z: 0.062399518}
 --- !u!1 &6367472282847621362
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +554,7 @@ GameObject:
   - component: {fileID: 2409749505856510471}
   - component: {fileID: 8277135181239100720}
   - component: {fileID: 8308888742880454150}
+  - component: {fileID: 2495105336454158857}
   m_Layer: 0
   m_Name: PillarBrick (9)
   m_TagString: Untagged
@@ -583,6 +627,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2495105336454158857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573818485792365535}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62821376, y: 5.2000003, z: 0.32804167}
+  m_Center: {x: 0.00000022351742, y: 2.5879552, z: 0.06239761}
 --- !u!1 &6801591251262169659
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +651,7 @@ GameObject:
   - component: {fileID: 4096423513191778156}
   - component: {fileID: 4582845591378937658}
   - component: {fileID: 4461500571209100823}
+  - component: {fileID: 941290161704473652}
   m_Layer: 0
   m_Name: PillarBrick (8)
   m_TagString: Untagged
@@ -666,6 +724,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &941290161704473652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801591251262169659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6282138, y: 5.2000003, z: 0.32804167}
+  m_Center: {x: 0.000000461936, y: 2.5879552, z: 0.06239761}
 --- !u!1 &7253590706876215548
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +748,7 @@ GameObject:
   - component: {fileID: 4154652152148540760}
   - component: {fileID: 1571923034730658941}
   - component: {fileID: 602533139598382620}
+  - component: {fileID: 4538642457100931687}
   m_Layer: 0
   m_Name: WallSciFiDoor (2)
   m_TagString: Untagged
@@ -751,6 +823,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4538642457100931687
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253590706876215548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7026993160043399560, guid: 9a216b509ac7cae43aec779d6529956d, type: 3}
 --- !u!1 &8951289900184515333
 GameObject:
   m_ObjectHideFlags: 0

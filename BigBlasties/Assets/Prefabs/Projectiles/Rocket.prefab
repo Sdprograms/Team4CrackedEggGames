@@ -51,7 +51,8 @@ MonoBehaviour:
   dmgType: 2
   rbody: {fileID: 8729552739942617794}
   explosion: {fileID: 6324742498929419067, guid: 46ec70493e78e434fa681989b6da8749, type: 3}
-  damageAmount: 10
+  impactParticle: {fileID: 0}
+  damageAmount: 5
   speed: 50
   destroyTime: 3
 --- !u!33 &961781822884801381
@@ -73,7 +74,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 6.65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &961781822884801383
 TrailRenderer:

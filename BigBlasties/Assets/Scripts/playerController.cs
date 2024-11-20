@@ -316,7 +316,7 @@ public class playerController : MonoBehaviour, damageInterface
         {
             for (int i = 0; i < gunInventory.Count; i++)
             {
-                gunInventory[i].ammoReserve += ammoMax;
+                gunInventory[i].ammoReserve += gunInventory[i].ammoMax;
             }
         }
     }

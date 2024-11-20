@@ -14,6 +14,7 @@ public class pickUp : MonoBehaviour
         if(type == pickupType.gun) //if gun
         {
             gun.ammoCurrent = gun.ammoMax;
+            gun.ammoReserve = gun.ammoMax;
         }
         else if (type == pickupType.Ammo) //if gun
         {

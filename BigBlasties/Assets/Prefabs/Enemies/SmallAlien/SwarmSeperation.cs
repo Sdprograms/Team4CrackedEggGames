@@ -10,14 +10,14 @@ public class SwarmSeperation : MonoBehaviour
 
     void Start()
     {
-        AI = GameObject.FindGameObjectsWithTag("AI");
+        AI = GameObject.FindGameObjectsWithTag("Swarmer");
         SeparateAI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        AI = GameObject.FindGameObjectsWithTag("AI");
+        AI = GameObject.FindGameObjectsWithTag("Swarmer");
         SeparateAI();
     }
 

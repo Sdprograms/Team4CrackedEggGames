@@ -263,6 +263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 895341680}
     m_Modifications:
+    - target: {fileID: 4359755681600358529, guid: a47fb1ddda031164e847ac53156c53fe, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6268242458106207289, guid: a47fb1ddda031164e847ac53156c53fe, type: 3}
       propertyPath: m_Name
       value: Robot Enemy (3)

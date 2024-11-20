@@ -16,6 +16,8 @@ public class SphereAI : MonoBehaviour, damageInterface
     [SerializeField] float attackRate;
     [SerializeField] int turnSpeed;
 
+    [SerializeField] private Animator animator;
+
     bool isAttacking;
     //bool playerInRange;
 
@@ -43,6 +45,11 @@ public class SphereAI : MonoBehaviour, damageInterface
     {
         if (detector.playerInRange)
         {
+            if (animator.GetBool("Roll") == false)
+            {
+                animator.Play("anim_close");
+            }
+            animator.SetBool("Roll", true);
             //add if fleeing is implemented, and if healing is implemented
             //isFleeing = false;
             //isHealing = false;

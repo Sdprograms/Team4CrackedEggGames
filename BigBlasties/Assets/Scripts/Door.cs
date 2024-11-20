@@ -6,8 +6,6 @@ public class Door : MonoBehaviour, IInteractable
 {
     public float interDistance;
 
-    public GameObject InterText;
-
     public string doorOpen;
     public string doorClose;
 
@@ -27,7 +25,6 @@ public class Door : MonoBehaviour, IInteractable
             {
                 GameObject Parent = hit.collider.transform.root.gameObject;
                 Animator doorAnim = Parent.GetComponent<Animator>();
-                InterText.SetActive(true);
 
                 if(Input.GetKeyDown(KeyCode.E)) 
                 {
@@ -42,15 +39,9 @@ public class Door : MonoBehaviour, IInteractable
                         doorAnim.SetTrigger("open");
                     }
                 }
-                else 
-                {
-                    InterText.SetActive(false);
-                }
+            
             }
-            else
-            {
-                InterText.SetActive(false);
-            }
+          
         }
     }
 

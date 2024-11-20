@@ -285,6 +285,8 @@ public class playerController : MonoBehaviour, damageInterface
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
         //same thing but for material.
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        reloadAudioSource.PlayOneShot(reloadAudioClip);
     }
 
     void changeGun()
@@ -353,6 +355,8 @@ public class playerController : MonoBehaviour, damageInterface
                 gunInventory[i].ammoReserve += gunInventory[i].ammoMax;
             }
         }
+
+        reloadAudioSource.PlayOneShot(reloadAudioClip);
     }
 
     public void Respawn()

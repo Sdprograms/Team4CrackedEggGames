@@ -59,8 +59,10 @@ public class cameraController : MonoBehaviour
  
     public void FireOnCursor() //Makes the weapons fire on the cursors position, giving a delay in aim on side-to-side movement.
     {
+        Vector3 rayStart = Camera.main.transform.position + Camera.main.transform.forward * 15f; // Offset the raycast so it starts a infront of player
+
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, mShootDistance, ~IgnoreMask))
+        if (Physics.Raycast(rayStart, Camera.main.transform.forward, out hit, mShootDistance, ~IgnoreMask))
         {
             //positionAim.transform.position = hit.point;
             //Vector3 aim = new Vector3(hit.point.x, hit.point.y, hit.point.z);

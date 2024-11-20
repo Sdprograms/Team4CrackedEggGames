@@ -18,6 +18,8 @@ public class SniperAI : MonoBehaviour, damageInterface
     [SerializeField] float attackRate;
     [SerializeField] int turnSpeed;
 
+    [SerializeField] private Animator animator;
+
 
     //the time the enemy will stand still while attacking.
     [SerializeField] float attackTime;
@@ -41,8 +43,6 @@ public class SniperAI : MonoBehaviour, damageInterface
     public Transform leftGunBone;
     public Arsenal[] arsenal;
 
-    private Animator animator;
-
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
 
@@ -61,6 +61,15 @@ public class SniperAI : MonoBehaviour, damageInterface
 
     void Update()
     {
+        if (agent.velocity.magnitude > 0.1f)
+        {
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
+        }
+
         if (detector.playerInRange)
         {
             distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
@@ -121,7 +130,10 @@ public class SniperAI : MonoBehaviour, damageInterface
         detector.playerInRange = true;
         if (HP <= 0)
         {
-            Destroy(gameObject);
+            StopAllCoroutines();
+            agent.speed = 0;
+            animator.Play("Death");
+            Destroy(gameObject, 2f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
         }
     }
@@ -141,12 +153,18 @@ public class SniperAI : MonoBehaviour, damageInterface
      
         originalSpeed = agent.speed;
         agent.speed = 0;
+        animator.SetBool("aiming", true);
 
         StartCoroutine(facetargetTimed(attackTime));
         yield return new WaitForSeconds(attackTime);
 
+        animator.SetBool("shooting", true);
+
         Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
         yield return new WaitForSeconds(ReloadTime);
+
+        animator.SetBool("aiming", false);
+        animator.SetBool("shooting", false);
 
         agent.speed = originalSpeed;
         yield return new WaitForSeconds(attackRate);

@@ -1665,13 +1665,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 10
-  aggroRange: 30
   sightPos: {fileID: 1193363546403182369}
   attackPos: {fileID: 1193363546403182369}
   agent: {fileID: 1193363546747985606}
   bullet: {fileID: 7265977287861105153, guid: afd61a93f12085746b7563884059ad4c, type: 3}
   attackRate: 0
   turnSpeed: 10
+  animator: {fileID: 1287194444282229879}
 --- !u!1 &1191980311899770567
 GameObject:
   m_ObjectHideFlags: 0

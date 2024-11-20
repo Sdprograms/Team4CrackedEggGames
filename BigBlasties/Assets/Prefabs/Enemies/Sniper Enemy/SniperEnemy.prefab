@@ -149,6 +149,7 @@ MonoBehaviour:
   bullet: {fileID: 1847776829834559009, guid: 7aaa849ef519edc4f89b7424313128e4, type: 3}
   attackRate: 1
   turnSpeed: 15
+  animator: {fileID: 2862442595410174579}
   attackTime: 1
   ReloadTime: 1
   distance: 0

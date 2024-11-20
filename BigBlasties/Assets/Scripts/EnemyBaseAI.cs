@@ -65,7 +65,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
             {
                 facetarget();
             }
-            if (!isAttacking && canSeePlayer())
+            if (!isAttacking) // add &&  canSeePlayer() if you want to implement the canSeePlayer Bool condition
             {
                 StartCoroutine(attack());
             }
@@ -108,8 +108,12 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
         }
     }
 
+    //this helps prevent friendly fire bwtween enemies (some will still shoot each other, they will start aiming when there is line of sight, but if the palyer moves
+    // during the attack time, they adjust their aim and they may shoot a friendly
     bool canSeePlayer()
     {
+        /*for flying enemies
+        sightPos.position = new Vector3(sightPos.position.x, flyingHeight, sightPos.position.z);*/
         playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
         float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
         //Debug.DrawRay(sightPos.position, playerPos);

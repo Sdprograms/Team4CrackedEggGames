@@ -24,6 +24,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] GameObject projectile;
     [SerializeField] AudioClip projectileAudio;
     [SerializeField] AudioClip mStepSound; // -XB
+    [SerializeField] AudioClip healthRestoreClip;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] float shootDistance;
@@ -375,6 +376,7 @@ public class playerController : MonoBehaviour, damageInterface
     {
         if (HP < MaxHP)
         {
+            reloadAudioSource.PlayOneShot(healthRestoreClip);
             HP += healthRestored;
 
             if (HP > MaxHP)

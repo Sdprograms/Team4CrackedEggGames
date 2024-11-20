@@ -6,11 +6,15 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] Renderer mModel;
     [SerializeField] ParticleSystem mVFX;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip checkPointAudioClip;
 
     Color mColorOrig;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = checkPointAudioClip;
         mColorOrig = mModel.material.color;
         mVFX.Pause();
     }
@@ -21,6 +25,7 @@ public class Checkpoint : MonoBehaviour
         {
             GameManager.mInstance.mPlayerSpawnPos.transform.position = transform.position;
             StartCoroutine(SpawnChecked());
+            audioSource.PlayOneShot(checkPointAudioClip);
         }
     }
     

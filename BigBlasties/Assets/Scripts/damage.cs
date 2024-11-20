@@ -79,5 +79,9 @@ public class damage : MonoBehaviour
             //destroy object.
             Destroy(gameObject);
         }
+        else if (dmgType == damageType.stationary)
+        {
+
+        }
     }
 }

@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17a35cf42308c145acc5a7465cdd14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interDistance: 0
+  interDistance: 10
   InterText: {fileID: 0}
   doorOpen: 
   doorClose: 
@@ -318,6 +318,7 @@ MonoBehaviour:
   shootPos: {fileID: 3157949365729828066}
   gunInventory: []
   gunModel: {fileID: 2947558220965665391}
+  reloadAudioClip: {fileID: 8300000, guid: f84a2bf3a6b43994a970dab1c4bc6fe8, type: 3}
   projectile: {fileID: 0}
   projectileAudio: {fileID: 0}
   mStepSound: {fileID: 8300000, guid: ab950da68bca40f4eb2b662f7ead695c, type: 3}
@@ -336,6 +337,7 @@ MonoBehaviour:
   jumpSpeed: 10
   gravity: 20
   weaponAudioSource: {fileID: 0}
+  reloadAudioSource: {fileID: 0}
   mStepsSource: {fileID: 25283915}
   moveDirection: {x: 0, y: 0, z: 0}
   playerVel: {x: 0, y: 0, z: 0}

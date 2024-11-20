@@ -20,6 +20,7 @@ public class playerController : MonoBehaviour, damageInterface
     //GUNS 
     [SerializeField] List<gunStats> gunInventory = new List<gunStats>();
     [SerializeField] GameObject gunModel;
+    [SerializeField] AudioClip reloadAudioClip;
     [SerializeField] GameObject projectile;
     [SerializeField] AudioClip projectileAudio;
     [SerializeField] AudioClip mStepSound; // -XB
@@ -44,6 +45,7 @@ public class playerController : MonoBehaviour, damageInterface
     public static playerController mPlayerInstance; // -XB
 
     public AudioSource weaponAudioSource;
+    public AudioSource reloadAudioSource;
     public AudioSource mStepsSource; // -XB
 
     public Vector3 moveDirection; // public by XB
@@ -70,9 +72,8 @@ public class playerController : MonoBehaviour, damageInterface
         HP = MaxHP;
 
         weaponAudioSource = GetComponent<AudioSource>();
-
-        
-       
+        reloadAudioSource = GetComponent<AudioSource>();
+        reloadAudioSource.clip = reloadAudioClip;
 
         mPlayerInstance = this; // -XB
         Respawn();
@@ -319,6 +320,7 @@ public class playerController : MonoBehaviour, damageInterface
         int ammoDifference;
         if (Input.GetButtonDown("Reload") && gunInventory.Count > 0)
         {
+            reloadAudioSource.PlayOneShot(reloadAudioClip);
             if (ammoReserve >= ammoMax)
             {
                 ammoDifference = ammoMax - ammoCurrent;

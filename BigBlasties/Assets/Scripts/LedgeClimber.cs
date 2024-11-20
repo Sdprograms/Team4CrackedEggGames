@@ -9,7 +9,7 @@ public class LedgeClimber : MonoBehaviour
 
     public bool mClimbed;
 
-    [SerializeField] GameObject mAboveHead;
+   // [SerializeField] GameObject mAboveHead;
     [SerializeField] float mClimbJumpHeight;
     [SerializeField] float mFeetBoostLength;
 
@@ -17,36 +17,42 @@ public class LedgeClimber : MonoBehaviour
     {
         mClimbInst = this;
     }
-    private void Update()
-    {
-        if (playerController.mPlayerInstance.jumpCount == 0 || playerController.mPlayerInstance.characterController.isGrounded)
-        {
-            mClimbed = false;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        float originalHeadJump = mClimbJumpHeight;
 
-        if (other.CompareTag("AboveHead") && mClimbed == false)
+        if (playerController.mPlayerInstance.playerVel.y < -.05f)
         {
+            playerController.mPlayerInstance.playerVel.y = 0;
+        }
 
-            //when the head detector encounters a ledge, it will raise the player, almost like jumping.
-            playerController.mPlayerInstance.playerVel.y += Mathf.Lerp(0, mClimbJumpHeight, 0.5f);
-            mClimbed = true;
+        if (other.CompareTag("AboveHead"))
+        {
+            if (mClimbed == true)
+            {
+                mClimbed = false;
+                Debug.Log("mClimbed returned to false");
+            }
 
-            mAboveHead = other.gameObject;
-
+            if (mClimbed == false)
+            {
+                Debug.Log("Has touched wall");
+                //when the head detector encounters a ledge, it will raise the player, almost like jumping.
+                playerController.mPlayerInstance.playerVel.y += Mathf.Lerp(0, mClimbJumpHeight, 0.5f);
+                Debug.Log("Has climbed");
+                mClimbed = true;
+                Debug.Log("mClimbed is true");
+            }
         }
 
         if (other.CompareTag("Feet") && mClimbed == true)
         {
+            Debug.Log("Reached Feet");
             //once the feet touch the ledge, then the player will move forward without input from the player(you)
-            playerController.mPlayerInstance.playerVel = transform.forward * mFeetBoostLength * Time.deltaTime;
+            playerController.mPlayerInstance.playerVel += Camera.main.transform.forward * mFeetBoostLength * Time.deltaTime;
+            playerController.mPlayerInstance.playerVel.y = 0;
             mClimbed = false;
         }
 
-        mClimbJumpHeight = originalHeadJump;
+
     }
 }

@@ -112,8 +112,6 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     // during the attack time, they adjust their aim and they may shoot a friendly
     bool canSeePlayer()
     {
-        /*for flying enemies
-        sightPos.position = new Vector3(sightPos.position.x, flyingHeight, sightPos.position.z);*/
         playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
         float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
         //Debug.DrawRay(sightPos.position, playerPos);

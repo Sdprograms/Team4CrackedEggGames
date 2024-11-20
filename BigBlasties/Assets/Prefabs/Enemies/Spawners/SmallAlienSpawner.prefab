@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 7139514292850916526}
   - component: {fileID: 7139514292850916525}
   - component: {fileID: 7139514292850916520}
+  - component: {fileID: 962039789}
+  - component: {fileID: 962039788}
   m_Layer: 0
   m_Name: SmallAlienSpawner
   m_TagString: Untagged
@@ -193,7 +195,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7139514292850916524}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72b2adec6a123e44388b8a6b6c1df4dc, type: 3}
   m_Name: 
@@ -218,6 +220,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.42, y: 0.89, z: 0.89}
   m_Center: {x: 0, y: 0, z: 0.37}
+--- !u!135 &962039789
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139514292850916524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 30.25
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &962039788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139514292850916524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9bb8d18ad9cfb4388e5dd9abb7479a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToToggleOn: {fileID: 7139514292850916525}
 --- !u!1 &7388363425940864839
 GameObject:
   m_ObjectHideFlags: 0

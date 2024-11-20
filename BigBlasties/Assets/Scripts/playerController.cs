@@ -22,6 +22,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject projectile;
     [SerializeField] AudioClip projectileAudio;
+    [SerializeField] AudioClip mStepSound; // -XB
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] float shootDistance;
@@ -43,6 +44,7 @@ public class playerController : MonoBehaviour, damageInterface
     public static playerController mPlayerInstance; // -XB
 
     public AudioSource weaponAudioSource;
+    public AudioSource mStepsSource; // -XB
 
     public Vector3 moveDirection; // public by XB
     public Vector3 playerVel; // public by XB
@@ -54,6 +56,12 @@ public class playerController : MonoBehaviour, damageInterface
 
     [SerializeField] string weaponType;
 
+    private void Awake()
+    {
+        mStepsSource.clip = mStepSound;
+        Debug.Log("Clip set");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +70,9 @@ public class playerController : MonoBehaviour, damageInterface
         HP = MaxHP;
 
         weaponAudioSource = GetComponent<AudioSource>();
+
+        
+       
 
         mPlayerInstance = this; // -XB
         Respawn();
@@ -88,6 +99,23 @@ public class playerController : MonoBehaviour, damageInterface
             + transform.right * Input.GetAxis("Horizontal");
 
         characterController.Move(moveDirection * speed * Time.deltaTime);
+
+        if (jumpCount == 0 && moveDirection != Vector3.zero)
+        {
+            if (!mStepsSource.isPlaying)
+            {
+                //Debug.Log("Plays Steps");
+                mStepsSource.Play();
+            }
+        }
+        else
+        {
+            if (mStepsSource.isPlaying) 
+            {
+                //Debug.Log("Stops Steps");
+                mStepsSource.Stop();
+            }
+        }
 
         jump();
 
@@ -227,7 +255,11 @@ public class playerController : MonoBehaviour, damageInterface
             GameManager.mInstance.mAmmoCurrent.text = ammoCurrent.ToString();
             GameManager.mInstance.mAmmoReserve.text = ammoReserve.ToString();
         }
-
+        if(mStepsSource.clip == null)
+        {
+            mStepsSource.clip = mStepSound;
+            Debug.Log("StepSound was null...");
+        }
     }
 
     IEnumerator FlashDamage() // -XB

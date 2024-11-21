@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
     //turns off the play hud, stops play and open the lose menu upon death
     public void GameOver()
     {
+        mPaused = true;
         mMenuActive.SetActive(false);
         FreezeGame();
         SetActiveMenu(mMenuLose);
@@ -152,6 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        mPaused = true;
         mMenuActive.SetActive(false);
         FreezeGame();
         SetActiveMenu(mMenuWin);

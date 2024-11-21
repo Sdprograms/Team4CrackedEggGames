@@ -212,6 +212,7 @@ MonoBehaviour:
   characterController: {fileID: 8585038807787264937}
   HP: 10
   MaxHP: 100
+  numKeys: 0
   shootPos: {fileID: 3157949365729828066}
   gunInventory: []
   gunModel: {fileID: 2947558220965665391}
@@ -220,6 +221,7 @@ MonoBehaviour:
   projectileAudio: {fileID: 0}
   mStepSound: {fileID: 8300000, guid: ab950da68bca40f4eb2b662f7ead695c, type: 3}
   healthRestoreClip: {fileID: 8300000, guid: 5fe71794958af0c4e8238336c5fd0994, type: 3}
+  keyGatheredClip: {fileID: 8300000, guid: 6b16d41317ffb7f4f963895af69513d8, type: 3}
   shootDamage: 2
   shootRate: 0.1
   shootDistance: 1500

@@ -5,8 +5,14 @@ using UnityEngine;
 public class SoundEffects : MonoBehaviour
 {
     public static SoundEffects noiseMaker;
-    public AudioSource weaponSource, /*stepSource,*/ swapWeaponSouce;
+    public AudioSource weaponSource, /*stepSource,*/ swapWeaponSouce, levelSoundSource;
     public AudioClip laser, grenadeShot, explosion, /*footsteps,*/ laserSwap, grenadeLauncherSwap;
+
+    [Header("Level Music")]
+    public AudioClip ambientMusic;
+
+    [SerializeField] float UnPausedVol;
+    [SerializeField] float PausedVol;
 
     private void Awake()
     {
@@ -82,5 +88,25 @@ public class SoundEffects : MonoBehaviour
     {
         swapWeaponSouce.clip = grenadeLauncherSwap;
         swapWeaponSouce.Play();
+    }
+    
+    public void LevelMusic(AudioClip clip)
+    {
+        if (GameManager.mInstance.mPaused == true)
+        {
+            levelSoundSource.volume = PausedVol;
+        }
+        else
+        {
+            levelSoundSource.volume = UnPausedVol;
+        }
+
+        levelSoundSource.clip = clip;
+        if (levelSoundSource.clip == ambientMusic && !levelSoundSource.isPlaying) //plays ambience when the clip is set to ambient and the player isnt playing
+        {
+            levelSoundSource.Play();
+        }
+
+    
     }
 }

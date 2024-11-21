@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
                 StateUnpaused();
             }
         }
+
+        SoundEffects.noiseMaker.LevelMusic(SoundEffects.noiseMaker.ambientMusic); // plays ambience
     }
 
     public void FreezeGame()

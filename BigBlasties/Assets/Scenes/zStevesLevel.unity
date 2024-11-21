@@ -12819,7 +12819,7 @@ MonoBehaviour:
   attackRate: 0.1
   turnSpeed: 5
   viewAngle: 0
-  flyingHeight: 0
+  flyingHeight: 10
 --- !u!4 &896955252 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7139514292850916527, guid: 567a4e21ab41c7f4ca9d35fba1cc32a7, type: 3}

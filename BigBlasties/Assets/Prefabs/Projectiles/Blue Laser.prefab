@@ -54,7 +54,7 @@ MonoBehaviour:
   impactParticle: {fileID: 0}
   damageAmount: 10
   speed: 50
-  destroyTime: 5
+  destroyTime: 15
 --- !u!33 &1847776829834559020
 MeshFilter:
   m_ObjectHideFlags: 0

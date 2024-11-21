@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, damageInterface
@@ -55,6 +56,7 @@ public class playerController : MonoBehaviour, damageInterface
 
     bool isSprinting;
     public bool isShooting; //public by -XB
+    //bool mGunSwapped; // used along with the dampener for weapon swap -XB
 
     int speedOriginal;
 
@@ -308,7 +310,6 @@ public class playerController : MonoBehaviour, damageInterface
          UpdateUI();
     }
 
-
     void selectGun()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunInventory.Count - 1)
@@ -322,6 +323,39 @@ public class playerController : MonoBehaviour, damageInterface
             changeGun();
         }
     }
+
+
+    //this is primarily to fix a controller issue, it affects mouse and keyboard the same way as controller, making them indistinguishable from each other
+    //void selectGun()
+    //{
+    //    if (!mGunSwapped)
+    //    {
+    //        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && selectedGun < gunInventory.Count - 1)
+    //        {
+    //            selectedGun++;
+    //            changeGun();
+    //            mGunSwapped = true;
+    //        }
+    //        else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0 && selectedGun > 0)
+    //        {
+    //            selectedGun--;
+    //            changeGun();
+    //            mGunSwapped = true;
+
+    //        }
+    //    }
+    //    else  if (mGunSwapped) { StartCoroutine(damperSelectGun()); }
+
+    //}
+
+    //IEnumerator damperSelectGun()
+    //{
+    //    if (mGunSwapped)
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        mGunSwapped = false;
+    //    }
+    //}
 
     void reload()
     {

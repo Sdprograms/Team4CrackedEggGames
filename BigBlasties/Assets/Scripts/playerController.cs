@@ -129,6 +129,10 @@ public class playerController : MonoBehaviour, damageInterface
         {
             StartCoroutine(shoot()); //shoot
         }
+        else if (Input.GetAxis("Fire1") > 0.5f && !isShooting)
+        {
+            StartCoroutine(shoot()); //shoot
+        }
 
     }
 

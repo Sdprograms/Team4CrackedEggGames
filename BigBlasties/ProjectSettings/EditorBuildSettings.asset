@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DustinsScene.unity
     guid: fe8be156bee31ce40ad939a930f0d18e
   - enabled: 1

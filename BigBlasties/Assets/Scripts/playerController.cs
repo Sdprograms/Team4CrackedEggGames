@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] AudioClip projectileAudio;
     [SerializeField] AudioClip mStepSound; // -XB
     [SerializeField] AudioClip healthRestoreClip;
+    [SerializeField] AudioClip keyGatheredClip;
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] float shootDistance;
@@ -438,6 +439,7 @@ public class playerController : MonoBehaviour, damageInterface
     public void AddKey()
     {
         numKeys++;
+        reloadAudioSource.PlayOneShot(keyGatheredClip);
     }
     public void RemoveKey() { numKeys--; }
 }

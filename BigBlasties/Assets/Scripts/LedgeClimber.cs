@@ -20,7 +20,7 @@ public class LedgeClimber : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (playerController.mPlayerInstance.playerVel.y < -.05f)
+        if (other.CompareTag("AboveHead") && playerController.mPlayerInstance.playerVel.y < -.05f)
         {
             playerController.mPlayerInstance.playerVel.y = 0;
         }

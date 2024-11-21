@@ -33,6 +33,7 @@ public class Interactable : MonoBehaviour
                         transform.Rotate(Vector3.up * 90);
                         isOpen = true;
                         GameManager.mInstance.mPlayerController.RemoveKey();
+                        isLocked = false;
                     }
 
                 }

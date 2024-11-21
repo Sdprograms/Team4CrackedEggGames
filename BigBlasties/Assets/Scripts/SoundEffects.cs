@@ -17,7 +17,7 @@ public class SoundEffects : MonoBehaviour
     private void Awake()
     {
         noiseMaker = this;
-        levelSoundSource = GetComponent<AudioSource>();
+        levelSoundSource = GetComponentInChildren<AudioSource>();
         //stepSource = GetComponentInChildren<AudioSource>(stepSource);
         //stepSource.clip = footsteps;
     }

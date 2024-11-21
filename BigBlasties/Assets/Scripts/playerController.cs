@@ -105,7 +105,7 @@ public class playerController : MonoBehaviour, damageInterface
 
         characterController.Move(moveDirection * speed * Time.deltaTime);
 
-        if (jumpCount == 0 && moveDirection != Vector3.zero)
+        if (jumpCount == 0 && moveDirection != Vector3.zero && GameManager.mInstance.mPaused == false)
         {
             if (!mStepsSource.isPlaying)
             {

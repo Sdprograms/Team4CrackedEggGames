@@ -17,19 +17,22 @@ public class projectileSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnTimer += Time.deltaTime;
-
-        if (spawnTimer >= spawnDelay)
+        if (GameManager.mInstance.mPaused == false)
         {
-            Instantiate(projectile, transform.position, transform.rotation);
-            spawnTimer = 0;
-        }
-        //StartCoroutine(spawnProjectile());
-    }
+            spawnTimer += Time.deltaTime;
 
-   /* IEnumerator spawnProjectile()
-    {
-        Instantiate(projectile, transform.position, transform.rotation);
-        yield return new WaitForSeconds(spawnTime);
-    }*/
-}
+            if (spawnTimer >= spawnDelay)
+            {
+                Instantiate(projectile, transform.position, transform.rotation);
+                spawnTimer = 0;
+            }
+        }
+            //StartCoroutine(spawnProjectile());
+        }
+
+        /* IEnumerator spawnProjectile()
+         {
+             Instantiate(projectile, transform.position, transform.rotation);
+             yield return new WaitForSeconds(spawnTime);
+         }*/
+    }

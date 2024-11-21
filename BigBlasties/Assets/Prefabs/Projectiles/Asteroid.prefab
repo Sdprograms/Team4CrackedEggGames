@@ -4865,8 +4865,9 @@ MonoBehaviour:
   dmgType: 2
   rbody: {fileID: 2704195516838584731}
   explosion: {fileID: 7265977287861105153, guid: afd61a93f12085746b7563884059ad4c, type: 3}
+  impactParticle: {fileID: 0}
   damageAmount: 10
-  speed: 40
+  speed: 80
   destroyTime: 10
 --- !u!33 &5907119560350668860
 MeshFilter:

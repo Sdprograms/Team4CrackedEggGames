@@ -31718,7 +31718,7 @@ GameObject:
   - component: {fileID: 8089714066083673068}
   - component: {fileID: 896723908}
   m_Layer: 0
-  m_Name: AlienBoss
+  m_Name: w
   m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31732,7 +31732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889756934476867412}
   m_LocalRotation: {x: -0, y: 0.23697571, z: -0, w: 0.9715156}
-  m_LocalPosition: {x: -55.1, y: 6.13, z: 85.2}
+  m_LocalPosition: {x: -55.1, y: -4.779248, z: 85.59999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

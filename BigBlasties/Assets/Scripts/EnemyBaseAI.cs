@@ -56,8 +56,9 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
             //below is for flying adjustments, we take the 'current' position and replace Y with flying height, do this for transform, attack and sight positions
             Vector3 currentPosition = transform.position;
             transform.position = new Vector3(currentPosition.x, flyingHeight, currentPosition.z);
-            attackPos.position = new Vector3(attackPos.position.x, flyingHeight, attackPos.position.z);
-            sightPos.position = new Vector3(sightPos.position.x, flyingHeight, sightPos.position.z);
+            attackPos.position = new Vector3(attackPos.position.x, flyingHeight - 2, attackPos.position.z);
+            sightPos.position = new Vector3(sightPos.position.x, flyingHeight - 2, sightPos.position.z);
+
 
 
 

@@ -80,7 +80,7 @@ public class SniperAI : MonoBehaviour, damageInterface
                 facetarget();
             }
 
-            if (!isAttacking && canSeePlayer())
+            if (!isAttacking) //if attacking through walls add && canSeePlayer()
             {
                 StartCoroutine(attack());
             }
@@ -126,7 +126,6 @@ public class SniperAI : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
-        aggroRange = 1000;
         detector.playerInRange = true;
         if (HP <= 0)
         {

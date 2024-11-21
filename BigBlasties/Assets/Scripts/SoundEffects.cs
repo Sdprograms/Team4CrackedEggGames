@@ -17,6 +17,7 @@ public class SoundEffects : MonoBehaviour
     private void Awake()
     {
         noiseMaker = this;
+        levelSoundSource.GetComponent<AudioSource>();
         //stepSource = GetComponentInChildren<AudioSource>(stepSource);
         //stepSource.clip = footsteps;
     }
@@ -92,6 +93,11 @@ public class SoundEffects : MonoBehaviour
     
     public void LevelMusic(AudioClip clip)
     {
+        levelSoundSource.clip = clip;
+        if (levelSoundSource.clip == ambientMusic && !levelSoundSource.isPlaying) //plays ambience when the clip is set to ambient and the player isnt playing
+        {
+            levelSoundSource.Play();
+        }
         if (GameManager.mInstance.mPaused == true)
         {
             levelSoundSource.volume = PausedVol;
@@ -100,13 +106,5 @@ public class SoundEffects : MonoBehaviour
         {
             levelSoundSource.volume = UnPausedVol;
         }
-
-        levelSoundSource.clip = clip;
-        if (levelSoundSource.clip == ambientMusic && !levelSoundSource.isPlaying) //plays ambience when the clip is set to ambient and the player isnt playing
-        {
-            levelSoundSource.Play();
-        }
-
-    
     }
 }

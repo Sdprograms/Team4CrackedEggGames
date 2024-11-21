@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour, damageInterface
 
     [SerializeField] int HP;
     [SerializeField] int MaxHP;
+    [SerializeField] int numKeys;
 
     //[SerializeField] GameObject ammoTypeLaser; --SD commented out for new weapon system
     //[SerializeField] float laserShootRate;
@@ -391,5 +392,19 @@ public class playerController : MonoBehaviour, damageInterface
             UpdateUI();
         }
     }
+
+    public int GetKeys()
+    {
+        return numKeys;
+    }
+    public void SetKeys(int keyAmount)
+    {
+        numKeys = keyAmount;
+    }
+    public void AddKey()
+    {
+        numKeys++;
+    }
+    public void RemoveKey() { numKeys--; }
 }
 

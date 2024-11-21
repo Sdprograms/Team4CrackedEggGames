@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class pickUp : MonoBehaviour
 {
-   enum pickupType {gun, HP, Ammo };
+   enum pickupType {gun, HP, Ammo,Key };
     [SerializeField] pickupType type;
     [SerializeField] gunStats gun;//guns
     [SerializeField] int healthRestored;
@@ -40,6 +40,11 @@ public class pickUp : MonoBehaviour
             else if (type == pickupType.HP)
             {
                 GameManager.mInstance.mPlayerController.restoreHealth(healthRestored);
+                Destroy(gameObject);
+            }
+            else if (type == pickupType.Key)
+            {
+                GameManager.mInstance.mPlayerController.AddKey();
                 Destroy(gameObject);
             }
         }

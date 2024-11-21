@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DustinsScene.unity
     guid: fe8be156bee31ce40ad939a930f0d18e
   - enabled: 1
-    path: Assets/Scenes/zStevesScene.unity
-    guid: 77dee7c49f55e3e4c898243cadad6171
+    path: Assets/Scenes/zStevesLevel.unity
+    guid: 7a248691580838049836d30be6830a38
   m_configObjects: {}

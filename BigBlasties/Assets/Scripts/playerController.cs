@@ -270,6 +270,7 @@ public class playerController : MonoBehaviour, damageInterface
             mStepsSource.clip = mStepSound;
             Debug.Log("StepSound was null...");
         }
+        GameManager.mInstance.mKeyAmount.text = numKeys.ToString();
     }
 
     IEnumerator FlashDamage() // -XB
@@ -438,12 +439,18 @@ public class playerController : MonoBehaviour, damageInterface
     public void SetKeys(int keyAmount)
     {
         numKeys = keyAmount;
+        UpdateUI();
     }
     public void AddKey()
     {
         numKeys++;
         reloadAudioSource.PlayOneShot(keyGatheredClip);
+        UpdateUI();
     }
-    public void RemoveKey() { numKeys--; }
+    public void RemoveKey() 
+    { 
+        numKeys--;
+        UpdateUI();
+    }
 }
 

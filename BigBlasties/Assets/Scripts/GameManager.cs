@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Image mPlayerHealth;
     public TMP_Text mAmmoCurrent;
     public TMP_Text mAmmoReserve;
+    public TMP_Text mKeyAmount;
 
     public bool mPaused;
 

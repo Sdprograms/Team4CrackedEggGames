@@ -295,6 +295,8 @@ public class playerController : MonoBehaviour, damageInterface
         //same thing but for material.
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
+        StartCoroutine(GunPosLogic.gunPosInst.OrientGunMesh(gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh));// -XB
+
         reloadAudioSource.PlayOneShot(reloadAudioClip);
     }
 
@@ -308,7 +310,8 @@ public class playerController : MonoBehaviour, damageInterface
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader
-         UpdateUI();
+        StartCoroutine(GunPosLogic.gunPosInst.OrientGunMesh(gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh));// -XB
+        UpdateUI();
     }
 
     void selectGun()

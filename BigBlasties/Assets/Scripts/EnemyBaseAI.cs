@@ -19,7 +19,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     [SerializeField] int viewAngle;
 
     [SerializeField] float flyingHeight; //for flying enemies, the height at which they fly
-
+    [SerializeField] ItemDrop dropScript;
 
     bool isAttacking;
     //bool playerInRange;
@@ -145,6 +145,9 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
         detector.playerInRange = true;
         if (HP <= 0)
         {
+            if(dropScript != null)
+            dropScript.Drop();
+            
             Destroy(gameObject);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
         }
@@ -190,4 +193,13 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
             yield return new WaitForSeconds(2f);
         }
     }*/
+
+    public void setHP(float amount)
+    {
+        HP = amount;
+    }
+    public float getHP()
+    {
+        return HP;
+    }
 }

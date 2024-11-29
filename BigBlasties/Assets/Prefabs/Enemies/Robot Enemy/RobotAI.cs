@@ -26,7 +26,7 @@ public class RobotAI : MonoBehaviour, damageInterface
 
 
     [SerializeField] int turnSpeed;
-
+    [SerializeField] ItemDrop dropScript;
 
     //for animations
     private Animator animator;
@@ -177,6 +177,12 @@ public class RobotAI : MonoBehaviour, damageInterface
         {
             animator.Play("Die");
             agent.speed = 0;
+
+            if (dropScript != null)
+            {
+                dropScript.Drop();
+            }
+
             Destroy(gameObject, 2f);
         }
     }

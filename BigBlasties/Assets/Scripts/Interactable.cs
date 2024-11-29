@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Interactable : MonoBehaviour
 {
     enum interactableType {Door };
     [SerializeField] interactableType interactType;
     [SerializeField] bool isOpen;
     [SerializeField] bool isLocked;
+
     private void Start()
     {
         if (interactType == interactableType.Door)
@@ -38,7 +40,7 @@ public class Interactable : MonoBehaviour
 
                 }
             }
-            
         }
     }
+
 }

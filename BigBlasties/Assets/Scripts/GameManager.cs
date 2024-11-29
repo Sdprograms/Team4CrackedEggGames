@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public bool mPaused;
 
+    public cameraController mCameraController;
     public playerController mPlayerController;
     public GameObject mPlayer;
     public GameObject mPlayerSpawnPos;

@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class NotificationManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static NotificationManager mNotiManagrInst;
+
+    [SerializeField] GameObject mNotificationPopup;
+    public TMP_Text mNotificationText;
+
+    private void Start()
     {
-        
+        mNotiManagrInst = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowNotification(string message)
     {
-        
+        mNotificationText.text = message;
+        mNotificationPopup.SetActive(true);
+    }
+
+    public void HideNotification()
+    {
+        mNotificationPopup.SetActive(false);
     }
 }

@@ -51,24 +51,23 @@ public class SwitchBehavior : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //checks if the player is in the collider
         if (other.CompareTag("Player") && Input.GetButtonDown("Interact"))
         {
-            Interactable.mInteractInst.ShowNotification("Activate");
-           
-            //move the switch and make it pretty
-            StartCoroutine(SwitchDoorOpen());
+                //move the switch and make it pretty
+                StartCoroutine(SwitchDoorOpen());  
+        }
+        NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            NotificationManager.mNotiManagrInst.HideNotification();
         }
     }
-
     IEnumerator SwitchDoorOpen()
-    {
-        //if (!mOpen)
-        //{
-        //    Debug.Log("Coroutine started");
-
-
-        //    Debug.Log("Coroutine ended");
-        //}
+    { 
         Debug.Log("Clicked Switch");
         mOpen = !mOpen;
 

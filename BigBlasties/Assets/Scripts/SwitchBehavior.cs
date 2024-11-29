@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ public class SwitchBehavior : MonoBehaviour
 
     public bool mOn;
     public bool mOpen;
+    public bool mCanOpen;
+
+    public bool mShowNoti;
 
     Vector3 mDoorPos;
     Vector3 mDoorOffPos;
@@ -32,45 +36,84 @@ public class SwitchBehavior : MonoBehaviour
         mOpen = false;
         mSwitchableDoor.GetComponent<GameObject>();
 
-        mDoorPos = mSwitchableDoor.transform.position;
-        mDoorOffPos = mDoorOff.transform.position;
-        mDoorOnPos = mDoorOn.transform.position;
+        //      For some reason, the engine doesn't like pre set vector3's
+        //mDoorPos = mSwitchableDoor.transform.position;
+        //mDoorOffPos = mDoorOff.transform.position;
+        //mDoorOnPos = mDoorOn.transform.position;
     }
 
     private void Update()
     {
-        if (mOpen == true)
+        if (mOpen)
         {
-            mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOn.transform.position, mMoveSpeed * Time.deltaTime);
+            OpenDoor();
         }
-        else if (mOpen == false)
+        else
         {
-            mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOff.transform.position, mMoveSpeed * Time.deltaTime);
+            CloseDoor();
+        }
+
+        if (mShowNoti)
+        {
+            NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+        }
+        else
+        {
+            NotificationManager.mNotiManagrInst.HideNotification();
+        }
+    }
+
+    private void OpenDoor()
+    {
+        mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOn.transform.position, mMoveSpeed * Time.deltaTime);
+        //if (mSwitchableDoor.transform.position == mDoorOn.transform.position)
+        //{
+        //    mCanOpen = false;
+        //}
+    }
+    private void CloseDoor()
+    {
+        mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOff.transform.position, mMoveSpeed * Time.deltaTime);
+        //if (mSwitchableDoor.transform.position == mDoorOff.transform.position)
+        //{
+        //    mCanOpen = false;
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!mShowNoti)
+        {
+            mShowNoti = true;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        //checks if the player is in the collider
-        if (other.CompareTag("Player") && Input.GetButtonDown("Interact"))
+        //checks if the player is in the collider 
+        if (other.CompareTag("Player") && Input.GetButton("Interact") && !mCanOpen)
         {
-                //move the switch and make it pretty
-                StartCoroutine(SwitchDoorOpen());  
+
+            Debug.Log("E Pressed");
+
+            //move the switch and make it pretty
+            //StartCoroutine(SwitchDoorOpen());
+            mCanOpen = true;
+            StartCoroutine(SwitchDoorOpen());
         }
-        NotificationManager.mNotiManagrInst.ShowNotification("Activate");
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && mShowNoti)
         {
-            NotificationManager.mNotiManagrInst.HideNotification();
+            mShowNoti = false;
         }
     }
     IEnumerator SwitchDoorOpen()
-    { 
+    {
         Debug.Log("Clicked Switch");
         mOpen = !mOpen;
-
-        yield return null;
+        yield return new WaitForSeconds(.5f);
+        mCanOpen = false;
     }
 }

@@ -82,7 +82,7 @@ public class SwitchBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!mShowNoti)
+        if (other.CompareTag("Player") && !mShowNoti)
         {
             mShowNoti = true;
         }

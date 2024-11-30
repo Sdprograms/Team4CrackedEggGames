@@ -5,7 +5,9 @@ using UnityEngine;
 public class pickUp : MonoBehaviour
 {
    enum pickupType {gun, HP, Ammo,Key };
+    enum keyType {greyKey, redKey, blueKey, greenKey, bossKey };
     [SerializeField] pickupType type;
+    [SerializeField] keyType keyColor;
     [SerializeField] gunStats gun;//guns
     [SerializeField] int healthRestored;
 
@@ -20,6 +22,8 @@ public class pickUp : MonoBehaviour
         {
             
         }
+        //else if keys and respective colors to float and flash their respective colors. -SD
+        //NEED UI ELEMENT FOR COLOR KEYS -SD
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,8 +48,32 @@ public class pickUp : MonoBehaviour
             }
             else if (type == pickupType.Key)
             {
-                GameManager.mInstance.mPlayerController.AddKey();
-                Destroy(gameObject);
+
+                if (keyColor == keyType.greyKey)
+                {
+                    GameManager.mInstance.mPlayerController.AddKey();
+                    Destroy(gameObject);
+                }
+                else if (keyColor == keyType.redKey)
+                {
+                    GameManager.mInstance.mPlayerController.setRedKey(true);
+                    Destroy(gameObject);
+                }
+                else if (keyColor == keyType.blueKey)
+                {
+                    GameManager.mInstance.mPlayerController.setBlueKey(true);
+                    Destroy(gameObject);
+                }
+                else if (keyColor == keyType.greenKey)
+                {
+                    GameManager.mInstance.mPlayerController.setGreenKey(true);
+                    Destroy(gameObject);
+                }
+                else if (keyColor == keyType.bossKey)
+                {
+                    GameManager.mInstance.mPlayerController.setBossKey(true);
+                    Destroy(gameObject);
+                }
             }
         }
     }

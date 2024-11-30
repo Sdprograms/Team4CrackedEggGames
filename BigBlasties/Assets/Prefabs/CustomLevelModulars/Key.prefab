@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  keyColor: 0
   gun: {fileID: 0}
   healthRestored: 0
 --- !u!33 &594189248605231948

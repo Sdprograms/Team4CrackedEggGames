@@ -54,6 +54,8 @@ MonoBehaviour:
   mMoveSpeed: 5
   mOn: 0
   mOpen: 0
+  mCanOpen: 0
+  mShowNoti: 0
 --- !u!65 &384300092980176172
 BoxCollider:
   m_ObjectHideFlags: 0

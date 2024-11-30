@@ -51,7 +51,7 @@ public class cameraController : MonoBehaviour
 
         transform.parent.Rotate(Vector3.up * mouseX); //Rotate on Y-axis
 
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * mShootDistance, Color.green);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * mShootDistance, Color.green);
         //Debug.DrawRay(gun.transform.position, gun.transform.forward * mShootDistance, Color.red);
         //^ was causing an error with gun pickup.
         FireOnCursor();
@@ -59,14 +59,22 @@ public class cameraController : MonoBehaviour
  
     public void FireOnCursor() //Makes the weapons fire on the cursors position, giving a delay in aim on side-to-side movement.
     {
-        Vector3 rayStart = Camera.main.transform.position + Camera.main.transform.forward * 15f; // Offset the raycast so it starts a infront of player
+        Vector3 rayStart = Camera.main.transform.position + Camera.main.transform.forward * 2.25f; // Offset the raycast so it starts a infront of player
+        //Debug.DrawRay(rayStart, Camera.main.transform.up, Color.blue);
 
         RaycastHit hit;
+        //if the raycast hits anything, then itll rotate the shootPos to the hit position
         if (Physics.Raycast(rayStart, Camera.main.transform.forward, out hit, mShootDistance, ~IgnoreMask))
         {
-            //positionAim.transform.position = hit.point;
-            //Vector3 aim = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-            gun.transform.LookAt(hit.point); //in debugging, change hit.point to positionAim.transform
+                //positionAim.transform.position = hit.point;
+                Vector3 aim = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                gun.transform.LookAt(hit.point); //in debugging, change hit.point to positionAim.transform
+        }
+        //otherwise itll be deadpan forward
+        else
+        {
+            gun.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            //Debug.Log("Look at nothing");
         }
     }
 }

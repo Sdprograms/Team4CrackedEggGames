@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlobalSpawner : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] int numberToSpawn;
+    [SerializeField] public int numberToSpawn;
     [SerializeField] int objectSpawnTime;
     [SerializeField] Transform[] spawnPos;
 
@@ -37,6 +37,8 @@ public class GlobalSpawner : MonoBehaviour
         int spawnInt = Random.Range(0, spawnPos.Length);
         Instantiate(objectToSpawn, spawnPos[spawnInt].position, spawnPos[spawnInt].rotation);
         spawnCount++;
+        KillRoomDetector.mKillRoomInst.mSpawnedEnemies++;
+        GameManager.mInstance.mEnemyCount++;
 
         yield return new WaitForSeconds(objectSpawnTime);
 

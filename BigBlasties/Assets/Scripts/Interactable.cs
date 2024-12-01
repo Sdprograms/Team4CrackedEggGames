@@ -12,11 +12,37 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool isOpen;
     [SerializeField] bool isLocked;
 
+    [SerializeField] Renderer model;
+
+    Color originalColor;
     private void Start()
     {
-        if (interactType == interactableType.Door)
+        //originalColor = model.material.color;
+
+        if (interactType == interactableType.Door) 
         {
             isOpen = false;
+
+            if (typeDoor == doorType.GreyDoor) // So far, solid colors. Might make flash instead.
+            {
+                model.material.color = Color.grey;
+            }
+            else if (typeDoor == doorType.RedDoor)
+            {
+                model.material.color = Color.red;
+            }
+            else if (typeDoor == doorType.BlueDoor)
+            {
+                model.material.color = Color.blue;
+            }
+            else if (typeDoor == doorType.GreenDoor)
+            {
+                model.material.color = Color.green;
+            }
+            else if (typeDoor == doorType.BossDoor) //Need something different than a color for boss door.
+            {
+                model.material.color = Color.yellow;
+            }
         }
     }
     public void OnTriggerStay(Collider other)

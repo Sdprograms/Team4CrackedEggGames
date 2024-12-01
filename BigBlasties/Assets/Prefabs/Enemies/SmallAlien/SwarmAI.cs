@@ -21,6 +21,7 @@ public class SwarmAI : MonoBehaviour, damageInterface
     bool isAttacking;
     Vector3 playerPos;
 
+    bool hasDied;
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
@@ -67,6 +68,13 @@ public class SwarmAI : MonoBehaviour, damageInterface
             Instantiate(deathEffect, transform.position, transform.rotation); // -SD
             Destroy(gameObject);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
+
+            // This logic is to track the death count properly
+            if (!hasDied)
+            {
+                GameManager.mInstance.UpdateEnemyCount(-1);
+                hasDied = true;
+            }
         }
     }
 

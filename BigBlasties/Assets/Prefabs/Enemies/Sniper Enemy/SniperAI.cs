@@ -45,7 +45,7 @@ public class SniperAI : MonoBehaviour, damageInterface
 
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
-
+    bool hasDied;
     void Start()
     {
         HP = MaxHP;
@@ -134,6 +134,13 @@ public class SniperAI : MonoBehaviour, damageInterface
             animator.Play("Death");
             Destroy(gameObject, 2f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
+
+            // This logic is to track the death count properly
+            if (!hasDied)
+            {
+                GameManager.mInstance.UpdateEnemyCount(-1);
+                hasDied = true;
+            }
         }
     }
 

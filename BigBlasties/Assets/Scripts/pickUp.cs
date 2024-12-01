@@ -8,6 +8,7 @@ public class pickUp : MonoBehaviour
     enum keyType {greyKey, redKey, blueKey, greenKey, bossKey };
     [SerializeField] pickupType type;
     [SerializeField] keyType keyColor;
+    [SerializeField] Renderer model;
     [SerializeField] gunStats gun;//guns
     [SerializeField] int healthRestored;
 
@@ -21,6 +22,29 @@ public class pickUp : MonoBehaviour
         else if (type == pickupType.Ammo) //if gun
         {
             
+        }
+        else if (type == pickupType.Key)
+        {
+            if (keyColor == keyType.greyKey)
+            {
+                model.material.color = Color.grey;
+            }
+            else if (keyColor == keyType.redKey)
+            {
+                model.material.color = Color.red;
+            }
+            else if (keyColor == keyType.blueKey)
+            {
+                model.material.color = Color.blue;
+            }
+            else if (keyColor == keyType.greenKey)
+            {
+                model.material.color = Color.green;
+            }
+            else if (keyColor == keyType.bossKey)
+            {
+                model.material.color = Color.yellow;
+            }
         }
         //else if keys and respective colors to float and flash their respective colors. -SD
         //NEED UI ELEMENT FOR COLOR KEYS -SD

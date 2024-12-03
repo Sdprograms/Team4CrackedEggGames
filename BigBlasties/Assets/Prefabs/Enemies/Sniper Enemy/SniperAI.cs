@@ -19,6 +19,7 @@ public class SniperAI : MonoBehaviour, damageInterface
     [SerializeField] int turnSpeed;
 
     [SerializeField] private Animator animator;
+    [SerializeField] ItemDrop dropScript;
 
 
     //the time the enemy will stand still while attacking.
@@ -132,6 +133,12 @@ public class SniperAI : MonoBehaviour, damageInterface
             StopAllCoroutines();
             agent.speed = 0;
             animator.Play("Death");
+
+            if (dropScript != null)
+            {
+                dropScript.Drop();
+            }
+
             Destroy(gameObject, 2f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
 

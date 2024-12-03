@@ -17,6 +17,7 @@ public class SwarmAI : MonoBehaviour, damageInterface
     [SerializeField] int turnSpeed;
 
     [SerializeField] ParticleSystem deathEffect; //-SD
+    [SerializeField] ItemDrop dropScript;
 
     bool isAttacking;
     Vector3 playerPos;
@@ -66,6 +67,11 @@ public class SwarmAI : MonoBehaviour, damageInterface
         if (HP <= 0)
         {
             Instantiate(deathEffect, transform.position, transform.rotation); // -SD
+            if (dropScript != null)
+            {
+                dropScript.Drop();
+            }
+
             Destroy(gameObject);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
 

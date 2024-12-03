@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2740290991605297015}
   - component: {fileID: -5645831786628825702}
   - component: {fileID: -5358903029576077007}
+  - component: {fileID: -8662177790641991924}
   m_Layer: 0
   m_Name: SmallAlienEnemy (1)
   m_TagString: Swarmer
@@ -126,6 +127,7 @@ MonoBehaviour:
   attackRate: 2
   turnSpeed: 8
   deathEffect: {fileID: 3958902633591904931, guid: 552ea7dcf7ea4ba48a75413b9fdea52a, type: 3}
+  dropScript: {fileID: -8662177790641991924}
 --- !u!114 &-5358903029576077007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +141,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpaceBetween: 3
+--- !u!114 &-8662177790641991924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510941243080768463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f454c42024ef5d646bd553105a170a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1001 &5083399870635033425
 PrefabInstance:
   m_ObjectHideFlags: 0

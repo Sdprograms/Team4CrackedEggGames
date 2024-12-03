@@ -17,6 +17,7 @@ public class SphereAI : MonoBehaviour, damageInterface
     [SerializeField] int turnSpeed;
 
     [SerializeField] private Animator animator;
+    [SerializeField] ItemDrop dropScript;
 
     bool isAttacking;
     //bool playerInRange;
@@ -123,6 +124,12 @@ public class SphereAI : MonoBehaviour, damageInterface
         if (HP <= 0)
         {
             Instantiate(bullet, attackPos.position, transform.rotation);
+
+            if (dropScript != null)
+            {
+                dropScript.Drop();
+            }
+
             Destroy(gameObject);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
             // This logic is to track the death count properly

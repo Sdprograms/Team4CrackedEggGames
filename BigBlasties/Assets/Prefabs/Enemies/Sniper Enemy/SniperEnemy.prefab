@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2862442595466793068}
   - component: {fileID: 2862442595466793069}
   - component: {fileID: 2862442594484738580}
+  - component: {fileID: 7452971855097509259}
   m_Layer: 0
   m_Name: SniperEnemy
   m_TagString: AI
@@ -150,6 +151,7 @@ MonoBehaviour:
   attackRate: 1
   turnSpeed: 15
   animator: {fileID: 2862442595410174579}
+  dropScript: {fileID: 7452971855097509259}
   attackTime: 1
   ReloadTime: 1
   distance: 0
@@ -160,6 +162,19 @@ MonoBehaviour:
     rightGun: {fileID: 4265800308884265759, guid: ce4fc667098cde146a63ae9ef4fbbf21, type: 3}
     leftGun: {fileID: 0}
     controller: {fileID: 9100000, guid: dffbd9326394a8d47a87a1e2aec70a59, type: 2}
+--- !u!114 &7452971855097509259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862442595417559059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f454c42024ef5d646bd553105a170a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1 &2862442595417559457
 GameObject:
   m_ObjectHideFlags: 0

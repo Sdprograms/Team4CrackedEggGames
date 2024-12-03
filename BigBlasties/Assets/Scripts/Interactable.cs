@@ -47,7 +47,7 @@ public class Interactable : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetButtonDown("Interact")) //should normally set the key E to an input setting.
+        if (other.CompareTag("Player") && Input.GetButton("Interact")) //should normally set the key E to an input setting.
         {
             if(interactType == interactableType.Door)
             {

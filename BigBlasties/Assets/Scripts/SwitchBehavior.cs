@@ -66,18 +66,10 @@ public class SwitchBehavior : MonoBehaviour
     private void OpenDoor()
     {
         mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOn.transform.position, mMoveSpeed * Time.deltaTime);
-        //if (mSwitchableDoor.transform.position == mDoorOn.transform.position)
-        //{
-        //    mCanOpen = false;
-        //}
     }
     private void CloseDoor()
     {
         mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOff.transform.position, mMoveSpeed * Time.deltaTime);
-        //if (mSwitchableDoor.transform.position == mDoorOff.transform.position)
-        //{
-        //    mCanOpen = false;
-        //}
     }
 
     private void OnTriggerEnter(Collider other)

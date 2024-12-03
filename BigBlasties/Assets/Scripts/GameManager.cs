@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private int mLookSensDisplay;
     private float mTimeScaleOrig;
 
+    public int mEnemyCount;
 
     public GameObject GetActiveMenu() {  return mMenuActive; }
     public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
@@ -162,4 +163,8 @@ public class GameManager : MonoBehaviour
         mMenuActive.SetActive(true);
     }
 
+    public void UpdateEnemyCount(int count)
+    {
+        mEnemyCount += count;
+    }
 }

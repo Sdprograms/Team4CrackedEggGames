@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 2750476467998670095}
   - component: {fileID: 2750476467998670092}
   - component: {fileID: 2750476467998670093}
+  - component: {fileID: 1358587228593776556}
   m_Layer: 0
   m_Name: HPpickup
   m_TagString: Untagged
@@ -145,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  keyColor: 0
+  model: {fileID: 0}
   gun: {fileID: 0}
   healthRestored: 50
 --- !u!135 &2750476467998670093
@@ -160,6 +163,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.28
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1358587228593776556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2750476467998670578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c106cf6bfdf08424a8d6980896fc76b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatSpeed: 2
+  floatHeight: 0.01
 --- !u!1 &4446090086258012429
 GameObject:
   m_ObjectHideFlags: 0

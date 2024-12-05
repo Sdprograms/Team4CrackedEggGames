@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3749073011927434838}
   - component: {fileID: 263664671809030643}
   - component: {fileID: 2615552168197864761}
+  - component: {fileID: -1858993474263180251}
   m_Layer: 0
   m_Name: WallBrickOuterCorner
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1858993474263180251
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561216952449637612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1339872028913765039, guid: b8137a74ac8957c4980eb40395a5d4b4, type: 3}
 --- !u!1 &8826758626729680201
 GameObject:
   m_ObjectHideFlags: 0

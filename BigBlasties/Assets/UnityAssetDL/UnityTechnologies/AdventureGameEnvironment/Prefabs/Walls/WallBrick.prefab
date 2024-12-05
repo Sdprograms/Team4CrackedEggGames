@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6043240390283876211}
   - component: {fileID: 3608531645358393705}
   - component: {fileID: 6268740457181244134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 64279051067584423}
   - component: {fileID: 2810433347513293677}
   - component: {fileID: 708377325004206634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

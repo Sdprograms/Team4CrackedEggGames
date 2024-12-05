@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7125356522367463245}
   - component: {fileID: 3615369400080551446}
   - component: {fileID: 5616802234177917505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallSciFiDoor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1034085054195836832}
   - component: {fileID: 6205537079426759181}
   - component: {fileID: 999664590696715513}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallTrimLight010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 2652051025614886148}
   - component: {fileID: 1396716003319306913}
   - component: {fileID: 3784948416050867819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SurcrityNumberBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 6752494427129743704}
   - component: {fileID: 7645553553621157629}
   - component: {fileID: 5620071475689058871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SurcrityNumberBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 8584310986062822396}
   - component: {fileID: 3415462054874375761}
   - component: {fileID: 8405918242381514917}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallTrimLight010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 1988917293699724049}
   - component: {fileID: 5427973262753501770}
   - component: {fileID: 7225094533347782468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CompleteDoorBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,6 +545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableDoorBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 1598080107453990199, guid: a1e70c16b12cbdd48a736d25df144ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1598080107453990203, guid: a1e70c16b12cbdd48a736d25df144ff6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -600,6 +604,10 @@ PrefabInstance:
     - target: {fileID: 1598080107453990203, guid: a1e70c16b12cbdd48a736d25df144ff6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598080107586150471, guid: a1e70c16b12cbdd48a736d25df144ff6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1e70c16b12cbdd48a736d25df144ff6, type: 3}

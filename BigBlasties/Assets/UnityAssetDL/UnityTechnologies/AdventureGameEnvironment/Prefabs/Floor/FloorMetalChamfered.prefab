@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3112893264200181395}
   - component: {fileID: 2061782742761515318}
   - component: {fileID: 4285204951170571772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered
   m_TagString: Untagged
   m_Icon: {fileID: 0}

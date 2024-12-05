@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6224825293938737495}
   - component: {fileID: 4011289910046351181}
   - component: {fileID: 5999332062221597890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6585000991869255086}
   - component: {fileID: 4227592483674530740}
   - component: {fileID: 6791554292105314363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2645760877664062238}
   - component: {fileID: 239630630560350164}
   - component: {fileID: 8235126700369159190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCorner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 2353756165367729415}
   - component: {fileID: 526586402737093069}
   - component: {fileID: 9184006551932525446}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 2521674371977524468}
   - component: {fileID: 367674708197228606}
   - component: {fileID: 898282289890863053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCorner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 1739175286210663703}
   - component: {fileID: 4595428625450885597}
   - component: {fileID: 341753288479456054}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1739175286167964075}
   - component: {fileID: 4595428625074814305}
   - component: {fileID: 341753288037081877}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 1739175286100024787}
   - component: {fileID: 4595428625006831897}
   - component: {fileID: 341753288750801763}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 1739175285943691819}
   - component: {fileID: 4595428625185971937}
   - component: {fileID: 341753289327386683}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 1739175286765927114}
   - component: {fileID: 4595428624932457984}
   - component: {fileID: 341753290069276038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 1739175284974016055}
   - component: {fileID: 4595428626296677117}
   - component: {fileID: 341753288151494531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 1739175285678421822}
   - component: {fileID: 4595428625994531828}
   - component: {fileID: 341753288287492570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 1739175285602496387}
   - component: {fileID: 4595428625648016201}
   - component: {fileID: 341753289245982882}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1251,7 @@ GameObject:
   - component: {fileID: 1739175285581494829}
   - component: {fileID: 4595428625559965415}
   - component: {fileID: 341753288233858436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorMetalChamfered (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 602116663810065786}
   - component: {fileID: 3440700240165794224}
   - component: {fileID: 102406254681315575}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrick (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1447,7 +1447,7 @@ GameObject:
   - component: {fileID: 359513859325277852}
   - component: {fileID: 2529273369870287446}
   - component: {fileID: 5838232118193756232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCorner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1546,7 +1546,7 @@ GameObject:
   - component: {fileID: 385831784939387267}
   - component: {fileID: 2503518429085764937}
   - component: {fileID: 894610963824452622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrick (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1692,7 +1692,7 @@ GameObject:
   - component: {fileID: 5235125232596868116}
   - component: {fileID: 5214563011215935691}
   - component: {fileID: 3012905666219332216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCornerSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1775,7 +1775,7 @@ GameObject:
   - component: {fileID: 7560550755883393430}
   - component: {fileID: 7500541894746289481}
   - component: {fileID: 686064258246553594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCornerSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1858,7 +1858,7 @@ GameObject:
   - component: {fileID: 7850303669438670735}
   - component: {fileID: 7785279409730253648}
   - component: {fileID: 979808398969891299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCornerSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1941,7 +1941,7 @@ GameObject:
   - component: {fileID: 7972796452933623420}
   - component: {fileID: 7952846657382402723}
   - component: {fileID: 1138297131581788176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBrickInnerCornerSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

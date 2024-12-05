@@ -134,11 +134,11 @@ public class playerController : MonoBehaviour, damageInterface
 
         playerVel.y -= gravity * Time.deltaTime;
 
-        if(Input.GetButton("Fire1") && !isShooting) //if leftclick
+        if(Input.GetButton("Fire1") && !isShooting && GunRotation.mGunRotInst.mCanFire) //if leftclick
         {
             StartCoroutine(shoot()); //shoot
         }
-        else if (Input.GetAxis("Fire1") > 0.5f && !isShooting) //Controller Supported Fire -XB
+        else if (Input.GetAxis("Fire1") > 0.5f && !isShooting && GunRotation.mGunRotInst.mCanFire) //Controller Supported Fire -XB
         {
             StartCoroutine(shoot()); //shoot
         }

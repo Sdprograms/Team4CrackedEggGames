@@ -12,6 +12,7 @@ TagManager:
   - AI
   - PlayerSpawnPos
   - Swarmer
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Ledge
-  - 
+  - Wall
   - 
   - 
   - 

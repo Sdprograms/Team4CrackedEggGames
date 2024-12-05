@@ -5,19 +5,25 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    enum interactableType {Door };
+    enum interactableType {Door, Switch };
     enum doorType {GreyDoor, RedDoor, BlueDoor, GreenDoor, BossDoor};
     [SerializeField] interactableType interactType;
+
+    [Header("---If Door ---")]
     [SerializeField] doorType typeDoor;
     [SerializeField] bool isOpen;
     [SerializeField] bool isLocked;
-
     [SerializeField] Renderer model;
 
+    [Header("---If Switch---")]
+    [SerializeField] SwitchGeneral switchScript;
+
+    bool activateable;
     Color originalColor;
     private void Start()
     {
         //originalColor = model.material.color;
+        activateable = true;
 
         if (interactType == interactableType.Door) 
         {
@@ -47,8 +53,9 @@ public class Interactable : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetButton("Interact")) //should normally set the key E to an input setting.
+        if (other.CompareTag("Player") && Input.GetButton("Interact") && activateable == true) //should normally set the key E to an input setting.
         {
+            
             if(interactType == interactableType.Door)
             {
                 if (!isOpen)
@@ -92,7 +99,25 @@ public class Interactable : MonoBehaviour
 
                 }
             }
+
+            if(interactType == interactableType.Switch)
+            {
+                if (switchScript != null)
+                {
+                    switchScript.rotateObject();
+                }
+            }
+
+            StartCoroutine(ActivateOff());
+
         }
+    }
+
+    IEnumerator ActivateOff()
+    {
+        activateable = false;
+        yield return new WaitForSeconds(1);
+        activateable = true;
     }
 
 }

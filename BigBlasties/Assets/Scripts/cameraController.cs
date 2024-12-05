@@ -6,7 +6,7 @@ public class cameraController : MonoBehaviour
 {
     [SerializeField] LayerMask IgnoreMask; //-XB Allows the 
     //[SerializeField] GameObject positionAim; //-XB DEBUG
-    [SerializeField] GameObject gun; //-XB
+    [SerializeField] GameObject shootPos; //-XB
     public static cameraController camInstance; //-XB
     [SerializeField] int mShootDistance; //-XB
                                          //Provides a max range for the raycast to target to, after aiming past this distance,
@@ -18,6 +18,8 @@ public class cameraController : MonoBehaviour
 
     float rotX;
 
+    Quaternion mShootRotOrig;
+
     //simple getters/setters -XB
     public int GetSensitivity() { return lookSensitivity; }
     public void SetSensitivity(int newSens) { lookSensitivity = newSens; }
@@ -28,6 +30,8 @@ public class cameraController : MonoBehaviour
         camInstance = this; //-XB
         Cursor.visible = false; //Cursor settings on start
         Cursor.lockState = CursorLockMode.Locked;
+
+        mShootRotOrig = shootPos.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -51,8 +55,8 @@ public class cameraController : MonoBehaviour
 
         transform.parent.Rotate(Vector3.up * mouseX); //Rotate on Y-axis
 
-        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * mShootDistance, Color.green);
-        //Debug.DrawRay(gun.transform.position, gun.transform.forward * mShootDistance, Color.red);
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * mShootDistance, Color.green);
+        Debug.DrawRay(shootPos.transform.position, shootPos.transform.forward * mShootDistance, Color.red);
         //^ was causing an error with gun pickup.
         FireOnCursor();
     }
@@ -68,13 +72,13 @@ public class cameraController : MonoBehaviour
         {
                 //positionAim.transform.position = hit.point;
                 Vector3 aim = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                gun.transform.LookAt(hit.point); //in debugging, change hit.point to positionAim.transform
+            shootPos.transform.LookAt(hit.point); //in debugging, change hit.point to positionAim.transform
         }
         //otherwise itll be deadpan forward
         else
         {
-            gun.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            //Debug.Log("Look at nothing");
+            shootPos.transform.localRotation = mShootRotOrig;
+            Debug.Log("Look at nothing");
         }
     }
 }

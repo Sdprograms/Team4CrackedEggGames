@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunRotation : MonoBehaviour
@@ -21,7 +22,7 @@ public class GunRotation : MonoBehaviour
     Quaternion mOrigRot;
     Quaternion mHeldRot;
 
-    RaycastHit mHit;
+    public RaycastHit mHit;
 
     public bool mCanFire;
 
@@ -52,32 +53,42 @@ public class GunRotation : MonoBehaviour
         if (Physics.Raycast(cameraController.camInstance.transform.position, cameraController.camInstance.transform.forward, out mHit, mRayDistance, mLayerMask))
         {
             Debug.Log($"The Tag gotten is {mHit.collider.name}");
-
             StartCoroutine(ToBody());
             Debug.Log("The ray hit where it should rotate");
 
             mCanFire = false;
+
+            if (mHit.collider.CompareTag("Switch"))
+            {
+                GameManager.mInstance.mShowNoti = true;
+            }
         }
         else
         {
-
             StartCoroutine(ToAim());
             Debug.Log("Rot orig");
 
             mCanFire = true;
+
+            GameManager.mInstance.mShowNoti = false;
+
         }
         
     }
 
     IEnumerator ToBody()
     {
-        mRotationPoint.transform.SetLocalPositionAndRotation(mHeldTrans, mHeldRot);
-        yield return new WaitForSeconds(mMoveTime);
+        //mRotationPoint.transform.SetLocalPositionAndRotation(mHeldTrans, mHeldRot);
+        mRotationPoint.transform.localPosition = Vector3.Lerp(mHeldTrans, mOrigTrans, Time.deltaTime / mMoveTime);
+        mRotationPoint.transform.localRotation = Quaternion.Slerp(mHeldRot, mOrigRot, Time.deltaTime / mMoveTime);
+        yield return null;
     }
 
     IEnumerator ToAim()
     {
-        mRotationPoint.transform.SetLocalPositionAndRotation(mOrigTrans, mOrigRot);
-        yield return new WaitForSeconds(mMoveTime);
+        // mRotationPoint.transform.SetLocalPositionAndRotation(mOrigTrans, mOrigRot);
+        mRotationPoint.transform.localPosition = Vector3.Lerp(mOrigTrans, mHeldTrans, Time.deltaTime / mMoveTime);
+        mRotationPoint.transform.localRotation = Quaternion.Slerp(mOrigRot, mHeldRot, Time.deltaTime / mMoveTime);
+        yield return null;
     }
 }

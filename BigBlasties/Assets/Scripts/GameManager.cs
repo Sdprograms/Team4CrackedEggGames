@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public GameObject GetActiveMenu() {  return mMenuActive; }
     public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
 
+    public bool mShowNoti;
+
     public GameObject GetMenuPause() 
     {
         mMenuActive.SetActive(false);

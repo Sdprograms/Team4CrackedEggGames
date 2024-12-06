@@ -641,6 +641,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2338059404813502333, guid: 8bab7474cb0f46546a86b6a9c839d64e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5708229102096504253, guid: 8bab7474cb0f46546a86b6a9c839d64e, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1448,6 +1452,10 @@ PrefabInstance:
     - target: {fileID: 5708229102096504253, guid: a63ea96374e98584286b47855206c03c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436443089761225691, guid: a63ea96374e98584286b47855206c03c, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8228551108495034435, guid: a63ea96374e98584286b47855206c03c, type: 3}
       propertyPath: m_Name
@@ -2677,6 +2685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4041600054131763113, guid: 057204cf9bb754b459338fee82e47c73, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5708229102096504253, guid: 057204cf9bb754b459338fee82e47c73, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3056,9 +3068,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4059070949438187520, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4716584416666137645, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
       propertyPath: m_Name
       value: BrickRoom(Medium)2Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967483955494988104, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6169710836236459429, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
       propertyPath: m_RootOrder
@@ -3120,6 +3140,10 @@ PrefabInstance:
     - target: {fileID: 2600395334390352692, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
       propertyPath: typeDoor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600395334390352698, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3165734604415753743, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
       propertyPath: m_RootOrder
@@ -4171,6 +4195,10 @@ PrefabInstance:
       propertyPath: typeDoor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2600395334390352698, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3165734604415753743, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -4228,9 +4256,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4059070949438187520, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4716584416666137645, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
       propertyPath: m_Name
       value: BrickRoom(Medium)2Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967483955494988104, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6169710836236459429, guid: 4f8064c083036eb4caf49458f5f8d291, type: 3}
       propertyPath: m_RootOrder
@@ -4386,9 +4422,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1251671950414834312, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1951220678849536399, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
       propertyPath: m_Name
       value: BrickRoom(Medium)4Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122101953057541752, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008915026903143188, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932919216518677011, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132683994226031392, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9132683994226031406, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
       propertyPath: isLocked
@@ -4410,6 +4466,10 @@ PrefabInstance:
     - target: {fileID: 2600395334390352692, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
       propertyPath: typeDoor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600395334390352698, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3165734604415753743, guid: 5399901530a0ff04f9ee8e7ba8963be3, type: 3}
       propertyPath: m_RootOrder

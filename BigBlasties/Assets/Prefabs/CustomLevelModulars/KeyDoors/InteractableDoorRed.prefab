@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1598080107453990198}
   - component: {fileID: 1598080107453990202}
   - component: {fileID: 1598080107453990201}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InteractableDoorRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   isOpen: 0
   isLocked: 1
   model: {fileID: 1598080107586150468}
+  switchScript: {fileID: 0}
 --- !u!1 &1598080107586150471
 GameObject:
   m_ObjectHideFlags: 0

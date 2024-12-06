@@ -12,6 +12,8 @@ TagManager:
   - AI
   - PlayerSpawnPos
   - Swarmer
+  - Wall
+  - Switch
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - UI
   - Ledge
   - Wall
-  - 
+  - Switch
   - 
   - 
   - 

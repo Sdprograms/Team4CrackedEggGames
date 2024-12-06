@@ -23,8 +23,6 @@ public class SwitchBehavior : MonoBehaviour
     public bool mOpen;
     public bool mCanOpen;
 
-    public bool mShowNoti;
-
     Vector3 mDoorPos;
     Vector3 mDoorOffPos;
     Vector3 mDoorOnPos;
@@ -44,23 +42,7 @@ public class SwitchBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (mOpen)
-        {
-            OpenDoor();
-        }
-        else
-        {
-            CloseDoor();
-        }
-
-        if (mShowNoti)
-        {
-            NotificationManager.mNotiManagrInst.ShowNotification("Activate");
-        }
-        else
-        {
-            NotificationManager.mNotiManagrInst.HideNotification();
-        }
+        PressTrigger();
     }
 
     private void OpenDoor()
@@ -72,35 +54,37 @@ public class SwitchBehavior : MonoBehaviour
         mSwitchableDoor.transform.position = Vector3.MoveTowards(mSwitchableDoor.transform.position, mDoorOff.transform.position, mMoveSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void PressTrigger()
     {
-        if (other.CompareTag("Player") && !mShowNoti)
+        //Debug.Log($"The tag got is: {GunRotation.mGunRotInst.mHit.collider.tag}");
+        if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && !mCanOpen)
         {
-            mShowNoti = true;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //checks if the player is in the collider 
-        if (other.CompareTag("Player") && Input.GetButton("Interact") && !mCanOpen)
-        {
-
             Debug.Log("E Pressed");
 
             //move the switch and make it pretty
-            //StartCoroutine(SwitchDoorOpen());
             mCanOpen = true;
             StartCoroutine(SwitchDoorOpen());
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player") && mShowNoti)
+
+        if (mOpen)
         {
-            mShowNoti = false;
+            OpenDoor();
+        }
+        else
+        {
+            CloseDoor();
+        }
+
+        if (GameManager.mInstance.mShowNoti == true)
+        {
+            NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+        }
+        else
+        {
+            NotificationManager.mNotiManagrInst.HideNotification();
         }
     }
+
     IEnumerator SwitchDoorOpen()
     {
         Debug.Log("Clicked Switch");

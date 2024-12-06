@@ -6,11 +6,13 @@ public class DestructableObject : MonoBehaviour, damageInterface
 {
     [SerializeField] float HP;
     [SerializeField] float MaxHP;
+    [SerializeField] GameObject explosionObject;
     [SerializeField] ParticleSystem deathEffect;
 
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip tookdmgAudioClip;
     [SerializeField] ItemDrop dropScript;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,9 @@ public class DestructableObject : MonoBehaviour, damageInterface
             //Instantiate death effect.
             if (deathEffect != null)
             Instantiate(deathEffect, transform.position, transform.rotation);
+
+            if (explosionObject != null)
+            Instantiate(explosionObject, transform.position, transform.rotation);
 
             if (dropScript != null)
             {

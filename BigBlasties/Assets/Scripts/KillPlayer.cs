@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class KillPlayer : MonoBehaviour
 {
-    public GameObject player;
-    public Transform respawn;
+    public int damage = 1000;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +19,16 @@ public class KillPlayer : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.transform.position = respawn.position;
+            damageInterface dmg = other.GetComponent<damageInterface>();
+
+            if (dmg != null)
+            {
+                dmg.takeDamage(damage);
+            }
         }
     }
 }

@@ -7,19 +7,50 @@ public class SwitchGeneral : MonoBehaviour
     public static SwitchGeneral switchGeneralInst;
 
     [SerializeField] GameObject objectToActivate;
+    [SerializeField] float targetRotation;
     [SerializeField] float rotationAmount;
+    [SerializeField] float rotationSpeed;
     [SerializeField] float moveXAxis;
 
-   
-
-    private void Start()
-    {
-
-    }
+    bool isRotating;
     public void rotateObject()
     {
-        objectToActivate.transform.Rotate(Vector3.up, rotationAmount, Space.World);
+        if (!isRotating)
+        {
+            StartCoroutine(Rotator());
+        }
     }
+
+    
+    IEnumerator Rotator()
+    {
+        isRotating = true;
+        float currentRotation = 0f;
+
+        
+        while (currentRotation < targetRotation)
+        {
+            
+            float rotationStep = rotationSpeed * Time.deltaTime;
+
+            
+            if (currentRotation + rotationStep > targetRotation)
+            {
+                rotationStep = targetRotation - currentRotation; 
+            }
+
+          
+            objectToActivate.transform.Rotate(Vector3.up, rotationStep);
+
+            
+            currentRotation += rotationStep;
+
+          
+            yield return null;
+        }
+        isRotating = false;
+    }
+
 
 
 

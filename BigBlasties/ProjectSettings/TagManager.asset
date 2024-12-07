@@ -14,6 +14,7 @@ TagManager:
   - Swarmer
   - Wall
   - Switch
+  - Cart
   layers:
   - Default
   - TransparentFX

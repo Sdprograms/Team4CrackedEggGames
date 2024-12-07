@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
 {
     enum interactableType {Door, Switch };
     enum doorType {GreyDoor, RedDoor, BlueDoor, GreenDoor, BossDoor};
+    enum switchType {Rotate, Railroad }
     [SerializeField] interactableType interactType;
 
     [Header("---If Door ---")]
@@ -17,6 +18,7 @@ public class Interactable : MonoBehaviour
 
     [Header("---If Switch---")]
     [SerializeField] SwitchGeneral switchScript;
+    [SerializeField] switchType typeSwitch;
 
     bool activateable;
     Color originalColor;
@@ -100,12 +102,16 @@ public class Interactable : MonoBehaviour
                 }
             }
 
-            if(interactType == interactableType.Switch)
+            if(interactType == interactableType.Switch && typeSwitch == switchType.Rotate)
             {
                 if (switchScript != null)
                 {
                     switchScript.rotateObject();
                 }
+            }
+            else if (interactType == interactableType.Switch && typeSwitch == switchType.Railroad)
+            {
+                switchScript.moveCart();
             }
 
             StartCoroutine(ActivateOff());

@@ -78,7 +78,7 @@ public class cameraController : MonoBehaviour
         else
         {
             shootPos.transform.localRotation = mShootRotOrig;
-            Debug.Log("Look at nothing");
+            //Debug.Log("Look at nothing");
         }
     }
 }

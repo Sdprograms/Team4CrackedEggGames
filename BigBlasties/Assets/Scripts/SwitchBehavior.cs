@@ -32,7 +32,7 @@ public class SwitchBehavior : MonoBehaviour
         mSwitchInst = this;
         mOn = false;
         mOpen = false;
-        mSwitchableDoor.GetComponent<GameObject>();
+        //mSwitchableDoor.GetComponent<GameObject>();
 
         //      For some reason, the engine doesn't like pre set vector3's
         //mDoorPos = mSwitchableDoor.transform.position;
@@ -56,14 +56,17 @@ public class SwitchBehavior : MonoBehaviour
 
     private void PressTrigger()
     {
-        //Debug.Log($"The tag got is: {GunRotation.mGunRotInst.mHit.collider.tag}");
-        if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && !mCanOpen)
+        if (GunRotation.mGunRotInst.mHit.collider != null && GunRotation.mGunRotInst.mHit.collider.Equals(mSwitch.GetComponent<Collider>()))
         {
-            Debug.Log("E Pressed");
+            //Debug.Log($"The tag got is: {GunRotation.mGunRotInst.mHit.collider.tag}");
+            if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && !mCanOpen)
+            {
+                Debug.Log("E Pressed");
 
-            //move the switch and make it pretty
-            mCanOpen = true;
-            StartCoroutine(SwitchDoorOpen());
+                //move the switch and make it pretty
+                mCanOpen = true;
+                StartCoroutine(SwitchDoorOpen());
+            }
         }
 
         if (mOpen)
@@ -73,15 +76,6 @@ public class SwitchBehavior : MonoBehaviour
         else
         {
             CloseDoor();
-        }
-
-        if (GameManager.mInstance.mShowNoti == true)
-        {
-            NotificationManager.mNotiManagrInst.ShowNotification("Activate");
-        }
-        else
-        {
-            NotificationManager.mNotiManagrInst.HideNotification();
         }
     }
 

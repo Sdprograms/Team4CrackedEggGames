@@ -89,6 +89,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (mShowNoti == true)
+        {
+            NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+        }
+        else
+        {
+            NotificationManager.mNotiManagrInst.HideNotification();
+        }
+
         SoundEffects.noiseMaker.LevelMusic(SoundEffects.noiseMaker.ambientMusic); // plays ambience
     }
 

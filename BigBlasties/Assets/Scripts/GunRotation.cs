@@ -52,9 +52,9 @@ public class GunRotation : MonoBehaviour
 
         if (Physics.Raycast(cameraController.camInstance.transform.position, cameraController.camInstance.transform.forward, out mHit, mRayDistance, mLayerMask))
         {
-            Debug.Log($"The Tag gotten is {mHit.collider.name}");
+            //Debug.Log($"The Tag gotten is {mHit.collider.name}");
             StartCoroutine(ToBody());
-            Debug.Log("The ray hit where it should rotate");
+            //Debug.Log("The ray hit where it should rotate");
 
             mCanFire = false;
 
@@ -66,7 +66,7 @@ public class GunRotation : MonoBehaviour
         else
         {
             StartCoroutine(ToAim());
-            Debug.Log("Rot orig");
+           // Debug.Log("Rot orig");
 
             mCanFire = true;
 

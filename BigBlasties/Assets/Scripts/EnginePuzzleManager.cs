@@ -10,9 +10,13 @@ public class EnginePuzzleManager : MonoBehaviour
 
     [SerializeField] List<GameObject> mListOfEngineBlocks;
     [SerializeField] List<GameObject> mListOfBlockPositions;
+    [SerializeField] List<GameObject> mListOfCamPositions;
+
     [SerializeField] GameObject mRestPos;
     [SerializeField] GameObject mRightPos;
     [SerializeField] GameObject mLeftPos;
+
+    [SerializeField] GameObject mMonitorCam;
 
     [SerializeField] GameObject mRightSwitch;
     [SerializeField] GameObject mLeftSwitch;
@@ -174,9 +178,9 @@ public class EnginePuzzleManager : MonoBehaviour
         }
         else
         {
-            mListOfEngineBlocks[listIterator].transform.position = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.position, mRightPos.transform.position, mTime * Time.deltaTime);
+            mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mRightPos.transform.localPosition, mTime * Time.deltaTime);
             //once it reaches its destination, it sets appropriate bools
-            if (mListOfEngineBlocks[listIterator].transform.position == mRightPos.transform.position)
+            if (mListOfEngineBlocks[listIterator].transform.localPosition == mRightPos.transform.localPosition)
             {
                 moveRight = false;
                 moveRest = true;
@@ -193,9 +197,9 @@ public class EnginePuzzleManager : MonoBehaviour
         }
         else
         {
-            mListOfEngineBlocks[listIterator].transform.position = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.position, mLeftPos.transform.position, mTime * Time.deltaTime);
+            mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mLeftPos.transform.localPosition, mTime * Time.deltaTime);
             //once it reaches its destination, it sets appropriate bools
-            if (mListOfEngineBlocks[listIterator].transform.position == mLeftPos.transform.position)
+            if (mListOfEngineBlocks[listIterator].transform.localPosition == mLeftPos.transform.localPosition)
             {
                 moveLeft = false;
                 moveRest = true;
@@ -206,10 +210,10 @@ public class EnginePuzzleManager : MonoBehaviour
 
     IEnumerator MoveRest()
     {
-        mListOfEngineBlocks[listIterator].transform.position = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.position, mRestPos.transform.position, mTime * Time.deltaTime);
+        mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mRestPos.transform.localPosition, mTime * Time.deltaTime);
         yield return null;
         //ensuers all are reset to move in either direction
-        if (mListOfEngineBlocks[listIterator].transform.position == mRestPos.transform.position)
+        if (mListOfEngineBlocks[listIterator].transform.localPosition == mRestPos.transform.localPosition)
         {
             moveRest = false;
             moveLeft = false;

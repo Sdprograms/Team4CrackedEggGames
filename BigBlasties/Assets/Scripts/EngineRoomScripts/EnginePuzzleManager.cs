@@ -233,6 +233,8 @@ public class EnginePuzzleManager : MonoBehaviour
         rotateClock = false;
         rotateCounterClock = false;
 
+        GameManager.mInstance.mCamPosition.text = (listIterator + 1).ToString();
+
         mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
 
         yield return new WaitForSeconds(mTime);

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text mAmmoReserve;
     public TMP_Text mKeyAmount;
 
+    public TMP_Text mCamPosition;
+
     public bool mPaused;
 
     public cameraController mCameraController;

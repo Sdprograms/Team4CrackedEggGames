@@ -53,8 +53,8 @@ MonoBehaviour:
   explosion: {fileID: 6324742498929419067, guid: 46ec70493e78e434fa681989b6da8749, type: 3}
   impactParticle: {fileID: 0}
   damageAmount: 5
-  speed: 50
-  destroyTime: 3
+  speed: 10
+  destroyTime: 8
 --- !u!33 &1360987712746308173
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.44647008, b: 0, a: 1}
+      key0: {r: 1, g: 0, b: 0.5938592, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

@@ -465,6 +465,7 @@ public class playerController : MonoBehaviour, damageInterface
     public void setRedKey(bool have)
     {
         redKey = have;
+        reloadAudioSource.PlayOneShot(keyGatheredClip);
     }
     public bool getBlueKey()
     {
@@ -473,6 +474,7 @@ public class playerController : MonoBehaviour, damageInterface
     public void setBlueKey(bool have)
     {
         blueKey = have;
+        reloadAudioSource.PlayOneShot(keyGatheredClip);
     }
     public bool getGreenKey()
     {
@@ -481,6 +483,7 @@ public class playerController : MonoBehaviour, damageInterface
     public void setGreenKey(bool have)
     {
         greenKey = have;
+        reloadAudioSource.PlayOneShot(keyGatheredClip);
     }
     public bool getBossKey()
     {
@@ -489,6 +492,7 @@ public class playerController : MonoBehaviour, damageInterface
     public void setBossKey(bool have)
     {
         bossKey = have;
+        reloadAudioSource.PlayOneShot(keyGatheredClip);
     }
 }
 

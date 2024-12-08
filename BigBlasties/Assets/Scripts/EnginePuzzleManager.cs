@@ -40,12 +40,13 @@ public class EnginePuzzleManager : MonoBehaviour
     void Start()
     {
         mEnginePuzzleManag = this;
+        mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveStates();
+        MoveStates(); 
     }
 
     void MoveStates()
@@ -71,7 +72,7 @@ public class EnginePuzzleManager : MonoBehaviour
             StartCoroutine(RotClockwise());
         }
         else if (rotateCounterClock)
-        { 
+        {
             StartCoroutine(RotCounterClockwise());
         }
     }
@@ -104,7 +105,7 @@ public class EnginePuzzleManager : MonoBehaviour
         }
     }
 
-    public void ChangeListIterator()
+    private void ChangeIterator()
     {
         //iterates through the vectors collectively, resetting when at the last number
         if (listIterator == mListOfEngineBlocks.Count - 1)
@@ -116,7 +117,6 @@ public class EnginePuzzleManager : MonoBehaviour
             listIterator++;
         }
     }
-
     private void PressChangeBlock()
     {
         //checks to make sure that the object is loaded and that the hHit is hitting something
@@ -125,8 +125,7 @@ public class EnginePuzzleManager : MonoBehaviour
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
             if (GameManager.mInstance.mShowNoti && Input.GetButtonDown("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchBlock.name))
             {
-                ChangeListIterator();
-
+                ChangeIterator();
                 StartCoroutine(SwitchBlocks());
             }
         }
@@ -176,7 +175,7 @@ public class EnginePuzzleManager : MonoBehaviour
         {
             StartCoroutine(MoveRest());
         }
-        else
+        else if (moveRight)
         {
             mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mRightPos.transform.localPosition, mTime * Time.deltaTime);
             //once it reaches its destination, it sets appropriate bools
@@ -186,16 +185,18 @@ public class EnginePuzzleManager : MonoBehaviour
                 moveRest = true;
             }
         }
+
         yield return null;
     }
     IEnumerator MoveLeft()
     {
+
         //ensures that if the object is in the right position, it moves to rest
         if (moveRest)
         {
             StartCoroutine(MoveRest());
         }
-        else
+        else if (moveLeft)
         {
             mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mLeftPos.transform.localPosition, mTime * Time.deltaTime);
             //once it reaches its destination, it sets appropriate bools
@@ -205,6 +206,7 @@ public class EnginePuzzleManager : MonoBehaviour
                 moveRest = true;
             }
         }
+
         yield return null;
     }
 
@@ -223,17 +225,21 @@ public class EnginePuzzleManager : MonoBehaviour
 
     IEnumerator SwitchBlocks()
     {
+ 
         mRightPos = mListOfBlockPositions[listIterator].gameObject.transform.GetChild(0).gameObject;
         mLeftPos = mListOfBlockPositions[listIterator].gameObject.transform.GetChild(1).gameObject;
         mRestPos = mListOfBlockPositions[listIterator].gameObject.transform.GetChild(2).gameObject;
         angle = mListOfEngineBlocks[listIterator].gameObject.transform.rotation.y;
         rotateClock = false;
         rotateCounterClock = false;
-        yield return null;
+
+        mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
+
+        yield return new WaitForSeconds(mTime);
     }
 
     IEnumerator RotClockwise()
-    { 
+    {
         //while the ending rotation is set, slerp into its rotation over time * deltaTime and * 2 for speed
         mListOfEngineBlocks[listIterator].transform.rotation = Quaternion.Slerp(mListOfEngineBlocks[listIterator].transform.rotation, nextRotation, mTime * Time.deltaTime * 2);
 

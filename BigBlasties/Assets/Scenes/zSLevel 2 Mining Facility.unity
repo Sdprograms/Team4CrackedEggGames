@@ -11194,7 +11194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 594189248605231950, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.38
+      value: -109.2
       objectReference: {fileID: 0}
     - target: {fileID: 594189248605231950, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11202,7 +11202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 594189248605231950, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 64.89
+      value: 289.2
       objectReference: {fileID: 0}
     - target: {fileID: 594189248605231950, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21996,7 +21996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9141581105305840294, guid: a4d3e2fa8496f644893413707d783720, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9141581105305840294, guid: a4d3e2fa8496f644893413707d783720, type: 3}
       propertyPath: m_LocalScale.x
@@ -31769,7 +31769,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToActivate: {fileID: 1901505712}
+  targetRotation: 0
   rotationAmount: 90
+  rotationSpeed: 0
+  moveXAxis: 0
 --- !u!114 &2039999361
 MonoBehaviour:
   m_ObjectHideFlags: 0

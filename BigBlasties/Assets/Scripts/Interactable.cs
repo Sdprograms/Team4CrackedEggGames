@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -53,8 +54,12 @@ public class Interactable : MonoBehaviour
             }
         }
     }
+
     public void OnTriggerStay(Collider other)
     {
+        NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+        GameManager.mInstance.mShowNoti = true;
+
         if (other.CompareTag("Player") && Input.GetButton("Interact") && activateable == true) //should normally set the key E to an input setting.
         {
             
@@ -116,9 +121,9 @@ public class Interactable : MonoBehaviour
 
             StartCoroutine(ActivateOff());
 
+
         }
     }
-
     IEnumerator ActivateOff()
     {
         activateable = false;

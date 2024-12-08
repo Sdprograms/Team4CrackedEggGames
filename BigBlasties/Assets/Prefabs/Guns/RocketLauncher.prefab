@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1210664226172149880}
   - component: {fileID: 1210664226173149880}
   - component: {fileID: 5732201461081794116}
+  - component: {fileID: 2689132218699551403}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -48,7 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  keyColor: 0
+  model: {fileID: 0}
   gun: {fileID: 11400000, guid: 056e999c4768b7747bb8d1e12643e535, type: 2}
+  healthRestored: 0
 --- !u!33 &1210664226172149880
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -112,3 +116,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.051113617
   m_Center: {x: 0, y: -0.0000000018626456, z: 0}
+--- !u!114 &2689132218699551403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210664226175089784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c106cf6bfdf08424a8d6980896fc76b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatSpeed: 2
+  floatHeight: 0.01
+  rotationSpeed: 50

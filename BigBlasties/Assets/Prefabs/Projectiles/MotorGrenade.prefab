@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmgType: 2
   rbody: {fileID: 4116680962623974477}
-  explosion: {fileID: 6324742498929419067, guid: 93e4e4247b3631046bc525ee3dc811e9, type: 3}
+  explosion: {fileID: 1393199401714612962, guid: 421d0e8c3b24efa4fa497b735965c01a, type: 3}
   impactParticle: {fileID: 0}
   damageAmount: 5
   speed: 15
@@ -139,7 +139,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.08791962, g: 0.61635214, b: 0, a: 1}
+      key0: {r: 0.162235, g: 0.16981131, b: 0.16100034, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

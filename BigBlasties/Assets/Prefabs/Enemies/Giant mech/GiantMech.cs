@@ -23,6 +23,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] int turnSpeed;
     [SerializeField] int viewAngle;
     [SerializeField] GameObject sheild;
+    [SerializeField] GameObject beserk;
     [SerializeField] GameObject batterycells;
     [SerializeField] Transform ArenaCenter;
     [SerializeField] float spawnRadius = 50f;
@@ -47,21 +48,18 @@ public class GiantMech : MonoBehaviour, damageInterface
     void Start()
     {
         HP = MaxHP;
-        detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
-                                                             // its data into the enemy individuality -XB
+        detector = GetComponentInChildren<EnemyDetection>();
+        agent.updateRotation = false;
     }
 
     void Update()
     {
         if (detector.playerInRange)
         {
+            facetarget();
             playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
             agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
             Vector3 currentPosition = transform.position;
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                facetarget();
-            }
             if (!isAttacking) // add &&  canSeePlayer() if you want to implement the canSeePlayer Bool condition
             {
                 StartCoroutine(attack());
@@ -73,13 +71,13 @@ public class GiantMech : MonoBehaviour, damageInterface
             // Spawn battery cells
             for (int i = 0; i < 5; i++)
             {
-                Quaternion batteryRotation = Quaternion.Euler(-90f, 0f, 0f); // Set -90 degrees on the X-axis
+                Quaternion batteryRotation = Quaternion.Euler(-90f, 0f, 0f);
                 Vector3 randomPos = GetRandomPositionAroundCenter();
                 GameObject battery = Instantiate(batterycells, randomPos, batteryRotation);
 
                 battery.GetComponent<BatteryScript>().Initialize(this);
 
-                activeBatteryCells.Add(battery); // Track battery cells
+                activeBatteryCells.Add(battery); 
             }
 
             batteryspawned = true;
@@ -87,8 +85,8 @@ public class GiantMech : MonoBehaviour, damageInterface
     }
     Vector3 GetRandomPositionAroundCenter()
     {
-        float angle = Random.Range(0f, Mathf.PI * 2); // Random angle in radians
-        float radius = Random.Range(0f, spawnRadius); // Random distance from the center
+        float angle = Random.Range(0f, Mathf.PI * 2); 
+        float radius = Random.Range(10f, spawnRadius); 
         float xOffset = Mathf.Cos(angle) * radius;
         float zOffset = Mathf.Sin(angle) * radius;
 
@@ -156,53 +154,126 @@ public class GiantMech : MonoBehaviour, damageInterface
         float startTime = Time.time;
         float maxDeviationAngle = 15f;
         isAttacking = true;
-        AttackType attackType = (AttackType)Random.Range(0, 3);
-        while (Time.time < startTime + attackDuration)
+
+        
+        float healthPercentage = HP / MaxHP;
+
+        if (healthPercentage < 0.4f) 
         {
-            Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
-            float randomDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
-            Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
-            Vector3 deviatedDirection = deviationRotation * directionToPlayer;
-            switch (attackType)
+            beserk.SetActive(true);
+            StartCoroutine(MotorAttack());
+            StartCoroutine(BlastAttack());
+            StartCoroutine(MachineGunAttack());
+        }
+        else
+        {
+           
+            AttackType attackType = (AttackType)Random.Range(0, 3);
+            while (Time.time < startTime + attackDuration)
             {
-                case AttackType.Motor:
-                    int projectileCount = 10;
-                    for (int i = 0; i < projectileCount; i++)
-                    {
-                        Vector3 launchDirection = new Vector3(deviatedDirection.x, 1f, deviatedDirection.z).normalized;
-                        float launchHeight = 2.0f;
-                        float launchForce = Random.Range(1f, 50f);
-                        GameObject projectile = Instantiate(grenademotor, attackPos.position, Quaternion.LookRotation(launchDirection));
-                        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-                        if (rb != null)
-                        {
-                            rb.AddForce(launchDirection * launchForce + Vector3.up * launchHeight, ForceMode.Impulse);
-                        }
+                Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+                float randomDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+                Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
+                Vector3 deviatedDirection = deviationRotation * directionToPlayer;
 
-                        yield return new WaitForSeconds(0.1f);
-                    }
-                    yield return new WaitForSeconds(MotorattackRate);
-                    break;
+                switch (attackType)
+                {
+                    case AttackType.Motor:
+                        yield return StartCoroutine(MotorAttack());
+                        break;
 
-                case AttackType.Blast:
-                    Instantiate(rocket, attackPos2.position, Quaternion.LookRotation(deviatedDirection));
-                    yield return new WaitForSeconds(BlastattackRate);
-                    break;
+                    case AttackType.Blast:
+                        yield return StartCoroutine(BlastAttack());
+                        break;
 
-                case AttackType.MachineGun:
-                    Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection));
-                    yield return new WaitForSeconds(MachineGunattackRate);
-                    break;
+                    case AttackType.MachineGun:
+                        yield return StartCoroutine(MachineGunAttack());
+                        break;
+                }
             }
         }
+
         yield return new WaitForSeconds(attackRate);
         isAttacking = false;
     }
+    private IEnumerator MotorAttack()
+    {
+        float maxDeviationAngle = 15f;
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        float randomDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+        Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
+        Vector3 deviatedDirection = deviationRotation * directionToPlayer;
+        int projectileCount = 10;
+        for (int i = 0; i < projectileCount; i++)
+        {
+            
+            Vector3 launchDirection = new Vector3(deviatedDirection.x, 1f, deviatedDirection.z).normalized;
+            float launchHeight = 2.0f;
+            float launchForce = Random.Range(1f, 50f);
+            GameObject projectile = Instantiate(grenademotor, attackPos3.position, Quaternion.LookRotation(launchDirection));
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddForce(launchDirection * launchForce + Vector3.up * launchHeight, ForceMode.Impulse);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(MotorattackRate);
+    }
+
+    private IEnumerator BlastAttack()
+    {
+        float maxDeviationAngle = 15f;
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        float randomDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+        Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
+        Vector3 deviatedDirection = deviationRotation * directionToPlayer;
+        int shotgunProjectileCount = 5;
+        for (int i = 0; i < shotgunProjectileCount; i++)
+        {
+
+            float randomDeviation2 = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+            float randomVerticalDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+            Quaternion deviationRotation2 = Quaternion.Euler(randomVerticalDeviation, randomDeviation2, 0);
+            Vector3 deviatedDirection2 = deviationRotation2 * directionToPlayer;
+
+            GameObject rocketProjectile = Instantiate(rocket, attackPos2.position, Quaternion.LookRotation(deviatedDirection2));
+            Rigidbody rbRocket = rocketProjectile.GetComponent<Rigidbody>();
+            if (rbRocket != null)
+            {
+                float launchForce = 30f; // Adjust launch force as needed
+                rbRocket.AddForce(deviatedDirection * launchForce, ForceMode.Impulse);
+            }
+        }
+        yield return new WaitForSeconds(BlastattackRate);
+    }
+
+    private IEnumerator MachineGunAttack()
+    {
+        float maxDeviationAngle = 5f;
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        float randomDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+        Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
+        int ProjectileCount = 30;
+        for (int i = 0; i < ProjectileCount; i++)
+        {
+            float randomDeviation2 = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+            float randomVerticalDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
+            Quaternion deviationRotation2 = Quaternion.Euler(randomVerticalDeviation, randomDeviation2, 0);
+            Vector3 deviatedDirection2 = deviationRotation2 * directionToPlayer;
+            Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection2));
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(MachineGunattackRate);
+    }
+
 
     void facetarget()
     {
-        Quaternion rot = Quaternion.LookRotation(playerPos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+        
+        Vector3 direction = (GameManager.mInstance.mPlayer.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, turnSpeed * Time.deltaTime);
     }
 
     public void setHP(float amount)

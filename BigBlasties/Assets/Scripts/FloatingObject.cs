@@ -25,7 +25,7 @@ public class FloatingObject : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
 
-            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
         }
     }
 }

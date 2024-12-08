@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8398615036518431910}
   - component: {fileID: 8398615036519399014}
   - component: {fileID: 3155938706996443802}
+  - component: {fileID: -7508764719579081823}
   m_Layer: 0
   m_Name: AutoLaserPistol
   m_TagString: Untagged
@@ -48,7 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  keyColor: 0
+  model: {fileID: 0}
   gun: {fileID: 11400000, guid: 322e457068f51be48bfddb47520c060e, type: 2}
+  healthRestored: 0
 --- !u!33 &8398615036518431910
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -112,3 +116,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.051113617
   m_Center: {x: 0, y: -0.0000000018626456, z: 0}
+--- !u!114 &-7508764719579081823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398615036517195942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c106cf6bfdf08424a8d6980896fc76b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatSpeed: 2
+  floatHeight: 0.01
+  rotationSpeed: 50

@@ -95,7 +95,6 @@ public class SwitchGeneral : MonoBehaviour
         Vector3 startPosition = objectToActivate.transform.position;  // Store the initial position
         float elapsedTime = 0f;
 
-
         isMoving = true;
 
         for(int i = 0; i < destinations.Count; i++)

@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/zStvLVLAdjust.unity
     guid: 95d4bbcbfb21ec748869e29facc62b97
+  - enabled: 1
+    path: Assets/Scenes/zSLevel 2 Mining Facility.unity
+    guid: f3794ffa6d377af4e9dc8f2bea3eb62c
+  - enabled: 1
+    path: Assets/Scenes/Escape.unity
+    guid: b648700dd782ff645b159c7b32257ab8
   m_configObjects: {}

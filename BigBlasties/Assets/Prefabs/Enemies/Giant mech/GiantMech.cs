@@ -9,18 +9,28 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] float MaxHP;
     [SerializeField] Transform sightPos;
     [SerializeField] Transform attackPos;
+    [SerializeField] Transform attackPos2;
+    [SerializeField] Transform attackPos3;
 
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject rocket;
     [SerializeField] float attackRate;
     [SerializeField] int turnSpeed;
     [SerializeField] int viewAngle;
-
-    [SerializeField] float flyingHeight; //for flying enemies, the height at which they fly
+    [SerializeField] GameObject sheild;
+    [SerializeField] GameObject batterycells;
+    [SerializeField] Transform ArenaCenter;
+    [SerializeField] float spawnRadius = 50f;
     [SerializeField] ItemDrop dropScript;
+    public float mVelocity;
 
+    private List<GameObject> activeBatteryCells = new List<GameObject>();
+    [SerializeField] private Animator animator;
     bool isAttacking;
+    bool batteryspawned;
     Vector3 playerPos;
+    Vector3 batteryPos;
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
 
@@ -28,13 +38,23 @@ public class GiantMech : MonoBehaviour, damageInterface
     void Start()
     {
         HP = MaxHP;
-
         detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
                                                              // its data into the enemy individuality -XB
     }
 
     void Update()
     {
+        if (agent.velocity.magnitude > 0.1f)
+        {
+            animator.SetBool("IsMove", true);
+        }
+        else
+        {
+            animator.SetBool("IsMove", false);
+        }
+
+        mVelocity = agent.velocity.magnitude;
+
         if (detector.playerInRange)
         {
             playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
@@ -49,10 +69,47 @@ public class GiantMech : MonoBehaviour, damageInterface
                 StartCoroutine(attack());
             }
         }
+        if (HP <= MaxHP / 2 && !batteryspawned)
+        {
+            sheild.SetActive(true);
+            // Spawn battery cells
+            for (int i = 0; i < 5; i++)
+            {
+                Quaternion batteryRotation = Quaternion.Euler(-90f, 0f, 0f); // Set -90 degrees on the X-axis
+                Vector3 randomPos = GetRandomPositionAroundCenter();
+                GameObject battery = Instantiate(batterycells, randomPos, batteryRotation);
+
+                battery.GetComponent<BatteryScript>().Initialize(this);
+
+                activeBatteryCells.Add(battery); // Track battery cells
+            }
+
+            batteryspawned = true;
+        }
+    }
+    Vector3 GetRandomPositionAroundCenter()
+    {
+        float angle = Random.Range(0f, Mathf.PI * 2); // Random angle in radians
+        float radius = Random.Range(0f, spawnRadius); // Random distance from the center
+        float xOffset = Mathf.Cos(angle) * radius;
+        float zOffset = Mathf.Sin(angle) * radius;
+
+        Vector3 centerPosition = ArenaCenter.position;
+        return new Vector3(centerPosition.x + xOffset, centerPosition.y, centerPosition.z + zOffset);
     }
 
-    //this helps prevent friendly fire bwtween enemies (some will still shoot each other, they will start aiming when there is line of sight, but if the palyer moves
-    // during the attack time, they adjust their aim and they may shoot a friendly
+    public void OnBatteryCellDestroyed(GameObject batteryCell)
+    {
+        activeBatteryCells.Remove(batteryCell);
+        Destroy(batteryCell);
+
+        if (activeBatteryCells.Count == 0)
+        {
+            sheild.SetActive(false);
+        }
+    }
+
+
     bool canSeePlayer()
     {
         playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
@@ -72,7 +129,6 @@ public class GiantMech : MonoBehaviour, damageInterface
 
 
 
-    //enemy take damage function
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -82,9 +138,11 @@ public class GiantMech : MonoBehaviour, damageInterface
         {
             if (dropScript != null)
                 dropScript.Drop();
-
-            Destroy(gameObject);
+            animator.Play("Hit");
+            agent.speed = 0;
+            Destroy(gameObject, 5f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
+
         }
     }
 
@@ -98,11 +156,14 @@ public class GiantMech : MonoBehaviour, damageInterface
 
     IEnumerator attack()
     {
+        animator.SetBool("IsMove", false);
+        animator.SetBool("IsAttack", true);
         isAttacking = true;
         Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
         Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
         yield return new WaitForSeconds(attackRate);
         isAttacking = false;
+        animator.SetBool("IsAttack", false);
     }
 
     void facetarget()

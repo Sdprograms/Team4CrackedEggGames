@@ -169,9 +169,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 10
+  explosionObject: {fileID: 0}
   deathEffect: {fileID: 3958902633591904931, guid: 552ea7dcf7ea4ba48a75413b9fdea52a, type: 3}
   audioSource: {fileID: 3684539118063561310}
   tookdmgAudioClip: {fileID: 8300000, guid: 6b16d41317ffb7f4f963895af69513d8, type: 3}
+  dropScript: {fileID: 0}
 --- !u!114 &7139514292850916526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +181,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7139514292850916524}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72b2adec6a123e44388b8a6b6c1df4dc, type: 3}
   m_Name: 
@@ -244,7 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9bb8d18ad9cfb4388e5dd9abb7479a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Activator: 0
   objectToToggleOn: {fileID: 7139514292850916525}
+  toggleExitTrigger: 1
 --- !u!82 &3684539118063561310
 AudioSource:
   m_ObjectHideFlags: 0

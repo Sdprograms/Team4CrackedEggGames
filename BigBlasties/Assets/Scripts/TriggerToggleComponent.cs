@@ -7,6 +7,7 @@ public class TriggerToggleComponent : MonoBehaviour
     enum Activator {Player, Cart};
     [SerializeField] Activator m_Activator;
     [SerializeField] MonoBehaviour objectToToggleOn;
+    [SerializeField] bool toggleExitTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,5 +29,18 @@ public class TriggerToggleComponent : MonoBehaviour
 
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (toggleExitTrigger)
+        {
+            if (other.CompareTag("Player") && m_Activator == Activator.Player)
+            {
+                if (objectToToggleOn != null)
+                {
+                    objectToToggleOn.enabled = false;
+                }
 
+            }
+        }
+    }
 }

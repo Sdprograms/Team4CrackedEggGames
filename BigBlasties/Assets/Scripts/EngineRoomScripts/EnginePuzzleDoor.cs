@@ -51,7 +51,7 @@ public class EnginePuzzleDoor : MonoBehaviour
 
     private void IsTwoSolved()
     {
-        if (mKeyTwo.transform.localPosition == mLockTwo.transform.localPosition && !mTwoSolved)
+        if (mKeyTwo.transform.position == mLockTwo.transform.position && !mTwoSolved)
         {
             Debug.Log("Unlocked Two");
             StartCoroutine(TwoSolved());
@@ -60,7 +60,7 @@ public class EnginePuzzleDoor : MonoBehaviour
 
     private void IsThreeSolved()
     {
-        if (mKeyThree.transform.localPosition == mLockThree.transform.localPosition && !mThreeSolved)
+        if (mKeyThree.transform.position == mLockThree.transform.position && !mThreeSolved)
         {
             Debug.Log("Unlocked Three");
             StartCoroutine(ThreeSolved());

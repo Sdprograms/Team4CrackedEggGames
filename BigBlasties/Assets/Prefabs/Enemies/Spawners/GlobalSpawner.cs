@@ -38,7 +38,7 @@ public class GlobalSpawner : MonoBehaviour
         Instantiate(objectToSpawn, spawnPos[spawnInt].position, spawnPos[spawnInt].rotation);
         spawnCount++;
         KillRoomDetector.mKillRoomInst.mSpawnedEnemies++;
-        GameManager.mInstance.mEnemyCount++;
+        //GameManager.mInstance.mEnemyCount++;
 
         yield return new WaitForSeconds(objectSpawnTime);
 

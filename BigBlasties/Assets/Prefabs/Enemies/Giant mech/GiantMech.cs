@@ -163,7 +163,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             beserk.SetActive(true);
             StartCoroutine(MotorAttack());
             StartCoroutine(BlastAttack());
-            StartCoroutine(MachineGunAttack());
+            StartCoroutine(MachineGunAttack2());
         }
         else
         {
@@ -248,7 +248,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         yield return new WaitForSeconds(BlastattackRate);
     }
 
-    private IEnumerator MachineGunAttack()
+    private IEnumerator MachineGunAttack2()
     {
         float maxDeviationAngle = 5f;
         Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
@@ -264,6 +264,16 @@ public class GiantMech : MonoBehaviour, damageInterface
             Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection2));
             yield return new WaitForSeconds(0.05f);
         }
+        yield return new WaitForSeconds(MachineGunattackRate);
+    }
+
+    private IEnumerator MachineGunAttack()
+    {
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        float randomDeviation = Random.Range(-15f, 15f); // Adjust deviation angle as necessary
+        Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
+        Vector3 deviatedDirection = deviationRotation * directionToPlayer;
+        Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection));
         yield return new WaitForSeconds(MachineGunattackRate);
     }
 

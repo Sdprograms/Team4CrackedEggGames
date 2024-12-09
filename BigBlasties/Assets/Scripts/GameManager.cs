@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mMenuLose;
     [SerializeField] GameObject mMenuWin;
 
+    [SerializeField] public List<GameObject> mListOfKillRoomDets;
+
     public TMP_Text sensitivityText;
 
     public Image mPlayerHealth;

@@ -1699,6 +1699,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6411710114556898234, guid: ec6f749d3676a844d9d929858969b59b, type: 3}
   m_PrefabInstance: {fileID: 389313929}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &389313931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6411710114341132950, guid: ec6f749d3676a844d9d929858969b59b, type: 3}
+  m_PrefabInstance: {fileID: 389313929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &390306662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4139,6 +4144,11 @@ PrefabInstance:
 --- !u!4 &951034189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2943355628468950477, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+  m_PrefabInstance: {fileID: 951034188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &951034190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2943355626514699461, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
   m_PrefabInstance: {fileID: 951034188}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1014514053
@@ -7178,6 +7188,18 @@ PrefabInstance:
       propertyPath: mPlayerSpawnPos
       value: 
       objectReference: {fileID: 578641802}
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mListOfKillRoomDets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mListOfKillRoomDets.Array.data[0]
+      value: 
+      objectReference: {fileID: 951034190}
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mListOfKillRoomDets.Array.data[1]
+      value: 
+      objectReference: {fileID: 389313931}
     - target: {fileID: 8650147460740577672, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: m_Name
       value: UI(official)

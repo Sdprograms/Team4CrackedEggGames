@@ -23,7 +23,7 @@ public class GlobalSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startSpawning && spawnCount < numberToSpawn && !isSpawning)
+        if (startSpawning && spawnCount < numberToSpawn && !isSpawning && KillRoomDetector.mKillRoomInst.mSpawnEnemies == true)
         {
             StartCoroutine(spawn());
         }

@@ -26,6 +26,7 @@ public class KillRoomDetector : MonoBehaviour
     [SerializeField] GlobalSpawner[] mSpawners;
 
     public bool mMoveDoor;
+    public bool mSpawnEnemies;
     public int mSpawnedEnemies;
     public int mEnemiesToSpawn;
 
@@ -77,7 +78,12 @@ public class KillRoomDetector : MonoBehaviour
             if (other.CompareTag("Player") && GameManager.mInstance.mEnemyCount <= 0)
             {
                 StartCoroutine(MoveDoor());
+                mSpawnEnemies = false;
             }
+        }
+        else
+        {
+            mSpawnEnemies = true;
         }
     }
 

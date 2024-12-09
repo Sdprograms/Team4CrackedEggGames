@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5945285104228868952}
   - component: {fileID: 7290833947480861949}
   - component: {fileID: 4812880777109067831}
+  - component: {fileID: 7646661904496485048}
   m_Layer: 0
   m_Name: PillarBrickShort
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7646661904496485048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470043055680125410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62821376, y: 2.0395417, z: 0.7622361}
+  m_Center: {x: 0.00000016391277, y: 1.0296926, z: -0.27949655}

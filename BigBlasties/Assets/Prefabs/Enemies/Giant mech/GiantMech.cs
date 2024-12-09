@@ -28,6 +28,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] Transform ArenaCenter;
     [SerializeField] float spawnRadius = 50f;
     [SerializeField] ItemDrop dropScript;
+    [SerializeField] HealthBar healthbar;
 
     private List<GameObject> activeBatteryCells = new List<GameObject>();
     [SerializeField] private Animator animator;
@@ -50,6 +51,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         HP = MaxHP;
         detector = GetComponentInChildren<EnemyDetection>();
         agent.updateRotation = false;
+        healthbar = GetComponentInChildren<HealthBar>();
     }
 
     void Update()
@@ -129,6 +131,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
+        healthbar.UpdateHealthBar(HP, MaxHP);
         detector.playerInRange = true;
         if (HP <= 0)
         {
@@ -209,7 +212,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             
             Vector3 launchDirection = new Vector3(deviatedDirection.x, 1f, deviatedDirection.z).normalized;
             float launchHeight = 2.0f;
-            float launchForce = Random.Range(1f, 50f);
+            float launchForce = Random.Range(1f, 100f);
             GameObject projectile = Instantiate(grenademotor, attackPos3.position, Quaternion.LookRotation(launchDirection));
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)

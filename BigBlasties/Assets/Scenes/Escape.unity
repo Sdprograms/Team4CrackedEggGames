@@ -4089,6 +4089,42 @@ PrefabInstance:
       propertyPath: mDeadMansDoor
       value: 
       objectReference: {fileID: 2097511890}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.475964
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943355627371202244, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 8468221560239827027, guid: 5b931790676c8d942a88fb3eec47acc1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8547,6 +8583,14 @@ PrefabInstance:
     - target: {fileID: 8585038807787264931, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
+      propertyPath: HP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585038807787264932, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
+      propertyPath: MaxHP
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8585038807787264936, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
       propertyPath: m_RootOrder

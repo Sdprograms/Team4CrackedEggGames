@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class KillRoomDetector : MonoBehaviour
@@ -58,11 +59,20 @@ public class KillRoomDetector : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && this.mSpawners.Count() != 0)
+        {
+            GameManager.mInstance.mEnemyCount = mEnemiesToSpawn;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         // this logic is particular with closing the door behing the player,
         // when you want to close the door is far enough into the room to stop fleeing from the player
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.mSpawners.Count() == 0 && GameManager.mInstance.mEnemyCount == 0)
         {
             StartCoroutine(MoveDoor());
         }

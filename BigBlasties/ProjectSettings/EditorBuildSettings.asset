@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/zSLevel 2 Mining Facility.unity
     guid: f3794ffa6d377af4e9dc8f2bea3eb62c
   - enabled: 1
+    path: Assets/Scenes/Boss Scene.unity
+    guid: 9fb8de85e249c3340a182a18a9265d5a
+  - enabled: 1
     path: Assets/Scenes/Escape.unity
     guid: b648700dd782ff645b159c7b32257ab8
   m_configObjects: {}

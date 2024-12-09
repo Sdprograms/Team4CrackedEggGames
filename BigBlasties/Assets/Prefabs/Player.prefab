@@ -734,8 +734,8 @@ MonoBehaviour:
   sprintMult: 2
   jumpMax: 2
   jumpCount: 0
-  jumpSpeed: 10
-  gravity: 20
+  jumpSpeed: 8
+  gravity: 30
   weaponAudioSource: {fileID: 0}
   reloadAudioSource: {fileID: 0}
   mStepsSource: {fileID: 25283915}

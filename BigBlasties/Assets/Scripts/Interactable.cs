@@ -16,6 +16,8 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool isOpen;
     [SerializeField] bool isLocked;
     [SerializeField] Renderer model;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip clip;
 
     [Header("---If Switch---")]
     [SerializeField] SwitchGeneral switchScript;
@@ -102,6 +104,11 @@ public class Interactable : MonoBehaviour
                         transform.Rotate(Vector3.up * 90);
                         isOpen = true;
                         isLocked = false;
+                    }
+                    else
+                    {
+                        if(audioSource != null && clip != null)
+                        audioSource.PlayOneShot(clip);
                     }
 
                 }

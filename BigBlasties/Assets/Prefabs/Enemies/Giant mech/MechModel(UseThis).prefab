@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 2274464128343987137}
   - component: {fileID: 1431922532}
   - component: {fileID: 1431922531}
+  - component: {fileID: -3573433257306090963}
   m_Layer: 0
   m_Name: MechModel(UseThis)
   m_TagString: Untagged
@@ -712,7 +713,8 @@ MonoBehaviour:
   batterycells: {fileID: 100000, guid: fdf643b7e57fb9f498ade64169c21613, type: 3}
   ArenaCenter: {fileID: 0}
   spawnRadius: 50
-  dropScript: {fileID: 0}
+  dropScript: {fileID: -3573433257306090963}
+  healthbar: {fileID: 0}
   animator: {fileID: 1862100975566350702}
 --- !u!136 &1431922532
 CapsuleCollider:
@@ -750,6 +752,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-3573433257306090963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862100975559056064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f454c42024ef5d646bd553105a170a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 594189248605231937, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
 --- !u!1 &1862100975559056066
 GameObject:
   m_ObjectHideFlags: 0

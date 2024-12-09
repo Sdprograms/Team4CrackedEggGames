@@ -2318,7 +2318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1086077512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2762,7 +2762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1273902258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3015,7 +3015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1483293769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3157,7 +3157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1558579972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4613,8 +4613,8 @@ MonoBehaviour:
   laserSwap: {fileID: 8300000, guid: 1ce7890406010c443a54576a00835e5a, type: 3}
   grenadeLauncherSwap: {fileID: 8300000, guid: b4156ac6286bbf7478ae9be59517bae0, type: 3}
   ambientMusic: {fileID: 8300000, guid: 022209bc99de5d849acb63ed16d58e76, type: 3}
-  UnPausedVol: 0
-  PausedVol: 0
+  UnPausedVol: 0.3
+  PausedVol: 0.1
 --- !u!1 &2369031342389986603
 GameObject:
   m_ObjectHideFlags: 0

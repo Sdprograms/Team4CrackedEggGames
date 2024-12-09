@@ -67,13 +67,13 @@ public class GameManager : MonoBehaviour
         //grants a single instance to the game object
         mInstance = this;
         //tracks the player
-        mPlayer = GameObject.FindWithTag("Player");
+        //mPlayer = GameObject.FindWithTag("Player");
         mPlayerController = mPlayer.GetComponent<playerController>();
         // Update is called once per frame
         mTimeScaleOrig = Time.timeScale;
         SetActiveMenu(mMenuPlay);
         mMenuActive.SetActive(true);
-        mPlayerSpawnPos = GameObject.FindWithTag("PlayerSpawnPos");//finds the players spawn
+        //mPlayerSpawnPos = GameObject.FindWithTag("PlayerSpawnPos");//finds the players spawn
     }
 
     void Update()

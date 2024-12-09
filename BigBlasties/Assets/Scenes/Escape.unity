@@ -3225,6 +3225,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571866066}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &578641802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4180886085817520761, guid: 381f063ef1e25a941a957414be87c87e, type: 3}
+  m_PrefabInstance: {fileID: 489213507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &610325553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6567,6 +6572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f7caaa924b34d54bbdc1ded1b17025a, type: 3}
+--- !u!1 &1629123678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8585038807787264931, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
+  m_PrefabInstance: {fileID: 2119873290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1636741180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7160,6 +7170,14 @@ PrefabInstance:
       propertyPath: UnPausedVol
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mPlayer
+      value: 
+      objectReference: {fileID: 1629123678}
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mPlayerSpawnPos
+      value: 
+      objectReference: {fileID: 578641802}
     - target: {fileID: 8650147460740577672, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: m_Name
       value: UI(official)

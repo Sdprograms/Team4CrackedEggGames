@@ -60,13 +60,13 @@ public class playerController : MonoBehaviour, damageInterface
     public Vector3 moveDirection; // public by XB
     public Vector3 playerVel; // public by XB
 
-    bool isSprinting;
+    //bool isSprinting;
     public bool isShooting; //public by -XB
     //bool mGunSwapped; // used along with the dampener for weapon swap -XB
 
     int speedOriginal;
 
-    [SerializeField] string weaponType;
+   // [SerializeField] string weaponType;
 
     private void Awake()
     {
@@ -77,7 +77,7 @@ public class playerController : MonoBehaviour, damageInterface
     // Start is called before the first frame update
     void Start()
     {
-        weaponType = "Laser";
+        //weaponType = "Laser";
         speedOriginal = speed;
         HP = MaxHP;
 
@@ -163,12 +163,12 @@ public class playerController : MonoBehaviour, damageInterface
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMult;
-            isSprinting = true;
+            //isSprinting = true;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMult;
-            isSprinting = false;
+            //isSprinting = false;
         }
     }
 

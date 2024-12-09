@@ -7,7 +7,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
 {
     [SerializeField] float HP;
     [SerializeField] float MaxHP;
-    [SerializeField] int aggroRange;
+    //[SerializeField] int aggroRange;
 
     [SerializeField] Transform sightPos;
     [SerializeField] Transform attackPos;
@@ -141,7 +141,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     {
         HP -= amount;
         StartCoroutine(hitmarker());
-        aggroRange = 1000;
+        //aggroRange = 1000;
         detector.playerInRange = true;
         if (HP <= 0)
         {

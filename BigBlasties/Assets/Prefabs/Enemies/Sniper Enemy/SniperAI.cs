@@ -32,7 +32,7 @@ public class SniperAI : MonoBehaviour, damageInterface
     //bool playerInRange;
 
     
-    bool isFleeing;
+    //bool isFleeing;
     public float distance;
 
     Vector3 playerPos;
@@ -194,7 +194,7 @@ public class SniperAI : MonoBehaviour, damageInterface
     {
         Quaternion rot = Quaternion.LookRotation(-playerPos);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
-        isFleeing = true;
+        //isFleeing = true;
     }
 
     IEnumerator facetargetTimed(float duration)

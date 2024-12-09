@@ -7,6 +7,9 @@ public class SwitchGeneral : MonoBehaviour
     public static SwitchGeneral switchGeneralInst;
     [SerializeField] GameObject objectToActivate;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioSwitchClip;
+
     [Header("----If Rotating-----")]
     
     [SerializeField] float targetRotation;
@@ -14,16 +17,16 @@ public class SwitchGeneral : MonoBehaviour
     [SerializeField] float rotationSpeed;
     [SerializeField] float moveXAxis;
     [SerializeField] SwitchGeneral connectedSwitch;
-    
+
 
     [Header("-----If Cart-----")]
+    [SerializeField] AudioClip completionSound;
     [SerializeField] List<Transform> destinations = new List<Transform>();
     [SerializeField] List<bool> connected = new List<bool>();
     [SerializeField] List<int> connectedIndex = new List<int>();
     [SerializeField] float moveSpeed;
     [SerializeField] float moveTime;
-
-    [SerializeField]
+    
 
     bool isRotating;
     bool isMoving;
@@ -31,6 +34,7 @@ public class SwitchGeneral : MonoBehaviour
     {
         if (!isRotating)
         {
+            audioSource.PlayOneShot(audioSwitchClip);
             StartCoroutine(Rotator());
         }
     }
@@ -39,6 +43,7 @@ public class SwitchGeneral : MonoBehaviour
     {
         if(!isMoving)
         {
+            audioSource.PlayOneShot(audioSwitchClip);
             StartCoroutine(cartMover());
         }
     }
@@ -104,6 +109,10 @@ public class SwitchGeneral : MonoBehaviour
 
                 if (i++ < destinations.Count && connected[i])
                 {
+                    if(i == destinations.Count - 1)
+                    {
+                        audioSource.PlayOneShot(completionSound);
+                    }
                     if (i >= destinations.Count)
                     {
                         break;
@@ -121,6 +130,8 @@ public class SwitchGeneral : MonoBehaviour
                 }
             }
         }
+
+        
 
         yield return null;
         isMoving = false;

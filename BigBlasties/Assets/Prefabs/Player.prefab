@@ -180,10 +180,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   mRotationPoint: {fileID: 6032689018626474825}
   mTag: Untagged
-  mMoveTime: 1.5
+  mMoveTime: 300
   mRayDistance: 1.5
   mCanFire: 0
 --- !u!1 &6047345081429469608

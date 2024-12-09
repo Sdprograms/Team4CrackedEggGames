@@ -2884,6 +2884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mNotificationPopup: {fileID: 973719276}
+  mArmRange: 5
   mNotificationText: {fileID: 973719277}
 --- !u!1 &3135713582097302188
 GameObject:
@@ -6189,6 +6190,7 @@ MonoBehaviour:
   mAmmoCurrent: {fileID: 354036515}
   mAmmoReserve: {fileID: 1198595420}
   mKeyAmount: {fileID: 1790308531}
+  mCamPosition: {fileID: 0}
   mPaused: 0
   mCameraController: {fileID: 0}
   mPlayerController: {fileID: 0}
@@ -6197,6 +6199,8 @@ MonoBehaviour:
   mPlayerDamageTaken: {fileID: 4640640726045850267}
   mWalkingSound: {fileID: 0}
   mEnemyDamageHitmarker: {fileID: 131348694}
+  mEnemyCount: 0
+  mShowNoti: 0
 --- !u!1 &7219833692337133905
 GameObject:
   m_ObjectHideFlags: 0

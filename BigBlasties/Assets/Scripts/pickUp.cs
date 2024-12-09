@@ -81,21 +81,25 @@ public class pickUp : MonoBehaviour
                 else if (keyColor == keyType.redKey)
                 {
                     GameManager.mInstance.mPlayerController.setRedKey(true);
+                    NotificationManager.mNotiManagrInst.ShowRedKey();
                     Destroy(gameObject);
                 }
                 else if (keyColor == keyType.blueKey)
                 {
                     GameManager.mInstance.mPlayerController.setBlueKey(true);
+                    NotificationManager.mNotiManagrInst.ShowBlueKey();
                     Destroy(gameObject);
                 }
                 else if (keyColor == keyType.greenKey)
                 {
                     GameManager.mInstance.mPlayerController.setGreenKey(true);
+                    NotificationManager.mNotiManagrInst.ShowGreenKey();
                     Destroy(gameObject);
                 }
                 else if (keyColor == keyType.bossKey)
                 {
                     GameManager.mInstance.mPlayerController.setBossKey(true);
+                    NotificationManager.mNotiManagrInst.ShowBossKey();
                     Destroy(gameObject);
                 }
             }

@@ -44,7 +44,7 @@ public class NotificationManager : MonoBehaviour
 
     public void ShowBlueKey()
     {
-        mBlueKeyPopup.SetActive(false);
+        mBlueKeyPopup.SetActive(true);
     }
 
     public void ShowRedKey()

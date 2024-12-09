@@ -62,7 +62,10 @@ public class ButtonManager : MonoBehaviour
         //resets the game to the current scene(level) at its default and unpauses the game
         GameManager.mInstance.StateUnpaused();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        KillRoomDetector.mKillRoomInst.mDeadMansDoor.transform.position = KillRoomDetector.mKillRoomInst.mDoorOrigPos;
+        if (KillRoomDetector.mKillRoomInst.mDeadMansDoor != null)
+        {
+            KillRoomDetector.mKillRoomInst.mDeadMansDoor.transform.position = KillRoomDetector.mKillRoomInst.mDoorOrigPos;
+        }
     }
 
     public void Quit()

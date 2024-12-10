@@ -7174,11 +7174,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1628536989054249692, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: PausedVol
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1628536989054249692, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: UnPausedVol
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: mPlayer

@@ -2384,6 +2384,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &820741698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8585038807787264931, guid: 14e05fbf46e6eed46a33e0c2a19041a1, type: 3}
+  m_PrefabInstance: {fileID: 1260719902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &905004244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +2572,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mPlayer
+      value: 
+      objectReference: {fileID: 820741698}
+    - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: mPlayerSpawnPos
+      value: 
+      objectReference: {fileID: 1229790891}
     - target: {fileID: 8650147460740577672, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: m_Name
       value: UI(official)
@@ -2910,6 +2923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a974f71b570f84b8cbf89d3acf87f6, type: 3}
+--- !u!1 &1229790891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4180886085817520761, guid: 381f063ef1e25a941a957414be87c87e, type: 3}
+  m_PrefabInstance: {fileID: 478670728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1260719902
 PrefabInstance:
   m_ObjectHideFlags: 0

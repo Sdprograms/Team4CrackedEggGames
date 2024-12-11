@@ -17,7 +17,10 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool isLocked;
     [SerializeField] Renderer model;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip clip;
+    [SerializeField] AudioClip lockClip;
+    [SerializeField] AudioClip openClip;
+    [SerializeField] float openSpeed;
+    private float currentRot;
 
     [Header("---If Switch---")]
     [SerializeField] SwitchGeneral switchScript;
@@ -71,44 +74,59 @@ public class Interactable : MonoBehaviour
                 {
                     if (!isLocked)
                     {
-                        transform.Rotate(Vector3.up * 90);
+                        //transform.Rotate(Vector3.up * 90);
+                        StartCoroutine(rotateObject());
+                        audioSource.PlayOneShot(openClip);
                         isOpen = true;
                     }
                     else if (isLocked && typeDoor == doorType.GreyDoor && GameManager.mInstance.mPlayerController.GetKeys() > 0)
                     {
-                        transform.Rotate(Vector3.up * 90);
+                        //transform.Rotate(Vector3.up * 90);
+                        StartCoroutine(rotateObject());
+                        audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         GameManager.mInstance.mPlayerController.RemoveKey();
                         isLocked = false;
                     }
                     else if (isLocked && typeDoor == doorType.GreenDoor && GameManager.mInstance.mPlayerController.getGreenKey() == true)
                     {
-                        transform.Rotate(Vector3.up * 90);
+                        //transform.Rotate(Vector3.up * 90);
+                        StartCoroutine(rotateObject());
+                        audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
                     }
                     else if (isLocked && typeDoor == doorType.RedDoor && GameManager.mInstance.mPlayerController.getRedKey() == true)
                     {
-                        transform.Rotate(Vector3.up * 90);
+                        //transform.Rotate(Vector3.up * 90);
+                        StartCoroutine(rotateObject());
+                        audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
                     }
                     else if (isLocked && typeDoor == doorType.BlueDoor && GameManager.mInstance.mPlayerController.getBlueKey() == true)
                     {
-                        transform.Rotate(Vector3.up * 90);
+                        //transform.Rotate(Vector3.up * 90);
+                        StartCoroutine(rotateObject());
+                        audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
                     }
                     else if (isLocked && typeDoor == doorType.BossDoor && GameManager.mInstance.mPlayerController.getBossKey() == true)
                     {
-                        transform.Rotate(Vector3.up * 90);
+                        //transform.Rotate(Vector3.up * 90);
+                        StartCoroutine(rotateObject());
+                        audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
                     }
                     else
                     {
-                        if(audioSource != null && clip != null)
-                        audioSource.PlayOneShot(clip);
+                        if (audioSource != null && lockClip != null)
+                        {
+                            audioSource.time = 0.5f;
+                            audioSource.PlayOneShot(lockClip);
+                        }
                     }
 
                 }
@@ -138,4 +156,22 @@ public class Interactable : MonoBehaviour
         activateable = true;
     }
 
+    private IEnumerator rotateObject()
+    {
+        currentRot = 0;
+
+        while (currentRot < 90f)
+        {
+           
+            float rotationThisFrame = openSpeed * Time.deltaTime;
+            currentRot += rotationThisFrame;
+
+           
+            transform.Rotate(Vector3.up * rotationThisFrame);
+
+          
+            yield return null;
+        }
+
+    }    
 }

@@ -132,7 +132,9 @@ MonoBehaviour:
   isLocked: 1
   model: {fileID: 1598080107586150468}
   audioSource: {fileID: 8215192920616350027}
-  clip: {fileID: 8300000, guid: 57e1f2f1d21957d4b9c43052a5ae927f, type: 3}
+  lockClip: {fileID: 8300000, guid: e51fa48d8287f43e3bf9bcf572a45998, type: 3}
+  openClip: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
+  openSpeed: 100
   switchScript: {fileID: 0}
   typeSwitch: 0
 --- !u!82 &8215192920616350027

@@ -20,4 +20,5 @@ MonoBehaviour:
   shootRate: 0.5
   ammoCurrent: 10
   ammoMax: 10
-  ammoReserve: 9
+  ammoReserve: 10
+  reloadTime: 2

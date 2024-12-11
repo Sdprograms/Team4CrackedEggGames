@@ -14,4 +14,5 @@ public class gunStats : ScriptableObject
     public int ammoCurrent;
     public int ammoMax;
     public int ammoReserve;
+    public float reloadTime;
 }

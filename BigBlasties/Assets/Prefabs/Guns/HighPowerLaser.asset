@@ -21,3 +21,4 @@ MonoBehaviour:
   ammoCurrent: 25
   ammoMax: 25
   ammoReserve: 24
+  reloadTime: 1

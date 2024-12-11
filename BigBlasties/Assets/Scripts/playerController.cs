@@ -40,6 +40,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] int ammoCurrent;
     [SerializeField] int ammoMax;
     [SerializeField] int ammoReserve;
+    [SerializeField] float reloadTime;
     int selectedGun;
 
     //OTHER STATS
@@ -67,6 +68,8 @@ public class playerController : MonoBehaviour, damageInterface
 
     int speedOriginal;
 
+    bool canShoot;
+
    // [SerializeField] string weaponType;
 
     private void Awake()
@@ -81,6 +84,8 @@ public class playerController : MonoBehaviour, damageInterface
         //weaponType = "Laser";
         speedOriginal = speed;
         HP = MaxHP;
+
+        canShoot = true;
 
         weaponAudioSource = GetComponent<AudioSource>();
         reloadAudioSource = GetComponent<AudioSource>();
@@ -178,7 +183,7 @@ public class playerController : MonoBehaviour, damageInterface
     {
 
         //Ensures that the game is unpaused to shoot, I would like to recommend, have this check in future in-game (unpaused) actions -XB
-        if (GameManager.mInstance.mPaused == false && gunInventory.Count > 0 && gunInventory[selectedGun].ammoCurrent > 0)
+        if (GameManager.mInstance.mPaused == false && gunInventory.Count > 0 && gunInventory[selectedGun].ammoCurrent > 0 && canShoot)
         {
             isShooting = true;
 
@@ -298,6 +303,7 @@ public class playerController : MonoBehaviour, damageInterface
         ammoReserve = gunInventory[selectedGun].ammoReserve;
         gunPickupSound = gunInventory[(selectedGun)].gunPickupSound;
         reloadAudioClip = gunInventory[(selectedGun)].reloadSound;
+        reloadTime = gunInventory[(selectedGun)].reloadTime;
 
         //this gun model is getting the gun model from 'gun'
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -318,6 +324,7 @@ public class playerController : MonoBehaviour, damageInterface
         ammoReserve = gunInventory[selectedGun].ammoReserve;
         gunPickupSound = gunInventory[(selectedGun)].gunPickupSound;
         reloadAudioClip = gunInventory[(selectedGun)].reloadSound;
+        reloadTime = gunInventory[(selectedGun)].reloadTime;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader
@@ -375,7 +382,7 @@ public class playerController : MonoBehaviour, damageInterface
     void reload()
     {
         int ammoDifference;
-        if (Input.GetButtonDown("Reload") && gunInventory.Count > 0)
+        if (Input.GetButtonDown("Reload") && gunInventory.Count > 0 && ammoCurrent < ammoMax && isShooting == false )
         {
             reloadAudioSource.PlayOneShot(reloadAudioClip);
             if (ammoReserve >= ammoMax)
@@ -383,12 +390,14 @@ public class playerController : MonoBehaviour, damageInterface
                 ammoDifference = ammoMax - ammoCurrent;
                 gunInventory[selectedGun].ammoCurrent = ammoMax;
                 gunInventory[selectedGun].ammoReserve -= ammoDifference;
-
+                StartCoroutine(reloading());
             }
             else if (ammoReserve <= ammoMax)
             {
-                gunInventory[selectedGun].ammoCurrent += ammoReserve;
-                gunInventory[selectedGun].ammoReserve = 0;
+                ammoDifference = ammoMax - ammoCurrent;
+                gunInventory[selectedGun].ammoCurrent += ammoDifference;
+                gunInventory[selectedGun].ammoReserve -= ammoDifference;
+                StartCoroutine(reloading());
             }
         }
         if (gunInventory.Count != 0) // Checks if the gun inventory has something in it before assigning values, otherwise theyll be out of range -XB
@@ -401,6 +410,12 @@ public class playerController : MonoBehaviour, damageInterface
         UpdateUI();
     }
 
+    private IEnumerator reloading()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(reloadTime);
+        canShoot = true;
+    }
     public void ammoPickup()
     {
         if(gunInventory.Count > 0)

@@ -28,6 +28,7 @@ public class playerController : MonoBehaviour, damageInterface
     [SerializeField] List<gunStats> gunInventory = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] AudioClip reloadAudioClip;
+    [SerializeField] AudioClip gunPickupSound;
     [SerializeField] GameObject projectile;
     [SerializeField] AudioClip projectileAudio;
     [SerializeField] AudioClip mStepSound; // -XB
@@ -295,6 +296,8 @@ public class playerController : MonoBehaviour, damageInterface
         ammoCurrent = gunInventory[selectedGun].ammoCurrent;
         ammoMax = gunInventory[selectedGun].ammoMax;
         ammoReserve = gunInventory[selectedGun].ammoReserve;
+        gunPickupSound = gunInventory[(selectedGun)].gunPickupSound;
+        reloadAudioClip = gunInventory[(selectedGun)].reloadSound;
 
         //this gun model is getting the gun model from 'gun'
         gunModel.GetComponent<MeshFilter>().sharedMesh = gun.gunModel.GetComponent<MeshFilter>().sharedMesh;
@@ -303,7 +306,7 @@ public class playerController : MonoBehaviour, damageInterface
 
         StartCoroutine(GunPosLogic.gunPosInst.OrientGunMesh(gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh));// -XB
 
-        reloadAudioSource.PlayOneShot(reloadAudioClip);
+        reloadAudioSource.PlayOneShot(gunPickupSound);
     }
 
     void changeGun()
@@ -313,6 +316,8 @@ public class playerController : MonoBehaviour, damageInterface
         projectileAudio = gunInventory[selectedGun].gunSound;
         ammoCurrent = gunInventory[(selectedGun)].ammoCurrent;
         ammoReserve = gunInventory[selectedGun].ammoReserve;
+        gunPickupSound = gunInventory[(selectedGun)].gunPickupSound;
+        reloadAudioClip = gunInventory[(selectedGun)].reloadSound;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunInventory[selectedGun].gunModel.GetComponent<MeshFilter>().sharedMesh; //gives mesh
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInventory[selectedGun].gunModel.GetComponent<MeshRenderer>().sharedMaterial; //gives shader

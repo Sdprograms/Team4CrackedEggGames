@@ -15,7 +15,9 @@ MonoBehaviour:
   gunModel: {fileID: 100000, guid: fccd8e251d698f7449ed9aca4bacc50e, type: 3}
   projectile: {fileID: 9204756768406838597, guid: 60b1d692e6518744dae9e3d017e69a0b, type: 3}
   gunSound: {fileID: 8300000, guid: cfa16117c62143e4c9055eb2c083673f, type: 3}
+  gunPickupSound: {fileID: 8300000, guid: b4156ac6286bbf7478ae9be59517bae0, type: 3}
+  reloadSound: {fileID: 8300000, guid: 8ef9910cbbea2eb419a97151cec5d358, type: 3}
   shootRate: 0.5
   ammoCurrent: 10
   ammoMax: 10
-  ammoReserve: 30
+  ammoReserve: 9

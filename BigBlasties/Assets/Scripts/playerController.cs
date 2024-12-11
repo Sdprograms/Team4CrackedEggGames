@@ -115,16 +115,16 @@ public class playerController : MonoBehaviour, damageInterface
         {
             if (!mStepsSource.isPlaying)
             {
-                //Debug.Log("Plays Steps");
-                mStepsSource.Play();
+                    //Debug.Log("Plays Steps");
+                    mStepsSource.Play();
             }
         }
         else
         {
-            if (mStepsSource.isPlaying) 
+            if (mStepsSource.isPlaying)
             {
-                //Debug.Log("Stops Steps");
-                mStepsSource.Stop();
+                    //Debug.Log("Stops Steps");
+                    mStepsSource.Stop();
             }
         }
 

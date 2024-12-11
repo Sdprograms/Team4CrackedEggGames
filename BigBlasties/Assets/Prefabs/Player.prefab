@@ -742,7 +742,6 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   playerVel: {x: 0, y: 0, z: 0}
   isShooting: 0
-  weaponType: 
 --- !u!33 &8585038807787264935
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mMenuSettings;
     [SerializeField] GameObject mMenuLose;
     [SerializeField] GameObject mMenuWin;
+
+    [SerializeField] public GameObject notePage;
 
     [SerializeField] public List<GameObject> mListOfKillRoomDets;
 
@@ -48,6 +51,8 @@ public class GameManager : MonoBehaviour
     public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
 
     public bool mShowNoti;
+
+    public bool mNoteActive;
 
     public GameObject GetMenuPause() 
     {
@@ -103,10 +108,19 @@ public class GameManager : MonoBehaviour
         }
 
         SoundEffects.noiseMaker.LevelMusic(SoundEffects.noiseMaker.ambientMusic); // plays ambience
+
+        if (mNoteActive == true && Input.GetButtonUp("Interact")) 
+        {
+            notePage.SetActive(false);
+            GameManager.mInstance.UnfreezeGame();
+        }
+
     }
 
     public void FreezeGame()
     {
+        //inverses pause state
+        mPaused = !mPaused;
         //halts activity, and allows for caged mouse cursor
         Time.timeScale = 0;
         Cursor.visible = true;
@@ -114,6 +128,7 @@ public class GameManager : MonoBehaviour
     }
     public void UnfreezeGame()
     {
+        mPaused = !mPaused;
         Time.timeScale = mTimeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -121,8 +136,7 @@ public class GameManager : MonoBehaviour
 
     public void StatePaused()
     {
-        //inverses pause state
-        mPaused = !mPaused;
+        mMenuActive.SetActive(false);
         //sets the active menu to pause
         SetActiveMenu(mMenuPause);
         //makes it visible
@@ -132,7 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void StateUnpaused()
     {
-        mPaused = !mPaused;
+
         mMenuActive.SetActive(false);
         SetActiveMenu(null);
         UnfreezeGame();

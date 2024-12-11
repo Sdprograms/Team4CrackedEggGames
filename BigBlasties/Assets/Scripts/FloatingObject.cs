@@ -8,7 +8,8 @@ public class FloatingObject : MonoBehaviour
 
     [SerializeField] float floatHeight = 1f; // Controls the maximum height of the float
 
-    [SerializeField] float rotationSpeed = 50f;
+    [SerializeField] float rotationSpeedForward = 50f;
+    [SerializeField] float rotationSpeedUp = 0f;
     private float timer = 0f;
 
 
@@ -25,7 +26,8 @@ public class FloatingObject : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
 
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.forward * rotationSpeedForward * Time.deltaTime); 
+            transform.Rotate(Vector3.up * rotationSpeedUp * Time.deltaTime);
         }
     }
 }

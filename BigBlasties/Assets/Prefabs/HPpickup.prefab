@@ -150,6 +150,9 @@ MonoBehaviour:
   model: {fileID: 0}
   gun: {fileID: 0}
   healthRestored: 50
+  noteNum: 0
+  noteTitle: {fileID: 0}
+  noteBody: {fileID: 0}
 --- !u!135 &2750476467998670093
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -177,7 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatSpeed: 4
   floatHeight: 0.01
-  rotationSpeed: 50
+  rotationSpeedForward: 0
+  rotationSpeedUp: 50
 --- !u!1 &4446090086258012429
 GameObject:
   m_ObjectHideFlags: 0

@@ -148,6 +148,18 @@ public class pickUp : MonoBehaviour
                     noteBody.text = "Progress: Alpha\n\nComplete: So far, the mech we've been designing for the past five years has made considerable leaps and bounds, (not physically). It's slew of ranged attacks are up to standards, and the plans are fully underway.\n\n" +
                         "Deficits: The mech has had issues with power in the past, and those issues were mitigated, yet it's not yet ready for the battlefield as it tends to destroy the extra batteries. Further texting is necessary...";
                 }
+                else if (noteNum == 5)
+                {
+                    noteTitle.text = "The Unmanned Mech";
+                    noteBody.text = "Despite the project not being fully complete, it has taken the reins into its own metallic hands. Attaining a rogue AI model has done disasterous deeds to the facility, yet it wasn't the cause of the mess." +
+                        "\n\nYour training shouldn't fail you, take it down like the rest of them.";
+                }
+                else if (noteNum == 6)
+                {
+                    noteTitle.text = "Guarded Escape";
+                    noteBody.text = "Freedom is on the horizon, but on the forefront is an army of guards blocking your path. Evac is holding their position, but can't get any further in. " +
+                        "\n\nIf you want to get out alive, you'll have to earn it.";
+                }
 
                 Destroy(gameObject);
 

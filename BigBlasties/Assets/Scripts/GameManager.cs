@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel")) 
+        if (Input.GetButtonDown("Cancel") && !mNoteActive) 
         {
             if (mMenuActive == mMenuPlay)
             {
@@ -109,10 +109,11 @@ public class GameManager : MonoBehaviour
 
         SoundEffects.noiseMaker.LevelMusic(SoundEffects.noiseMaker.ambientMusic); // plays ambience
 
-        if (mNoteActive == true && Input.GetButtonUp("Interact")) 
+        if (mNoteActive == true && Input.GetButtonUp("Interact") || mNoteActive == true && Input.GetButton("Cancel"))
         {
             notePage.SetActive(false);
-            GameManager.mInstance.UnfreezeGame();
+            mNoteActive = false;
+            StateUnpaused();
         }
 
     }
@@ -149,9 +150,9 @@ public class GameManager : MonoBehaviour
 
         mMenuActive.SetActive(false);
         SetActiveMenu(null);
-        UnfreezeGame();
         mMenuActive = mMenuPlay;
         mMenuActive.SetActive(true);
+        UnfreezeGame();
     }
 
     public void StateSettingsOn()

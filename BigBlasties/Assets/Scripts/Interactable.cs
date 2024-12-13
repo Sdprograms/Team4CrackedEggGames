@@ -75,14 +75,14 @@ public class Interactable : MonoBehaviour
                     if (!isLocked)
                     {
                         //transform.Rotate(Vector3.up * 90);
-                        StartCoroutine(rotateObject());
+                        StartCoroutine(OpenDoor());
                         audioSource.PlayOneShot(openClip);
                         isOpen = true;
                     }
                     else if (isLocked && typeDoor == doorType.GreyDoor && GameManager.mInstance.mPlayerController.GetKeys() > 0)
                     {
                         //transform.Rotate(Vector3.up * 90);
-                        StartCoroutine(rotateObject());
+                        StartCoroutine(OpenDoor());
                         audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         GameManager.mInstance.mPlayerController.RemoveKey();
@@ -91,7 +91,7 @@ public class Interactable : MonoBehaviour
                     else if (isLocked && typeDoor == doorType.GreenDoor && GameManager.mInstance.mPlayerController.getGreenKey() == true)
                     {
                         //transform.Rotate(Vector3.up * 90);
-                        StartCoroutine(rotateObject());
+                        StartCoroutine(OpenDoor());
                         audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
@@ -99,7 +99,7 @@ public class Interactable : MonoBehaviour
                     else if (isLocked && typeDoor == doorType.RedDoor && GameManager.mInstance.mPlayerController.getRedKey() == true)
                     {
                         //transform.Rotate(Vector3.up * 90);
-                        StartCoroutine(rotateObject());
+                        StartCoroutine(OpenDoor());
                         audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
@@ -107,7 +107,7 @@ public class Interactable : MonoBehaviour
                     else if (isLocked && typeDoor == doorType.BlueDoor && GameManager.mInstance.mPlayerController.getBlueKey() == true)
                     {
                         //transform.Rotate(Vector3.up * 90);
-                        StartCoroutine(rotateObject());
+                        StartCoroutine(OpenDoor());
                         audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
@@ -115,7 +115,7 @@ public class Interactable : MonoBehaviour
                     else if (isLocked && typeDoor == doorType.BossDoor && GameManager.mInstance.mPlayerController.getBossKey() == true)
                     {
                         //transform.Rotate(Vector3.up * 90);
-                        StartCoroutine(rotateObject());
+                        StartCoroutine(OpenDoor());
                         audioSource.PlayOneShot(openClip);
                         isOpen = true;
                         isLocked = false;
@@ -156,7 +156,7 @@ public class Interactable : MonoBehaviour
         activateable = true;
     }
 
-    private IEnumerator rotateObject()
+    private IEnumerator OpenDoor()
     {
         currentRot = 0;
 

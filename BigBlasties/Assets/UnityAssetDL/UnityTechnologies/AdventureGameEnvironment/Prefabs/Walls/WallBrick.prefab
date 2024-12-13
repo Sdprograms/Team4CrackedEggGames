@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3984426598738616322}
   - component: {fileID: 64279051067584423}
   - component: {fileID: 2810433347513293677}
-  - component: {fileID: 708377325004206634}
+  - component: {fileID: 4592226338215028849}
   m_Layer: 8
   m_Name: WallBrick
   m_TagString: Untagged
@@ -168,8 +168,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &708377325004206634
-MeshCollider:
+--- !u!65 &4592226338215028849
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -178,7 +178,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -678776891950815447, guid: ea79d33f4b52d9343badef908ef3f40f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 6, y: 5.2, z: 0.2505827}
+  m_Center: {x: 0, y: 2.5879555, z: 0.08958055}

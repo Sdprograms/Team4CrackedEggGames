@@ -384,19 +384,21 @@ public class playerController : MonoBehaviour, damageInterface, implementData
         int ammoDifference;
         if (Input.GetButtonDown("Reload") && gunInventory.Count > 0 && ammoCurrent < ammoMax && isShooting == false )
         {
-            reloadAudioSource.PlayOneShot(reloadAudioClip);
+            
             if (ammoReserve >= ammoMax)
             {
                 ammoDifference = ammoMax - ammoCurrent;
                 gunInventory[selectedGun].ammoCurrent = ammoMax;
                 gunInventory[selectedGun].ammoReserve -= ammoDifference;
+                reloadAudioSource.PlayOneShot(reloadAudioClip);
                 StartCoroutine(reloading());
             }
-            else if (ammoReserve <= ammoMax)
+            else if (ammoReserve <= ammoMax && ammoReserve > 0)
             {
                 ammoDifference = ammoMax - ammoCurrent;
                 gunInventory[selectedGun].ammoCurrent += ammoDifference;
                 gunInventory[selectedGun].ammoReserve -= ammoDifference;
+                reloadAudioSource.PlayOneShot(reloadAudioClip);
                 StartCoroutine(reloading());
             }
         }

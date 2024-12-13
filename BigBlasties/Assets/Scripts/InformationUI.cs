@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InformationUI : MonoBehaviour
@@ -18,21 +19,18 @@ public class InformationUI : MonoBehaviour
         mInfoPopUp.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            mOtherText = this.GetComponent<TMP_Text>();
-            mtext.text = mOtherText.text;
-            mInfoPopUp.SetActive(true);
-
-            StartCoroutine(HideText());
+                mOtherText = this.GetComponent<TMP_Text>();
+                mtext.text = mOtherText.text;
+                mInfoPopUp.SetActive(true);
         }
     }
 
-    IEnumerator HideText()
+    private void OnTriggerExit(Collider other)
     {
-        yield return new WaitForSeconds(150f *  Time.deltaTime);
         mInfoPopUp.SetActive(false);
         if (mDestroyIfOne == 1)
         {

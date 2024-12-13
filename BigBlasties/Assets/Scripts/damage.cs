@@ -84,4 +84,41 @@ public class damage : MonoBehaviour
 
         }
     }
+
+    private void OnColliderEnter(Collider other)
+    {
+        if (other.isTrigger)
+        {
+            return;
+        }
+
+        damageInterface dmg = other.GetComponent<damageInterface>();
+
+        if (dmg != null)
+        {
+            dmg.takeDamage(damageAmount);
+        }
+        if (dmgType == damageType.bullet)
+        {
+            if (impactParticle != null)
+            {
+                Instantiate(impactParticle, transform.position, transform.rotation);
+            }
+
+            Destroy(gameObject);
+        }
+        else if (dmgType == damageType.grenade)
+        {
+            //spawn explosion.
+            Instantiate(explosion, transform.position, transform.rotation);
+            //destroy object.
+            Destroy(gameObject);
+        }
+        else if (dmgType == damageType.stationary)
+        {
+
+        }
+        if(other.CompareTag("Wall"))
+        Destroy(gameObject);
+    }
 }

@@ -422,7 +422,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrickInnerCorner (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5088156277926921630, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
 --- !u!1 &7359566999349484971 stripped
 GameObject:
@@ -589,7 +590,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrickInnerCorner (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5088156277926921630, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
 --- !u!1 &6947655416424571457 stripped
 GameObject:
@@ -682,7 +684,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrickInnerCorner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5088156277926921630, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
 --- !u!1 &7079648115673930674 stripped
 GameObject:
@@ -1145,7 +1148,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallBrickInnerCorner (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5088156277926921630, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9dcd4884ba6c9d84d96e6dc827732c1b, type: 3}
 --- !u!1 &5073570246637035561 stripped
 GameObject:

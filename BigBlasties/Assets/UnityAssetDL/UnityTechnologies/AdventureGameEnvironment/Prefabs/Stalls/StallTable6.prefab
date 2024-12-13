@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8157836945164326053}
   - component: {fileID: 5087289597795031808}
   - component: {fileID: 7024869565012914122}
+  - component: {fileID: -351157974913600977}
   m_Layer: 0
   m_Name: StallTable6
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-351157974913600977
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826393184845401631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2198753, y: 1.1894364, z: 1.1339303}
+  m_Center: {x: 0, y: 0.000000029802322, z: 0.5763207}

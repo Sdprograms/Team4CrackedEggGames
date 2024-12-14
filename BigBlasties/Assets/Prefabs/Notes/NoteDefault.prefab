@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2502722730525740083}
   - component: {fileID: 2502722730525740084}
   - component: {fileID: 2502722730525740085}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NoteDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatSpeed: 1.5
   floatHeight: 0.004
-  rotationSpeed: 15
+  rotationSpeedForward: 50
+  rotationSpeedUp: 0
 --- !u!1 &2502722731559980367
 GameObject:
   m_ObjectHideFlags: 0

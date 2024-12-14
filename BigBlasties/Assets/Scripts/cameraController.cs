@@ -93,8 +93,9 @@ public class cameraController : MonoBehaviour
                 shootPos.transform.localRotation = Quaternion.Euler(90, 0, 0);
             }
             //shootPos.transform.localRotation = mShootRotOrig;
-            
+
             //Debug.Log("Look at nothing");
         }
+        Debug.DrawRay(Camera.main.transform.position, hit.point, Color.magenta);
     }
 }

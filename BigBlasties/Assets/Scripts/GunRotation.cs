@@ -10,7 +10,7 @@ public class GunRotation : MonoBehaviour
     [SerializeField] LayerMask mLayerMask;
 
     [SerializeField] GameObject mRotationPoint;
-    [SerializeField] string mTag;
+    //[SerializeField] string mTag;
 
     [SerializeField] float mMoveTime;
 
@@ -34,8 +34,9 @@ public class GunRotation : MonoBehaviour
         mOrigTrans = mRotationPoint.transform.localPosition;
         mOrigRot = mRotationPoint.transform.localRotation;
 
-        mHeldRot = Quaternion.Euler(9f, -42f, 7f);
-        mHeldTrans = new Vector3(0.6f, -0.8f, 0.6f);
+
+        mHeldRot = Quaternion.Euler(20.392f, -36.438f, -14.426f);
+        mHeldTrans = new Vector3(0.264f, -0.232f, 0.347f);
 
         mCanFire = true; // Add this bool to the playerController to dictate shooting condition
     }
@@ -44,7 +45,7 @@ public class GunRotation : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(cameraController.camInstance.transform.position, cameraController.camInstance.transform.forward, Color.red);
-        CheckWalls();
+        //CheckWalls();
     }
 
     void CheckWalls()
@@ -52,11 +53,10 @@ public class GunRotation : MonoBehaviour
 
         if (Physics.Raycast(cameraController.camInstance.transform.position, cameraController.camInstance.transform.forward, out mHit, mRayDistance, mLayerMask))
         {
-            //Debug.Log($"The Tag gotten is {mHit.collider.name}");
+            Debug.Log($"The Tag gotten is {mHit.collider.name}");
             StartCoroutine(ToBody());
-            //Debug.Log("The ray hit where it should rotate");
+            Debug.Log("The ray hit where it should rotate");
 
-            mCanFire = false;
 
             if (mHit.collider.CompareTag("Switch"))
             {
@@ -68,8 +68,6 @@ public class GunRotation : MonoBehaviour
             StartCoroutine(ToAim());
            // Debug.Log("Rot orig");
 
-            mCanFire = true;
-
             GameManager.mInstance.mShowNoti = false;
 
         }
@@ -79,16 +77,18 @@ public class GunRotation : MonoBehaviour
     IEnumerator ToBody()
     {
         //mRotationPoint.transform.SetLocalPositionAndRotation(mHeldTrans, mHeldRot);
-        mRotationPoint.transform.localPosition = Vector3.Lerp(mHeldTrans, mOrigTrans, Time.deltaTime / mMoveTime);
-        mRotationPoint.transform.localRotation = Quaternion.Slerp(mHeldRot, mOrigRot, Time.deltaTime / mMoveTime);
+        mRotationPoint.transform.localPosition = Vector3.Lerp(mHeldTrans, mOrigTrans, Time.deltaTime * mMoveTime);
+        mRotationPoint.transform.localRotation = Quaternion.Slerp(mHeldRot, mOrigRot, Time.deltaTime * mMoveTime);
+        mCanFire = false;
         yield return null;
     }
 
     IEnumerator ToAim()
     {
         // mRotationPoint.transform.SetLocalPositionAndRotation(mOrigTrans, mOrigRot);
-        mRotationPoint.transform.localPosition = Vector3.Lerp(mOrigTrans, mHeldTrans, Time.deltaTime / mMoveTime);
-        mRotationPoint.transform.localRotation = Quaternion.Slerp(mOrigRot, mHeldRot, Time.deltaTime / mMoveTime);
+        mRotationPoint.transform.localPosition = Vector3.Lerp(mOrigTrans, mHeldTrans, Time.deltaTime * mMoveTime);
+        mRotationPoint.transform.localRotation = Quaternion.Slerp(mOrigRot, mHeldRot, Time.deltaTime * mMoveTime);
+        mCanFire = true;
         yield return null;
     }
 }

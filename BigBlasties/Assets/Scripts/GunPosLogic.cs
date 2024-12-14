@@ -13,20 +13,30 @@ public class GunPosLogic : MonoBehaviour
 
     [SerializeField] GameObject mShootPos;
 
-    Vector3 CurrTrans;
     Quaternion CurrRot;
 
+    Vector3 PistolTransform;
     Vector3 GLTransform;
+    Vector3 RLTransform;
     Vector3 HPLTransform;
+
+    public Quaternion mShootPosRot;
+    public Quaternion mShootPosGrenadeRot;
+
+    public bool isGrenadeLauncher;
 
     public void Awake()
     {
         gunPosInst = this;
-        CurrTrans = this.transform.localPosition;
         CurrRot = this.transform.localRotation;
 
-        GLTransform = new Vector3(0.065f, 0.473f, 0.685f);
-        HPLTransform = new Vector3(0f, 0.21f, .95f);
+        PistolTransform = new Vector3(0.21f, -0.52f, 0.86f);
+        GLTransform = new Vector3(0f, -0.17f, 1.33f);
+        RLTransform = new Vector3(0f, -0.17f, 0.92f);
+        HPLTransform = new Vector3(0f, -0.52f, 1.1f);
+
+        mShootPosRot = Quaternion.Euler(0f, 0f, 0f);
+        mShootPosGrenadeRot = Quaternion.Euler(180f, 0f, 0f);
     }
 
     //adjusts the GunPos to an appropriate position and rotation
@@ -34,30 +44,38 @@ public class GunPosLogic : MonoBehaviour
     {
         if (currMesh == mGrenadeLauncher)
         {
+            isGrenadeLauncher = true;
             this.gameObject.transform.localPosition = GLTransform;
-            this.gameObject.transform.localRotation = Quaternion.Euler(180, 0, 0);
-            mShootPos.transform.localPosition = new Vector3(0.0009f, 0.0204f, -0.1212f);
+            this.gameObject.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            mShootPos.transform.localPosition = new Vector3(0.001f, 0.0194f, -0.1251f);
+            mShootPos.transform.localRotation = mShootPosGrenadeRot;
         }
 
         else if (currMesh == mAutoLaserPistol)
         {
-            this.gameObject.transform.localPosition = CurrTrans;
+            isGrenadeLauncher = false;
+            this.gameObject.transform.localPosition = PistolTransform;
             this.gameObject.transform.localRotation = CurrRot;
-            mShootPos.transform.localPosition = new Vector3(-0.0092f, -0.0566f, 0.0166f);
+            mShootPos.transform.localPosition = new Vector3(-0.0063f, -0.0515f, 0.0196f);
+            mShootPos.transform.localRotation = mShootPosRot;
         }
 
         else if (currMesh == mRocketLauncher)
         {
-            this.gameObject.transform.localPosition = CurrTrans;
+            isGrenadeLauncher = false;
+            this.gameObject.transform.localPosition = RLTransform;
             this.gameObject.transform.localRotation = CurrRot;
-            mShootPos.transform.localPosition = new Vector3(0.0015f, -0.157f, 0.0186f);
+            mShootPos.transform.localPosition = new Vector3(0.001f, -0.148f, 0.02f);
+            mShootPos.transform.localRotation = mShootPosRot;
         }
 
         else if (currMesh == mHighPoweredLaser)
         {
+            isGrenadeLauncher = false;
             this.gameObject.transform.localPosition = HPLTransform;
-            this.gameObject.transform.localRotation = Quaternion.Euler(0, -90, 90);
-            mShootPos.transform.localPosition = new Vector3(0.0011f, -0.0208f, 0.0004f);
+            this.gameObject.transform.localRotation = Quaternion.Euler(0, -90, 0);
+            mShootPos.transform.localPosition = new Vector3(0.001f, -0.024f, -0.001f);
+            mShootPos.transform.localRotation = mShootPosRot;
         }
         yield return null;
     }

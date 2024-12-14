@@ -48,10 +48,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 10
-  m_Height: 2.64
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 2.2636764
+  m_Height: 18.003849
+  m_Direction: 2
+  m_Center: {x: -0.00002263322, y: 0, z: 1.1159868}
 --- !u!195 &8089714065957421585
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -88,7 +88,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 2000
-  aggroRange: 0
   sightPos: {fileID: 8089714066067523711}
   attackPos: {fileID: 8089714066067523711}
   agent: {fileID: 8089714065957421585}

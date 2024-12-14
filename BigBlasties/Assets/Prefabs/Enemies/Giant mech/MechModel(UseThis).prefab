@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 1431922532}
   - component: {fileID: 1431922531}
   - component: {fileID: -3573433257306090963}
+  - component: {fileID: 1510649882290349708}
   m_Layer: 0
   m_Name: MechModel(UseThis)
   m_TagString: Untagged
@@ -725,7 +726,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1862100975559056064}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 2.8
   m_Height: 1
   m_Direction: 1
@@ -765,6 +766,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 594189248605231937, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
+--- !u!65 &1510649882290349708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862100975559056064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.05904, y: 6.148309, z: 2.7236795}
+  m_Center: {x: -0.085802555, y: 2.5741541, z: 0.8618398}
 --- !u!1 &1862100975559056066
 GameObject:
   m_ObjectHideFlags: 0

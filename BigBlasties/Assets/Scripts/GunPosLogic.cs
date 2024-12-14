@@ -11,7 +11,7 @@ public class GunPosLogic : MonoBehaviour
     [SerializeField] Mesh mRocketLauncher;
     [SerializeField] Mesh mGrenadeLauncher;
 
-    [SerializeField] GameObject mShootPos;
+    [SerializeField] public GameObject mShootPos;
 
     Quaternion CurrRot;
 

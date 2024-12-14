@@ -58,9 +58,16 @@ public class cameraController : MonoBehaviour
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * mShootDistance, Color.green);
         Debug.DrawRay(shootPos.transform.position, shootPos.transform.forward * mShootDistance, Color.red);
         //^ was causing an error with gun pickup.
-        FireOnCursor();
+        //FireOnCursor();
+        FireOnCamera();
     }
  
+
+    public void FireOnCamera()
+    {
+        Vector3 shootDirection = Camera.main.transform.forward;
+        shootPos.transform.rotation = Quaternion.LookRotation(shootDirection);
+    }
     public void FireOnCursor() //Makes the weapons fire on the cursors position, giving a delay in aim on side-to-side movement.
     {
         Vector3 rayStart = Camera.main.transform.position + Camera.main.transform.forward * 2.25f; // Offset the raycast so it starts a infront of player

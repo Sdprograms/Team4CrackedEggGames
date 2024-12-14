@@ -18,7 +18,7 @@ public class cameraController : MonoBehaviour
 
     float rotX;
 
-    Quaternion mShootRotOrig;
+    //Quaternion mShootRotOrig;
 
     //simple getters/setters -XB
     public int GetSensitivity() { return lookSensitivity; }
@@ -31,7 +31,7 @@ public class cameraController : MonoBehaviour
         Cursor.visible = false; //Cursor settings on start
         Cursor.lockState = CursorLockMode.Locked;
 
-        mShootRotOrig = shootPos.transform.localRotation;
+        //mShootRotOrig = shootPos.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -84,7 +84,16 @@ public class cameraController : MonoBehaviour
         //otherwise itll be deadpan forward
         else
         {
-            shootPos.transform.localRotation = mShootRotOrig;
+            if (GunPosLogic.gunPosInst.isGrenadeLauncher == true)
+            {
+                shootPos.transform.localRotation = Quaternion.Euler(180, 0, 0);
+            }
+            else if (GunPosLogic.gunPosInst.isGrenadeLauncher == false)
+            {
+                shootPos.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            }
+            //shootPos.transform.localRotation = mShootRotOrig;
+            
             //Debug.Log("Look at nothing");
         }
     }

@@ -24,11 +24,14 @@ public class GunPosLogic : MonoBehaviour
     public Quaternion mShootPosGrenadeRot;
 
     public bool isGrenadeLauncher;
+    public bool isRocketLauncher;
+    public bool isAutoLaserPistol;
+    public bool isHighPoweredLauncher;
 
     public void Awake()
     {
         gunPosInst = this;
-        CurrRot = this.transform.localRotation;
+        CurrRot = Quaternion.Euler(0f, 0f, 0f);
 
         PistolTransform = new Vector3(0.21f, -0.52f, 0.86f);
         GLTransform = new Vector3(0f, -0.17f, 1.33f);
@@ -42,6 +45,12 @@ public class GunPosLogic : MonoBehaviour
     //adjusts the GunPos to an appropriate position and rotation
     public IEnumerator OrientGunMesh(Mesh currMesh)
     {
+        isGrenadeLauncher = false;
+        isRocketLauncher = false;
+        isHighPoweredLauncher = false;
+        isAutoLaserPistol = false;
+
+
         if (currMesh == mGrenadeLauncher)
         {
             isGrenadeLauncher = true;
@@ -53,7 +62,7 @@ public class GunPosLogic : MonoBehaviour
 
         else if (currMesh == mAutoLaserPistol)
         {
-            isGrenadeLauncher = false;
+            isAutoLaserPistol = true;
             this.gameObject.transform.localPosition = PistolTransform;
             this.gameObject.transform.localRotation = CurrRot;
             mShootPos.transform.localPosition = new Vector3(-0.0063f, -0.0515f, 0.0196f);
@@ -62,7 +71,7 @@ public class GunPosLogic : MonoBehaviour
 
         else if (currMesh == mRocketLauncher)
         {
-            isGrenadeLauncher = false;
+            isRocketLauncher = true;
             this.gameObject.transform.localPosition = RLTransform;
             this.gameObject.transform.localRotation = CurrRot;
             mShootPos.transform.localPosition = new Vector3(0.001f, -0.148f, 0.02f);
@@ -71,7 +80,7 @@ public class GunPosLogic : MonoBehaviour
 
         else if (currMesh == mHighPoweredLaser)
         {
-            isGrenadeLauncher = false;
+            isHighPoweredLauncher = true;
             this.gameObject.transform.localPosition = HPLTransform;
             this.gameObject.transform.localRotation = Quaternion.Euler(0, -90, 0);
             mShootPos.transform.localPosition = new Vector3(0.001f, -0.024f, -0.001f);

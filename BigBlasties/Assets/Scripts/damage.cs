@@ -7,7 +7,7 @@ public class damage : MonoBehaviour
 
     enum damageType { bullet, stationary, grenade, explosive};
     [SerializeField] damageType dmgType;
-    [SerializeField] Rigidbody rbody;
+    [SerializeField] public Rigidbody rbody;
     [SerializeField] GameObject explosion;
     [SerializeField] ParticleSystem impactParticle;
 

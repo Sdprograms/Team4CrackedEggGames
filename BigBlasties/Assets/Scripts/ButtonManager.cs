@@ -26,11 +26,11 @@ public class ButtonManager : MonoBehaviour
         GameManager.mInstance.StateUnpaused();
     }
 
-    public void RespawnPlayer()
-    {
-        GameManager.mInstance.mPlayerController.Respawn();
-        GameManager.mInstance.StateUnpaused();
-    }
+    //public void RespawnPlayer()
+    //{
+    //    GameManager.mInstance.mPlayerController.Respawn();
+    //    GameManager.mInstance.StateUnpaused();
+    //}
 
     public void ToSettings()
     {

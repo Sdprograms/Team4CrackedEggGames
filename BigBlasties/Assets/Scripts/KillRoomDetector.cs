@@ -72,7 +72,7 @@ public class KillRoomDetector : MonoBehaviour
     {
         // this logic is particular with closing the door behing the player,
         // when you want to close the door is far enough into the room to stop fleeing from the player
-        if (other.CompareTag("Player") && this.mSpawners.Count() == 0 && GameManager.mInstance.mEnemyCount == 0)
+        if (other.CompareTag("Player") && this.mSpawners.Count() == 0)
         {
             StartCoroutine(MoveDoor());
         }

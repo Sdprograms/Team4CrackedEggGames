@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3052879597746701308}
   - component: {fileID: 3052879597746701309}
   - component: {fileID: -7238759191192773844}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AmmoPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

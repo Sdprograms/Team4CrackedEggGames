@@ -1113,6 +1113,7 @@ MonoBehaviour:
   sheild: {fileID: 4896813721056723234}
   beserk: {fileID: 3467276434751565554}
   batterycells: {fileID: 100000, guid: fdf643b7e57fb9f498ade64169c21613, type: 3}
+  obstacles: {fileID: 0}
   ArenaCenter: {fileID: 0}
   spawnRadius: 50
   dropScript: {fileID: -3573433257306090963}
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   AudBullet: {fileID: 8300000, guid: de812cfb519929c4aad9d296f655c81d, type: 3}
   AudBlast: {fileID: 8300000, guid: 45e5a2d015897d34780787ab6e691387, type: 3}
   AudLaser: {fileID: 8300000, guid: a9e3fee688cf000499bded40dd54ff48, type: 3}
+  soundCooldownTime: 0.1
   animator: {fileID: 1862100975566350702}
 --- !u!136 &1431922532
 CapsuleCollider:
@@ -1171,6 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 594189248605231937, guid: 069ba158399fe1040bd536f122cf3863, type: 3}
+  yoffsetAmount: 1
 --- !u!65 &1510649882290349708
 BoxCollider:
   m_ObjectHideFlags: 0

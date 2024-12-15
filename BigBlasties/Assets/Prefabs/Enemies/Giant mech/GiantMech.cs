@@ -404,9 +404,19 @@ public class GiantMech : MonoBehaviour, damageInterface
     {
         isPaused = true; 
         yield return new WaitForSeconds(1f);
-        sheild.SetActive(false);
         PlaySound(AudSheildDown);
-        yield return new WaitForSeconds(2f);
+        sheild.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        PlaySound(AudSheildDown);
+        yield return new WaitForSeconds(0.5f);
+        PlaySound(AudSheildDown);
+        yield return new WaitForSeconds(0.5f);
+        PlaySound(AudSheildDown);
+        yield return new WaitForSeconds(0.5f);
+        PlaySound(AudSheildDown);
+        yield return new WaitForSeconds(0.5f);
+        PlaySound(AudSheildDown);
+        yield return new WaitForSeconds(0.5f);
         HP = MaxHP / 3;
         isPaused = false; 
     }

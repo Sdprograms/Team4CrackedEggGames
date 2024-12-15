@@ -135,7 +135,7 @@ public class SniperAI : MonoBehaviour, damageInterface
         HP -= amount;
         StartCoroutine(hitmarker());
         detector.playerInRange = true;
-        if (HP == 0)
+        if (HP <= 0)
         {
             StopAllCoroutines();
             agent.speed = 0;

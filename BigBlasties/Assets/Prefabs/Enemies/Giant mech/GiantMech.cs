@@ -26,8 +26,9 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] GameObject beserk;
     [SerializeField] GameObject batterycells;
     [SerializeField] GameObject obstacles;
+    [SerializeField] GameObject DeathExplosion;
+    [SerializeField] GameObject MegaDeathExplosion;
     [SerializeField] Transform ArenaCenter;
-    [SerializeField] float spawnRadius = 50f;
     [SerializeField] ItemDrop dropScript;
     [SerializeField] HealthBar healthbar;
     [SerializeField] AudioClip AudMotar;
@@ -36,7 +37,8 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] AudioClip AudLaser;
     [SerializeField] AudioClip AudSheildUp;
     [SerializeField] AudioClip AudSheildDown;
-
+    
+    private float spawnRadius = 50f;
     private AudioSource audioSource;
     private Dictionary<AudioClip, float> soundCooldowns = new Dictionary<AudioClip, float>();
     [SerializeField] private float soundCooldownTime = 0.1f;
@@ -189,13 +191,31 @@ public class GiantMech : MonoBehaviour, damageInterface
         detector.playerInRange = true;
         if (HP <= 0)
         {
+            StopAllCoroutines();
+            animator.Play("Hit");
+            StartCoroutine(PlayDeathExplosions());
             if (dropScript != null)
                 dropScript.Drop();
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
 
         }
     }
+    private IEnumerator PlayDeathExplosions()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(DeathExplosion, attackPos.position, transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+
+        Instantiate(DeathExplosion, attackPos2.position, transform.rotation);
+        yield return new WaitForSeconds(0.5f); 
+
+        Instantiate(DeathExplosion, attackPos3.position, transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+
+        Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
+    }
+
 
     //IEnumerator so that when enemy takes damage a hitmarker appears on the UI.
     IEnumerator hitmarker()

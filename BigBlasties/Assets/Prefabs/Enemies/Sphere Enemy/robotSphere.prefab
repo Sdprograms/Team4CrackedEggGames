@@ -1687,6 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  yoffsetAmount: 1
 --- !u!1 &1191980311899770567
 GameObject:
   m_ObjectHideFlags: 0

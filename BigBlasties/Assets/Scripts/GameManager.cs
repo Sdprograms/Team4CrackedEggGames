@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void SetActiveMenu(GameObject menuActive) { mMenuActive = menuActive; }
 
     public bool mShowNoti;
+    public bool mIsLocked;
 
     public bool mNoteActive;
 
@@ -100,7 +101,14 @@ public class GameManager : MonoBehaviour
 
         if (mShowNoti == true)
         {
-            NotificationManager.mNotiManagrInst.ShowNotification("Press 'E'");
+            if (mIsLocked)
+            {
+                NotificationManager.mNotiManagrInst.ShowNotification("Locked");
+            }
+            else
+            {
+                NotificationManager.mNotiManagrInst.ShowNotification("Press 'E'");
+            }
         }
         else
         {

@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour, damageInterface
     public Vector3 moveDirection; // public by XB
     public Vector3 playerVel; // public by XB
 
-    //bool isSprinting;
+    bool isSprinting;
     public bool isShooting; //public by -XB
     //bool mGunSwapped; // used along with the dampener for weapon swap -XB
 
@@ -102,6 +102,11 @@ public class playerController : MonoBehaviour, damageInterface
         sprint();
         selectGun();
         reload();
+
+        if(speed != speedOriginal && !isSprinting)
+        {
+            speed = speedOriginal;
+        }
     }
 
     void movement()
@@ -169,12 +174,12 @@ public class playerController : MonoBehaviour, damageInterface
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMult;
-            //isSprinting = true;
+            isSprinting = true;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMult;
-            //isSprinting = false;
+            isSprinting = false;
         }
     }
 
@@ -263,8 +268,10 @@ public class playerController : MonoBehaviour, damageInterface
     {
         speed += dodgeSpeed;
 
+        isSprinting = true;
         yield return new WaitForSeconds(dodgeTime);
 
+        isSprinting = false;
         speed = speedOriginal;
     }
 

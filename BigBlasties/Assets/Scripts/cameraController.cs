@@ -66,7 +66,12 @@ public class cameraController : MonoBehaviour
     public void FireOnCamera()
     {
         Vector3 shootDirection = Camera.main.transform.forward;
-        shootPos.transform.rotation = Quaternion.LookRotation(shootDirection);
+
+        Quaternion rotationOffset = Quaternion.Euler(-0.5f, -0.5f, 0);
+
+        Vector3 adjustedDirection = rotationOffset * shootDirection;
+
+        shootPos.transform.rotation = Quaternion.LookRotation(adjustedDirection);
     }
     public void FireOnCursor() //Makes the weapons fire on the cursors position, giving a delay in aim on side-to-side movement.
     {

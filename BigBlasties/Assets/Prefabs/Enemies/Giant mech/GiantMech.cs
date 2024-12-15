@@ -34,6 +34,8 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] AudioClip AudBullet;
     [SerializeField] AudioClip AudBlast;
     [SerializeField] AudioClip AudLaser;
+    [SerializeField] AudioClip AudSheildUp;
+    [SerializeField] AudioClip AudSheildDown;
 
     private AudioSource audioSource;
     private Dictionary<AudioClip, float> soundCooldowns = new Dictionary<AudioClip, float>();
@@ -93,6 +95,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             }
 
             sheild.SetActive(true);
+            PlaySheildSound(AudSheildUp);
             // Spawn battery cells
             for (int i = 0; i < 5; i++)
             {
@@ -148,6 +151,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         if (activeBatteryCells.Count == 0)
         {
             sheild.SetActive(false);
+            PlaySheildSound(AudSheildDown);
         }
     }
 
@@ -377,6 +381,14 @@ public class GiantMech : MonoBehaviour, damageInterface
             
             audioSource.PlayOneShot(clip);
             soundCooldowns[clip] = currentTime;
+        }
+    }
+
+    private void PlaySheildSound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class EnginePuzzleManager : MonoBehaviour
     [SerializeField] GameObject mLeftPos;
 
     [SerializeField] GameObject mMonitorCam;
+    [SerializeField] TMP_Text mCamPosition;
 
     [SerializeField] GameObject mRightSwitch;
     [SerializeField] GameObject mLeftSwitch;
@@ -30,8 +32,11 @@ public class EnginePuzzleManager : MonoBehaviour
     public bool moveRight;
     public bool moveLeft;
     public bool moveRest;
+    public bool atRight;
+    public bool atLeft;
     public bool rotateClock;
     public bool rotateCounterClock;
+    public bool canMove;
 
     float angle;
     Quaternion nextRotation;
@@ -41,6 +46,9 @@ public class EnginePuzzleManager : MonoBehaviour
     {
         mEnginePuzzleManag = this;
         mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
+        canMove = true;
+
+        mCamPosition = GameObject.Find("EnginePuzzleRoomComplete 2/EngineRoomScreen/Screen/CameraPositionText").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -59,21 +67,35 @@ public class EnginePuzzleManager : MonoBehaviour
         PressClockwise();
         PressCounterClockwise();
 
-        if (moveRight)
+        if (canMove)
         {
-            StartCoroutine(MoveRight());
-        }
-        if (moveLeft)
-        {
-            StartCoroutine(MoveLeft());
-        }
-        if (rotateClock)
-        {
-            StartCoroutine(RotClockwise());
-        }
-        else if (rotateCounterClock)
-        {
-            StartCoroutine(RotCounterClockwise());
+            if (moveRight && !moveRest)
+            {
+                StartCoroutine(MoveRight());
+            }
+            if (moveLeft && !moveRest)
+            {
+                StartCoroutine(MoveLeft());
+            }
+            if (moveRest)
+            {
+                StartCoroutine(MoveRest());
+            }
+            if (rotateClock)
+            {
+                StartCoroutine(RotClockwise());
+            }
+            else if (rotateCounterClock)
+            {
+                StartCoroutine(RotCounterClockwise());
+            }
+
+            if (moveRight && moveLeft)
+            {
+                moveLeft = false;
+                moveRight = false;
+                moveRest = true;
+            }
         }
     }
 
@@ -84,9 +106,9 @@ public class EnginePuzzleManager : MonoBehaviour
         if (mRightSwitch != null && GunRotation.mGunRotInst.mHit.collider != null)
         {
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
-            if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mRightSwitch.name))
+            if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mRightSwitch.name))
             {
-                moveRight = true;
+                    moveRight = true;
             }
         }
     }
@@ -98,9 +120,9 @@ public class EnginePuzzleManager : MonoBehaviour
         if (mLeftSwitch != null && GunRotation.mGunRotInst.mHit.collider != null)
         {
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
-            if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mLeftSwitch.name))
+            if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mLeftSwitch.name))
             {
-                moveLeft = true;
+                    moveLeft = true;
             }
         }
     }
@@ -125,6 +147,7 @@ public class EnginePuzzleManager : MonoBehaviour
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
             if (GameManager.mInstance.mShowNoti && Input.GetButtonDown("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchBlock.name))
             {
+                canMove = false;
                 ChangeIterator();
                 StartCoroutine(SwitchBlocks());
             }
@@ -173,16 +196,17 @@ public class EnginePuzzleManager : MonoBehaviour
         //ensures that if the object is in the right position, it moves to rest
         if (moveRest)
         {
-            StartCoroutine(MoveRest());
+            StartCoroutine(MoveRight());
         }
-        else if (moveRight)
+        else if (moveRight && !moveLeft && !atLeft)
         {
             mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mRightPos.transform.localPosition, mTime * Time.deltaTime);
             //once it reaches its destination, it sets appropriate bools
             if (mListOfEngineBlocks[listIterator].transform.localPosition == mRightPos.transform.localPosition)
             {
                 moveRight = false;
-                moveRest = true;
+                atRight = true;
+                atLeft = false;
             }
         }
 
@@ -194,16 +218,17 @@ public class EnginePuzzleManager : MonoBehaviour
         //ensures that if the object is in the right position, it moves to rest
         if (moveRest)
         {
-            StartCoroutine(MoveRest());
+            StartCoroutine(MoveLeft());
         }
-        else if (moveLeft)
+        else if (moveLeft && !moveRight && !atRight)
         {
             mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mLeftPos.transform.localPosition, mTime * Time.deltaTime);
             //once it reaches its destination, it sets appropriate bools
             if (mListOfEngineBlocks[listIterator].transform.localPosition == mLeftPos.transform.localPosition)
             {
                 moveLeft = false;
-                moveRest = true;
+                atLeft = true;
+                atRight = false;
             }
         }
 
@@ -220,6 +245,8 @@ public class EnginePuzzleManager : MonoBehaviour
             moveRest = false;
             moveLeft = false;
             moveRight = false;
+            atRight = false;
+            atLeft = false;
         }
     }
 
@@ -233,10 +260,11 @@ public class EnginePuzzleManager : MonoBehaviour
         rotateClock = false;
         rotateCounterClock = false;
 
-        GameManager.mInstance.mCamPosition.text = (listIterator + 1).ToString();
+        mCamPosition.text = (listIterator + 1).ToString();
 
         mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
 
+        canMove = true;
         yield return new WaitForSeconds(mTime);
     }
 

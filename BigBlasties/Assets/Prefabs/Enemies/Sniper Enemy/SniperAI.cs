@@ -81,7 +81,7 @@ public class SniperAI : MonoBehaviour, damageInterface
                 facetarget();
             }
 
-            if (!isAttacking) //if attacking through walls add && canSeePlayer()
+            if (!isAttacking && canSeePlayer()) //if attacking through walls add && canSeePlayer()
             {
                 StartCoroutine(attack());
             }
@@ -104,9 +104,16 @@ public class SniperAI : MonoBehaviour, damageInterface
         float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
         //Debug.DrawRay(sightPos.position, playerPos);
 
+        int ignoreRaycastLayer = LayerMask.GetMask("Ignore Raycast");
+        int layerMask = ~ignoreRaycastLayer;
+
         RaycastHit hit;
-        if (Physics.Raycast(sightPos.position, playerPos, out hit))
+        if (Physics.Raycast(sightPos.position, playerPos, out hit, Mathf.Infinity, layerMask))
         {
+            if (hit.collider != null)
+            {
+                Debug.Log("Hit object: " + hit.collider.name);
+            }
             if (hit.collider.CompareTag("Player"))
             {
                 return true;
@@ -128,7 +135,7 @@ public class SniperAI : MonoBehaviour, damageInterface
         HP -= amount;
         StartCoroutine(hitmarker());
         detector.playerInRange = true;
-        if (HP <= 0)
+        if (HP == 0)
         {
             StopAllCoroutines();
             agent.speed = 0;

@@ -81,8 +81,10 @@ public class damage : MonoBehaviour
         }
         else if (dmgType == damageType.stationary)
         {
-
+            dmg.takeDamage(damageAmount);
         }
+
+        //Destroy(gameObject);
     }
 
     private void OnColliderEnter(Collider other)
@@ -116,8 +118,9 @@ public class damage : MonoBehaviour
         }
         else if (dmgType == damageType.stationary)
         {
-
+            dmg.takeDamage(damageAmount);
         }
-        
+        //Destroy(gameObject);
+
     }
 }

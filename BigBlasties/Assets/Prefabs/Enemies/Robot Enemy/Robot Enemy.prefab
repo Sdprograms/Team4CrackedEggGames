@@ -1205,6 +1205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  yoffsetAmount: 1
+  spawnTime: 0
+  spawnAmount: 0
 --- !u!95 &6268242459302559644
 Animator:
   serializedVersion: 5
@@ -1301,6 +1304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  yoffsetAmount: 1
+  spawnTime: 0
+  spawnAmount: 0
 --- !u!1 &6268242458106207291
 GameObject:
   m_ObjectHideFlags: 0

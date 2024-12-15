@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public static Interactable instance;
     enum interactableType {Door, Switch };
     enum doorType {GreyDoor, RedDoor, BlueDoor, GreenDoor, BossDoor};
     enum switchType {Rotate, Railroad }
@@ -16,7 +17,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool isOpen;
     [SerializeField] bool isLocked;
     [SerializeField] Renderer model;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     [SerializeField] AudioClip lockClip;
     [SerializeField] AudioClip openClip;
     [SerializeField] float openSpeed;
@@ -30,6 +31,7 @@ public class Interactable : MonoBehaviour
     Color originalColor;
     private void Start()
     {
+        instance = this;
         //originalColor = model.material.color;
         activateable = true;
 
@@ -62,9 +64,8 @@ public class Interactable : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+        GameManager.mInstance.mIsLocked = isLocked;
         GameManager.mInstance.mShowNoti = true;
-
         if (other.CompareTag("Player") && Input.GetButton("Interact") && activateable == true) //should normally set the key E to an input setting.
         {
             
@@ -149,6 +150,17 @@ public class Interactable : MonoBehaviour
 
         }
     }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && isLocked)
+        {
+            isLocked = false;
+            GameManager.mInstance.mIsLocked = isLocked;
+
+        }
+    }
+
     IEnumerator ActivateOff()
     {
         activateable = false;

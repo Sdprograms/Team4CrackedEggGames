@@ -7,7 +7,7 @@ public class SwitchGeneral : MonoBehaviour
     public static SwitchGeneral switchGeneralInst;
     [SerializeField] GameObject objectToActivate;
 
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     [SerializeField] AudioClip audioSwitchClip;
 
     [Header("----If Rotating-----")]

@@ -34,6 +34,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] private Animator animator;
     bool isAttacking;
     bool batteryspawned;
+    bool isBeserk;
     Vector3 playerPos;
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
@@ -45,6 +46,8 @@ public class GiantMech : MonoBehaviour, damageInterface
         MachineGun
     }
 
+    private Coroutine currentAttackCoroutine;
+
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
     {
@@ -52,6 +55,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         detector = GetComponentInChildren<EnemyDetection>();
         agent.updateRotation = false;
         healthbar = GetComponentInChildren<HealthBar>();
+        isBeserk = false;
     }
 
     void Update()
@@ -64,11 +68,18 @@ public class GiantMech : MonoBehaviour, damageInterface
             Vector3 currentPosition = transform.position;
             if (!isAttacking) // add &&  canSeePlayer() if you want to implement the canSeePlayer Bool condition
             {
-                StartCoroutine(attack());
+                currentAttackCoroutine = StartCoroutine(attack());
             }
         }
         if (HP <= MaxHP / 2 && !batteryspawned)
         {
+            if (currentAttackCoroutine != null)
+            {
+                StopCoroutine(currentAttackCoroutine);
+                currentAttackCoroutine = null;
+                isAttacking = false;
+            }
+
             sheild.SetActive(true);
             // Spawn battery cells
             for (int i = 0; i < 5; i++)
@@ -83,6 +94,16 @@ public class GiantMech : MonoBehaviour, damageInterface
             }
             HP = MaxHP/2;
             batteryspawned = true;
+        }
+        if (HP <= MaxHP / 3 && !isBeserk)
+        {
+            if (currentAttackCoroutine != null)
+            {
+                StopCoroutine(currentAttackCoroutine);
+                currentAttackCoroutine = null;
+                isAttacking = false;
+            }
+            isBeserk = true;
         }
     }
     Vector3 GetRandomPositionAroundCenter()
@@ -158,6 +179,7 @@ public class GiantMech : MonoBehaviour, damageInterface
 
         if (healthPercentage < 0.4f) 
         {
+            isBeserk = true;
             beserk.SetActive(true);
             StartCoroutine(MotorAttack());
             StartCoroutine(BlastAttack());
@@ -199,6 +221,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         }
 
         yield return new WaitForSeconds(attackRate);
+        currentAttackCoroutine = null;
         isAttacking = false;
     }
     private IEnumerator MotorAttack()

@@ -37,6 +37,8 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] AudioClip AudLaser;
     [SerializeField] AudioClip AudSheildUp;
     [SerializeField] AudioClip AudSheildDown;
+    [SerializeField] AudioClip AudDeath;
+    [SerializeField] AudioClip AudDeathExplosion;
     
     private float spawnRadius = 50f;
     private AudioSource audioSource;
@@ -193,6 +195,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         {
             StopAllCoroutines();
             animator.Play("Hit");
+            PlaySound(AudDeath);
             StartCoroutine(PlayDeathExplosions());
             if (dropScript != null)
                 dropScript.Drop();
@@ -203,15 +206,19 @@ public class GiantMech : MonoBehaviour, damageInterface
     }
     private IEnumerator PlayDeathExplosions()
     {
+
         yield return new WaitForSeconds(0.5f);
         Instantiate(DeathExplosion, attackPos.position, transform.rotation);
         yield return new WaitForSeconds(0.5f);
+        PlaySound(AudDeathExplosion);
 
         Instantiate(DeathExplosion, attackPos2.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.5f);
+        PlaySound(AudDeathExplosion);
 
         Instantiate(DeathExplosion, attackPos3.position, transform.rotation);
         yield return new WaitForSeconds(0.5f);
+        PlaySound(AudDeathExplosion);
 
         Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
     }

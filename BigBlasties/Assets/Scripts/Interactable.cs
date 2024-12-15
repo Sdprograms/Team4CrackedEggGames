@@ -62,9 +62,8 @@ public class Interactable : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        NotificationManager.mNotiManagrInst.ShowNotification("Activate");
+        GameManager.mInstance.mIsLocked = isLocked;
         GameManager.mInstance.mShowNoti = true;
-
         if (other.CompareTag("Player") && Input.GetButton("Interact") && activateable == true) //should normally set the key E to an input setting.
         {
             
@@ -149,6 +148,17 @@ public class Interactable : MonoBehaviour
 
         }
     }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && isLocked)
+        {
+            isLocked = false;
+            GameManager.mInstance.mIsLocked = isLocked;
+
+        }
+    }
+
     IEnumerator ActivateOff()
     {
         activateable = false;

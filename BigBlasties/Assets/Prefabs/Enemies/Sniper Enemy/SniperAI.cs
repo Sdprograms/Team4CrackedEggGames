@@ -104,8 +104,11 @@ public class SniperAI : MonoBehaviour, damageInterface
         float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
         //Debug.DrawRay(sightPos.position, playerPos);
 
+        int ignoreRaycastLayer = LayerMask.GetMask("Ignore Raycast");
+        int layerMask = ~ignoreRaycastLayer;
+
         RaycastHit hit;
-        if (Physics.Raycast(sightPos.position, playerPos, out hit))
+        if (Physics.Raycast(sightPos.position, playerPos, out hit, Mathf.Infinity, layerMask))
         {
             if (hit.collider != null)
             {

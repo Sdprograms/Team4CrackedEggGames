@@ -3434,6 +3434,14 @@ PrefabInstance:
       propertyPath: ArenaCenter
       value: 
       objectReference: {fileID: 6524122288940083085}
+    - target: {fileID: 2274464128343987137, guid: 85a08efcccfd66541a29a3efcfb01bc0, type: 3}
+      propertyPath: DeathExplosion
+      value: 
+      objectReference: {fileID: 7265977287861105153, guid: afd61a93f12085746b7563884059ad4c, type: 3}
+    - target: {fileID: 2274464128343987137, guid: 85a08efcccfd66541a29a3efcfb01bc0, type: 3}
+      propertyPath: MegaDeathExplosion
+      value: 
+      objectReference: {fileID: 7265977287861105153, guid: a566eee672cb0424381172be7937b37d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85a08efcccfd66541a29a3efcfb01bc0, type: 3}
 --- !u!4 &2031597995 stripped

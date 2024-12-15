@@ -3431,10 +3431,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2274464128343987137, guid: 85a08efcccfd66541a29a3efcfb01bc0, type: 3}
-      propertyPath: obstacles
-      value: 
-      objectReference: {fileID: 100000, guid: 00535fc2ee77d314e8bb9ff3e1f754a3, type: 3}
-    - target: {fileID: 2274464128343987137, guid: 85a08efcccfd66541a29a3efcfb01bc0, type: 3}
       propertyPath: ArenaCenter
       value: 
       objectReference: {fileID: 6524122288940083085}

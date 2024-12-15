@@ -47,6 +47,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     bool isAttacking;
     bool batteryspawned;
     bool isBeserk;
+    bool sheildDestroyed;
     Vector3 playerPos;
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
@@ -57,7 +58,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         Blast,
         MachineGun
     }
-
+    private bool isPaused = false;
     private Coroutine currentAttackCoroutine;
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
@@ -69,6 +70,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         healthbar = GetComponentInChildren<HealthBar>();
         isBeserk = false;
         audioSource = GetComponent<AudioSource>();
+        sheildDestroyed = false;
     }
 
     void Update()
@@ -79,7 +81,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
             agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
             Vector3 currentPosition = transform.position;
-            if (!isAttacking) // add &&  canSeePlayer() if you want to implement the canSeePlayer Bool condition
+            if (!isAttacking && !isPaused)
             {
                 currentAttackCoroutine = StartCoroutine(attack());
                 StartCoroutine(spawnObstacles());
@@ -87,15 +89,13 @@ public class GiantMech : MonoBehaviour, damageInterface
         }
         if (HP <= MaxHP / 2 && !batteryspawned)
         {
+            StartCoroutine(HalfHPPause());
             if (currentAttackCoroutine != null)
             {
                 StopCoroutine(currentAttackCoroutine);
                 currentAttackCoroutine = null;
                 isAttacking = false;
             }
-
-            sheild.SetActive(true);
-            PlaySheildSound(AudSheildUp);
             // Spawn battery cells
             for (int i = 0; i < 5; i++)
             {
@@ -107,11 +107,11 @@ public class GiantMech : MonoBehaviour, damageInterface
 
                 activeBatteryCells.Add(battery); 
             }
-            HP = MaxHP/2;
             batteryspawned = true;
         }
         if (HP <= MaxHP / 3 && !isBeserk)
         {
+            StopCoroutine(ShieldBreakPause());
             if (currentAttackCoroutine != null)
             {
                 StopCoroutine(currentAttackCoroutine);
@@ -147,11 +147,17 @@ public class GiantMech : MonoBehaviour, damageInterface
     {
         activeBatteryCells.Remove(batteryCell);
         Destroy(batteryCell);
-
+        if (activeBatteryCells.Count > 0)
+        {
+            HP = MaxHP / 2;
+        }
         if (activeBatteryCells.Count == 0)
         {
-            sheild.SetActive(false);
-            PlaySheildSound(AudSheildDown);
+            if (HP == MaxHP / 2 && !sheildDestroyed)
+            {
+                StopCoroutine(HalfHPPause());
+                StartCoroutine(ShieldBreakPause());
+            }
         }
     }
 
@@ -377,21 +383,33 @@ public class GiantMech : MonoBehaviour, damageInterface
                     return; 
                 }
             }
-
             
             audioSource.PlayOneShot(clip);
             soundCooldowns[clip] = currentTime;
         }
     }
 
-    private void PlaySheildSound(AudioClip clip)
+    private IEnumerator HalfHPPause()
     {
-        if (audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
+        isPaused = true; 
+        yield return new WaitForSeconds(1f);
+        sheild.SetActive(true);
+        PlaySound(AudSheildUp);
+        yield return new WaitForSeconds(1f);
+        HP = MaxHP / 2;
+        isPaused = false; 
     }
 
+    private IEnumerator ShieldBreakPause()
+    {
+        isPaused = true; 
+        yield return new WaitForSeconds(1f);
+        sheild.SetActive(false);
+        PlaySound(AudSheildDown);
+        yield return new WaitForSeconds(2f);
+        HP = MaxHP / 3;
+        isPaused = false; 
+    }
 
     void facetarget()
     {

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    public static Checkpoint instance;
     [SerializeField] Renderer mModel;
     [SerializeField] ParticleSystem mVFX;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     [SerializeField] AudioClip checkPointAudioClip;
 
     Color mColorOrig;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = checkPointAudioClip;
         mColorOrig = mModel.material.color;

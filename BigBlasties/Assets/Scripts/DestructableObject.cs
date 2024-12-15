@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DestructableObject : MonoBehaviour, damageInterface
 {
+    public static DestructableObject instance;
     [SerializeField] float HP;
     [SerializeField] float MaxHP;
     [SerializeField] GameObject explosionObject;
     [SerializeField] ParticleSystem deathEffect;
 
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     [SerializeField] AudioClip tookdmgAudioClip;
     [SerializeField] ItemDrop dropScript;
     
@@ -17,6 +18,7 @@ public class DestructableObject : MonoBehaviour, damageInterface
     // Start is called before the first frame update
     void Start()
     {
+        instance = this; // needed for the volume -XB
         HP = MaxHP;
         if(audioSource != null)
         audioSource.clip = tookdmgAudioClip;

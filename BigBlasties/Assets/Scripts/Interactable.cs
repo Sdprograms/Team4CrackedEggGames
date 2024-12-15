@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public static Interactable instance;
     enum interactableType {Door, Switch };
     enum doorType {GreyDoor, RedDoor, BlueDoor, GreenDoor, BossDoor};
     enum switchType {Rotate, Railroad }
@@ -16,7 +17,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] bool isOpen;
     [SerializeField] bool isLocked;
     [SerializeField] Renderer model;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     [SerializeField] AudioClip lockClip;
     [SerializeField] AudioClip openClip;
     [SerializeField] float openSpeed;
@@ -30,6 +31,7 @@ public class Interactable : MonoBehaviour
     Color originalColor;
     private void Start()
     {
+        instance = this;
         //originalColor = model.material.color;
         activateable = true;
 

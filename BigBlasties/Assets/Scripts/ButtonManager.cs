@@ -10,14 +10,18 @@ public class ButtonManager : MonoBehaviour
 {
     ButtonManager buttonManager;
     [SerializeField] Slider mSensitivitySlide;
+    [SerializeField] Slider mMusicVolSlide;
+    [SerializeField] Slider mGeneralVolSlide;
     [SerializeField] TMP_Text mSensText;
+    [SerializeField] TMP_Text mMusText;
+    [SerializeField] TMP_Text mGenText;
     [SerializeField] Toggle mInvertY;
 
     private void Start()
     {
         buttonManager = this;
         Instantiate(mInvertY);
-        //mInvertY = GetComponent<UnityEngine.UI.Toggle>();
+        mInvertY = GetComponent<UnityEngine.UI.Toggle>();
     }
 
     public void Resume()
@@ -45,6 +49,64 @@ public class ButtonManager : MonoBehaviour
 
         cameraController.camInstance.lookSensitivity = sensVal;
     }
+
+    public void NewMusicVolume()
+    {
+        float musVal = (mMusicVolSlide.value * 0.1f);
+        string newVal = mMusicVolSlide.value.ToString(); // grabs the values from the slider
+        mMusText.text = newVal; // sets the value of the text
+
+        if (SoundEffects.noiseMaker != null)
+        {
+            SoundEffects.noiseMaker.UnPausedVol = musVal;
+            SoundEffects.noiseMaker.PausedVol = musVal / 3;
+        }
+    }
+
+    public void NewGeneralVolume()
+    {
+        float genVal = (mMusicVolSlide.value * 0.1f);
+        string newVal = mMusicVolSlide.value.ToString(); // grabs the values from the slider
+        mGenText.text = newVal; // sets the value of the text
+
+        //SoundEffects.noiseMaker.UnPausedVol = musVal;
+        if (playerController.mPlayerInstance != null)
+        {
+            playerController.mPlayerInstance.weaponAudioSource.volume = genVal;
+            playerController.mPlayerInstance.reloadAudioSource.volume = genVal;
+            playerController.mPlayerInstance.mStepsSource.volume = genVal;
+        }
+        if (DestructableObject.instance != null)
+        {
+            DestructableObject.instance.audioSource.volume = genVal;
+        }
+        if (AddedSound.instance != null)
+        {
+            AddedSound.instance.audioSource.volume = genVal;
+        }
+        if (Checkpoint.instance != null)
+        {
+            Checkpoint.instance.audioSource.volume = genVal;
+        }
+        if (Interactable.instance != null)
+        {
+            Interactable.instance.audioSource.volume = genVal;
+        }
+        if (SoundEffects.noiseMaker != null)
+        {
+            SoundEffects.noiseMaker.weaponSource.volume = genVal;
+            SoundEffects.noiseMaker.swapWeaponSouce.volume = genVal;
+            SoundEffects.noiseMaker.levelSoundSource.volume = genVal;
+        }
+        if (SwitchGeneral.switchGeneralInst != null)
+        {
+
+            SwitchGeneral.switchGeneralInst.audioSource.volume = genVal;
+        }
+    }
+
+
+
 
     public void InvertLook()
     {

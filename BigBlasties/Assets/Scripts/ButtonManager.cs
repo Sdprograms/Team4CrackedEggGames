@@ -70,11 +70,6 @@ public class ButtonManager : MonoBehaviour
 
     public void Quit()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-           //only works in a build
-            Application.Quit();
-#endif
+        SceneManager.LoadScene("Main Menu");
     }
 }

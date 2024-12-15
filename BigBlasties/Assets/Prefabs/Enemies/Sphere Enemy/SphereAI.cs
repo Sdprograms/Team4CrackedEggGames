@@ -125,10 +125,7 @@ public class SphereAI : MonoBehaviour, damageInterface
         {
             Instantiate(bullet, attackPos.position, transform.rotation);
 
-            if (dropScript != null)
-            {
-                dropScript.Drop();
-            }
+            
 
             Destroy(gameObject);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
@@ -137,6 +134,11 @@ public class SphereAI : MonoBehaviour, damageInterface
             {
                 GameManager.mInstance.UpdateEnemyCount(-1);
                 hasDied = true;
+
+                if (dropScript != null)
+                {
+                    dropScript.Drop();
+                }
             }
         }
     }

@@ -81,7 +81,7 @@ public class GiantMech : MonoBehaviour, damageInterface
 
                 activeBatteryCells.Add(battery); 
             }
-
+            HP = MaxHP/2;
             batteryspawned = true;
         }
     }
@@ -153,12 +153,7 @@ public class GiantMech : MonoBehaviour, damageInterface
 
     IEnumerator attack()
     {
-        float attackDuration = 5f;
-        float startTime = Time.time;
-        float maxDeviationAngle = 15f;
         isAttacking = true;
-
-        
         float healthPercentage = HP / MaxHP;
 
         if (healthPercentage < 0.4f) 
@@ -168,9 +163,16 @@ public class GiantMech : MonoBehaviour, damageInterface
             StartCoroutine(BlastAttack());
             StartCoroutine(MachineGunAttack2());
         }
+        else if (healthPercentage == 0.5f)
+        {
+            StartCoroutine(LaserAttack());
+        }
         else
         {
-           
+            float attackDuration = 5f;
+            float startTime = Time.time;
+            float maxDeviationAngle = 5f;
+
             AttackType attackType = (AttackType)Random.Range(0, 3);
             while (Time.time < startTime + attackDuration)
             {
@@ -201,7 +203,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     }
     private IEnumerator MotorAttack()
     {
-        float maxDeviationAngle = 15f;
+        float maxDeviationAngle = 5f;
         Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
         float randomDeviation = Random.Range(-maxDeviationAngle, maxDeviationAngle);
         Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
@@ -277,6 +279,18 @@ public class GiantMech : MonoBehaviour, damageInterface
         Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
         Vector3 deviatedDirection = deviationRotation * directionToPlayer;
         Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection));
+        yield return new WaitForSeconds(MachineGunattackRate);
+    }
+
+    private IEnumerator LaserAttack()
+    {
+        Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
+        int ProjectileCount = 30;
+        for (int i = 0; i < ProjectileCount; i++)
+        {
+            Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
+            yield return new WaitForSeconds(0.05f);
+        }
         yield return new WaitForSeconds(MachineGunattackRate);
     }
 

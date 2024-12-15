@@ -81,7 +81,7 @@ public class SniperAI : MonoBehaviour, damageInterface
                 facetarget();
             }
 
-            if (!isAttacking) //if attacking through walls add && canSeePlayer()
+            if (!isAttacking && canSeePlayer()) //if attacking through walls add && canSeePlayer()
             {
                 StartCoroutine(attack());
             }
@@ -107,6 +107,10 @@ public class SniperAI : MonoBehaviour, damageInterface
         RaycastHit hit;
         if (Physics.Raycast(sightPos.position, playerPos, out hit))
         {
+            if (hit.collider != null)
+            {
+                Debug.Log("Hit object: " + hit.collider.name);
+            }
             if (hit.collider.CompareTag("Player"))
             {
                 return true;

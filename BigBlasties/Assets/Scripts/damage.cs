@@ -83,6 +83,8 @@ public class damage : MonoBehaviour
         {
 
         }
+
+        Destroy(gameObject);
     }
 
     private void OnColliderEnter(Collider other)
@@ -118,6 +120,7 @@ public class damage : MonoBehaviour
         {
 
         }
-        
+        Destroy(gameObject);
+
     }
 }

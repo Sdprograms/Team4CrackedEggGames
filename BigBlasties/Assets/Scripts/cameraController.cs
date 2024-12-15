@@ -96,6 +96,6 @@ public class cameraController : MonoBehaviour
 
             //Debug.Log("Look at nothing");
         }
-        Debug.DrawRay(Camera.main.transform.position, hit.point, Color.magenta);
+        //Debug.DrawRay(Camera.main.transform.position, hit.point, Color.magenta);
     }
 }

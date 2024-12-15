@@ -179,10 +179,7 @@ public class RobotAI : MonoBehaviour, damageInterface
             animator.Play("Die");
             agent.speed = 0;
 
-            if (dropScript != null)
-            {
-                dropScript.Drop();
-            }
+            
 
             Destroy(gameObject, 2f);
 
@@ -191,6 +188,11 @@ public class RobotAI : MonoBehaviour, damageInterface
             { 
                 GameManager.mInstance.UpdateEnemyCount(-1); 
                 hasDied = true;
+
+                if (dropScript != null)
+                {
+                    dropScript.Drop();
+                }
             }
         }
     }

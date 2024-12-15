@@ -25,15 +25,26 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] GameObject sheild;
     [SerializeField] GameObject beserk;
     [SerializeField] GameObject batterycells;
+    [SerializeField] GameObject obstacles;
     [SerializeField] Transform ArenaCenter;
     [SerializeField] float spawnRadius = 50f;
     [SerializeField] ItemDrop dropScript;
     [SerializeField] HealthBar healthbar;
+    [SerializeField] AudioClip AudMotar;
+    [SerializeField] AudioClip AudBullet;
+    [SerializeField] AudioClip AudBlast;
+    [SerializeField] AudioClip AudLaser;
+
+    private AudioSource audioSource;
+    private Dictionary<AudioClip, float> soundCooldowns = new Dictionary<AudioClip, float>();
+    [SerializeField] private float soundCooldownTime = 0.1f;
+
 
     private List<GameObject> activeBatteryCells = new List<GameObject>();
     [SerializeField] private Animator animator;
     bool isAttacking;
     bool batteryspawned;
+    bool isBeserk;
     Vector3 playerPos;
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
@@ -45,6 +56,8 @@ public class GiantMech : MonoBehaviour, damageInterface
         MachineGun
     }
 
+    private Coroutine currentAttackCoroutine;
+
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
     {
@@ -52,6 +65,8 @@ public class GiantMech : MonoBehaviour, damageInterface
         detector = GetComponentInChildren<EnemyDetection>();
         agent.updateRotation = false;
         healthbar = GetComponentInChildren<HealthBar>();
+        isBeserk = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -64,11 +79,19 @@ public class GiantMech : MonoBehaviour, damageInterface
             Vector3 currentPosition = transform.position;
             if (!isAttacking) // add &&  canSeePlayer() if you want to implement the canSeePlayer Bool condition
             {
-                StartCoroutine(attack());
+                currentAttackCoroutine = StartCoroutine(attack());
+                StartCoroutine(spawnObstacles());
             }
         }
         if (HP <= MaxHP / 2 && !batteryspawned)
         {
+            if (currentAttackCoroutine != null)
+            {
+                StopCoroutine(currentAttackCoroutine);
+                currentAttackCoroutine = null;
+                isAttacking = false;
+            }
+
             sheild.SetActive(true);
             // Spawn battery cells
             for (int i = 0; i < 5; i++)
@@ -84,16 +107,37 @@ public class GiantMech : MonoBehaviour, damageInterface
             HP = MaxHP/2;
             batteryspawned = true;
         }
+        if (HP <= MaxHP / 3 && !isBeserk)
+        {
+            if (currentAttackCoroutine != null)
+            {
+                StopCoroutine(currentAttackCoroutine);
+                currentAttackCoroutine = null;
+                isAttacking = false;
+            }
+            isBeserk = true;
+        }
     }
-    Vector3 GetRandomPositionAroundCenter()
+    private Vector3 GetRandomPositionAroundCenter()
     {
-        float angle = Random.Range(0f, Mathf.PI * 2); 
-        float radius = Random.Range(10f, spawnRadius); 
+        float angle = Random.Range(0f, Mathf.PI * 2);
+        float radius = Random.Range(15f, spawnRadius);
         float xOffset = Mathf.Cos(angle) * radius;
         float zOffset = Mathf.Sin(angle) * radius;
 
         Vector3 centerPosition = ArenaCenter.position;
-        return new Vector3(centerPosition.x + xOffset, centerPosition.y, centerPosition.z + zOffset);
+        Vector3 spawnPosition = new Vector3(centerPosition.x + xOffset, centerPosition.y, centerPosition.z + zOffset);
+
+        return spawnPosition;
+    }
+
+    private float CalculateYRotationTowardsCenter(Vector3 spawnPosition)
+    {
+        Vector3 directionToCenter = (ArenaCenter.position - spawnPosition).normalized;
+
+        float angle = Mathf.Atan2(directionToCenter.x, directionToCenter.z) * Mathf.Rad2Deg;
+
+        return angle;
     }
 
     public void OnBatteryCellDestroyed(GameObject batteryCell)
@@ -151,6 +195,20 @@ public class GiantMech : MonoBehaviour, damageInterface
         GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
     }
 
+    IEnumerator spawnObstacles()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Vector3 spawnPosition = GetRandomPositionAroundCenter();
+            float yRotation = CalculateYRotationTowardsCenter(spawnPosition);
+            Quaternion rotation = Quaternion.Euler(180f, yRotation, 0f);
+
+            GameObject obstacle = Instantiate(obstacles, spawnPosition, rotation);
+            obstacle.GetComponent<BatteryScript>().Initialize(this);
+        }
+        yield return new WaitForSeconds(5f);
+    }
+
     IEnumerator attack()
     {
         isAttacking = true;
@@ -158,6 +216,7 @@ public class GiantMech : MonoBehaviour, damageInterface
 
         if (healthPercentage < 0.4f) 
         {
+            isBeserk = true;
             beserk.SetActive(true);
             StartCoroutine(MotorAttack());
             StartCoroutine(BlastAttack());
@@ -199,6 +258,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         }
 
         yield return new WaitForSeconds(attackRate);
+        currentAttackCoroutine = null;
         isAttacking = false;
     }
     private IEnumerator MotorAttack()
@@ -216,6 +276,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             float launchHeight = 2.0f;
             float launchForce = Random.Range(1f, 100f);
             GameObject projectile = Instantiate(grenademotor, attackPos3.position, Quaternion.LookRotation(launchDirection));
+            PlaySound(AudMotar);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -234,6 +295,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
         Vector3 deviatedDirection = deviationRotation * directionToPlayer;
         int shotgunProjectileCount = 5;
+        PlaySound(AudBlast);
         for (int i = 0; i < shotgunProjectileCount; i++)
         {
 
@@ -267,6 +329,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             Quaternion deviationRotation2 = Quaternion.Euler(randomVerticalDeviation, randomDeviation2, 0);
             Vector3 deviatedDirection2 = deviationRotation2 * directionToPlayer;
             Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection2));
+            PlaySound(AudBullet);
             yield return new WaitForSeconds(0.05f);
         }
         yield return new WaitForSeconds(MachineGunattackRate);
@@ -279,6 +342,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         Quaternion deviationRotation = Quaternion.Euler(0, randomDeviation, 0);
         Vector3 deviatedDirection = deviationRotation * directionToPlayer;
         Instantiate(bullet, attackPos.position, Quaternion.LookRotation(deviatedDirection));
+        PlaySound(AudBullet);
         yield return new WaitForSeconds(MachineGunattackRate);
     }
 
@@ -286,12 +350,34 @@ public class GiantMech : MonoBehaviour, damageInterface
     {
         Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
         int ProjectileCount = 30;
+        PlaySound(AudLaser);
         for (int i = 0; i < ProjectileCount; i++)
         {
             Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(MachineGunattackRate);
+        yield return new WaitForSeconds(1.5f);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            float currentTime = Time.time;
+
+            
+            if (soundCooldowns.TryGetValue(clip, out float lastPlayTime))
+            {
+                if (currentTime - lastPlayTime < soundCooldownTime)
+                {
+                    return; 
+                }
+            }
+
+            
+            audioSource.PlayOneShot(clip);
+            soundCooldowns[clip] = currentTime;
+        }
     }
 
 

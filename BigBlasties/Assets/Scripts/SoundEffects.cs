@@ -11,13 +11,15 @@ public class SoundEffects : MonoBehaviour
     [Header("Level Music")]
     public AudioClip ambientMusic;
 
-    [SerializeField] float UnPausedVol;
-    [SerializeField] float PausedVol;
+    [SerializeField] public float UnPausedVol;
+    [SerializeField] public float PausedVol;
 
     private void Awake()
     {
         noiseMaker = this;
         levelSoundSource = GetComponentInChildren<AudioSource>();
+        UnPausedVol = 0.5f;
+        PausedVol = 0.16f;
         //stepSource = GetComponentInChildren<AudioSource>(stepSource);
         //stepSource.clip = footsteps;
     }

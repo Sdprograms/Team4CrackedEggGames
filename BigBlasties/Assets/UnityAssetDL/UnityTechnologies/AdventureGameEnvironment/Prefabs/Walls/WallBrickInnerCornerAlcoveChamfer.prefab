@@ -94,6 +94,9 @@ GameObject:
   - component: {fileID: 933860629451711909}
   - component: {fileID: 4276843900720523776}
   - component: {fileID: 2071252960057155274}
+  - component: {fileID: 1865634057760973716}
+  - component: {fileID: 5566247630734649549}
+  - component: {fileID: 2184370830703131807}
   m_Layer: 0
   m_Name: WallBrickInnerCornerAlcoveChamfer
   m_TagString: Untagged
@@ -169,6 +172,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1865634057760973716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558004246679748383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.13, y: 5.2094893, z: 0.32}
+  m_Center: {x: -1.39, y: 2.5952566, z: 0.14}
+--- !u!65 &5566247630734649549
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558004246679748383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 5.2094893, z: 3.92}
+  m_Center: {x: 3, y: 2.5952566, z: 4.05}
+--- !u!64 &2184370830703131807
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558004246679748383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -175836401513266474, guid: 5c00785c9a3294844993fc05906a49fc, type: 3}
 --- !u!1 &3970639248370164754
 GameObject:
   m_ObjectHideFlags: 0

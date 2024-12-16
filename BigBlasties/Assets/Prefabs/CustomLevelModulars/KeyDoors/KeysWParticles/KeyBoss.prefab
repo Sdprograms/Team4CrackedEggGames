@@ -106,7 +106,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6297902906442744071}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -259,6 +259,14 @@ PrefabInstance:
     - target: {fileID: 2946223095280311965, guid: 16966713336d54d4a96c67725c97301c, type: 3}
       propertyPath: m_Name
       value: Spherical (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946223095280311967, guid: 16966713336d54d4a96c67725c97301c, type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 3045701784440736642, guid: 0ffaca96ed89a704f8ee9a9e80f6d551, type: 3}
+    - target: {fileID: 2946223095280311967, guid: 16966713336d54d4a96c67725c97301c, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2946223095280311967, guid: 16966713336d54d4a96c67725c97301c, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.ctime0

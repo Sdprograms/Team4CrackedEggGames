@@ -18,8 +18,11 @@ public class pickUp : MonoBehaviour
     [SerializeField] TMP_Text noteTitle;
     [SerializeField] TMP_Text noteBody;
 
+    bool canRead;
+
     private void Start()
     {
+        canRead = true;
         if(type == pickupType.gun) //if gun
         {
             gun.ammoCurrent = gun.ammoMax;
@@ -109,7 +112,7 @@ public class pickUp : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            else if (type == pickupType.Note)
+            else if (type == pickupType.Note && canRead == true)
             {
                 //if pausing while freezing, then movement can resume without turning off the note
                 GameManager.mInstance.FreezeGame();
@@ -170,11 +173,20 @@ public class pickUp : MonoBehaviour
                     noteTitle.text = "CLASSIFIED CLASSIFIED CLASSIFIED\r\n";
                     noteBody.text = "At the request of [REDACTED] several unauthourized and illegal modifications were made to PROTOTYPE LABEL - OMEGA as part of the BigBlasties Protocol. The protoype was to be sent to [REDACTED] before malfunction and defection, which resulted in it being discarded from the project. \r\n";
                 }
-
-                Destroy(gameObject);
-
+                canRead = false;
                 GameManager.mInstance.notePage.SetActive(true);  
                 GameManager.mInstance.mNoteActive = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (type == pickupType.Note && canRead == false)
+            {
+                canRead = true;
             }
         }
     }

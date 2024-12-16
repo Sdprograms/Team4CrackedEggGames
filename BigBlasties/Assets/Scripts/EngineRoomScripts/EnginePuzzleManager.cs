@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnginePuzzleManager : MonoBehaviour
 {
@@ -26,11 +27,14 @@ public class EnginePuzzleManager : MonoBehaviour
     [SerializeField] GameObject mSwitchRotClockwise;
     [SerializeField] GameObject mSwitchRotCounterClockwise;
 
+    [SerializeField] GameObject mError;
+
     [SerializeField] float mTime;
 
     public int listIterator;
     public bool moveRight;
     public bool moveLeft;
+    public bool moveBoolsSet;
     public bool moveRest;
     public bool atRight;
     public bool atLeft;
@@ -47,7 +51,7 @@ public class EnginePuzzleManager : MonoBehaviour
         mEnginePuzzleManag = this;
         mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
         canMove = true;
-
+        angle = mListOfEngineBlocks[listIterator].transform.localRotation.y;
         mCamPosition = GameObject.Find("EnginePuzzleRoomComplete 2/EngineRoomScreen/Screen/CameraPositionText").GetComponent<TMP_Text>();
     }
 
@@ -97,6 +101,7 @@ public class EnginePuzzleManager : MonoBehaviour
                 moveRest = true;
             }
         }
+        mError.transform.position = mListOfEngineBlocks[listIterator].transform.position;
     }
 
     private void PressRightSwitch()
@@ -108,7 +113,29 @@ public class EnginePuzzleManager : MonoBehaviour
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
             if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mRightSwitch.name))
             {
+                if(listIterator == 0 || listIterator == 2)
+                {
+                    if (mListOfEngineBlocks[listIterator].transform.position == mRestPos.transform.position)
+                    {
+                        if ((int)(mListOfEngineBlocks[listIterator].transform.localRotation.y) % 360 != 0)
+                        {
+                            StartCoroutine(FlashRed());
+                        }
+                        else
+                        {
+                            moveRight = true;
+                        }
+                    }
+                    else
+                    {
+                        moveRest = true;
+                    }
+                }
+                else
+                {
                     moveRight = true;
+                }
+                moveBoolsSet = false;
             }
         }
     }
@@ -122,7 +149,29 @@ public class EnginePuzzleManager : MonoBehaviour
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
             if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mLeftSwitch.name))
             {
+                if (listIterator == 1)
+                {
+                    if (mListOfEngineBlocks[listIterator].transform.position == mRestPos.transform.position)
+                    {
+                        if ((int)(mListOfEngineBlocks[listIterator].transform.localRotation.y) % 360 != 0)
+                        {
+                            StartCoroutine(FlashRed());
+                        }
+                        else 
+                        {
+                            moveLeft = true;
+                        }
+                    }
+                    else
+                    {
+                        moveRest = true;
+                    }
+                }
+                else
+                {
                     moveLeft = true;
+                }
+                moveBoolsSet = false;
             }
         }
     }
@@ -160,12 +209,12 @@ public class EnginePuzzleManager : MonoBehaviour
         if (mSwitchBlock != null && GunRotation.mGunRotInst.mHit.collider != null)
         {
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
-            if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchRotClockwise.name))
+            if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchRotClockwise.name))
             {
                 //IMPORTANT, sets the new angle and doesn't change it until the part reaches the set angel, otherwise it gets choppy/doesnt move
-                if (rotateClock == false)
+                if (rotateClock == false && rotateCounterClock == false)
                 {
-                    angle += 45;
+                    angle += 90;
                     nextRotation = Quaternion.Euler(0, angle, 0);
                 }
                 rotateClock = true;
@@ -178,12 +227,12 @@ public class EnginePuzzleManager : MonoBehaviour
         if (mSwitchBlock != null && GunRotation.mGunRotInst.mHit.collider != null)
         {
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
-            if (GameManager.mInstance.mShowNoti && Input.GetButton("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchRotCounterClockwise.name))
+            if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchRotCounterClockwise.name))
             {
                 //IMPORTANT, sets the new angle and doesn't change it until the part reaches the set angel, otherwise it gets choppy/doesnt move
-                if (rotateCounterClock == false)
+                if (rotateCounterClock == false && rotateClock == false)
                 {
-                    angle -= 45;
+                    angle -= 90;
                     nextRotation = Quaternion.Euler(0, angle, 0);
                 }
                 rotateCounterClock = true;
@@ -205,12 +254,16 @@ public class EnginePuzzleManager : MonoBehaviour
             if (mListOfEngineBlocks[listIterator].transform.localPosition == mRightPos.transform.localPosition)
             {
                 moveRight = false;
-                atRight = true;
-                atLeft = false;
+                if (!moveBoolsSet)
+                {
+                    atRight = true;
+                    atLeft = false;
+                }
+                moveBoolsSet = true;
             }
         }
 
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
     }
     IEnumerator MoveLeft()
     {
@@ -227,26 +280,32 @@ public class EnginePuzzleManager : MonoBehaviour
             if (mListOfEngineBlocks[listIterator].transform.localPosition == mLeftPos.transform.localPosition)
             {
                 moveLeft = false;
-                atLeft = true;
-                atRight = false;
+                if (!moveBoolsSet)
+                {
+                    atRight = true;
+                    atLeft = false;
+                }
             }
         }
 
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
     }
 
     IEnumerator MoveRest()
     {
         mListOfEngineBlocks[listIterator].transform.localPosition = Vector3.MoveTowards(mListOfEngineBlocks[listIterator].transform.localPosition, mRestPos.transform.localPosition, mTime * Time.deltaTime);
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         //ensuers all are reset to move in either direction
         if (mListOfEngineBlocks[listIterator].transform.localPosition == mRestPos.transform.localPosition)
         {
-            moveRest = false;
-            moveLeft = false;
-            moveRight = false;
             atRight = false;
             atLeft = false;
+            if (!moveBoolsSet)
+            {
+                moveRest = false;
+                moveLeft = false;
+                moveRight = false;
+            }
         }
     }
 
@@ -264,6 +323,8 @@ public class EnginePuzzleManager : MonoBehaviour
 
         mMonitorCam.transform.SetLocalPositionAndRotation(mListOfCamPositions[listIterator].transform.localPosition, mListOfCamPositions[listIterator].transform.localRotation);
 
+        mError.transform.position = mListOfEngineBlocks[listIterator].transform.position;
+        angle = mListOfEngineBlocks[listIterator].transform.localRotation.y;
         canMove = true;
         yield return new WaitForSeconds(mTime);
     }
@@ -271,25 +332,36 @@ public class EnginePuzzleManager : MonoBehaviour
     IEnumerator RotClockwise()
     {
         //while the ending rotation is set, slerp into its rotation over time * deltaTime and * 2 for speed
-        mListOfEngineBlocks[listIterator].transform.rotation = Quaternion.Slerp(mListOfEngineBlocks[listIterator].transform.rotation, nextRotation, mTime * Time.deltaTime * 2);
+        mListOfEngineBlocks[listIterator].transform.rotation = Quaternion.Slerp(mListOfEngineBlocks[listIterator].transform.rotation, nextRotation, mTime * Time.deltaTime * 4);
 
-        if (mListOfEngineBlocks[listIterator].transform.rotation == nextRotation)
-        {
-            rotateClock = false;
-        }
-        yield return null;
+        //if (mListOfEngineBlocks[listIterator].transform.rotation == nextRotation)
+        //{
+
+        //}
+
+        yield return new WaitForSeconds(1f);
+         mListOfEngineBlocks[listIterator].transform.rotation = nextRotation;
+        rotateClock = false;
     }
 
     IEnumerator RotCounterClockwise()
     {
         //while the ending rotation is set, slerp into its rotation over time * deltaTime and * 2 for speed
-        mListOfEngineBlocks[listIterator].transform.rotation = Quaternion.Slerp(mListOfEngineBlocks[listIterator].transform.rotation, nextRotation, mTime * Time.deltaTime * 2);
+        mListOfEngineBlocks[listIterator].transform.rotation = Quaternion.Slerp(mListOfEngineBlocks[listIterator].transform.rotation, nextRotation, mTime * Time.deltaTime * 4);
 
-        if (mListOfEngineBlocks[listIterator].transform.rotation == nextRotation)
-        {
-            mListOfEngineBlocks[listIterator].transform.rotation = nextRotation;
-            rotateCounterClock = false;
-        }
-        yield return null;
+        //if (mListOfEngineBlocks[listIterator].transform.rotation == nextRotation)
+        //{
+        //    mListOfEngineBlocks[listIterator].transform.rotation = nextRotation;
+
+        //}
+        yield return new WaitForSeconds(1f);
+        mListOfEngineBlocks[listIterator].transform.rotation = nextRotation;
+        rotateCounterClock = false;
+    }
+    IEnumerator FlashRed()
+    {
+        mError.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        mError.SetActive(false);
     }
 }

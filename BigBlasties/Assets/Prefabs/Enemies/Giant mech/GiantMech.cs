@@ -206,14 +206,13 @@ public class GiantMech : MonoBehaviour, damageInterface
         StartCoroutine(hitmarker());
         healthbar.UpdateHealthBar(HP, MaxHP);
         detector.playerInRange = true;
-        if (HP <= 0)
+        if (HP <= 0 && !hasDied)
         {
             StopAllCoroutines();
             animator.Play("Hit");
             PlaySound(AudDeath);
             StartCoroutine(PlayDeathExplosions());
-            if (dropScript != null)
-                dropScript.Drop();
+            
             Destroy(gameObject, 4f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
 
@@ -223,6 +222,11 @@ public class GiantMech : MonoBehaviour, damageInterface
     {
         if (!hasDied)
         {
+            hasDied = true;
+
+            if (dropScript != null)
+                dropScript.Drop();
+
             yield return new WaitForSeconds(0.5f);
             Instantiate(DeathExplosion, attackPos.position, transform.rotation);
             yield return new WaitForSeconds(0.5f);
@@ -237,7 +241,7 @@ public class GiantMech : MonoBehaviour, damageInterface
             PlaySound(AudDeathExplosion);
 
             Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
-            hasDied = true;
+            
         }
         
     }

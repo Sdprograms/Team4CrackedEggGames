@@ -64,6 +64,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     }
     private bool isPaused = false;
     private Coroutine currentAttackCoroutine;
+    bool hasDied;
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
@@ -75,6 +76,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         isBeserk = false;
         audioSource = GetComponent<AudioSource>();
         sheildDestroyed = false;
+        bool hasDied = false;
     }
 
     void Update()
@@ -212,28 +214,32 @@ public class GiantMech : MonoBehaviour, damageInterface
             StartCoroutine(PlayDeathExplosions());
             if (dropScript != null)
                 dropScript.Drop();
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 4f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
 
         }
     }
     private IEnumerator PlayDeathExplosions()
     {
+        if (!hasDied)
+        {
+            yield return new WaitForSeconds(0.5f);
+            Instantiate(DeathExplosion, attackPos.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+            PlaySound(AudDeathExplosion);
 
-        yield return new WaitForSeconds(0.5f);
-        Instantiate(DeathExplosion, attackPos.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f);
-        PlaySound(AudDeathExplosion);
+            Instantiate(DeathExplosion, attackPos2.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+            PlaySound(AudDeathExplosion);
 
-        Instantiate(DeathExplosion, attackPos2.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f);
-        PlaySound(AudDeathExplosion);
+            Instantiate(DeathExplosion, attackPos3.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+            PlaySound(AudDeathExplosion);
 
-        Instantiate(DeathExplosion, attackPos3.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f);
-        PlaySound(AudDeathExplosion);
-
-        Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
+            Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
+            hasDied = true;
+        }
+        
     }
 
 

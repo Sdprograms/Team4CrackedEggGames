@@ -168,7 +168,7 @@ public class pickUp : MonoBehaviour
                 else if (noteNum == 8)
                 {
                     noteTitle.text = "CLASSIFIED CLASSIFIED CLASSIFIED\r\n";
-                    noteBody.text = "At the request of [REDACTED] several unauthourized and illegal modifications were made to PROTOTYPE LABEL - OMEGA as part of the BigBlasties Protocol. The protoype was to be sent to [REDACTED] before malfunction and defection.\r\n";
+                    noteBody.text = "At the request of [REDACTED] several unauthourized and illegal modifications were made to PROTOTYPE LABEL - OMEGA as part of the BigBlasties Protocol. The protoype was to be sent to [REDACTED] before malfunction and defection, which resulted in it being discarded from the project. \r\n";
                 }
 
                 Destroy(gameObject);

@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: UnPausedVol
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1628536989054249692, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: ambientMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 536aeb311c604224984c7cb6b9405fb9, type: 3}
     - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: mPlayer
       value: 

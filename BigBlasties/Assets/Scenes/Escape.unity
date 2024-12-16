@@ -2574,7 +2574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.1177855, y: 8.41}
+  m_AnchoredPosition: {x: -1.12, y: 7.61}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &361126848
@@ -7235,11 +7235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3103228
+      value: 5.3081083
       objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.14
+      value: 6.34
       objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10145,11 +10145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.49
+      value: -7.492214
       objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.067356
+      value: 7.2673564
       objectReference: {fileID: 0}
     - target: {fileID: 2319224773582911076, guid: 1b7a2ee9948c3c04bba73b929b39c5be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11656,6 +11656,10 @@ PrefabInstance:
       propertyPath: UnPausedVol
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1628536989054249692, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: ambientMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d87d745b747fee45a3fe7b33d97e7b8, type: 3}
     - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: mPlayer
       value: 

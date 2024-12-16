@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 6574628759884438521}
-  - component: {fileID: 8232964856695929961}
-  m_Layer: 0
+  - component: {fileID: 6942404731642041118}
+  m_Layer: 9
   m_Name: Battery_medium_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   MaxHP: 1
---- !u!135 &8232964856695929961
-SphereCollider:
+--- !u!65 &6942404731642041118
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,8 +111,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 15.35, z: 49}
+  m_Center: {x: 0.0000017881393, y: -7.9, z: 0.023501635}
 --- !u!1 &4755085647360359302
 GameObject:
   m_ObjectHideFlags: 0

@@ -173,6 +173,11 @@ public class pickUp : MonoBehaviour
                     noteTitle.text = "CLASSIFIED CLASSIFIED CLASSIFIED\r\n";
                     noteBody.text = "At the request of [REDACTED] several unauthourized and illegal modifications were made to PROTOTYPE LABEL - OMEGA as part of the BigBlasties Protocol. The protoype was to be sent to [REDACTED] before malfunction and defection, which resulted in it being discarded from the project. \r\n";
                 }
+                else if(noteNum == 9)
+                {
+                    noteTitle.text = "The Locked Door";
+                    noteBody.text = "I left my GREEN KEY to the GREEN DOOR to the RIGHT in the back TRACTOR ROOM before the CAVE IN. My KEY to the NEXT AREA is in there. The DIRT on this planet is fragile and breaks to EXPLOSIVES and LASERS.";
+                }
                 canRead = false;
                 GameManager.mInstance.notePage.SetActive(true);  
                 GameManager.mInstance.mNoteActive = true;

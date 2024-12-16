@@ -128,6 +128,19 @@ public class GiantMech : MonoBehaviour, damageInterface
     private Vector3 GetRandomPositionAroundCenter()
     {
         float angle = Random.Range(0f, Mathf.PI * 2);
+        float radius = Random.Range(25f, spawnRadius);
+        float xOffset = Mathf.Cos(angle) * radius;
+        float zOffset = Mathf.Sin(angle) * radius;
+
+        Vector3 centerPosition = ArenaCenter.position;
+        Vector3 spawnPosition = new Vector3(centerPosition.x + xOffset, centerPosition.y, centerPosition.z + zOffset);
+
+        return spawnPosition;
+    }
+
+    private Vector3 GetRandomPositionAroundCenter2()
+    {
+        float angle = Random.Range(0f, Mathf.PI * 2);
         float radius = Random.Range(15f, spawnRadius);
         float xOffset = Mathf.Cos(angle) * radius;
         float zOffset = Mathf.Sin(angle) * radius;
@@ -234,9 +247,9 @@ public class GiantMech : MonoBehaviour, damageInterface
 
     IEnumerator spawnObstacles()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 2; i++)
         {
-            Vector3 spawnPosition = GetRandomPositionAroundCenter();
+            Vector3 spawnPosition = GetRandomPositionAroundCenter2();
             float yRotation = CalculateYRotationTowardsCenter(spawnPosition);
             Quaternion rotation = Quaternion.Euler(180f, yRotation, 0f);
 

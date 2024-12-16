@@ -28,8 +28,12 @@ public class RobotAI : MonoBehaviour, damageInterface
     [SerializeField] int turnSpeed;
     [SerializeField] ItemDrop dropScript;
 
+    [SerializeField] AudioClip AudBullet;
+    [SerializeField] AudioClip AudBlast;
+
     //for animations
     private Animator animator;
+    private AudioSource audioSource;
 
     bool isAttacking;
     //bool playerInRange;
@@ -57,6 +61,8 @@ public class RobotAI : MonoBehaviour, damageInterface
 
         detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
                                                              // its data into the enemy individuality -XB
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -228,12 +234,14 @@ public class RobotAI : MonoBehaviour, damageInterface
             Instantiate(longbullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             animator.SetBool("IsShootAnim", false);
             animator.SetBool("IsLoadedAnim", false);
+            PlaySound(AudBullet);
         }
         else
         {
             Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
             animator.SetBool("IsShootAnim", false);
             animator.SetBool("IsLoadedAnim", false);
+            PlaySound(AudBlast);
         }
         
 
@@ -286,5 +294,16 @@ public class RobotAI : MonoBehaviour, damageInterface
             yield return new WaitForSeconds(2f);
         }
         animator.SetBool("IsHealAnim", false);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            float currentTime = Time.time;
+
+            audioSource.PlayOneShot(clip);
+            
+        }
     }
 }

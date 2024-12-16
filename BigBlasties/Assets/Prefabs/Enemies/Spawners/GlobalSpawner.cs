@@ -6,13 +6,13 @@ public class GlobalSpawner : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] public int numberToSpawn;
-    [SerializeField] int objectSpawnTime;
+    [SerializeField] public int objectSpawnTime;
     [SerializeField] Transform[] spawnPos;
 
-    int spawnCount;
+    public int spawnCount;
 
-    bool startSpawning;
-    bool isSpawning;
+    public bool startSpawning;
+    public bool isSpawning;
 
     void Start()
     {

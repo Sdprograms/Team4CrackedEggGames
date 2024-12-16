@@ -10,9 +10,13 @@ public class EnginePuzzleManager : MonoBehaviour
 {
     EnginePuzzleManager mEnginePuzzleManag;
 
+    [SerializeField] LayerMask mMask;
+
     [SerializeField] List<GameObject> mListOfEngineBlocks;
     [SerializeField] List<GameObject> mListOfBlockPositions;
     [SerializeField] List<GameObject> mListOfCamPositions;
+    [SerializeField] List<GameObject> mListOfRayPos;
+    [SerializeField] List<GameObject> mListOfRayLookPos;
 
     [SerializeField] GameObject mRestPos;
     [SerializeField] GameObject mRightPos;
@@ -31,6 +35,8 @@ public class EnginePuzzleManager : MonoBehaviour
 
     [SerializeField] float mTime;
 
+    [SerializeField] int mRange;
+
     public int listIterator;
     public bool moveRight;
     public bool moveLeft;
@@ -41,9 +47,12 @@ public class EnginePuzzleManager : MonoBehaviour
     public bool rotateClock;
     public bool rotateCounterClock;
     public bool canMove;
+    public bool canSolve;
 
     float angle;
     Quaternion nextRotation;
+
+    RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +67,17 @@ public class EnginePuzzleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 lookDir = (mListOfRayLookPos[listIterator].transform.position - mListOfRayPos[listIterator].transform.position).normalized;
+        if (Physics.Raycast(mListOfRayPos[listIterator].transform.position, lookDir, out hit, mRange, mMask))
+        {
+            canSolve = true;
+        }
+        else
+        {
+            canSolve = false;
+        }
+        Debug.DrawRay(mListOfRayPos[listIterator].transform.position, lookDir, Color.blue);
+
         MoveStates(); 
     }
 
@@ -102,6 +122,8 @@ public class EnginePuzzleManager : MonoBehaviour
             }
         }
         mError.transform.position = mListOfEngineBlocks[listIterator].transform.position;
+
+
     }
 
     private void PressRightSwitch()
@@ -117,7 +139,7 @@ public class EnginePuzzleManager : MonoBehaviour
                 {
                     if (mListOfEngineBlocks[listIterator].transform.position == mRestPos.transform.position)
                     {
-                        if ((int)(mListOfEngineBlocks[listIterator].transform.localRotation.y) % 360 != 0)
+                        if (canSolve == false)
                         {
                             StartCoroutine(FlashRed());
                         }
@@ -153,7 +175,7 @@ public class EnginePuzzleManager : MonoBehaviour
                 {
                     if (mListOfEngineBlocks[listIterator].transform.position == mRestPos.transform.position)
                     {
-                        if ((int)(mListOfEngineBlocks[listIterator].transform.localRotation.y) % 360 != 0)
+                        if (canSolve == false)
                         {
                             StartCoroutine(FlashRed());
                         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3753083147393872834}
   - component: {fileID: 268661996782992487}
   - component: {fileID: 2620688027612432557}
+  - component: {fileID: -550244087993396295}
   m_Layer: 0
   m_Name: WallBrickFlat
   m_TagString: Untagged
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-550244087993396295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566211937609378168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 5.2, z: 0.27}
+  m_Center: {x: 0, y: 2.6, z: -0.00000042359378}
 --- !u!1 &7532330725304922717
 GameObject:
   m_ObjectHideFlags: 0

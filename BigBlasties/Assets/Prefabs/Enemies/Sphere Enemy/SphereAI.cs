@@ -19,6 +19,12 @@ public class SphereAI : MonoBehaviour, damageInterface
     [SerializeField] private Animator animator;
     [SerializeField] ItemDrop dropScript;
 
+    private Dictionary<AudioClip, float> soundCooldowns = new Dictionary<AudioClip, float>();
+    [SerializeField] private float soundCooldownTime = 0.3f;
+
+    [SerializeField] AudioClip AudBlast;
+    [SerializeField] AudioClip AudRoll;
+
     bool isAttacking;
     //bool playerInRange;
 
@@ -33,6 +39,8 @@ public class SphereAI : MonoBehaviour, damageInterface
     private EnemyDetection detector; // this is necessary in order for each enemy to have their own bubble,
                                      // otherwise without this all enemies will respond to one enemy bubble and not their own -XB
 
+    private AudioSource audioSource;
+
     bool hasDied;
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
@@ -42,6 +50,8 @@ public class SphereAI : MonoBehaviour, damageInterface
 
         detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
                                                              // its data into the enemy individuality -XB
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,10 +62,8 @@ public class SphereAI : MonoBehaviour, damageInterface
             {
                 animator.Play("anim_close");
             }
+            PlaySound(AudRoll);
             animator.SetBool("Roll", true);
-            //add if fleeing is implemented, and if healing is implemented
-            //isFleeing = false;
-            //isHealing = false;
             playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
             agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
             distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
@@ -69,51 +77,10 @@ public class SphereAI : MonoBehaviour, damageInterface
                 StartCoroutine(attack());
             }
 
-            //fleeing property commented out, add if fleeing to be added
-            /*if (HP <= MaxHP / 4)
-            {
-                playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
-
-                Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
-                Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * aggroRange; // Move away by aggroRange distance
-
-                agent.SetDestination(fleeTarget);  // Set the agent's destination away from the player
-
-                fleetarget();
-
-                aggroRange = 30;
-
-                if (isFleeing)
-                {
-                    StopCoroutine(attack());
-                }
-                distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
-                aggroRange = 30;
-                if (distance >= aggroRange)
-                {
-                    playerInRange = false;
-                }
-            }*/
-
-
-            //healing commented out, add if healing and fleeing to be added
-            /*
-            else if (isFleeing && !playerInRange && !isHealing)
-            {
-                StartCoroutine(heal());
-                isHealing = true;
-                isFleeing = false;
-            }*/
+            
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        detector.playerInRange = true;
-    //    }
-    //}
 
     //enemy take damage function
     public void takeDamage(int amount)
@@ -124,12 +91,11 @@ public class SphereAI : MonoBehaviour, damageInterface
         if (HP <= 0)
         {
             Instantiate(bullet, attackPos.position, transform.rotation);
+            PlayExplode(AudBlast);
 
-            
 
             Destroy(gameObject);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
-            // This logic is to track the death count properly
             if (!hasDied)
             {
                 GameManager.mInstance.UpdateEnemyCount(-1);
@@ -155,6 +121,7 @@ public class SphereAI : MonoBehaviour, damageInterface
     {
         isAttacking = true;
         Instantiate(bullet, attackPos.position, transform.rotation);
+        PlayExplode(AudBlast);
         Destroy(gameObject);
 
 
@@ -170,20 +137,43 @@ public class SphereAI : MonoBehaviour, damageInterface
     }
 
 
-    // flee and heal commented out
-    /*void fleetarget()
+    private void PlaySound(AudioClip clip)
     {
-        Quaternion rot = Quaternion.LookRotation(-playerPos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
-        isFleeing = true;
+        if (audioSource != null && clip != null)
+        {
+            float currentTime = Time.time;
+
+
+            if (soundCooldowns.TryGetValue(clip, out float lastPlayTime))
+            {
+                if (currentTime - lastPlayTime < soundCooldownTime)
+                {
+                    return;
+                }
+            }
+
+            audioSource.PlayOneShot(clip);
+            soundCooldowns[clip] = currentTime;
+        }
     }
 
-    IEnumerator heal()
+    private void PlayExplode(AudioClip clip)
     {
-        while (HP < 10)
+        if (clip != null)
         {
-            HP += 1;
-            yield return new WaitForSeconds(2f);
+            
+            GameObject tempAudio = new GameObject("TempAudio");
+            AudioSource tempAudioSource = tempAudio.AddComponent<AudioSource>();
+
+            
+            tempAudioSource.clip = clip;
+            tempAudioSource.volume = audioSource.volume; 
+            tempAudioSource.pitch = audioSource.pitch;   
+            tempAudioSource.spatialBlend = audioSource.spatialBlend;
+            tempAudioSource.Play();
+
+            
+            Destroy(tempAudio, clip.length);
         }
-    }*/
+    }
 }

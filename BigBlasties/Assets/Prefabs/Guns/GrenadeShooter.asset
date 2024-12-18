@@ -18,7 +18,7 @@ MonoBehaviour:
   gunPickupSound: {fileID: 8300000, guid: b4156ac6286bbf7478ae9be59517bae0, type: 3}
   reloadSound: {fileID: 8300000, guid: 8ef9910cbbea2eb419a97151cec5d358, type: 3}
   shootRate: 0.5
-  ammoCurrent: 10
+  ammoCurrent: 9
   ammoMax: 10
-  ammoReserve: 10
-  reloadTime: 2
+  ammoReserve: 7
+  reloadTime: 1.5

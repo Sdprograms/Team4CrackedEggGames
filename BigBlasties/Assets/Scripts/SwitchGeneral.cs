@@ -21,6 +21,8 @@ public class SwitchGeneral : MonoBehaviour
 
     [Header("-----If Cart-----")]
     [SerializeField] AudioClip completionSound;
+    [SerializeField] AudioClip cartSound;
+    [SerializeField] AudioClip rotatorSound;
     [SerializeField] List<Transform> destinations = new List<Transform>();
     [SerializeField] List<bool> connected = new List<bool>();
     [SerializeField] List<int> connectedIndex = new List<int>();
@@ -54,7 +56,7 @@ public class SwitchGeneral : MonoBehaviour
         isRotating = true;
         float currentRotation = 0f;
 
-        
+        audioSource.PlayOneShot(rotatorSound);
         while (currentRotation < targetRotation)
         {
             
@@ -109,6 +111,7 @@ public class SwitchGeneral : MonoBehaviour
 
                 if (i++ < destinations.Count && connected[i])
                 {
+                    audioSource.PlayOneShot(cartSound);
                     if(i == destinations.Count - 1)
                     {
                         audioSource.PlayOneShot(completionSound);

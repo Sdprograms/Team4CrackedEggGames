@@ -64,6 +64,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     }
     private bool isPaused = false;
     private Coroutine currentAttackCoroutine;
+    bool hasDied;
 
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
@@ -75,6 +76,7 @@ public class GiantMech : MonoBehaviour, damageInterface
         isBeserk = false;
         audioSource = GetComponent<AudioSource>();
         sheildDestroyed = false;
+        bool hasDied = false;
     }
 
     void Update()
@@ -126,6 +128,19 @@ public class GiantMech : MonoBehaviour, damageInterface
         }
     }
     private Vector3 GetRandomPositionAroundCenter()
+    {
+        float angle = Random.Range(0f, Mathf.PI * 2);
+        float radius = Random.Range(25f, spawnRadius);
+        float xOffset = Mathf.Cos(angle) * radius;
+        float zOffset = Mathf.Sin(angle) * radius;
+
+        Vector3 centerPosition = ArenaCenter.position;
+        Vector3 spawnPosition = new Vector3(centerPosition.x + xOffset, centerPosition.y, centerPosition.z + zOffset);
+
+        return spawnPosition;
+    }
+
+    private Vector3 GetRandomPositionAroundCenter2()
     {
         float angle = Random.Range(0f, Mathf.PI * 2);
         float radius = Random.Range(15f, spawnRadius);
@@ -191,36 +206,44 @@ public class GiantMech : MonoBehaviour, damageInterface
         StartCoroutine(hitmarker());
         healthbar.UpdateHealthBar(HP, MaxHP);
         detector.playerInRange = true;
-        if (HP <= 0)
+        if (HP <= 0 && !hasDied)
         {
             StopAllCoroutines();
             animator.Play("Hit");
             PlaySound(AudDeath);
             StartCoroutine(PlayDeathExplosions());
-            if (dropScript != null)
-                dropScript.Drop();
-            Destroy(gameObject, 2f);
+            
+            Destroy(gameObject, 4f);
             GameManager.mInstance.mEnemyDamageHitmarker.SetActive(false);
 
         }
     }
     private IEnumerator PlayDeathExplosions()
     {
+        if (!hasDied)
+        {
+            hasDied = true;
 
-        yield return new WaitForSeconds(0.5f);
-        Instantiate(DeathExplosion, attackPos.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f);
-        PlaySound(AudDeathExplosion);
+            if (dropScript != null)
+                dropScript.Drop();
 
-        Instantiate(DeathExplosion, attackPos2.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f);
-        PlaySound(AudDeathExplosion);
+            yield return new WaitForSeconds(0.5f);
+            Instantiate(DeathExplosion, attackPos.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+            PlaySound(AudDeathExplosion);
 
-        Instantiate(DeathExplosion, attackPos3.position, transform.rotation);
-        yield return new WaitForSeconds(0.5f);
-        PlaySound(AudDeathExplosion);
+            Instantiate(DeathExplosion, attackPos2.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+            PlaySound(AudDeathExplosion);
 
-        Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
+            Instantiate(DeathExplosion, attackPos3.position, transform.rotation);
+            yield return new WaitForSeconds(0.5f);
+            PlaySound(AudDeathExplosion);
+
+            Instantiate(MegaDeathExplosion, sightPos.position, transform.rotation);
+            
+        }
+        
     }
 
 
@@ -234,9 +257,9 @@ public class GiantMech : MonoBehaviour, damageInterface
 
     IEnumerator spawnObstacles()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 2; i++)
         {
-            Vector3 spawnPosition = GetRandomPositionAroundCenter();
+            Vector3 spawnPosition = GetRandomPositionAroundCenter2();
             float yRotation = CalculateYRotationTowardsCenter(spawnPosition);
             Quaternion rotation = Quaternion.Euler(180f, yRotation, 0f);
 

@@ -21,6 +21,8 @@ public class SniperAI : MonoBehaviour, damageInterface
     [SerializeField] private Animator animator;
     [SerializeField] ItemDrop dropScript;
 
+    [SerializeField] AudioClip AudBullet;
+
 
     //the time the enemy will stand still while attacking.
     [SerializeField] float attackTime;
@@ -28,10 +30,12 @@ public class SniperAI : MonoBehaviour, damageInterface
     //the time the enemy will stand still while reloading
     [SerializeField] float ReloadTime;
 
+    private AudioSource audioSource;
+
     bool isAttacking;
     //bool playerInRange;
 
-    
+
     //bool isFleeing;
     public float distance;
 
@@ -58,6 +62,8 @@ public class SniperAI : MonoBehaviour, damageInterface
 
         detector = GetComponentInChildren<EnemyDetection>(); // when adding the bubble as a child, the script from each gameobject will put
                                                              // its data into the enemy individuality -XB
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -169,8 +175,8 @@ public class SniperAI : MonoBehaviour, damageInterface
     {
         isAttacking = true;
         Vector3 directionToPlayer = (GameManager.mInstance.mPlayer.transform.position - attackPos.position).normalized;
-        
-     
+
+
         originalSpeed = agent.speed;
         agent.speed = 0;
         animator.SetBool("aiming", true);
@@ -181,6 +187,7 @@ public class SniperAI : MonoBehaviour, damageInterface
         animator.SetBool("shooting", true);
 
         Instantiate(bullet, attackPos.position, Quaternion.LookRotation(directionToPlayer));
+        PlaySound(AudBullet);
         yield return new WaitForSeconds(ReloadTime);
 
         animator.SetBool("aiming", false);
@@ -196,7 +203,7 @@ public class SniperAI : MonoBehaviour, damageInterface
         Quaternion rot = Quaternion.LookRotation(playerPos);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
     }
-   
+
     void fleetarget()
     {
         Quaternion rot = Quaternion.LookRotation(-playerPos);
@@ -255,5 +262,16 @@ public class SniperAI : MonoBehaviour, damageInterface
         public GameObject rightGun;
         public GameObject leftGun;
         public RuntimeAnimatorController controller;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            float currentTime = Time.time;
+
+            audioSource.PlayOneShot(clip);
+
+        }
     }
 }

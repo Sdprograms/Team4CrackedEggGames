@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, damageInterface, dataPersistance
+public class playerController : MonoBehaviour, damageInterface
 {
     [SerializeField] LayerMask maskToIgnore;
     [SerializeField] public CharacterController characterController;
@@ -522,16 +522,6 @@ public class playerController : MonoBehaviour, damageInterface, dataPersistance
     {
         bossKey = have;
         reloadAudioSource.PlayOneShot(keyGatheredClip);
-    }
-
-    public void Load(GameData data)
-    {
-        this.transform.position = data.Position;
-    }
-
-    public void Save(ref GameData data) 
-    {
-        data.Position = this.transform.position;
     }
 }
 

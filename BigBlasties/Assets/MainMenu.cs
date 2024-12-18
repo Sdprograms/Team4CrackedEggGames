@@ -6,27 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Button LoadButton;
-
-
-    private void Start()
-    {
-        if (!persistanceManager.instance.HasGameData()) 
-        {
-            LoadButton.interactable = false;
-        }
-    }
 
     public void Play()
     {
-       persistanceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("zSLevel 2 Mining Facility");
+        SceneManager.LoadSceneAsync("zSLevel 1 Tutorial");
 
-    }
-
-    public void LoadGameClicked() 
-    {
-        SceneManager.LoadSceneAsync("zSLevel 2 Mining Facility");
     }
 
     public void Quit()

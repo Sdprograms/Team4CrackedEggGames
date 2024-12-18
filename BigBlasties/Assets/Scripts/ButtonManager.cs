@@ -20,8 +20,14 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         buttonManager = this;
-        Instantiate(mInvertY);
-        mInvertY = GetComponent<UnityEngine.UI.Toggle>();
+
+        //properly assigns the toggle, could potentially delete the game object after its located to save memory
+        GameObject mToggleHolder = GameObject.Find("UI(official)/Menus/SettingsScreen/InvertLook/InvertLookToggle");
+
+        if (mToggleHolder != null)
+        {
+            mInvertY = mToggleHolder.GetComponent<Toggle>(); mInvertY = mToggleHolder.GetComponent<Toggle>();
+        }
     }
 
     public void Resume()

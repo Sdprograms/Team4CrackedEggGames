@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public bool mShowNoti;
     public bool mIsLocked;
+    public bool mIsOpen;
 
     public bool mNoteActive;
 
@@ -103,9 +104,13 @@ public class GameManager : MonoBehaviour
             {
                 NotificationManager.mNotiManagrInst.ShowNotification("Locked");
             }
-            else
+            else if (!mIsLocked && !mIsOpen)
             {
                 NotificationManager.mNotiManagrInst.ShowNotification("Press 'E'");
+            }
+            else if (mIsOpen)
+            {
+                NotificationManager.mNotiManagrInst.ShowNotification("");
             }
         }
         else

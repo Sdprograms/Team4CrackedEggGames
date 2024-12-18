@@ -78,7 +78,7 @@ public class EnginePuzzleManager : MonoBehaviour
         }
         Debug.DrawRay(mListOfRayPos[listIterator].transform.position, lookDir, Color.blue);
 
-        MoveStates(); 
+        MoveStates();
     }
 
     void MoveStates()
@@ -135,7 +135,7 @@ public class EnginePuzzleManager : MonoBehaviour
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
             if (GameManager.mInstance.mShowNoti && Input.GetButtonUp("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mRightSwitch.name))
             {
-                if(listIterator == 0 || listIterator == 2)
+                if (listIterator == 0 || listIterator == 2)
                 {
                     if (mListOfEngineBlocks[listIterator].transform.position == mRestPos.transform.position)
                     {
@@ -179,7 +179,7 @@ public class EnginePuzzleManager : MonoBehaviour
                         {
                             StartCoroutine(FlashRed());
                         }
-                        else 
+                        else
                         {
                             moveLeft = true;
                         }
@@ -218,9 +218,17 @@ public class EnginePuzzleManager : MonoBehaviour
             //should it hit, it checks to see if you have a notification, you're pressing e, and that you're looking at the right switch
             if (GameManager.mInstance.mShowNoti && Input.GetButtonDown("Interact") && GunRotation.mGunRotInst.mHit.transform.name.Equals(mSwitchBlock.name))
             {
-                canMove = false;
-                ChangeIterator();
-                StartCoroutine(SwitchBlocks());
+                Vector3 blockPos = mListOfEngineBlocks[listIterator].transform.localPosition;
+                Vector3 lPos = mLeftPos.transform.localPosition;
+                Vector3 rPos = mRightPos.transform.localPosition;
+                Vector3 restingPos = mRestPos.transform.localPosition;
+
+                if (blockPos == lPos || blockPos == rPos || blockPos == restingPos)
+                {
+                    canMove = false;
+                    ChangeIterator();
+                    StartCoroutine(SwitchBlocks());
+                }
             }
         }
     }
@@ -333,7 +341,7 @@ public class EnginePuzzleManager : MonoBehaviour
 
     IEnumerator SwitchBlocks()
     {
- 
+        mError.SetActive(false);
         mRightPos = mListOfBlockPositions[listIterator].gameObject.transform.GetChild(0).gameObject;
         mLeftPos = mListOfBlockPositions[listIterator].gameObject.transform.GetChild(1).gameObject;
         mRestPos = mListOfBlockPositions[listIterator].gameObject.transform.GetChild(2).gameObject;
@@ -350,7 +358,6 @@ public class EnginePuzzleManager : MonoBehaviour
         canMove = true;
         yield return new WaitForSeconds(mTime);
     }
-
     IEnumerator RotClockwise()
     {
         //while the ending rotation is set, slerp into its rotation over time * deltaTime and * 2 for speed
@@ -362,7 +369,7 @@ public class EnginePuzzleManager : MonoBehaviour
         //}
 
         yield return new WaitForSeconds(1f);
-         mListOfEngineBlocks[listIterator].transform.rotation = nextRotation;
+        mListOfEngineBlocks[listIterator].transform.rotation = nextRotation;
         rotateClock = false;
     }
 

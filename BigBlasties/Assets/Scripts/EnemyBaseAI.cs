@@ -29,6 +29,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     bool isHealing;
 
     float distance;
+    float angleToPlayer;
 
     Vector3 playerPos;
 
@@ -46,7 +47,7 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
 
     void Update()
     {
-        if (detector.playerInRange)
+        if (detector.playerInRange && canSeePlayer())
         {
             //add if fleeing is implemented, and if healing is implemented
             //isFleeing = false;
@@ -114,14 +115,25 @@ public class EnemyBaseAI : MonoBehaviour, damageInterface
     bool canSeePlayer()
     {
         playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
-        float angleToPlayer = Vector3.Angle(playerPos, transform.forward);
+        angleToPlayer = Vector3.Angle(playerPos, transform.forward);
         //Debug.DrawRay(sightPos.position, playerPos);
 
         RaycastHit hit;
         if (Physics.Raycast(sightPos.position, playerPos, out hit))
         {
-            if (hit.collider.CompareTag("Player"))
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewAngle)
             {
+
+                agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    facetarget();
+                }
+                if (!isAttacking) // add &&  canSeePlayer() if you want to implement the canSeePlayer Bool condition
+                {
+                    StartCoroutine(attack());
+                }
                 return true;
             }
         }

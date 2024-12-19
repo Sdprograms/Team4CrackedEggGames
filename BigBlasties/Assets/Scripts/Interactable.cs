@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
 
     [Header("---If Door ---")]
     [SerializeField] doorType typeDoor;
-    [SerializeField] bool isOpen;
+    [SerializeField] public bool isOpen;
     [SerializeField] bool isLocked;
     [SerializeField] Renderer model;
     [SerializeField] public AudioSource audioSource;
@@ -65,6 +65,7 @@ public class Interactable : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         GameManager.mInstance.mIsLocked = isLocked;
+        GameManager.mInstance.mIsOpen = isOpen;
         GameManager.mInstance.mShowNoti = true;
         if (other.CompareTag("Player") && Input.GetButton("Interact") && activateable == true) //should normally set the key E to an input setting.
         {

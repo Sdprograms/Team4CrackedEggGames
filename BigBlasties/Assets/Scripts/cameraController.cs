@@ -22,7 +22,7 @@ public class cameraController : MonoBehaviour
 
     //simple getters/setters -XB
     public int GetSensitivity() { return lookSensitivity; }
-    public void SetSensitivity(int newSens) { lookSensitivity = newSens; }
+    public void SetSensitivity(int newSens) { lookSensitivity = newSens;}
 
     // Start is called before the first frame update
     void Start()

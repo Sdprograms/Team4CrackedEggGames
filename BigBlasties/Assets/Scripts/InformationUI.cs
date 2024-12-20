@@ -31,10 +31,13 @@ public class InformationUI : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        mInfoPopUp.SetActive(false);
-        if (mDestroyIfOne == 1)
+        if (other.CompareTag("Player"))
         {
-            Destroy(this);
+            mInfoPopUp.SetActive(false);
+            if (mDestroyIfOne == 1)
+            {
+                Destroy(this);
+            }
         }
     }
 }

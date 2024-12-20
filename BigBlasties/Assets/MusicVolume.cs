@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class MusicVolume : MonoBehaviour
 {
-
-    [SerializeField] Slider volumeS;
+    public static MusicVolume mInst;
+    [SerializeField] public Slider volumeS;
 
     void Start()
     {
+        mInst = this;
         if (!PlayerPrefs.HasKey("volume"))
         {
             PlayerPrefs.SetFloat("volume", 1);
@@ -24,6 +25,8 @@ public class MusicVolume : MonoBehaviour
     public void ChangeVolume()
     {
         AudioListener.volume = volumeS.value;
+        DataStorage.mStorInst.mAllVol = volumeS.value;
+        DataStorage.mStorInst.mAVChanged = true;
     }
 
     public void Save()

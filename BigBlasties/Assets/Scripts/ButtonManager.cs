@@ -8,14 +8,18 @@ using Unity.VisualScripting;
 
 public class ButtonManager : MonoBehaviour
 {
-    ButtonManager buttonManager;
-    [SerializeField] Slider mSensitivitySlide;
-    [SerializeField] Slider mMusicVolSlide;
-    [SerializeField] Slider mGeneralVolSlide;
-    [SerializeField] TMP_Text mSensText;
-    [SerializeField] TMP_Text mMusText;
-    [SerializeField] TMP_Text mGenText;
+    public static ButtonManager buttonManager;
+    [SerializeField] public Slider mSensitivitySlide;
+    [SerializeField] public Slider mMusicVolSlide;
+    [SerializeField] public Slider mGeneralVolSlide;
+    [SerializeField] public TMP_Text mSensText;
+    [SerializeField] public TMP_Text mMusText;
+    [SerializeField] public TMP_Text mGenText;
     [SerializeField] Toggle mInvertY;
+
+    public bool mAllSoundChanged;
+    public bool mGenSoundChanged;
+    public bool mMusSoundChanged;
 
     private void Start()
     {
@@ -54,27 +58,48 @@ public class ButtonManager : MonoBehaviour
         mSensText.text = newVal; // sets the value of the text
 
         cameraController.camInstance.lookSensitivity = sensVal;
+        DataStorage.mStorInst.mSensVal = sensVal;
     }
 
     public void NewMusicVolume()
     {
-        float musVal = (mMusicVolSlide.value * 0.1f);
+        float musVal = (mMusicVolSlide.value);
         string newVal = mMusicVolSlide.value.ToString(); // grabs the values from the slider
         mMusText.text = newVal; // sets the value of the text
 
+        musVal *= 0.1f;
         if (SoundEffects.noiseMaker != null)
         {
             SoundEffects.noiseMaker.UnPausedVol = musVal;
             SoundEffects.noiseMaker.PausedVol = musVal / 3;
         }
+        DataStorage.mStorInst.mMusVol = musVal;
+        mMusSoundChanged = true;
+    }
+
+    public void NewMusicVolume(float musVal)
+    { 
+
+        string newVal = (musVal * 10).ToString(); // grabs the values from the slider
+        mMusText.text = newVal; // sets the value of the text
+
+        //musVal *= 0.1f;
+        if (SoundEffects.noiseMaker != null)
+        {
+            SoundEffects.noiseMaker.UnPausedVol = musVal;
+            SoundEffects.noiseMaker.PausedVol = musVal / 3;
+        }
+        mMusSoundChanged = true;
     }
 
     public void NewGeneralVolume()
     {
-        float genVal = (mMusicVolSlide.value * 0.1f);
-        string newVal = mMusicVolSlide.value.ToString(); // grabs the values from the slider
+        float genVal = (mGeneralVolSlide.value);
+        string newVal = mGeneralVolSlide.value.ToString(); // grabs the values from the slider
         mGenText.text = newVal; // sets the value of the text
 
+
+        genVal *= 0.1f;
         //SoundEffects.noiseMaker.UnPausedVol = musVal;
         if (playerController.mPlayerInstance != null)
         {
@@ -109,9 +134,54 @@ public class ButtonManager : MonoBehaviour
 
             SwitchGeneral.switchGeneralInst.audioSource.volume = genVal;
         }
+        DataStorage.mStorInst.mGenVol = genVal;
+        mGenSoundChanged = true;
     }
 
+    public void NewGeneralVolume(float genVal)
+    {
+        string newVal = (genVal * 10).ToString(); // grabs the values from the slider
+        mGenText.text = newVal; // sets the value of the text
 
+
+        //genVal *= 0.1f;
+        //SoundEffects.noiseMaker.UnPausedVol = musVal;
+        if (playerController.mPlayerInstance != null)
+        {
+            playerController.mPlayerInstance.weaponAudioSource.volume = genVal;
+            playerController.mPlayerInstance.reloadAudioSource.volume = genVal;
+            playerController.mPlayerInstance.mStepsSource.volume = genVal;
+        }
+        if (DestructableObject.instance != null)
+        {
+            DestructableObject.instance.audioSource.volume = genVal;
+        }
+        if (AddedSound.instance != null)
+        {
+            AddedSound.instance.audioSource.volume = genVal;
+        }
+        if (Checkpoint.instance != null)
+        {
+            Checkpoint.instance.audioSource.volume = genVal;
+        }
+        if (Interactable.instance != null)
+        {
+            Interactable.instance.audioSource.volume = genVal;
+        }
+        if (SoundEffects.noiseMaker != null)
+        {
+            SoundEffects.noiseMaker.weaponSource.volume = genVal;
+            SoundEffects.noiseMaker.swapWeaponSouce.volume = genVal;
+            SoundEffects.noiseMaker.levelSoundSource.volume = genVal;
+        }
+        if (SwitchGeneral.switchGeneralInst != null)
+        {
+
+            SwitchGeneral.switchGeneralInst.audioSource.volume = genVal;
+        }
+
+        mGenSoundChanged = true;
+    }
 
 
     public void InvertLook()
@@ -138,6 +208,12 @@ public class ButtonManager : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.LoadScene("Main Menu");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+           //only works in a build
+            Application.Quit();
+#endif
+        //SceneManager.LoadScene("Main Menu");
     }
 }

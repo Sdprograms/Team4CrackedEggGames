@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
         //tracks the player
         mPlayer = GameObject.Find("Player");
         mPlayerController = mPlayer.GetComponent<playerController>();
+
+        GameObject mCamera = GameObject.Find("Player/Main Camera");
+        mCameraController = mCamera.GetComponent<cameraController>();
         // Update is called once per frame
         mTimeScaleOrig = Time.timeScale;
         SetActiveMenu(mMenuPlay);

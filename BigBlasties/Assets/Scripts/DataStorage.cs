@@ -15,41 +15,31 @@ public class DataStorage : MonoBehaviour
 
     public float mSensVal;
 
-    public bool mAVChanged;
-
-    public bool mSensChanged;
-
     string mName;
 
-    void Awake()
+    void Start()
     { 
-        if (mStorInst == null)
+        if (mStor == null)
         {
             mStorInst = this;
             mStor = GameObject.Find("DataStorage");
-            DontDestroyOnLoad(mStor);
+            DontDestroyOnLoad(this);
         }
         else
         {
-            Destroy(mStor);
+            Destroy(gameObject);
         }
         mName = SceneManager.GetActiveScene().name;
 
         mSensVal = 450f;
+        mAllVol = 0.5f;
+        mMusVol = 0.5f;
+        mGenVol = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (mAVChanged)
-        {
-            //if (ButtonManager.buttonManager.mMusicVolSlide != null)
-            //{ 
-            //    //ButtonManager.buttonManager.mMusicVolSlide.value = mAllVol;
-            //}
-
-        }
 
         if (ButtonManager.buttonManager != null)
         {
@@ -58,9 +48,18 @@ public class DataStorage : MonoBehaviour
                 cameraController.camInstance.SetSensitivity((int)mSensVal);
                 ButtonManager.buttonManager.mSensitivitySlide.value = mSensVal;
                 ButtonManager.buttonManager.mSensText.text = mSensVal.ToString();
-                Debug.Log("Made the sensitivity persist");
             }
 
+            if (mMusVol == mAllVol && mGenVol == mAllVol)
+            {
+                ButtonManager.buttonManager.NewGeneralVolume(mAllVol);
+                ButtonManager.buttonManager.NewMusicVolume(mAllVol);
+            }
+            else
+            {
+                ButtonManager.buttonManager.NewGeneralVolume(mGenVol);
+                ButtonManager.buttonManager.NewMusicVolume(mMusVol);
+            }
         }
     }
 }

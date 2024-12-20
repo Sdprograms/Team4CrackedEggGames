@@ -13,11 +13,12 @@ public class MusicVolume : MonoBehaviour
         mInst = this;
         if (!PlayerPrefs.HasKey("volume"))
         {
-            PlayerPrefs.SetFloat("volume", 1);
+            PlayerPrefs.SetFloat("volume", 0.5f);
             Load();
         }
         else
         {
+            PlayerPrefs.SetFloat("volume", 0.5f);
             Load();
         }
     }
@@ -26,7 +27,8 @@ public class MusicVolume : MonoBehaviour
     {
         AudioListener.volume = volumeS.value;
         DataStorage.mStorInst.mAllVol = volumeS.value;
-        DataStorage.mStorInst.mAVChanged = true;
+        DataStorage.mStorInst.mMusVol = volumeS.value;
+        DataStorage.mStorInst.mGenVol = volumeS.value;
     }
 
     public void Save()

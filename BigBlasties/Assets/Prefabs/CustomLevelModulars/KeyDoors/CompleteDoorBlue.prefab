@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: -899685764561442850}
   - component: {fileID: 1071154011342359365}
   - component: {fileID: 1009525925478140220}
+  - component: {fileID: 5661128377986295505}
   m_Layer: 8
   m_Name: CompleteDoorBlue
   m_TagString: Untagged
@@ -561,6 +562,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 2.5, z: 0.43618053}
   m_Center: {x: 1.43, y: -1.81, z: 0.07301256}
+--- !u!208 &5661128377986295505
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8228551108495034435}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 3.0000002, z: 0.21800001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.07300001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3918116008187019850
 PrefabInstance:
   m_ObjectHideFlags: 0

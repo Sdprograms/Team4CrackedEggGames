@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 8c990fdcd51ee7c4c96bb5f52b71cb76
   - enabled: 1
-    path: Assets/Scenes/zSLevel 1 Tutorial.unity
+    path: Assets/Scenes/q.unity
     guid: 8bdfa64292241e84bba361eca75e45d1
   - enabled: 1
     path: Assets/Scenes/zSLevel 2 Mining Facility.unity

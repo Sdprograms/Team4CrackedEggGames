@@ -1208,6 +1208,22 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2658031127995368408, guid: f905ee566d0ac16499ed2e5b99879c14, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658031127995368408, guid: f905ee566d0ac16499ed2e5b99879c14, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658031127995368408, guid: f905ee566d0ac16499ed2e5b99879c14, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658031127995368408, guid: f905ee566d0ac16499ed2e5b99879c14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.865001
+      objectReference: {fileID: 0}
     - target: {fileID: 3434251550496135522, guid: f905ee566d0ac16499ed2e5b99879c14, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -10439,11 +10455,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1251671950282477560, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1251671950282477560, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251671950282477561, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.073091984
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251671950282477561, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251671950282477561, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.96
       objectReference: {fileID: 0}
     - target: {fileID: 1251671950414834312, guid: b2e8a2902eb7fc24ca7a7c28cee0dfd2, type: 3}
       propertyPath: m_Layer

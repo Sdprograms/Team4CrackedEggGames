@@ -53,7 +53,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   impactParticle: {fileID: 53545100257330756, guid: 9a571900eb15ed24ba89d200818d48a0, type: 3}
   damageAmount: 1
-  speed: 100
+  speed: 50
   destroyTime: 0.5
 --- !u!33 &964857367902417848
 MeshFilter:

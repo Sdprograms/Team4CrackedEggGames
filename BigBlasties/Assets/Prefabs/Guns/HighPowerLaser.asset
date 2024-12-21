@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: HighPowerLaser
   m_EditorClassIdentifier: 
   gunModel: {fileID: 100000, guid: 808d8bedf2d978e47a4a056a0c33f3d9, type: 3}
-  projectile: {fileID: 1847776829834559009, guid: 7aaa849ef519edc4f89b7424313128e4, type: 3}
+  projectile: {fileID: 1847776829834559009, guid: 8754a493ba7ece04ba6885944204ca3d, type: 3}
   gunSound: {fileID: 8300000, guid: e70eb034c8ae4fe42b00d809716998e4, type: 3}
   gunPickupSound: {fileID: 8300000, guid: d3bfc09906578ae4f97f0be75ae2cce8, type: 3}
   reloadSound: {fileID: 8300000, guid: 3fb5208c19ed6c34fba23b1d81a67377, type: 3}
   shootRate: 1
-  ammoCurrent: 25
+  ammoCurrent: 23
   ammoMax: 25
-  ammoReserve: 24
+  ammoReserve: 100
   reloadTime: 1

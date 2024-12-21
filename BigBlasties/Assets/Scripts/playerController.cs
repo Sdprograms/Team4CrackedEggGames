@@ -341,12 +341,12 @@ public class playerController : MonoBehaviour, damageInterface
 
     void selectGun()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunInventory.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunInventory.Count - 1 && GameManager.mInstance.mPaused == false)
         {
             selectedGun++;
             changeGun();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0 && GameManager.mInstance.mPaused == false)
         {
             selectedGun--;
             changeGun();

@@ -2165,6 +2165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8585038807787264932, guid: 7cc21fef3f7435f49890eca5c3eb46c4, type: 3}
+      propertyPath: dodgeSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8585038807787264936, guid: 7cc21fef3f7435f49890eca5c3eb46c4, type: 3}
       propertyPath: m_RootOrder
       value: 2

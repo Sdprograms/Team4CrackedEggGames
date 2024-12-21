@@ -156,7 +156,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player") && isLocked)
         {
-            isLocked = false;
+            //isLocked = false;
             GameManager.mInstance.mIsLocked = isLocked;
 
         }

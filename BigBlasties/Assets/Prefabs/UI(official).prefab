@@ -3236,9 +3236,9 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 51d0ddc5495b400479ecba38fc5e29a3, type: 3}
   laserSwap: {fileID: 8300000, guid: 1ce7890406010c443a54576a00835e5a, type: 3}
   grenadeLauncherSwap: {fileID: 8300000, guid: b4156ac6286bbf7478ae9be59517bae0, type: 3}
-  ambientMusic: {fileID: 8300000, guid: 022209bc99de5d849acb63ed16d58e76, type: 3}
-  UnPausedVol: 0.3
-  PausedVol: 0.1
+  ambientMusic: {fileID: 8300000, guid: ad403fe5cb1141c4db962f01954ad170, type: 3}
+  UnPausedVol: 0.1
+  PausedVol: 0.05
 --- !u!1 &1345165895475201134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,7 +5882,7 @@ RectTransform:
   m_GameObject: {fileID: 5560375711235242913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7779, y: 1.7779, z: 1.7779}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5560375711677703800}
@@ -5891,7 +5891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.25006104}
+  m_AnchoredPosition: {x: 226, y: -127}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5560375711235242917
@@ -6120,6 +6120,9 @@ MonoBehaviour:
   mMusText: {fileID: 6515604321561164733}
   mGenText: {fileID: 3325879124765423880}
   mInvertY: {fileID: 2119587672}
+  mAllSoundChanged: 0
+  mGenSoundChanged: 0
+  mMusSoundChanged: 0
 --- !u!1 &5560375711484939522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7327,7 +7330,7 @@ RectTransform:
   m_GameObject: {fileID: 5560375712028429352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7779, y: 1.7779, z: 1.7779}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5560375710271867468}
@@ -7336,7 +7339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 39.74994}
+  m_AnchoredPosition: {x: -215, y: -132}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5560375712028429356
@@ -8067,6 +8070,7 @@ MonoBehaviour:
   mEnemyCount: 0
   mShowNoti: 0
   mIsLocked: 0
+  mIsOpen: 0
   mNoteActive: 0
 --- !u!1 &7098528055792352645
 GameObject:

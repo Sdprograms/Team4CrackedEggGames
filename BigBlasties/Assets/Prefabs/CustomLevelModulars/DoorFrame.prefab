@@ -278,12 +278,12 @@ GameObject:
   - component: {fileID: 4223575675376082659}
   - component: {fileID: 7661505745931894712}
   - component: {fileID: 4991003494167102134}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7940019940405131343
 Transform:

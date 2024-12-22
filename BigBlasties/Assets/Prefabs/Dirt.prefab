@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 7866314395977859468}
   - component: {fileID: 2824360090574137436}
   - component: {fileID: 8610278075611554824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6803828498430524048
 Transform:

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1220126485795780441}
   - component: {fileID: 5524446026651459316}
   - component: {fileID: 3179606504635928837}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallCanopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1220126485795780441
 Transform:
@@ -94,12 +94,12 @@ GameObject:
   - component: {fileID: 3563901431873678022}
   - component: {fileID: 5583000001519708018}
   - component: {fileID: 7050747563999118109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3563901431873678022
 Transform:
@@ -176,12 +176,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3343843959410845926}
   - component: {fileID: -3842942192815799223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallFruit2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3343843959410845926
 Transform:
@@ -226,12 +226,12 @@ GameObject:
   - component: {fileID: 7966635428278376025}
   - component: {fileID: 8009356823775326782}
   - component: {fileID: 6734913311762952397}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FoodTrays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7966635428278376025
 Transform:
@@ -309,12 +309,12 @@ GameObject:
   - component: {fileID: 7779678051309275532}
   - component: {fileID: 579302895103803953}
   - component: {fileID: 2653463442709010469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7779678051309275532
 Transform:

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5309092495259658036}
   - component: {fileID: 9079948354177984657}
   - component: {fileID: 6478009847164640347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallCanopyGreen1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5309092495259658036
 Transform:

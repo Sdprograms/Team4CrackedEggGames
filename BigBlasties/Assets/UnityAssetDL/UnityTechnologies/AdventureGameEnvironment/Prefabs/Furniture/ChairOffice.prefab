@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2459955489560995149}
   - component: {fileID: 1552721450438306536}
   - component: {fileID: 3632338536072601122}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChairOffice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2459955489560995149
 Transform:

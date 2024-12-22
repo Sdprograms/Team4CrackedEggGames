@@ -115,6 +115,10 @@ public class GameManager : MonoBehaviour
             {
                 NotificationManager.mNotiManagrInst.ShowNotification("");
             }
+            else
+            {
+                NotificationManager.mNotiManagrInst.ShowNotification("Press 'E'");
+            }
         }
         else
         {

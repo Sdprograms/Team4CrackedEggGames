@@ -4212,6 +4212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1628536989054249692, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
+      propertyPath: ambientMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: ad403fe5cb1141c4db962f01954ad170, type: 3}
     - target: {fileID: 4863414927379651376, guid: af17b396f3e3d5f4fbca6e866bc4532c, type: 3}
       propertyPath: mPlayerSpawnPos
       value: 

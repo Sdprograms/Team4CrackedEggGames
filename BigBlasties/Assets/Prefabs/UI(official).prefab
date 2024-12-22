@@ -3236,7 +3236,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 51d0ddc5495b400479ecba38fc5e29a3, type: 3}
   laserSwap: {fileID: 8300000, guid: 1ce7890406010c443a54576a00835e5a, type: 3}
   grenadeLauncherSwap: {fileID: 8300000, guid: b4156ac6286bbf7478ae9be59517bae0, type: 3}
-  ambientMusic: {fileID: 8300000, guid: ad403fe5cb1141c4db962f01954ad170, type: 3}
+  ambientMusic: {fileID: 8300000, guid: 58cfa576fe6555241ad56646f188141e, type: 3}
   UnPausedVol: 0.1
   PausedVol: 0.05
 --- !u!1 &1345165895475201134

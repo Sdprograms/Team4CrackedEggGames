@@ -15,6 +15,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] public TMP_Text mSensText;
     [SerializeField] public TMP_Text mMusText;
     [SerializeField] public TMP_Text mGenText;
+    [SerializeField] public AudioSource mAlarm;
     [SerializeField] Toggle mInvertY;
 
     public bool mAllSoundChanged;
@@ -134,7 +135,17 @@ public class ButtonManager : MonoBehaviour
 
             SwitchGeneral.switchGeneralInst.audioSource.volume = genVal;
         }
-        DataStorage.mStorInst.mGenVol = genVal;
+        if (DataStorage.mStorInst != null)
+        {
+            {
+                DataStorage.mStorInst.mGenVol = genVal;
+            }
+        }
+        if (mAlarm != null)
+        {
+            mAlarm.volume = genVal;
+        }
+
         mGenSoundChanged = true;
     }
 

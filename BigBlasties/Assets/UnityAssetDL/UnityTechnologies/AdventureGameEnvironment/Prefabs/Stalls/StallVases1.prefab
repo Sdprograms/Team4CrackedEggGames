@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4466213137169453969}
   - component: {fileID: 6287518285888849702}
   - component: {fileID: 5161436519550145667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PotLargeBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4466213137169453969
 Transform:
@@ -94,12 +94,12 @@ GameObject:
   - component: {fileID: 135876489534707154}
   - component: {fileID: 1149848337475703181}
   - component: {fileID: 3787604699433608200}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &135876489534707154
 Transform:
@@ -177,12 +177,12 @@ GameObject:
   - component: {fileID: 2958041760728555762}
   - component: {fileID: 5400374912907668303}
   - component: {fileID: 7361443955053539675}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2958041760728555762
 Transform:
@@ -260,12 +260,12 @@ GameObject:
   - component: {fileID: 8491377244376045113}
   - component: {fileID: 7951159499564166562}
   - component: {fileID: 5228342093913908190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8491377244376045113
 Transform:
@@ -343,12 +343,12 @@ GameObject:
   - component: {fileID: 5914675621801844263}
   - component: {fileID: 1031644080195417994}
   - component: {fileID: 7988224594741229691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallCanopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5914675621801844263
 Transform:
@@ -426,12 +426,12 @@ GameObject:
   - component: {fileID: 942972384560800068}
   - component: {fileID: 7709514708989400524}
   - component: {fileID: 3833122446104225685}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SignPottery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &942972384560800068
 Transform:
@@ -508,12 +508,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7826232414044848536}
   - component: {fileID: -2882962906294678917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallVases1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7826232414044848536
 Transform:

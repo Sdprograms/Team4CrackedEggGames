@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1403202992797112887}
   - component: {fileID: 184675921067104973}
   - component: {fileID: 1173791585888990428}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1403202992797112887
 Transform:
@@ -94,12 +94,12 @@ GameObject:
   - component: {fileID: 1335929742752028965}
   - component: {fileID: 8175935564871684760}
   - component: {fileID: 6750372528613197964}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1335929742752028965
 Transform:
@@ -177,12 +177,12 @@ GameObject:
   - component: {fileID: 5522238457055990227}
   - component: {fileID: 9186645987384415507}
   - component: {fileID: 2217411659691274758}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Prosthetics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5522238457055990227
 Transform:
@@ -260,12 +260,12 @@ GameObject:
   - component: {fileID: 8949428044131177363}
   - component: {fileID: 6019310757250070183}
   - component: {fileID: 700927870206430383}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8949428044131177363
 Transform:
@@ -343,12 +343,12 @@ GameObject:
   - component: {fileID: 1047410613740853904}
   - component: {fileID: 8331161220239261728}
   - component: {fileID: 7819327067088108501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: boxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1047410613740853904
 Transform:
@@ -426,12 +426,12 @@ GameObject:
   - component: {fileID: 1915859170339001124}
   - component: {fileID: 6004079471669673599}
   - component: {fileID: 2402176128677161409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PriceTags
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1915859170339001124
 Transform:
@@ -508,12 +508,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6276718947750950991}
   - component: {fileID: 9053167873972412908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallSecondHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6276718947750950991
 Transform:
@@ -561,12 +561,12 @@ GameObject:
   - component: {fileID: 7607169585540458480}
   - component: {fileID: 3879319575934570077}
   - component: {fileID: 6151039375514059180}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallCanopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7607169585540458480
 Transform:

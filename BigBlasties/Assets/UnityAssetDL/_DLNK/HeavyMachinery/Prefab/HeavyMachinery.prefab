@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485376}
   - component: {fileID: 10885376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485376
 Transform:
@@ -104,12 +104,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485378}
   - component: {fileID: 10885378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485378
 Transform:
@@ -198,12 +198,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485380}
   - component: {fileID: 10885380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485380
 Transform:
@@ -292,12 +292,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485382}
   - component: {fileID: 10885382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485382
 Transform:
@@ -387,12 +387,12 @@ GameObject:
   - component: {fileID: 485384}
   - component: {fileID: 3385376}
   - component: {fileID: 2385376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485384
 Transform:
@@ -471,12 +471,12 @@ GameObject:
   - component: {fileID: 3385378}
   - component: {fileID: 2385378}
   - component: {fileID: 6485380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeavyMachinery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485386
 Transform:
@@ -578,12 +578,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485388}
   - component: {fileID: 5485376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HeavyMachinery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485388
 Transform:
@@ -635,12 +635,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485390}
   - component: {fileID: 14685376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WheelHubBackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485390
 Transform:
@@ -697,12 +697,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485392}
   - component: {fileID: 14685378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WheelHubFrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485392
 Transform:
@@ -761,12 +761,12 @@ GameObject:
   - component: {fileID: 3385380}
   - component: {fileID: 6485382}
   - component: {fileID: 2385380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485394
 Transform:
@@ -859,12 +859,12 @@ GameObject:
   - component: {fileID: 3385382}
   - component: {fileID: 2385382}
   - component: {fileID: 6485384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485396
 Transform:
@@ -957,12 +957,12 @@ GameObject:
   - component: {fileID: 485398}
   - component: {fileID: 3385384}
   - component: {fileID: 2385384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485398
 Transform:
@@ -1040,12 +1040,12 @@ GameObject:
   - component: {fileID: 485400}
   - component: {fileID: 3385386}
   - component: {fileID: 2385386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485400
 Transform:
@@ -1123,12 +1123,12 @@ GameObject:
   - component: {fileID: 485402}
   - component: {fileID: 3385388}
   - component: {fileID: 2385388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485402
 Transform:
@@ -1206,12 +1206,12 @@ GameObject:
   - component: {fileID: 485404}
   - component: {fileID: 3385390}
   - component: {fileID: 2385390}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485404
 Transform:
@@ -1290,12 +1290,12 @@ GameObject:
   - component: {fileID: 3385392}
   - component: {fileID: 2385392}
   - component: {fileID: 6485386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485406
 Transform:
@@ -1390,12 +1390,12 @@ GameObject:
   - component: {fileID: 3385394}
   - component: {fileID: 2385394}
   - component: {fileID: 6485378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485408
 Transform:
@@ -1486,12 +1486,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485410}
   - component: {fileID: 14685380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WheelHubBackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485410
 Transform:
@@ -1550,12 +1550,12 @@ GameObject:
   - component: {fileID: 3385396}
   - component: {fileID: 2385396}
   - component: {fileID: 6485376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485412
 Transform:
@@ -1647,12 +1647,12 @@ GameObject:
   - component: {fileID: 485414}
   - component: {fileID: 3385398}
   - component: {fileID: 2385398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485414
 Transform:
@@ -1730,12 +1730,12 @@ GameObject:
   - component: {fileID: 485416}
   - component: {fileID: 3385400}
   - component: {fileID: 2385400}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485416
 Transform:
@@ -1813,12 +1813,12 @@ GameObject:
   - component: {fileID: 485418}
   - component: {fileID: 3385402}
   - component: {fileID: 2385402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485418
 Transform:
@@ -1897,12 +1897,12 @@ GameObject:
   - component: {fileID: 3385404}
   - component: {fileID: 6485388}
   - component: {fileID: 2385404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485420
 Transform:
@@ -1995,12 +1995,12 @@ GameObject:
   - component: {fileID: 3385406}
   - component: {fileID: 2385406}
   - component: {fileID: 6485390}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Object002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485422
 Transform:
@@ -2092,12 +2092,12 @@ GameObject:
   m_Component:
   - component: {fileID: 485424}
   - component: {fileID: 14685382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WheelHubFrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &485424
 Transform:

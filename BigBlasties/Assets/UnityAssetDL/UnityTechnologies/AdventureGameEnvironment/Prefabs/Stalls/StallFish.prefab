@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2660584234797458562}
   - component: {fileID: 5808121938175586709}
   - component: {fileID: 8236098759582013659}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Signs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2660584234797458562
 Transform:
@@ -94,12 +94,12 @@ GameObject:
   - component: {fileID: 901290806811644407}
   - component: {fileID: 8034114040556984906}
   - component: {fileID: 4874599314569281630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &901290806811644407
 Transform:
@@ -177,12 +177,12 @@ GameObject:
   - component: {fileID: 596008894879115274}
   - component: {fileID: 6506739637846029136}
   - component: {fileID: 3959444481812618197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &596008894879115274
 Transform:
@@ -260,12 +260,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5265632189439078557}
   - component: {fileID: 5056214934127156418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallFish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5265632189439078557
 Transform:
@@ -310,12 +310,12 @@ GameObject:
   - component: {fileID: 8618256215002263330}
   - component: {fileID: 3161024094498244239}
   - component: {fileID: 5428187251873712510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StallCanopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8618256215002263330
 Transform:

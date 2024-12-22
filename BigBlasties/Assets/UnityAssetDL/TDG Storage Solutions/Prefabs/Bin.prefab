@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5157995302210443592}
   - component: {fileID: 4294285835595423141}
   - component: {fileID: 6026815698767961647}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5157995302210443592
 Transform:
@@ -93,12 +93,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3664615117410070572}
   - component: {fileID: 654908863046119309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3664615117410070572
 Transform:
@@ -142,12 +142,12 @@ GameObject:
   - component: {fileID: 4818156985196705881}
   - component: {fileID: 3856278999906479054}
   - component: {fileID: 4722118913120837531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4818156985196705881
 Transform:
@@ -226,12 +226,12 @@ GameObject:
   - component: {fileID: 902068700832734717}
   - component: {fileID: 7326574946577250341}
   - component: {fileID: 1656524292844314849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &902068700832734717
 Transform:

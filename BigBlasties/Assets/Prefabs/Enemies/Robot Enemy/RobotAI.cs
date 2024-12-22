@@ -42,6 +42,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     bool canRotate;
 
     float distance;
+    float minimumDistance = 5f;
 
     Vector3 playerPos;
 
@@ -111,11 +112,21 @@ public class RobotAI : MonoBehaviour, damageInterface
             }
             else
             {
+                playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
+                distance = Vector3.Distance(GameManager.mInstance.mPlayer.transform.position, sightPos.position);
+                if (distance < minimumDistance)
+                {
+                    Vector3 fleeDirection = sightPos.position - GameManager.mInstance.mPlayer.transform.position;
+                    Vector3 fleeTarget = sightPos.position + fleeDirection.normalized * minimumDistance;
+                    agent.SetDestination(fleeTarget);  
+                }
+                else
+                {
+                    agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
+                }
                 isHealing = false;
                 animator.SetBool("IsHealAnim", false);
                 isFleeing = false;
-                playerPos = GameManager.mInstance.mPlayer.transform.position - sightPos.position;
-                agent.SetDestination(GameManager.mInstance.mPlayer.transform.position);
 
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {

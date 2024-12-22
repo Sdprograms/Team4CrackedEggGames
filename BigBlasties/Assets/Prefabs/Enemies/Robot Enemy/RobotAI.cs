@@ -39,6 +39,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     //bool playerInRange;
     bool isFleeing;
     bool isHealing;
+    bool canRotate;
 
     float distance;
 
@@ -55,6 +56,7 @@ public class RobotAI : MonoBehaviour, damageInterface
     // on start set HP to max HP, saving hp and Max HP seperately for possible 'next level' functionality.
     void Start()
     {
+        canRotate = true;
         HP = MaxHP;
         animator = GetComponent<Animator>();
         animator.SetBool("IsLoadedAnim", true);
@@ -182,8 +184,10 @@ public class RobotAI : MonoBehaviour, damageInterface
         animator.SetBool("IsHealAnim", false);
         if (HP <= 0)
         {
-            animator.Play("Die");
+            canRotate = false;
             agent.speed = 0;
+            agent.updateRotation = false;
+            animator.Play("Die");
 
             
 
@@ -257,8 +261,12 @@ public class RobotAI : MonoBehaviour, damageInterface
 
     void facetarget()
     {
-        Quaternion rot = Quaternion.LookRotation(playerPos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+        if (canRotate)
+        {
+            Quaternion rot = Quaternion.LookRotation(playerPos);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+        }
+        
     }
 
     IEnumerator facetargetTimed(float duration)
@@ -277,9 +285,12 @@ public class RobotAI : MonoBehaviour, damageInterface
 
     void fleetarget()
     {
-        Quaternion rot = Quaternion.LookRotation(-playerPos);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
-        isFleeing = true;
+        if (canRotate)
+        {
+            Quaternion rot = Quaternion.LookRotation(-playerPos);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * turnSpeed);
+            isFleeing = true;
+        }   
     }
 
     IEnumerator heal()

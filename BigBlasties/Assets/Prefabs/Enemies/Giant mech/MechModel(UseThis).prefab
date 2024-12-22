@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  MaxHP: 200
+  MaxHP: 300
   sightPos: {fileID: 1966393385}
   attackPos: {fileID: 2141706941}
   attackPos2: {fileID: 68758780}

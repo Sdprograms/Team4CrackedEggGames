@@ -40,7 +40,7 @@ public class GiantMech : MonoBehaviour, damageInterface
     [SerializeField] AudioClip AudDeath;
     [SerializeField] AudioClip AudDeathExplosion;
     
-    private float spawnRadius = 50f;
+    private float spawnRadius = 40f;
     private AudioSource audioSource;
     private Dictionary<AudioClip, float> soundCooldowns = new Dictionary<AudioClip, float>();
     [SerializeField] private float soundCooldownTime = 0.1f;

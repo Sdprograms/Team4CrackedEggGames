@@ -13,6 +13,16 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void Return() 
+    {
+        SceneManager.LoadSceneAsync("Main Menu");
+    }
+
+    public void Credits() 
+    {
+        SceneManager.LoadSceneAsync("Credits");
+    }
+
     public void Quit()
     {
         Debug.Log("Quit");
